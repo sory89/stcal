@@ -1,3 +1,5 @@
+package com.stcal;
+
 public class Prof extends Personne
 {
 	protected String uv;
@@ -8,12 +10,12 @@ public class Prof extends Personne
 		this.uv = uv;
 	}
 
-	public void getUv()
+	public String getUv()
 	{
 		return "uv : " + this.uv;
 	}
 
-	public String setUv(String uv)
+	public void setUv(String uv)
 	{
 		this.uv = uv;
 	}

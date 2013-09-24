@@ -1,4 +1,6 @@
-public class Etudiant extends Personne
+package com.stcal;
+
+public class Etudiant extends com.stcal.Personne
 {
 	protected String lieu;
 	protected String sujet;

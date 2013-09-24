@@ -1,5 +1,7 @@
-public class Personne
-{
+package com.stcal;
+
+public class Personne{
+
 	protected String nom;
 	protected String prenom;
 
@@ -39,3 +41,5 @@ public class Personne
 		this.nom = lastname;
 		this.prenom = firstname;
 	}
+
+}

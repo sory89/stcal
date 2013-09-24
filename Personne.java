@@ -13,17 +13,17 @@ public class Personne{
 
 	public String getNom()	
 	{
-		return "Nom : " + this.nom;
+		return nom;
 	}
 
 	public String getPrenom()
 	{
-		return "Prenom : " + this.prenom;
+		return prenom;
 	}
 
 	public String getPersonne()
 	{
-		return "Nom : " + this.nom + "\nPrenom : " + this.prenom;
+		return this.nom + " " + this.prenom;
 	}
 
 	public void setNom(String lastname)

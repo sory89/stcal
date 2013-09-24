@@ -24,12 +24,12 @@ public class Etudiant extends com.stcal.Personne
 
 	public String getLieu()
 	{
-		return "Lieu : " + this.lieu;
+		return this.lieu;
 	}
 
 	public String getSujet()
 	{
-		return "Sujet : " + this.sujet;
+		return this.sujet;
 	}
 
 	public String getEtudiant()

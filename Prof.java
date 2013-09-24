@@ -12,7 +12,7 @@ public class Prof extends Personne
 
 	public String getUv()
 	{
-		return "uv : " + this.uv;
+		return this.uv;
 	}
 
 	public void setUv(String uv)

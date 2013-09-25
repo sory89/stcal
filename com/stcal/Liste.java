@@ -2,26 +2,26 @@ package com.stcal;
 
 import java.util.ArrayList;
 
-public class Liste {
+public class Liste<T> {
 
-    protected ArrayList<Personne> liste = new ArrayList<Personne>();
+    protected ArrayList<T> liste = new ArrayList<T>();
 
     /** Initialise la liste et la laisse vide */
     public Liste(){
     }
 
     /** Initialise la liste avec la personne en parametre */
-    public Liste(Personne humain){
+    public Liste(T humain){
         liste.add(humain);
     }
 
     /** ajoute une personne à la liste */
-    public void addPersonne(Personne humain){
+    public void add(T humain){
         liste.add(humain);
     }
 
     /** supprime une personne de la liste */
-    public boolean rmPersonne(Personne humain){
+    public boolean rmPersonne(T humain){
         return liste.remove(humain);
     }
 
@@ -31,7 +31,7 @@ public class Liste {
     }
 
     /** renvoi la i eme personne de la liste */
-    public Personne getPersonne(int i){
+    public T getPersonne(int i){
         return liste.get(i);
     }
 

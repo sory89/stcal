@@ -1,4 +1,4 @@
-package com.stcal;
+/*package com.stcal;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -29,3 +29,6 @@ public class Fichier {
     }
 
 }
+
+
+OBSELETE*/

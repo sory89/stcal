@@ -7,30 +7,39 @@ import java.lang.reflect.Method;
 public class Fenetre extends JFrame {
 
     /** Construit une fenetre vide */
-    public Fenetre (com.stcal.Liste etu, com.stcal.Liste prof){
+    public Fenetre (){
         this.setTitle("StCal");
         this.setSize(800, 500);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(new com.stcal.Panneau(prof,etu));
+        // new JPanneau(prof,etu)
         if (System.getProperty("os.name").contains("Mac")) {
             mac(this);
         }
-        JMenuBar jmb = new JMenuBar();
+        JMenuBar jmb = defineMenuBar();
+        this.setContentPane(new JPanneau());
         this.setJMenuBar(jmb);
+        //this.setLayout(new FlowLayout());
+
+    }
+
+    private JMenuBar defineMenuBar() {
+        JMenuBar jmb = new JMenuBar();
         JMenu file = new JMenu("File");
         jmb.add(file);
+        JMenuItem open = new JMenuItem("open file...");
+        open.addActionListener(new Open(this, this.getContentPane()));
+        file.add(open);
+        JMenuItem exit = new JMenuItem("quit");
+        exit.addActionListener(new Exit());
+        file.add(exit);
+        return jmb;
     }
 
-    /** rend la fenetre visible */
-    public void visible() {
-        this.setVisible(true);
-    }
-
+    /** rend la fentre compatible mac */
     private static void mac(Window window){
         String className = "com.apple.eawt.FullScreenUtilities";
         String methodName = "setWindowCanFullScreen";
-
         try {
             System.setProperty("apple.laf.useScreenMenuBar", "true");
             System.setProperty("com.apple.mrj.application.apple.menu.about.name","StCal");

@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Splitcsv{
 
-public static Liste splitcsvprof(String file) throws IOException, ClassNotFoundException {
+public static Liste splitcsvprof(String file) throws IOException {
 
             Liste<Prof> cont;
             cont = new Liste<Prof>();
@@ -25,7 +25,7 @@ public static Liste splitcsvprof(String file) throws IOException, ClassNotFoundE
 
                return cont;
         }
-    public static Liste splitcsvetu(String file) throws IOException, ClassNotFoundException {
+    public static Liste splitcsvetu(String file) throws IOException {
 
         Liste<Etudiant> cont;
         cont = new Liste<Etudiant>();

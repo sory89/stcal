@@ -13,6 +13,7 @@ public class FResult {
     public FResult(){
         fen.setTitle("Resultat");
         fen.setContentPane(new JPanel());
+        fen.setLocationRelativeTo(null);
         FMenu menubar = new FMenu();
         fen.setJMenuBar(menubar.getMenubar());
         Main.mac(fen);

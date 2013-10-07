@@ -64,11 +64,4 @@ public class FChooser {
         return "";
     }
 
-    public String name(){
-        if (result==CHOSEN){
-            return finder.getName();
-        }
-        return "";
-    }
-
 }

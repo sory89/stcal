@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class DPersonne{
 
     protected ArrayList<String> info = new ArrayList<String>();
-    protected DPersonne linked;
+    protected DPersonne linked = null;
 
     public DPersonne(){}
 

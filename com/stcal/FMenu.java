@@ -46,7 +46,7 @@ public class FMenu {
         expot.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Main.exporter();
             }
         });
         menufile.add(expot);

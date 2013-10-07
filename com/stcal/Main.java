@@ -20,6 +20,19 @@ public class Main {
         home.show();
     }
 
+    public static void exporter(){
+        finder.show();
+        if (finder.status()==FChooser.CHOSEN){
+            try {
+                OSplitCsv.exportcsv(finder.path(),etu);
+                System.out.println("Main: exoprter");
+            }
+            catch (Exception x){
+                System.err.println("erreur ecriture fichier");
+            }
+        }
+    }
+
     public static void lier(){
         if (!etuWin.getSelectedPre().equals("") && !etuWin.getSelectedNom().equals("") && !profWin.getSelectedPre().equals("") && !profWin.getSelectedNom().matches("")){
             result.add(etuWin.getSelectedPre() + " " + etuWin.getSelectedNom(),profWin.getSelectedPre() + " " + profWin.getSelectedNom());
@@ -79,7 +92,9 @@ public class Main {
                     return;
                 }
             }
-            catch (Exception ex){}
+            catch (Exception ex){
+                System.err.println("erreur ouverture fichier");
+            }
         }
         else {
             home.show();

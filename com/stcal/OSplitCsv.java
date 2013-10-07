@@ -1,7 +1,7 @@
 package com.stcal;
 
 import java.io.File;
-import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +11,7 @@ public class OSplitCsv {
 
     public static final String SEP = ";";
 
-    public static DListe splitcsv(File file) throws IOException {
+    public static DListe splitcsv(File file) throws Exception {
         DListe cont;
         cont = new DListe();
         Scanner sc = new Scanner(file);
@@ -34,6 +34,22 @@ public class OSplitCsv {
         }
         sc.close();
         return cont;
+    }
+
+    public static void exportcsv(String path,DListe etu) throws Exception {
+        String ligne;
+        PrintWriter writer = new PrintWriter(path, "UTF-8");
+        for (int i=0;i<etu.nbPersonne();i++){
+            if (etu.getPersonne(i).getLinked()!=null){
+                ligne = etu.getPersonne(i).getLinked().getPrenom() + ";";
+                ligne += etu.getPersonne(i).getLinked().getNom() + ";";
+                for (int j=0;j<etu.getPersonne(i).getInfo().size();j++){
+                    ligne += etu.getPersonne(i).getInfo().get(j) + ";";
+                }
+                writer.println(ligne);
+            }
+        }
+        writer.close();
     }
 
 }

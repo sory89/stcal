@@ -35,16 +35,22 @@ public class FResult {
     public void add(String etu,String prof){
         System.out.println("FResult: add " + etu + " & " + prof);
         String lab = "<html>";
-        this.etu.add(etu);
-        this.prof.add(prof);
+        int a=0;
+        for (int i=0;i<this.etu.size();i++){
+           if(this.etu.get(i).equals(etu)) {
+               a = 1;
+           }
+        }
+        if (a==0){
+            this.etu.add(etu);
+            this.prof.add(prof);
+        }
         for (int i=0;i<this.etu.size();i++){
             lab += this.etu.get(i) + " && " + this.prof.get(i) + "<br />";
         }
         lab += "</html>";
         cont.setText(lab);
         fen.getContentPane().repaint();
+
     }
-
-
-
 }

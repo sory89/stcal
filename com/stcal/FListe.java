@@ -35,6 +35,32 @@ public class FListe {
                 Main.personneInfo(selectedPre,selectedNom);
             }
         });
+        liste.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                selectedPre = prenom.get(liste.getLeadSelectionIndex());
+                selectedNom = nom.get(liste.getLeadSelectionIndex());
+                Main.personneInfo(selectedPre, selectedNom);
+        }
+
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+                selectedPre = prenom.get(liste.getLeadSelectionIndex());
+                selectedNom = nom.get(liste.getLeadSelectionIndex());
+                Main.personneInfo(selectedPre, selectedNom);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                selectedPre = prenom.get(liste.getLeadSelectionIndex());
+                selectedNom = nom.get(liste.getLeadSelectionIndex());
+                Main.personneInfo(selectedPre, selectedNom);
+            }
+
+
+        });
         JScrollPane pane = new JScrollPane(liste);
         fen.getContentPane().add(pane);
         fen.getContentPane().add(desc);

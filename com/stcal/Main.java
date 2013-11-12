@@ -93,7 +93,7 @@ public class Main {
                 }
             }
             catch (Exception ex){
-                System.err.println("erreur ouverture fichier");
+                System.err.println("erreur ouverture fichier : " + ex.getMessage());
             }
         }
         else {
@@ -118,6 +118,5 @@ public class Main {
             }
         }
     }
-
 
 }

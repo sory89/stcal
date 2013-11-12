@@ -46,7 +46,6 @@ public class FListe {
 
             @Override
             public void keyPressed(KeyEvent e) {
-
                 selectedPre = prenom.get(liste.getLeadSelectionIndex());
                 selectedNom = nom.get(liste.getLeadSelectionIndex());
                 Main.personneInfo(selectedPre, selectedNom);

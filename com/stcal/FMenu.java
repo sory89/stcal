@@ -12,12 +12,12 @@ public class FMenu {
         JMenu menuaction = new JMenu("Actions");
         JMenuItem lier = new JMenuItem("Lier");
         lier.setToolTipText("Lier l'étudiant et l'enseignants.");
-        lier.addActionListener(new ActionListener() {
+        /*lier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.lier();
+                Main.lier(, , , , , );
             }
-        });
+        });*/
         menuaction.add(lier);
 
 

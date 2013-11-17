@@ -125,6 +125,19 @@ public class FLier extends FTab {
         }
     }
 
+    protected void askStage(){
+        if (Main.lier(courantEtuPre,courantEtuNom,courantTutPre,courantTutNom,courantCandPre,courantCandNom)){
+            courantEtuPre = "";
+            courantEtuNom = "";
+            courantTutPre = "";
+            courantTutNom = "";
+            courantCandPre = "";
+            courantCandNom = "";
+            courant.setText("<html>Stage crée.</html>");
+            refresh();
+        }
+    }
+
     public void resetOption(){
         option.removeAll();
         if (etuList.isEmpty()){
@@ -252,6 +265,12 @@ public class FLier extends FTab {
         if (!etuList.isEmpty() && !profList.isEmpty()){
             JButton opt6 = new JButton("Valider");
             opt6.setToolTipText("Confirme le stage courant");
+            opt6.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    askStage();
+                }
+            });
             option.add(opt6);
         }
         refresh();
@@ -310,5 +329,6 @@ public class FLier extends FTab {
         profList.addElement(pre + " " + nom.toUpperCase());
         refresh();
     }
+
 
 }

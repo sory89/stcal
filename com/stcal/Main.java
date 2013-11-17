@@ -10,14 +10,10 @@ public class Main {
     public static final String PROF = "prof";
     public static final String NONE = "";
 
-    private static FHome home = new FHome();
-    private static FChooser finder = new FChooser();
+    private static ArrayList<DStage> stages = new ArrayList<DStage>();
     private static DListe etu = new DListe();
     private static DListe prof = new DListe();
-    private static FListe etuWin = new FListe("Etudiant");
-    private static FListe profWin = new FListe("Enseignants");
-    private static FResult result = new FResult();
-
+    private static FChooser finder = new FChooser();
     private static FInterface fen = new FInterface(800,600);
     private static FLier lier = new FLier();
     private static FStage stage = new FStage();
@@ -41,16 +37,16 @@ public class Main {
         }
     }
 
-    public static void lier(){
-        if (!etuWin.getSelectedPre().equals("") && !etuWin.getSelectedNom().equals("") && !profWin.getSelectedPre().equals("") && !profWin.getSelectedNom().matches("")){
-            result.add(etuWin.getSelectedPre() + " " + etuWin.getSelectedNom(),profWin.getSelectedPre() + " " + profWin.getSelectedNom());
-            result.show();
-            DPersonne selectedProf = prof.search(profWin.getSelectedPre(),profWin.getSelectedNom());
-            DPersonne selectedEtu = etu.search(etuWin.getSelectedPre(),etuWin.getSelectedNom());
-            if (selectedEtu!=null && selectedProf!=null){
-                selectedEtu.setLinked(selectedProf);
-            }
+    public static boolean lier(String etuPre, String etuNom, String tutPre, String tutNom, String candPre, String candNom){
+        DPersonne setu = etu.search(etuPre,etuNom);
+        DPersonne stut = prof.search(tutPre,tutNom);
+        DPersonne scand = prof.search(candPre,candNom);
+        if (setu!=null && stut!=null && scand!=null && !stut.equals(scand)){
+            stages.add(new DStage(setu,stut,scand));
+            fenStatut("étudiant: " + etuPre + " " + etuNom + ", tuteur: " + tutPre + " " + tutNom + ", candide:" + candPre + " " + candNom + ", stage crée.");
+            return true;
         }
+        return false;
     }
 
     public static void personneInfo(String type,String pre,String nom){

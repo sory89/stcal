@@ -27,7 +27,7 @@ public class FListe {
         fen.getContentPane().setLayout(new GridLayout(0, 2));
         personne = new DefaultListModel();
         final JList liste = new JList(personne);
-        liste.addMouseListener(new MouseAdapter() {
+        /*liste.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 selectedPre = prenom.get(liste.getLeadSelectionIndex());
@@ -59,7 +59,7 @@ public class FListe {
             }
 
 
-        });
+        }); */
         JScrollPane pane = new JScrollPane(liste);
         fen.getContentPane().add(pane);
         fen.getContentPane().add(desc);

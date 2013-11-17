@@ -2,11 +2,13 @@ package com.stcal;
 
 import java.lang.reflect.Method;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Main {
 
     public static final String ETU = "etu";
     public static final String PROF = "prof";
+    public static final String NONE = "";
 
     private static FHome home = new FHome();
     private static FChooser finder = new FChooser();
@@ -16,8 +18,14 @@ public class Main {
     private static FListe profWin = new FListe("Enseignants");
     private static FResult result = new FResult();
 
+    private static FInterface fen = new FInterface(800,600);
+    private static FLier lier = new FLier();
+    private static FStage stage = new FStage();
+
     public static void main(String[] args) {
-        home.show();
+        fen.addTab(lier);
+        fen.addTab(stage);
+        fen.show();
     }
 
     public static void exporter(){
@@ -45,47 +53,54 @@ public class Main {
         }
     }
 
-    public static void personneInfo(String pre,String nom){
-        DPersonne selected = etu.search(pre,nom);
-        FListe current = etuWin;
-        DListe all = etu;
-        if (selected==null){
-            selected = prof.search(pre,nom);
-            if (selected==null){
-                System.err.println("Main: personneInfo: info personne not found");
-                return;
-            }
-            current = profWin;
+    public static void personneInfo(String type,String pre,String nom){
+        ArrayList<String> details = new ArrayList<String>();
+        DListe all;
+        if (type.equals(ETU)){
+            all = etu;
+        }
+        else if (type.equals(PROF)){
             all = prof;
         }
-        System.out.println("Main: info " + pre + " " + nom);
-        current.resetInfo();
-        for (int i=0;i<all.getLabels().size();i++){
-            current.addInfo(" " + all.getLabels().get(i) + ": " + selected.getInfo().get(i));
+        else {
+            fenStatut("Err: type de la personne inconnu.");
+            System.err.println("Err: type de la personne inconnu.");
+            return;
         }
-        current.showInfo();
+        DPersonne selected = all.search(pre,nom);
+        if (selected==null){
+            fenStatut("Err: personne non trouvé.");
+            System.err.println("Err: personne non trouvé.");
+            return;
+        }
+        for (int i=0;i<all.getLabels().size();i++){
+            details.add(" " + all.getLabels().get(i) + ": " + selected.getInfo().get(i));
+        }
+        lier.setInfo(details);
+        fenStatut("Info de " + pre + " " + nom + ".");
+        fen.refresh();
     }
 
     public static void openFile(String type){
         DListe nouveau;
-        System.out.println("Main: openFile " + type);
+        fenStatut("Navigateur de fichier.");
         finder.show();
         if (finder.status()==FChooser.CHOSEN){
             try {
                 nouveau = OSplitCsv.splitcsv(finder.file());
                 if (type.equals(ETU)){
                     for (int i=0;i<nouveau.nbPersonne();i++){
-                        etuWin.add(nouveau.getPersonne(i).getPrenom(),nouveau.getPersonne(i).getNom());
+                        lier.addEtu(nouveau.getPersonne(i).getPrenom(),nouveau.getPersonne(i).getNom());
                     }
                     etu.add(nouveau);
-                    etuWin.show();
+                    fenStatut(nouveau.nbPersonne() + " étudiants ajoutés de " + finder.path());
                 }
                 else if (type.equals(PROF)){
                     for (int i=0;i<nouveau.nbPersonne();i++){
-                        profWin.add(nouveau.getPersonne(i).getPrenom(),nouveau.getPersonne(i).getNom());
+                        lier.addProf(nouveau.getPersonne(i).getPrenom(),nouveau.getPersonne(i).getNom());
                     }
                     prof.add(nouveau);
-                    profWin.show();
+                    fenStatut(nouveau.nbPersonne() + " enseignants ajoutés de" + finder.path());
                 }
                 else {
                     System.err.println("Main: openFile: type not defined");
@@ -93,12 +108,19 @@ public class Main {
                 }
             }
             catch (Exception ex){
+                fenStatut("Err: impossible d'ouvrire le fichier.");
                 System.err.println("erreur ouverture fichier : " + ex.getMessage());
             }
         }
         else {
-            home.show();
+            fenStatut("Ouverture annulé.");
         }
+        fen.refresh();
+        lier.resetOption();
+    }
+
+    public static void fenStatut(String text){
+        fen.setStatus(text);
     }
 
     public static void mac(Window window){

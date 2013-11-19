@@ -1,5 +1,10 @@
 package com.stcal;
 
+import com.stcal.fen.FChooser;
+import com.stcal.fen.FInterface;
+import com.stcal.fen.FLier;
+import com.stcal.fen.FStage;
+
 import java.lang.reflect.Method;
 import java.awt.*;
 import java.util.ArrayList;
@@ -43,7 +48,7 @@ public class Main {
         DPersonne scand = prof.search(candPre,candNom);
         if (setu!=null && stut!=null && scand!=null && !stut.equals(scand)){
             stages.add(new DStage(setu,stut,scand));
-            stage.addProf(tutPre,tutNom);
+            stage.addProf(tutPre, tutNom);
             fenStatut("étudiant: " + etuPre + " " + etuNom + ", tuteur: " + tutPre + " " + tutNom + ", candide:" + candPre + " " + candNom + ", stage crée.");
             return true;
         }

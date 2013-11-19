@@ -1,4 +1,6 @@
-package com.stcal;
+package com.stcal.fen;
+
+import com.stcal.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,7 +49,7 @@ public class FInterface {
     }
 
     public void refresh(){
-        fen.getContentPane().revalidate();
+        //fen.getContentPane().revalidate();
         fen.getContentPane().repaint();
     }
 

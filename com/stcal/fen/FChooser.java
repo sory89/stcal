@@ -1,4 +1,4 @@
-package com.stcal;
+package com.stcal.fen;
 
 import javax.swing.*;
 import javax.swing.filechooser.*;

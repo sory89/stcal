@@ -1,4 +1,6 @@
-package com.stcal;
+package com.stcal.fen;
+
+import com.stcal.Main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

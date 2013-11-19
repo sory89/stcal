@@ -128,11 +128,14 @@ public class FLier extends FTab {
     protected void askStage(){
         if (Main.lier(courantEtuPre,courantEtuNom,courantTutPre,courantTutNom,courantCandPre,courantCandNom)){
             courantEtuPre = "";
-            courantEtuNom = "";
+            courantEtuPre = "";
             courantTutPre = "";
             courantTutNom = "";
             courantCandPre = "";
             courantCandNom = "";
+            etuList.removeElement(courantEtuPre + " " + courantEtuNom.toUpperCase());
+            prenomEtu.remove(courantEtuPre);
+            nomEtu.remove(courantEtuNom);
             courant.setText("<html>Stage crée.</html>");
             refresh();
         }

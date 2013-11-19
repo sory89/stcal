@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class FStage extends FTab {
 
@@ -13,6 +14,9 @@ public class FStage extends FTab {
     protected DefaultListModel stag = new DefaultListModel();
     protected JLabel info = new JLabel("<html>Selectionner un enseignant ou un stagiere pour afficher ses infos.</html>");
     protected JPanel option = new JPanel();
+
+    protected ArrayList<String> tutPre = new ArrayList<String>();
+    protected ArrayList<String> tutNom = new ArrayList<String>();
 
     public FStage(){
         super("Stage");
@@ -34,5 +38,11 @@ public class FStage extends FTab {
         pan().add(right);
     }
 
+    public void addProf(String pre,String nom){
+        tutPre.add(pre);
+        tutNom.add(nom);
+        prof.addElement(pre + " " + nom.toUpperCase());
+        refresh();
+    }
 
 }

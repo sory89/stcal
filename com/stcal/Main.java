@@ -43,6 +43,7 @@ public class Main {
         DPersonne scand = prof.search(candPre,candNom);
         if (setu!=null && stut!=null && scand!=null && !stut.equals(scand)){
             stages.add(new DStage(setu,stut,scand));
+            stage.addProf(tutPre,tutNom);
             fenStatut("étudiant: " + etuPre + " " + etuNom + ", tuteur: " + tutPre + " " + tutNom + ", candide:" + candPre + " " + candNom + ", stage crée.");
             return true;
         }

@@ -49,7 +49,7 @@ public class FInterface {
     }
 
     public void refresh(){
-        //fen.getContentPane().revalidate();
+        fen.getContentPane().revalidate();
         fen.getContentPane().repaint();
     }
 

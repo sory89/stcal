@@ -1,5 +1,8 @@
 package com.stcal;
 
+import com.stcal.don.DListe;
+import com.stcal.don.DPersonne;
+import com.stcal.don.DStage;
 import com.stcal.fen.FChooser;
 import com.stcal.fen.FInterface;
 import com.stcal.fen.FLier;

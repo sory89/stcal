@@ -20,15 +20,10 @@ public class FLier extends FTab {
     protected ArrayList<String> nomProf = new ArrayList<String>();
     protected String selectedEtuPre = "";
     protected String selectedEtuNom = "";
+    protected int selectedEtuIndex = 0;
     protected String selectedProfPre = "";
     protected String selectedProfNom = "";
     protected String selectedType = Main.NONE;
-    protected String courantEtuPre = "";
-    protected String courantEtuNom = "";
-    protected String courantTutPre = "";
-    protected String courantTutNom = "";
-    protected String courantCandPre = "";
-    protected String courantCandNom = "";
 
     public FLier(){
         super("Lier");
@@ -111,33 +106,29 @@ public class FLier extends FTab {
     protected void askInfo(JList pan,String type){
         try {
             if (type.equals(Main.ETU)){
-                selectedEtuPre = prenomEtu.get(pan.getLeadSelectionIndex());
-                selectedEtuNom = nomEtu.get(pan.getLeadSelectionIndex());
-                Main.personneInfo(selectedType,selectedEtuPre, selectedEtuNom);
+                selectedEtuIndex = pan.getLeadSelectionIndex();
+                selectedEtuPre = prenomEtu.get(selectedEtuIndex);
+                selectedEtuNom = nomEtu.get(selectedEtuIndex);
+                setInfo(Main.personneInfo(Main.ETU,selectedEtuPre, selectedEtuNom));
             }
             else if (type.equals(Main.PROF)){
                 selectedProfPre = prenomProf.get(pan.getLeadSelectionIndex());
                 selectedProfNom = nomProf.get(pan.getLeadSelectionIndex());
-                Main.personneInfo(selectedType,selectedProfPre, selectedProfNom);
+                setInfo(Main.personneInfo(Main.PROF,selectedProfPre, selectedProfNom));
             }
             selectedType = type;
+            resetCourant();
         }
         catch (Exception ex){
-            System.err.println("err: FInterface: event JList: " + ex.getMessage());
+            System.err.println("err: FLier: event JList: " + ex.getMessage());
         }
     }
 
     protected void askStage(){
-        if (Main.lier(courantEtuPre,courantEtuNom,courantTutPre,courantTutNom,courantCandPre,courantCandNom)){
-            courantEtuPre = "";
-            courantEtuPre = "";
-            courantTutPre = "";
-            courantTutNom = "";
-            courantCandPre = "";
-            courantCandNom = "";
-            etuList.removeElement(courantEtuPre + " " + courantEtuNom.toUpperCase());
-            prenomEtu.remove(courantEtuPre);
-            nomEtu.remove(courantEtuNom);
+        if (Main.lier(selectedEtuPre,selectedEtuNom,selectedProfPre,selectedProfNom)){
+            etuList.remove(selectedEtuIndex);
+            prenomEtu.remove(selectedEtuPre);
+            nomEtu.remove(selectedProfNom);
             courant.setText("<html>Stage crée.</html>");
             refresh();
         }
@@ -167,106 +158,6 @@ public class FLier extends FTab {
             });
             option.add(opt2);
         }
-        if (!etuList.isEmpty()){
-            JButton opt3 = new JButton("Definir etudiants");
-            opt3.setToolTipText("Ajoute l'étudiant selectionné comme l'étudiant courant");
-            opt3.addActionListener(new AbstractAction() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    courantEtuPre = selectedEtuPre;
-                    courantEtuNom = selectedEtuNom;
-                    resetCourant();
-                    resetOption();
-                    Main.fenStatut("Etudiant defini.");
-                }
-            });
-            option.add(opt3);
-        }
-        if(!courantEtuPre.equals("") || !courantEtuNom.equals("")){
-            JButton opt7 = new JButton("Supprimer etudiant courant");
-            opt7.setToolTipText("Supprime l'étudiant l'étudiant courant");
-            opt7.addActionListener(new AbstractAction() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    courantEtuPre = "";
-                    courantEtuNom = "";
-                    resetCourant();
-                    resetOption();
-                    Main.fenStatut("Etudiant courant non défini.");
-                }
-            });
-            option.add(opt7);
-        }
-        if (!profList.isEmpty()){
-            JButton opt4 = new JButton("Enseignants tuteur");
-            opt4.setToolTipText("Ajoute l'enseignant selectionné comme le tuteur courant");
-            opt4.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    if (!selectedProfPre.equals(courantCandPre) && !selectedProfNom.equals(courantCandNom)){
-                        courantTutPre = selectedProfPre;
-                        courantTutNom = selectedProfNom;
-                        resetCourant();
-                        resetOption();
-                        Main.fenStatut("Tuteur defini.");
-                    }
-                    else {
-                        Main.fenStatut("Cette enseignant est deja utilisé.");
-                        refresh();
-                    }
-                }
-            });
-            option.add(opt4);
-            JButton opt5 = new JButton("Enseignants candide");
-            opt5.setToolTipText("Ajoute l'enseignant selectionné comme l'enseignant candide courant");
-            opt5.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    if (!selectedProfPre.equals(courantTutPre) && !selectedProfNom.equals(courantTutNom)){
-                        courantCandPre = selectedProfPre;
-                        courantCandNom = selectedProfNom;
-                        resetCourant();
-                        resetOption();
-                        Main.fenStatut("Enseignant candide defini.");
-                    }
-                    else {
-                        Main.fenStatut("Cette enseignant est deja utilisé.");
-                        refresh();
-                    }
-                }
-            });
-            option.add(opt5);
-        }
-        if(!courantTutPre.equals("") || !courantTutNom.equals("")){
-            JButton opt8 = new JButton("Supprimer tuteure courant");
-            opt8.setToolTipText("Supprime l'enseignant tuteur courant");
-            opt8.addActionListener(new AbstractAction() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    courantTutPre = "";
-                    courantTutNom = "";
-                    Main.fenStatut("Tuteure courant non défini.");
-                    resetCourant();
-                    resetOption();
-                }
-            });
-            option.add(opt8);
-        }
-        if(!courantCandPre.equals("") || !courantCandNom.equals("")){
-            JButton opt9 = new JButton("Supprimer candide courant");
-            opt9.setToolTipText("Supprime l'enseignant candide courant");
-            opt9.addActionListener(new AbstractAction() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    courantCandPre = "";
-                    courantCandNom = "";
-                    Main.fenStatut("Candide non défini.");
-                    resetCourant();
-                    resetOption();
-                }
-            });
-            option.add(opt9);
-        }
         if (!etuList.isEmpty() && !profList.isEmpty()){
             JButton opt6 = new JButton("Valider");
             opt6.setToolTipText("Confirme le stage courant");
@@ -283,14 +174,11 @@ public class FLier extends FTab {
 
     public void resetCourant(){
         String html = "<html>";
-        if (!courantTutNom.equals("") && !courantTutPre.equals("")){
-            html += "Tuteur: " + courantTutPre + " " + courantTutNom.toUpperCase() + "<br />";
+        if (!selectedProfPre.equals("") && !selectedProfNom.equals("")){
+            html += "Tuteur: " + selectedProfPre + " " + selectedProfNom.toUpperCase() + "<br />";
         }
-        if (!courantCandNom.equals("") && !courantCandPre.equals("")){
-            html += "Candide: " + courantCandPre + " " + courantCandNom.toUpperCase() + "<br />";
-        }
-        if (!courantEtuPre.equals("") && !courantEtuNom.equals("")){
-            html += "Etudiant: " + courantEtuPre + " " + courantEtuNom.toUpperCase() + "<br />";
+        if (!selectedEtuPre.equals("") && !selectedEtuNom.equals("")){
+            html += "Etudiant: " + selectedEtuPre + " " + selectedProfNom.toUpperCase() + "<br />";
         }
         html += "</html>";
         courant.setText(html);

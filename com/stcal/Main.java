@@ -45,20 +45,29 @@ public class Main {
         }
     }
 
-    public static boolean lier(String etuPre, String etuNom, String tutPre, String tutNom, String candPre, String candNom){
+    public static boolean lier(String etuPre, String etuNom, String tutPre, String tutNom){
         DPersonne setu = etu.search(etuPre,etuNom);
         DPersonne stut = prof.search(tutPre,tutNom);
-        DPersonne scand = prof.search(candPre,candNom);
-        if (setu!=null && stut!=null && scand!=null && !stut.equals(scand)){
-            stages.add(new DStage(setu,stut,scand));
+        if (setu!=null && stut!=null){
+            stages.add(new DStage(setu,stut));
             stage.addProf(tutPre, tutNom);
-            fenStatut("étudiant: " + etuPre + " " + etuNom + ", tuteur: " + tutPre + " " + tutNom + ", candide:" + candPre + " " + candNom + ", stage crée.");
+            fenStatut("étudiant: " + etuPre + " " + etuNom + ", tuteur: " + tutPre + " " + tutNom + ", stage crée.");
             return true;
         }
         return false;
     }
 
-    public static void personneInfo(String type,String pre,String nom){
+    public static ArrayList<String> etuStage(String profPre,String profNom){
+        ArrayList<String> etu = new ArrayList<String>();
+        for (int i=0;i<stages.size();i++){
+            if (stages.get(i).getProf().getPrenom()==profPre && stages.get(i).getProf().getNom()==profNom){
+                etu.add(stages.get(i).getEtu().toString());
+            }
+        }
+        return etu;
+    }
+
+    public static ArrayList<String> personneInfo(String type,String pre,String nom){
         ArrayList<String> details = new ArrayList<String>();
         DListe all;
         if (type.equals(ETU)){
@@ -70,20 +79,19 @@ public class Main {
         else {
             fenStatut("Err: type de la personne inconnu.");
             System.err.println("Err: type de la personne inconnu.");
-            return;
+            return null;
         }
         DPersonne selected = all.search(pre,nom);
         if (selected==null){
             fenStatut("Err: personne non trouvé.");
             System.err.println("Err: personne non trouvé.");
-            return;
+            return null;
         }
         for (int i=0;i<all.getLabels().size();i++){
             details.add(" " + all.getLabels().get(i) + ": " + selected.getInfo().get(i));
         }
-        lier.setInfo(details);
         fenStatut("Info de " + pre + " " + nom + ".");
-        fen.refresh();
+        return details;
     }
 
     public static void openFile(String type){

@@ -2,9 +2,9 @@ package com.stcal.don;
 
 public class DStage {
 
-    protected DPersonne etu;
-    protected DPersonne prof;
-    protected DPersonne cand;
+    protected DPersonne etu = null;
+    protected DPersonne prof = null;
+    protected DPersonne cand = null;
 
     public DStage(){}
 
@@ -12,6 +12,11 @@ public class DStage {
         this.etu = etu;
         this.prof = prof;
         this.cand = cand;
+    }
+
+    public DStage(DPersonne etu,DPersonne prof){
+        this.etu = etu;
+        this.prof = prof;
     }
 
     public void setEtu(DPersonne etu){

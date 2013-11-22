@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class FTab {
 
@@ -24,5 +25,7 @@ public class FTab {
     public String getNom(){
         return nom;
     }
+
+    public void setInfo(ArrayList<String> details){}
 
 }

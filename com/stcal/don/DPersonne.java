@@ -50,4 +50,8 @@ public class DPersonne{
         return info.get(0).toLowerCase().equals(prenom.toLowerCase()) && info.get(1).toLowerCase().equals(nom.toLowerCase());
     }
 
+    public String toString(){
+        return info.get(0) + " " + info.get(1);
+    }
+
 }

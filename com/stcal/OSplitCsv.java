@@ -40,19 +40,19 @@ public class OSplitCsv {
     }
 
     public static void exportcsv(String path,DListe etu) throws Exception {
-        String ligne;
-        PrintWriter writer = new PrintWriter(path, "UTF-8");
-        for (int i=0;i<etu.nbPersonne();i++){
-            if (etu.getPersonne(i).getLinked()!=null){
-                ligne = etu.getPersonne(i).getLinked().getPrenom() + ";";
-                ligne += etu.getPersonne(i).getLinked().getNom() + ";";
-                for (int j=0;j<etu.getPersonne(i).getInfo().size();j++){
-                    ligne += etu.getPersonne(i).getInfo().get(j) + ";";
-                }
-                writer.println(ligne);
-            }
-        }
-        writer.close();
+        //String ligne;
+        //PrintWriter writer = new PrintWriter(path, "UTF-8");
+        //for (int i=0;i<etu.nbPersonne();i++){
+        //    if (etu.getPersonne(i).getLinked()!=null){
+        //        ligne = etu.getPersonne(i).getLinked().getPrenom() + ";";
+        //        ligne += etu.getPersonne(i).getLinked().getNom() + ";";
+        //        for (int j=0;j<etu.getPersonne(i).getInfo().size();j++){
+        //            ligne += etu.getPersonne(i).getInfo().get(j) + ";";
+        //        }
+        //        writer.println(ligne);
+        //    }
+        //}
+        //writer.close();
     }
 
 }

@@ -13,7 +13,7 @@ public class FMenu {
     public FMenu(){
         JMenu menuaction = new JMenu("Actions");
         JMenuItem lier = new JMenuItem("Lier");
-        lier.setToolTipText("Lier l'étudiant et l'enseignants.");
+        lier.setToolTipText("Lier l'étudiant et l'enseignant.");
         /*lier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -34,7 +34,7 @@ public class FMenu {
         });
         menufile.add(openetu);
         JMenuItem openprof = new JMenuItem("Importer enseignants...");
-        openprof.setToolTipText("Importer un ficher CSV d'enseignants.");
+        openprof.setToolTipText("Importer un fichier CSV d'enseignants.");
         openprof.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,17 +43,17 @@ public class FMenu {
         });
         menufile.add(openprof);
         menufile.addSeparator();
-        JMenuItem expot = new JMenuItem("Exporter...");
-        expot.setToolTipText("Exporter les liaison déja faite dans un fichier CSV.");
-        expot.addActionListener(new ActionListener() {
+        JMenuItem export = new JMenuItem("Exporter...");
+        export.setToolTipText("Exporter les liaisons déjà faites dans un fichier CSV.");
+        export.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.exporter();
             }
         });
-        menufile.add(expot);
+        menufile.add(export);
         menufile.addSeparator();
-        JMenuItem quit = new JMenuItem("Quit StCal");
+        JMenuItem quit = new JMenuItem("Quitter");
         quit.setToolTipText("Fermer l'application");
         quit.addActionListener(new ActionListener() {
             @Override

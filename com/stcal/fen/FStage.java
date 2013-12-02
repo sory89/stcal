@@ -14,7 +14,7 @@ public class FStage extends FTab {
 
     protected DefaultListModel prof = new DefaultListModel();
     protected DefaultListModel stag = new DefaultListModel();
-    protected JLabel info = new JLabel("<html>Selectionner un enseignant ou un stagiere pour afficher ses infos.</html>");
+    protected JLabel info = new JLabel("<html>Sélectionner un enseignant ou un stagiaire pour afficher ses infos.</html>");
     protected JPanel option = new JPanel();
 
     protected ArrayList<String> tutPre = new ArrayList<String>();

@@ -14,10 +14,6 @@ public class DPersonne{
         info.add(1,lastname);
 	}
 
-    public void setLinked(DPersonne linked){
-        this.linked = linked;
-    }
-
     public DPersonne getLinked(){
         return linked;
     }
@@ -36,14 +32,6 @@ public class DPersonne{
 
 	public String getPrenom(){
 		return info.get(0);
-	}
-
-	public void setNom(String lastname){
-        info.set(1,lastname);
-	}
-
-	public void setPrenom(String firstname){
-        info.set(1,firstname);
 	}
 
     public boolean is(String prenom,String nom){

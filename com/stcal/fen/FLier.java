@@ -11,7 +11,7 @@ public class FLier extends FTab {
 
     protected DefaultListModel profList = new DefaultListModel();
     protected DefaultListModel etuList = new DefaultListModel();
-    protected JLabel info = new JLabel("<html>Selectionner un étudiant ou un prof pour afficher ses infos.</html>");
+    protected JLabel info = new JLabel("<html>Sélectionner un étudiant ou un prof pour afficher ses infos.</html>");
     protected JLabel courant = new JLabel("courant");
     protected JPanel option= new JPanel();
     protected ArrayList<String> prenomEtu = new ArrayList<String>();
@@ -58,7 +58,7 @@ public class FLier extends FTab {
         option.setOpaque(false);
         option.setLayout(new GridLayout(8, 0));
         JButton opt1 = new JButton("Importer étudiants");
-        opt1.setToolTipText("Ouvrire un fichier d'étudiant CSV");
+        opt1.setToolTipText("Ouvrir un fichier d'étudiants CSV");
         opt1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,7 +67,7 @@ public class FLier extends FTab {
         });
         option.add(opt1);
         JButton opt2 = new JButton("Importer enseignants");
-        opt2.setToolTipText("Ouvrire un fichier d'enseignant CSV");
+        opt2.setToolTipText("Ouvrir un fichier d'enseignants CSV");
         opt2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -129,7 +129,7 @@ public class FLier extends FTab {
             etuList.remove(selectedEtuIndex);
             prenomEtu.remove(selectedEtuPre);
             nomEtu.remove(selectedProfNom);
-            courant.setText("<html>Stage crée.</html>");
+            courant.setText("<html>Stage créé.</html>");
             refresh();
         }
     }
@@ -138,7 +138,7 @@ public class FLier extends FTab {
         option.removeAll();
         if (etuList.isEmpty()){
             JButton opt1 = new JButton("Importer étudiants");
-            opt1.setToolTipText("Ouvrire un fichier d'étudiant CSV");
+            opt1.setToolTipText("Ouvrir un fichier d'étudiants CSV");
             opt1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -149,7 +149,7 @@ public class FLier extends FTab {
         }
         if (profList.isEmpty()){
             JButton opt2 = new JButton("Importer enseignants");
-            opt2.setToolTipText("Ouvrire un fichier d'enseignant CSV");
+            opt2.setToolTipText("Ouvrir un fichier d'enseignants CSV");
             opt2.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {

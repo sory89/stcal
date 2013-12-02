@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class DPersonne{
 
     protected ArrayList<String> info = new ArrayList<String>();
-    protected DPersonne linked = null;
 
     public DPersonne(){}
 
@@ -13,10 +12,6 @@ public class DPersonne{
 		info.add(0,firstname);
         info.add(1,lastname);
 	}
-
-    public DPersonne getLinked(){
-        return linked;
-    }
 
     public void setInfo(String inf){
         info.add(inf);

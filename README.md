@@ -54,6 +54,7 @@ Le produit devra être capable de résoudre les cas suivants en affichant un mes
 - en cas d’utilisation d’une salle pour deux soutenances différentes prévues au même horaire ;
 - en cas de présence de deux soutenances dont les sujets sont identiques ;
 - en cas de présence de deux soutenances dont les noms des étudiants sont identiques ;
+
 Si toutes les salles d’entretien sont occupées à un horaire donné, cette plage horaire devra être inaccessible pour placer d’autres soutenances. 
 
 L’application possèdera également une option d’export du calendrier généré au format ICS compatible avec Google et iCal.

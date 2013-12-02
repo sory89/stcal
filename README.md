@@ -1,7 +1,6 @@
 #StCal
+
 ##Cahier des charges
-
-
 
 ###Introduction
 

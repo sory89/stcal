@@ -1,20 +1,11 @@
 package com.stcal.don;
 
-public class DStage {
+public class DCouple {
 
     protected DPersonne etu = null;
     protected DPersonne prof = null;
-    protected DPersonne cand = null;
 
-    public DStage(){}
-
-    public DStage(DPersonne etu,DPersonne prof,DPersonne cand){
-        this.etu = etu;
-        this.prof = prof;
-        this.cand = cand;
-    }
-
-    public DStage(DPersonne etu,DPersonne prof){
+    public DCouple(DPersonne etu, DPersonne prof){
         this.etu = etu;
         this.prof = prof;
     }
@@ -27,10 +18,6 @@ public class DStage {
         this.prof = prof;
     }
 
-    public void setCand(DPersonne cand){
-        this.cand = cand;
-    }
-
     public DPersonne getEtu(){
         return etu;
     }
@@ -39,8 +26,5 @@ public class DStage {
         return prof;
     }
 
-    public DPersonne getCand(){
-        return cand;
-    }
 
 }

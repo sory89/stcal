@@ -1,8 +1,8 @@
 package com.stcal;
 
+import com.stcal.don.DCouple;
 import com.stcal.don.DListe;
 import com.stcal.don.DPersonne;
-import com.stcal.don.DStage;
 import com.stcal.fen.FChooser;
 import com.stcal.fen.FInterface;
 import com.stcal.fen.FLier;
@@ -18,7 +18,7 @@ public class Main {
     public static final String PROF = "prof";
     public static final String NONE = "";
 
-    private static ArrayList<DStage> stages = new ArrayList<DStage>();
+    private static ArrayList<DCouple> stages = new ArrayList<DCouple>();
     private static DListe etu = new DListe();
     private static DListe prof = new DListe();
     private static FChooser finder = new FChooser();
@@ -49,7 +49,7 @@ public class Main {
         DPersonne setu = etu.search(etuPre,etuNom);
         DPersonne stut = prof.search(tutPre,tutNom);
         if (setu!=null && stut!=null){
-            stages.add(new DStage(setu,stut));
+            stages.add(new DCouple(setu,stut));
             stage.addProf(tutPre, tutNom);
             fenStatut("étudiant: " + etuPre + " " + etuNom + ", tuteur: " + tutPre + " " + tutNom + ", stage crée.");
             return true;

@@ -27,7 +27,7 @@ public class Main {
     private static FStage stage = new FStage();
 
     public static void main(String[] args) {
-        fen.addTab(lier);
+        fen.addTab(lier) ;
         fen.addTab(stage);
         fen.show();
     }

@@ -29,6 +29,7 @@ public class DPersonne{
 		return info.get(0);
 	}
 
+
     public boolean is(String prenom,String nom){
         return info.get(0).toLowerCase().equals(prenom.toLowerCase()) && info.get(1).toLowerCase().equals(nom.toLowerCase());
     }

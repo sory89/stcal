@@ -185,6 +185,7 @@ public class FLier extends FTab {
         refresh();
     }
 
+
     public void setInfo(ArrayList<String> details){
         String newInfo = "<html>";
         info.setText("");

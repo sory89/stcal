@@ -21,14 +21,14 @@ public class FChooser {
         finder.addChoosableFileFilter(new FileNameExtensionFilter("fichiers " + ext.toUpperCase(),ext.toLowerCase()));
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
-        int ret = finder.showDialog(panel,"Ovrire " + ext.toUpperCase());
+        int ret = finder.showDialog(panel,"Ouvrir " + ext.toUpperCase());
         switch (ret){
             case JFileChooser.APPROVE_OPTION :
                 result = CHOSEN;
                 System.out.println("FChooser: selected " + finder.getSelectedFile().getPath());
                 break;
             case JFileChooser.CANCEL_OPTION :
-                System.out.println("FChooser: selection annule");
+                System.out.println("FChooser: Sélection annulée");
                 result = CANCELED;
                 break;
             default :

@@ -72,3 +72,4 @@ La base de données créée pourra ensuite être reliée à un client léger (si
 L’application pourra éventuellement permettre à l’utilisateur d’effectuer des drag and drop, notamment pour l’attribution des horaires au professeurs et étudiants, dans la partie calendrier.
 De plus, l’interface pourra être plus aboutie en fonction du délai restant.
 L’interface idéale comporterait une zone réservée à l’affichage des listes d’étudiants et de professeurs et une zone affichant tous les étudiants affiliés à un professeur lors de la sélection de ce dernier, en plus des différents boutons de création, modification ou suppression des couples.
+

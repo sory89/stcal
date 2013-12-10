@@ -1,5 +1,6 @@
 package com.stcal;
 
+import javax.swing.*;
 import com.stcal.don.DListe;
 import com.stcal.don.DPersonne;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+
 public class OSplitCsv {
 
     public static final String SEPs = ";";
@@ -17,40 +19,39 @@ public class OSplitCsv {
 
 
     public static DListe splitcsv(File file) throws Exception {
+        String ligne,errf="Les erreurs suivantes ont été detectées dans le fichier CSV : \n",warf="";
+        char cp=' ';
+        int nlab=1,nlig=1,nligb=0,nligv=0;
+        boolean er=false,wr=false;
         DListe cont;
         cont = new DListe();
         Scanner sc = new Scanner(file);
-        String ligne;
-        char cp=' ';    int nlab=1;
-        boolean er=false;
         if (sc.hasNextLine()){
             System.out.println("OSplitCsv: splitcsv");
             ligne=sc.nextLine();
             int tligne=ligne.length();
-
-
             for(int i=0;i<tligne;i++){
                 if(ligne.charAt(i)==SEP){
-                    if(i==0) er=true;
+                    if(i==0) {
+                        errf=errf+"\n- La ligne des libellés commence par un \";\"";
+                        er=true;
+                    }
                     if(cp!=SEP){
                         nlab+=1;
                         cp=SEP;
                     } else {
+                        errf=errf+"\n- La ligne des libellés contient une entrée vide";
                         er=true;
                     }
                 } else {
                     cp=ligne.charAt(i);
                 }
             }
-
-
-            if(er==false) {
-            System.out.println(nlab);
-            String split[] = ligne.split(SEPs);
-            ArrayList <String> test = new ArrayList<String>(Arrays.asList(split));
-            cont.setLabels(test); } else {
-            System.out.println("ERROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOR");
-        }
+            if(!er) {
+                System.out.println(nlab);
+                String split[] = ligne.split(SEPs);
+                ArrayList <String> test = new ArrayList<String>(Arrays.asList(split));
+                cont.setLabels(test); } else { }
         }
 
 
@@ -63,46 +64,73 @@ public class OSplitCsv {
             cp=' ';
             ligne=sc.nextLine();
             int tligne=ligne.length();
-            ninf=1;
             for(int i=0;i<tligne;i++){
                 if(ligne.charAt(i)==SEP){
-                    if(i==0) er=true;
+                    if(i==0) {
+                        errf=errf+"\n- La ligne n°" + nlig + " du fichier commence par un \";\"";
+                        er=true;
+                    }
                     if(cp!=SEP){
                         ninf+=1;
                         cp=SEP;
                     } else {
-                        er=true;
+                        ninf+=1;
+                        nligv+=1;
+                        warf=nligv+" entrée(s) vide(s) ont été detectées";
+                        wr=true;
                     }
                 } else {
                     cp=ligne.charAt(i);
                 }
             }
+            if (nlab!=ninf) {
+                nligb+=1;
+                er=true;
+            }
 
-            if (er==false && nlab==ninf) {
+            if (!er) {
             String split[] = ligne.split(SEPs);
             DPersonne perso = new DPersonne();
             for (int i=0;i<split.length;i++){
                 perso.setInfo(split[i]);
             }
                 cont.add(perso);
-            } else {
-                System.out.println("ERROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOR");
-            }
+            } else { }
+
+            nlig+=1;
+        }
+
+        JOptionPane msg;
+        if (nligb!=0) {
+            errf=errf + "\n- Il y a "+nligb+"/"+nlig+" lignes ne correspondant pas à la ligne de libellés";
+        }
+        msg = new JOptionPane();
+        if (er) {
+            msg.showMessageDialog(null, errf, "Erreur de fichier CSV :", JOptionPane.ERROR_MESSAGE);
+            sc.close();
+            return null;
+        }
+        if (wr) {
+            msg.showMessageDialog(null, warf, "Attention :", JOptionPane.WARNING_MESSAGE);
         }
         sc.close();
         return cont;
     }
 
     public static void exportcsv(String path,DListe etu) throws Exception {
-        String ligne;
+        String ligne="";
+        int ind=0;
         PrintWriter writer = new PrintWriter(path, "UTF-8");
         for (int i=0;i<etu.nbPersonne();i++){
+            ligne="";
             if (etu.getPersonne(i)!=null){
-                ligne = etu.getPersonne(i).getPrenom() + ";";
-                ligne += etu.getPersonne(i).getNom() + ";";
+                //ligne = etu.getPersonne(i).getPrenom() + ";";
+                //ligne += etu.getPersonne(i).getNom() + ";";
                 for (int j=0;j<etu.getPersonne(i).getInfo().size();j++){
                     ligne += etu.getPersonne(i).getInfo().get(j) + ";";
                 }
+                ind=ligne.length()-1;
+                ligne=ligne.substring(0,ind);
                 writer.println(ligne);
             }
         }

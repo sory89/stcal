@@ -104,7 +104,7 @@ public class FStage extends FTab {
             newInfo += details.get(i) + "<br />";
         }
         newInfo += "</html>";
-        info.setText(newInfo);
+        //info.setText(newInfo);
         refresh();
     }
 

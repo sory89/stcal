@@ -3,10 +3,7 @@ package com.stcal;
 import com.stcal.don.DCouple;
 import com.stcal.don.DListe;
 import com.stcal.don.DPersonne;
-import com.stcal.fen.FChooser;
-import com.stcal.fen.FInterface;
-import com.stcal.fen.FLier;
-import com.stcal.fen.FStage;
+import com.stcal.fen.*;
 
 import java.lang.reflect.Method;
 import java.awt.*;
@@ -22,13 +19,14 @@ public class Main {
     private static DListe etu = new DListe();
     private static  DListe prof = new DListe();
     private static FChooser finder = new FChooser();
-    private static FInterface fen = new FInterface(800,600);
+    private static FInterface fen = new FInterface(1000,800);
     private static FLier lier = new FLier();
     private static FStage stage = new FStage();
-
+    private static FCal cal = new FCal();
     public static void main(String[] args) {
         fen.addTab(lier) ;
         fen.addTab(stage);
+        fen.addTab(cal);
         fen.show();
     }
 

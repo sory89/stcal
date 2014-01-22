@@ -1,5 +1,5 @@
 package com.stcal.calendar;
-import modele.*;
+import com.stcal.don.*;
 
 public class Soutenance
 {

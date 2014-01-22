@@ -1,7 +1,5 @@
 package com.stcal.calendar;
 
-import modele.MaxSoutenanceException;
-
 import java.util.ArrayList;
 import java.util.Date;
 

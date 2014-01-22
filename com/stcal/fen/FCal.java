@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 
 public class FCal extends FTab{
-    String test=null;
+
     protected JPanel test1 = new JPanel();
     protected JPanel test2 = new JPanel();
     protected JLabel infoChooser = new JLabel("Choisissez les jours de soutenance");

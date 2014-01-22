@@ -1,5 +1,6 @@
 package com.stcal;
 
+import com.stcal.don.*;
 import com.stcal.fen.*;
 
 import java.awt.*;
@@ -57,30 +58,30 @@ public class Main {
     }
 
     public static boolean delier(String tutPre,String tutNom){
-                DPersonne stut = prof.search(tutPre,tutNom);
-                ArrayList <DPersonne> listEtu=new ArrayList<DPersonne>();
-                if(stut!=null){
-                        if(stage.existe(tutPre,tutNom)){
-                                for(int i=0;i<stages.size();i++){
-                                        if(stages.get(i).getProf()==stut){
-                                                listEtu.add(stages.get(i).getEtu());
-                                            }
-                                    }
-                                if(!listEtu.isEmpty()){
-                                        for (int i=0;i<listEtu.size();i++){
-                                                lier.addEtu(listEtu.get(i).getPrenom(),listEtu.get(i).getNom());
-                                            }
-                                    }
-                                if(stages.contains(tutPre+" "+tutNom)){
-                                        stages.remove(stut);
-                                    }
-
-                                        fenStatut(", tuteur: " + tutPre + " " + tutNom + ", stage supprimé.");
-                                return true;
-                            }
+        DPersonne stut = prof.search(tutPre,tutNom);
+        ArrayList <DPersonne> listEtu=new ArrayList<DPersonne>();
+        if(stut!=null){
+            if(stage.existe(tutPre,tutNom)){
+                for(int i=0;i<stages.size();i++){
+                    if(stages.get(i).getProf()==stut){
+                        listEtu.add(stages.get(i).getEtu());
                     }
-                return false;
+                }
+                if(!listEtu.isEmpty()){
+                    for (int i=0;i<listEtu.size();i++){
+                        lier.addEtu(listEtu.get(i).getPrenom(),listEtu.get(i).getNom());
+                    }
+                }
+                if(stages.contains(tutPre+" "+tutNom)){
+                    stages.remove(stut);
+                }
+
+                fenStatut(", tuteur: " + tutPre + " " + tutNom + ", stage supprimé.");
+                return true;
             }
+        }
+        return false;
+    }
 
     public static ArrayList<String> etuStage(String profPre,String profNom){
         ArrayList<String> etu = new ArrayList<String>();

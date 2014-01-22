@@ -21,16 +21,18 @@ public class FCal extends FTab{
         test1.setOpaque(false);
         test1.setOpaque(false);
         infoChooser.setOpaque(false);
+        chooserDebut.setOpaque(false);
+        chooserFin.setOpaque(false);
         okPlageJour.setEnabled(false);
-          chooserDebut.addSelectionChangedListener(new SelectionChangedListener() {
-              @Override
-              public void onSelectionChange(SelectionChangedEvent selectionChangedEvent) {
-                  if(chooserDebut.getSelectedPeriodSet().isEmpty()==false)
-                  okPlageJour.setEnabled(true);
-                  else
-                  okPlageJour.setEnabled(false);
-              }
-          });
+        chooserDebut.addSelectionChangedListener(new SelectionChangedListener() {
+            @Override
+            public void onSelectionChange(SelectionChangedEvent selectionChangedEvent) {
+                if(chooserDebut.getSelectedPeriodSet().isEmpty()==false)
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+            }
+        });
         /*okPlageJour.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -45,7 +47,7 @@ public class FCal extends FTab{
         test1.add(chooserDebut,BorderLayout.NORTH);
         test2.setLayout(new GridLayout(4,0));
         test2.add(okPlageJour);
-         test1.add(test2);
+        test1.add(test2);
         test1.setSize(dim);
         pan().add(test1,BorderLayout.WEST);
 

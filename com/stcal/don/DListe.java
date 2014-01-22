@@ -1,8 +1,9 @@
 package com.stcal.don;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
-public class DListe {
+public class DListe extends AbstractListModel{
 
     protected ArrayList<DPersonne> liste = new ArrayList<DPersonne>();
     protected ArrayList<String> labels = new ArrayList<String>();
@@ -31,7 +32,8 @@ public class DListe {
     }
 
     public boolean rmPersonne(DPersonne humain){
-        return liste.remove(humain);
+
+       return liste.remove(humain);
     }
 
     public int nbPersonne(){
@@ -51,4 +53,13 @@ public class DListe {
         return null;
     }
 
+    @Override
+    public int getSize() {
+        return liste.size();  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public Object getElementAt(int index) {
+        return liste.get(index);  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

@@ -24,6 +24,9 @@ public class FLier extends FTab {
     protected String selectedProfPre = "";
     protected String selectedProfNom = "";
     protected String selectedType = Main.NONE;
+    protected JList Fetu;
+    protected JScrollPane jScrollPane;
+
 
     public FLier(){
         super("Lier");
@@ -37,16 +40,18 @@ public class FLier extends FTab {
         });
         Fprof.addKeyListener(new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent e) {}
+            public void keyTyped(KeyEvent e) {
+            }
 
 
             @Override
             public void keyPressed(KeyEvent e) {
-                askInfo(Fprof,Main.PROF);
+                askInfo(Fprof, Main.PROF);
             }
 
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+            }
 
         });
         pan().add(new JScrollPane(Fprof));
@@ -79,7 +84,7 @@ public class FLier extends FTab {
         info.setBorder(BorderFactory.createTitledBorder("Info"));
         centre.add(info);
         pan().add(centre);
-        final JList Fetu = new JList(etuList);
+        Fetu = new JList(etuList);
         Fetu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -88,7 +93,8 @@ public class FLier extends FTab {
         });
         Fetu.addKeyListener(new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent e) {}
+            public void keyTyped(KeyEvent e) {
+            }
 
 
             @Override
@@ -97,10 +103,13 @@ public class FLier extends FTab {
             }
 
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+            }
 
         });
-        pan().add(new JScrollPane(Fetu));
+        jScrollPane=new JScrollPane(Fetu);
+        pan().add(jScrollPane);
+        refresh();
     }
 
     protected void askInfo(JList pan,String type){
@@ -110,6 +119,7 @@ public class FLier extends FTab {
                 selectedEtuPre = prenomEtu.get(selectedEtuIndex);
                 selectedEtuNom = nomEtu.get(selectedEtuIndex);
                 setInfo(Main.personneInfo(Main.ETU,selectedEtuPre, selectedEtuNom));
+
             }
             else if (type.equals(Main.PROF)){
                 selectedProfPre = prenomProf.get(pan.getLeadSelectionIndex());
@@ -117,6 +127,7 @@ public class FLier extends FTab {
                 setInfo(Main.personneInfo(Main.PROF,selectedProfPre, selectedProfNom));
             }
             selectedType = type;
+            refresh();
             resetCourant();
         }
         catch (Exception ex){
@@ -125,13 +136,10 @@ public class FLier extends FTab {
     }
 
     protected void askStage(){
-        if (Main.lier(selectedEtuPre,selectedEtuNom,selectedProfPre,selectedProfNom)){
-            etuList.remove(selectedEtuIndex);
-            prenomEtu.remove(selectedEtuPre);
-            nomEtu.remove(selectedProfNom);
+            delEtu(selectedEtuPre,selectedEtuNom);
+           // Fetu.remove(selectedEtuIndex);
             courant.setText("<html>Stage créé.</html>");
             refresh();
-        }
     }
 
     public void resetOption(){
@@ -147,6 +155,7 @@ public class FLier extends FTab {
             });
             option.add(opt1);
         }
+
         if (profList.isEmpty()){
             JButton opt2 = new JButton("Importer enseignants");
             opt2.setToolTipText("Ouvrir un fichier d'enseignants CSV");
@@ -216,12 +225,25 @@ public class FLier extends FTab {
         refresh();
     }
 
+    public void delEtu(String nom,String prenom){
+        if(Main.lier(selectedEtuPre,selectedEtuNom,selectedProfPre,selectedProfNom))
+        {
+            etuList.removeElementAt(selectedEtuIndex);
+            System.out.println(selectedEtuIndex);
+            prenomEtu.remove(selectedEtuPre);
+            nomEtu.remove(selectedEtuNom);
+            selectedEtuIndex=0;
+            selectedEtuNom="";
+            selectedEtuPre="";
+            selectedProfNom="";
+            selectedProfPre="";
+            refresh();
+        }
+    }
     public void addProf(String pre,String nom){
         prenomProf.add(pre);
         nomProf.add(nom);
-        profList.addElement(pre + " " + nom.toUpperCase());
+        profList.addElement(pre + " " + nom);
         refresh();
     }
-
-
 }

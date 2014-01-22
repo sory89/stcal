@@ -1,20 +1,11 @@
 package com.stcal.fen;
 
 import datechooser.beans.DateChooserPanel;
-import datechooser.beans.DateChooserPanel.*;
 import datechooser.events.SelectionChangedEvent;
 import datechooser.events.SelectionChangedListener;
-import datechooser.model.DateChoose;
-
-import com.stcal.Main;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 
 public class FCal extends FTab{
@@ -27,6 +18,9 @@ public class FCal extends FTab{
     protected JButton okPlageJour = new JButton("Valider votre selection");
     public FCal() {
         super("cal");
+        test1.setOpaque(false);
+        test1.setOpaque(false);
+        infoChooser.setOpaque(false);
         okPlageJour.setEnabled(false);
           chooserDebut.addSelectionChangedListener(new SelectionChangedListener() {
               @Override
@@ -44,7 +38,7 @@ public class FCal extends FTab{
             }
         });*/
         okPlageJour.validate();
-         pan().setLayout(new GridLayout(0,3));
+        pan().setLayout(new GridLayout(0,3));
         Dimension dim = new Dimension(1,1);
         test1.add(infoChooser);
         test1.setLayout(new GridLayout(4,0));

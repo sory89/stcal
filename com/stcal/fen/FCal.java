@@ -7,6 +7,7 @@ import datechooser.events.SelectionChangedListener;
 import datechooser.model.DateChoose;
 
 import com.stcal.Main;
+import datechooser.model.multiple.Period;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,11 +23,12 @@ public class FCal extends FTab{
     protected JPanel test1 = new JPanel();
     protected JPanel test2 = new JPanel();
     protected JLabel infoChooser = new JLabel("Choisissez les jours de soutenance");
-    public DateChooserPanel chooserDebut= new DateChooserPanel();
-    public DateChooserPanel chooserFin= new DateChooserPanel();
+    protected DateChooserPanel chooserDebut= new DateChooserPanel();
+    protected Iterable<Period> dateChoisis = null;
     protected JButton okPlageJour = new JButton("Valider votre selection");
     public FCal() {
         super("cal");
+
         okPlageJour.setEnabled(false);
           chooserDebut.addSelectionChangedListener(new SelectionChangedListener() {
               @Override
@@ -37,16 +39,20 @@ public class FCal extends FTab{
                   okPlageJour.setEnabled(false);
               }
           });
-        /*okPlageJour.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
+        okPlageJour.addMouseListener(new MouseAdapter() {
 
+            public void mouseClicked(MouseEvent e) {
+              dateChoisis=chooserDebut.getSelection();
+              pan().removeAll();
+              refresh();
+              System.out.print(dateChoisis);
             }
-        });*/
+        });
         okPlageJour.validate();
          pan().setLayout(new GridLayout(0,3));
         Dimension dim = new Dimension(1,1);
         test1.add(infoChooser);
+        test1.setOpaque(true);
         test1.setLayout(new GridLayout(4,0));
         test1.add(chooserDebut,BorderLayout.NORTH);
         test2.setLayout(new GridLayout(4,0));

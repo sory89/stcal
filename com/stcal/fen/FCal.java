@@ -45,7 +45,7 @@ public class FCal extends FTab{
               dateChoisis=chooserDebut.getSelection();
               pan().removeAll();
               refresh();
-              System.out.print(dateChoisis);
+              System.out.print("voici les dates sélectionnées "+dateChoisis);
             }
         });
         okPlageJour.validate();

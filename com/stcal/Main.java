@@ -8,24 +8,23 @@ import com.stcal.fen.FInterface;
 import com.stcal.fen.FLier;
 import com.stcal.fen.FStage;
 
-import java.awt.*;
 import java.lang.reflect.Method;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Main {
+
     public static final String ETU = "etu";
     public static final String PROF = "prof";
     public static final String NONE = "";
+
     private static ArrayList<DCouple> stages = new ArrayList<DCouple>();
     private static DListe etu = new DListe();
-    private static DListe prof = new DListe();
+    private static  DListe prof = new DListe();
     private static FChooser finder = new FChooser();
     private static FInterface fen = new FInterface(800,600);
     private static FLier lier = new FLier();
     private static FStage stage = new FStage();
-    public static ArrayList <String> nomETU=new ArrayList<String>();
-    public static ArrayList <String> prenomETU=new ArrayList<String>();
-
 
     public static void main(String[] args) {
         fen.addTab(lier) ;
@@ -58,46 +57,17 @@ public class Main {
         return false;
     }
 
-    public static boolean delier(String tutPre,String tutNom){
-        DPersonne stut = prof.search(tutPre,tutNom);
-        ArrayList <DPersonne> listEtu=new ArrayList<DPersonne>();
-        if(stut!=null){
-            if(stage.existe(tutPre,tutNom)){
-                for(int i=0;i<stages.size();i++){
-                    if(stages.get(i).getProf()==stut){
-                        listEtu.add(stages.get(i).getEtu());
-                    }
-                }
-                if(!listEtu.isEmpty()){
-                    for (int i=0;i<listEtu.size();i++){
-                        lier.addEtu(listEtu.get(i).getPrenom(),listEtu.get(i).getNom());
-                    }
-                }
-                if(stages.contains(tutPre+" "+tutNom)){
-                    stages.remove(stut);
-                }
-
-                fenStatut(", tuteur: " + tutPre + " " + tutNom + ", stage supprimé.");
-                return true;
-            }
-        }
-        return false;
-    }
-
-
     public static ArrayList<String> etuStage(String profPre,String profNom){
         ArrayList<String> etu = new ArrayList<String>();
         for (int i=0;i<stages.size();i++){
             if (stages.get(i).getProf().getPrenom()==profPre && stages.get(i).getProf().getNom()==profNom){
                 etu.add(stages.get(i).getEtu().toString());
-                stage.addetustage(stages.get(i).getEtu().getPrenom(),stages.get(i).getEtu().getNom());
             }
         }
         return etu;
     }
 
-    public static ArrayList<String> personneInfo(String type,String pre,String nom)
-    {
+    public static ArrayList<String> personneInfo(String type,String pre,String nom){
         ArrayList<String> details = new ArrayList<String>();
         DListe all;
         if (type.equals(ETU)){
@@ -106,8 +76,7 @@ public class Main {
         else if (type.equals(PROF)){
             all = prof;
         }
-        else
-        {
+        else {
             fenStatut("Err: type de la personne inconnu.");
             System.err.println("Err: type de la personne inconnu.");
             return null;
@@ -184,4 +153,5 @@ public class Main {
             }
         }
     }
+
 }

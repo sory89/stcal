@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 
 public class FTab {
@@ -27,5 +28,6 @@ public class FTab {
     }
 
     public void setInfo(ArrayList<String> details){}
+
 
 }

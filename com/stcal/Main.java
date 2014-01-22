@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static final String ETU = "etu";
+    public static final String ETU =  "etu";
     public static final String PROF = "prof";
     public static final String NONE = "";
 

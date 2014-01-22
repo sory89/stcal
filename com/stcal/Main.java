@@ -1,8 +1,5 @@
 package com.stcal;
 
-import com.stcal.don.DCouple;
-import com.stcal.don.DListe;
-import com.stcal.don.DPersonne;
 import com.stcal.fen.*;
 
 import java.awt.*;
@@ -11,7 +8,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static final String ETU = "etu";
+    public static final String ETU =  "etu";
     public static final String PROF = "prof";
     public static final String NONE = "";
 

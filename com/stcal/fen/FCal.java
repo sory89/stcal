@@ -1,34 +1,26 @@
 package com.stcal.fen;
 
 import datechooser.beans.DateChooserPanel;
-import datechooser.beans.DateChooserPanel.*;
 import datechooser.events.SelectionChangedEvent;
 import datechooser.events.SelectionChangedListener;
-import datechooser.model.DateChoose;
-
-import com.stcal.Main;
-import datechooser.model.multiple.Period;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 
 public class FCal extends FTab{
-
+    String test=null;
     protected JPanel test1 = new JPanel();
     protected JPanel test2 = new JPanel();
     protected JLabel infoChooser = new JLabel("Choisissez les jours de soutenance");
-    protected DateChooserPanel chooserDebut= new DateChooserPanel();
-    protected Iterable<Period> dateChoisis = null;
+    public DateChooserPanel chooserDebut= new DateChooserPanel();
+    public DateChooserPanel chooserFin= new DateChooserPanel();
     protected JButton okPlageJour = new JButton("Valider votre selection");
     public FCal() {
         super("cal");
-
+        test1.setOpaque(false);
+        test1.setOpaque(false);
+        infoChooser.setOpaque(false);
         okPlageJour.setEnabled(false);
           chooserDebut.addSelectionChangedListener(new SelectionChangedListener() {
               @Override
@@ -39,20 +31,16 @@ public class FCal extends FTab{
                   okPlageJour.setEnabled(false);
               }
           });
-        okPlageJour.addMouseListener(new MouseAdapter() {
-
+        /*okPlageJour.addMouseListener(new MouseAdapter() {
+            @Override
             public void mouseClicked(MouseEvent e) {
-              dateChoisis=chooserDebut.getSelection();
-              pan().removeAll();
-              refresh();
-              System.out.print("voici les dates sélectionnées "+dateChoisis);
+
             }
-        });
+        });*/
         okPlageJour.validate();
-         pan().setLayout(new GridLayout(0,3));
+        pan().setLayout(new GridLayout(0,3));
         Dimension dim = new Dimension(1,1);
         test1.add(infoChooser);
-        test1.setOpaque(true);
         test1.setLayout(new GridLayout(4,0));
         test1.add(chooserDebut,BorderLayout.NORTH);
         test2.setLayout(new GridLayout(4,0));

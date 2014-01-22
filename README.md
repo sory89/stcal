@@ -6,7 +6,11 @@
 
 StCal est un logiciel de gestion de stages en entreprise dédié aux enseignants. Ce projet sera réalisé de septembre 2013 à février 2014 en vue du projet tuteuré de Mehdi Loisel, Ismail Taleb, Valentin Jeanroy, Jean Mercadier, Nicolas Devillers, Willem Verdeaux et Florian Barrois, étudiants en deuxième année à l'Institut Universitaire de Technologie de Belfort. 
 
+###Préequis
 
+JDateChooser
+
+[http://sourceforge.net/projects/jdatechooser/](http://sourceforge.net/projects/jdatechooser/)
 
 ###Fonctionnalités
 

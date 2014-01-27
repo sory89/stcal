@@ -1,6 +1,7 @@
 package com.stcal.calendar;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -8,25 +9,25 @@ public class Creneau {
     private ArrayList<Soutenance> ListSoutenance = new ArrayList();
     private static int duree;
     private static int max_sout;
-    private Date date_debut;
-    private Date date_fin;
+    private Calendar date_debut;
+    private Calendar date_fin;
 
-    public Date getDate_debut()
+    public Calendar getDate_debut()
     {
         return date_debut;
     }
 
-    public void setDate_debut(Date date_debut)
+    public void setDate_debut(Calendar date_debut)
     {
         this.date_debut = date_debut;
     }
 
-    public Date getDate_fin()
+    public Calendar getDate_fin()
     {
         return date_fin;
     }
 
-    public void setDate_fin(Date date_fin)
+    public void setDate_fin(Calendar date_fin)
     {
         this.date_fin = date_fin;
     }

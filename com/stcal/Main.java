@@ -188,6 +188,7 @@ public class Main {
      */
     public static void fenStatut(String text){
         fen.setStatus(text);
+        System.out.println(text);
     }
 
     /**

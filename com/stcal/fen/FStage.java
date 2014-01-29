@@ -21,7 +21,9 @@ public class FStage extends FTab {
     protected String selectedType = Main.NONE;
 
 
-
+    /**
+     * Initialisation de l'ongelet
+     */
     public FStage(){
         super("Stage");
         pan().setLayout(new GridLayout(0, 2));
@@ -73,6 +75,11 @@ public class FStage extends FTab {
         pan().add(right);
     }
 
+    /**
+     *
+     * @param pan
+     * @param type Constante de Main.ETU/Main.PROF/Main.NONE
+     */
     protected void askInfo(JList pan,String type){
         try {
             if (type.equals(Main.PROF)){
@@ -89,6 +96,7 @@ public class FStage extends FTab {
         }
         refresh();
     }
+
     public void addetustage(String pren,String nom1){
       //  if (tutPre.contains(pre) && tutNom.contains(nom)){
         liste.add(pren+" "+nom1);

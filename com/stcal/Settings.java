@@ -9,6 +9,7 @@ import com.stcal.exceptions.UnopenableSettingException;
 import com.stcal.fen.FSettings;
 import com.stcal.json.JSONException;
 import com.stcal.json.JSONObject;
+import com.sun.deploy.util.SystemUtils;
 
 import java.io.*;
 import java.util.HashMap;
@@ -24,8 +25,7 @@ public class Settings {
     protected String filepath;
 
     public Settings(){
-        filepath = System.getProperty("user.home") + "/.stcal/settings.json";
-        // TODO filepath compatible windows
+        filepath = System.getProperty("user.home") + System.getProperty("file.separator") + ".stcal" + System.getProperty("file.separator") + "settings.json";
         settings = new HashMap<String, String>();
         settings.put("DBUser","stcal");
         settings.put("DBPassword","stcal");
@@ -64,6 +64,10 @@ public class Settings {
         }
     }
 
+    /**
+     * Sauvgarde les parametre dans le fichier
+     * @throws UncreatableSettingException en cas d'echec lors de la creation du fichier
+     */
     public void save() throws UncreatableSettingException {
         File config = new File(filepath);
         FileOutputStream stream;

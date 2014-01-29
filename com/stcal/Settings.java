@@ -3,15 +3,14 @@ package com.stcal;
 
 
 import com.stcal.exceptions.NoSettingFileException;
+import com.stcal.exceptions.NoSuchSettingException;
 import com.stcal.exceptions.UncreatableSettingException;
 import com.stcal.exceptions.UnopenableSettingException;
+import com.stcal.fen.FSettings;
 import com.stcal.json.JSONException;
 import com.stcal.json.JSONObject;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,10 +21,10 @@ import java.util.Map;
 public class Settings {
 
     protected HashMap<String,String> settings;
-    protected String path;
+    protected String filepath;
 
     public Settings(){
-        path = System.getProperty("user.home") + "/.stcal/settings.json";
+        filepath = System.getProperty("user.home") + "/.stcal/settings.json";
         settings = new HashMap<String, String>();
         settings.put("DBUser","stcal");
         settings.put("DBPassword","stcal");
@@ -34,34 +33,18 @@ public class Settings {
     }
 
     /**
-     * for dev purpose only
-     * @param args
-     */
-    public static void main(String[] args) {
-        Settings test = new Settings();
-        try {
-            test.loadfile();
-        } catch (NoSettingFileException e) {
-            e.printStackTrace();
-        } catch (UnopenableSettingException e) {
-            e.printStackTrace();
-        }
-        System.out.println(test.settings);
-    }
-
-    /**
      * Charge le fichier de config
      * @throws NoSettingFileException
      * @throws UnopenableSettingException
      */
     public void loadfile() throws NoSettingFileException, UnopenableSettingException {
-        File bundlePlist = new File(path);
-        FileInputStream bundlePlistIS;
+        File config = new File(filepath);
+        FileInputStream stream;
         try {
-            bundlePlistIS = new FileInputStream(bundlePlist);
+            stream = new FileInputStream(config);
             StringBuffer fileContent = new StringBuffer("");
             byte[] buffer = new byte[1024];
-            while (bundlePlistIS.read(buffer) != -1) {
+            while (stream.read(buffer) != -1) {
                 fileContent.append(new String(buffer));
             }
             JSONObject jObject = new JSONObject(fileContent.toString());
@@ -81,11 +64,70 @@ public class Settings {
     }
 
     public void save() throws UncreatableSettingException {
-        // TODO save setting into file
+        File config = new File(filepath);
+        FileOutputStream stream;
+        JSONObject jObject = new JSONObject();
+        for(Map.Entry<String, String> entry : settings.entrySet()) {
+            jObject.append(entry.getKey(),entry.getValue());
+        }
+        try {
+            if (!config.exists()){
+                config.getParentFile().mkdir();
+                config.createNewFile();
+            }
+            BufferedWriter buffer = new BufferedWriter(new FileWriter(config.getAbsoluteFile()));
+            buffer.write(jObject.toString());
+            buffer.close();
+        }
+        catch (IOException e) {
+            System.err.println(e.getMessage());
+            throw new UncreatableSettingException();
+        }
+
     }
 
-    public void ask(){
-        // TODO ask user for settings
+    /**
+     * Ouvre une fenettre avec l'utilisateur afin de pouvoir modifier les parametres
+     * @return la fenetre cree
+     */
+    public FSettings ask(){
+        return new FSettings(this);
+    }
+
+    /**
+     * Defini une propriete dans les parametres
+     * @param propertie
+     * @param value
+     * @throws NoSuchSettingException si propertie n'existe pas dans les parametre
+     */
+    public void set(String propertie,String value) throws NoSuchSettingException {
+        if (!settings.containsKey(propertie)) throw new NoSuchSettingException();
+        settings.put(propertie,value);
+    }
+
+    /**
+     * Renvoie la valeur de la propriete en parametre
+     * @param propertie
+     * @return renvoie la valeur de la propertie
+     * @throws NoSuchSettingException
+     */
+    public String get(String propertie) throws NoSuchSettingException {
+        if (!settings.containsKey(propertie)) throw new NoSuchSettingException();
+        return settings.get(propertie);
+    }
+
+    /**
+     * @return renvoie le chemin du ficher de config
+     */
+    public String getSettingsPath(){
+        return filepath;
+    }
+
+    /**
+     * @return renvoie le nombre de propriete changeable
+     */
+    public int getNbChangeable(){
+        return settings.size();
     }
 
 }

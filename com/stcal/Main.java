@@ -3,10 +3,14 @@ package com.stcal;
 import com.stcal.don.DCouple;
 import com.stcal.don.DListe;
 import com.stcal.don.DPersonne;
+import com.stcal.exceptions.NoSettingFileException;
+import com.stcal.exceptions.UncreatableSettingException;
+import com.stcal.exceptions.UnopenableSettingException;
 import com.stcal.fen.*;
 
 import java.lang.reflect.Method;
 import java.awt.*;
+import java.security.PrivateKey;
 import java.util.ArrayList;
 
 public class Main {
@@ -23,6 +27,7 @@ public class Main {
     private static FLier lier = new FLier();
     private static FStage stage = new FStage();
     private static FCal cal = new FCal();
+    private static Settings settings = new Settings();
 
     /**
      * Construit l'environement graphique de l'application
@@ -33,6 +38,18 @@ public class Main {
         fen.addTab(stage);
         fen.addTab(cal);
         fen.show();
+        try {
+            settings.loadfile();
+        } catch (NoSettingFileException e) {
+            settings.ask();
+            try {
+                settings.save();
+            } catch (UncreatableSettingException e1) {
+                fenStatut("Impossible de creer le fichier de config");
+            }
+        } catch (UnopenableSettingException e) {
+            fenStatut("Impossible de charger le fichier de config");
+        }
     }
 
     /**

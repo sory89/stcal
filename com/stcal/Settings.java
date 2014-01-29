@@ -25,6 +25,7 @@ public class Settings {
 
     public Settings(){
         filepath = System.getProperty("user.home") + "/.stcal/settings.json";
+        // TODO filepath compatible windows
         settings = new HashMap<String, String>();
         settings.put("DBUser","stcal");
         settings.put("DBPassword","stcal");
@@ -68,7 +69,7 @@ public class Settings {
         FileOutputStream stream;
         JSONObject jObject = new JSONObject();
         for(Map.Entry<String, String> entry : settings.entrySet()) {
-            jObject.append(entry.getKey(),entry.getValue());
+            jObject.put(entry.getKey(),entry.getValue().toString());
         }
         try {
             if (!config.exists()){
@@ -114,6 +115,13 @@ public class Settings {
     public String get(String propertie) throws NoSuchSettingException {
         if (!settings.containsKey(propertie)) throw new NoSuchSettingException();
         return settings.get(propertie);
+    }
+
+    /**
+     * @return renvoie tout les parametre
+     */
+    public HashMap<String,String> getall(){
+        return settings;
     }
 
     /**

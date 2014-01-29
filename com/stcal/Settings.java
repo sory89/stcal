@@ -34,7 +34,7 @@ public class Settings {
     }
 
     /**
-     * for dev pupose only
+     * for dev purpose only
      * @param args
      */
     public static void main(String[] args) {

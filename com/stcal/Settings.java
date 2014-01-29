@@ -72,6 +72,7 @@ public class Settings {
         } catch (FileNotFoundException e) {
             throw new NoSettingFileException();
         } catch (IOException e) {
+            System.err.println(e.getMessage());
             throw new UnopenableSettingException();
         } catch (JSONException e) {
             System.err.println(e.getMessage());

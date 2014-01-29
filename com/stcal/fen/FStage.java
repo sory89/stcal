@@ -133,6 +133,8 @@ public class FStage extends FTab {
         }
         refresh();
     }
+
+    @Override
     public void setInfo(ArrayList<String> details){
         String newInfo = "<html>";
         info.setText("");
@@ -142,6 +144,7 @@ public class FStage extends FTab {
         newInfo += "</html>";
         refresh();
     }
+
     public boolean existe(String prenom,String nom){
         if(prof.contains(prenom+" "+nom)){
             return true;

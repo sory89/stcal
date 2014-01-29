@@ -140,6 +140,10 @@ public class Main {
         return details;
     }
 
+    /**
+     * Lance la procedure d'ouverture de fichier
+     * @param type type du contenu du fichier Main.PROF/Main.ETU
+     */
     public static void openFile(String type){
         DListe nouveau;
         fenStatut("Navigateur de fichier.");
@@ -178,10 +182,18 @@ public class Main {
         lier.resetOption();
     }
 
+    /**
+     * Met un message en footer de la fenetre
+     * @param text message a afficher
+     */
     public static void fenStatut(String text){
         fen.setStatus(text);
     }
 
+    /**
+     * Ajout les propriété propre au mac dans la fenetre
+     * @param window fenetre JFrame
+     */
     public static void mac(Window window){
         if (System.getProperty("os.name").contains("Mac")) {
             String className = "com.apple.eawt.FullScreenUtilities";

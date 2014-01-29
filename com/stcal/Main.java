@@ -24,6 +24,10 @@ public class Main {
     private static FStage stage = new FStage();
     private static FCal cal = new FCal();
 
+    /**
+     * Construit l'environement graphique de l'application
+     * @param args
+     */
     public static void main(String[] args) {
         fen.addTab(lier) ;
         fen.addTab(stage);
@@ -31,6 +35,9 @@ public class Main {
         fen.show();
     }
 
+    /**
+     * Exporte les couples étudiant prof dans un fichier CSV
+     */
     public static void exporter(){
         finder.show();
         if (finder.status()==FChooser.CHOSEN){
@@ -44,6 +51,14 @@ public class Main {
         }
     }
 
+    /**
+     *
+     * @param etuPre prénom de l'etudiant
+     * @param etuNom nom de l'étudiant
+     * @param tutPre prénom du tuteur
+     * @param tutNom prénom du tuteur
+     * @return faux si le nom/prenom de l'etudiant/prof ne corresponde à personne
+     */
     public static boolean lier(String etuPre, String etuNom, String tutPre, String tutNom){
         DPersonne setu = etu.search(etuPre,etuNom);
         DPersonne stut = prof.search(tutPre,tutNom);
@@ -55,7 +70,13 @@ public class Main {
         }
         return false;
     }
-    
+
+    /**
+     * Supprime le lien entre un étudiant et un prof
+     * @param tutPre prénom du tuteur
+     * @param tutNom nom du tuteur
+     * @return vrai si la delier se passe correctement
+     */
     public static boolean delier(String tutPre,String tutNom){
         DPersonne stut = prof.search(tutPre,tutNom);
         ArrayList <DPersonne> listEtu=new ArrayList<DPersonne>();

@@ -36,10 +36,10 @@ public class Main {
         if (finder.status()==FChooser.CHOSEN){
             try {
                 OSplitCsv.exportcsv(finder.path(),etu);
-                System.out.println("Main: exoprter");
+                System.out.println("Main: exporter");
             }
             catch (Exception x){
-                System.err.println("erreur ecriture fichier");
+                System.err.println("erreur écriture fichier");
             }
         }
     }
@@ -50,7 +50,7 @@ public class Main {
         if (setu!=null && stut!=null){
             stages.add(new DCouple(setu,stut));
             stage.addProf(tutPre, tutNom);
-            fenStatut("étudiant: " + etuPre + " " + etuNom + ", tuteur: " + tutPre + " " + tutNom + ", stage crée.");
+            fenStatut("étudiant: " + etuPre + " " + etuNom + ", tuteur: " + tutPre + " " + tutNom + ", stage créé.");
             return true;
         }
         return false;
@@ -146,12 +146,12 @@ public class Main {
                 }
             }
             catch (Exception ex){
-                fenStatut("Err: impossible d'ouvrire le fichier.");
+                fenStatut("Err: impossible d'ouvrir le fichier.");
                 System.err.println("erreur ouverture fichier : " + ex.getMessage());
             }
         }
         else {
-            fenStatut("Ouverture annulé.");
+            fenStatut("Ouverture annulée.");
         }
         fen.refresh();
         lier.resetOption();

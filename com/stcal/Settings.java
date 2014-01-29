@@ -27,10 +27,10 @@ public class Settings {
     public Settings(){
         path = System.getProperty("user.home") + "/.stcal/settings.json";
         settings = new HashMap<String, String>();
-        settings.put("DBUser","");
-        settings.put("DBPassword","");
-        settings.put("DBServer","");
-        settings.put("DBPort","");
+        settings.put("DBUser","stcal");
+        settings.put("DBPassword","stcal");
+        settings.put("DBServer","localhost");
+        settings.put("DBPort","3306");
     }
 
     /**

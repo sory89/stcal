@@ -35,7 +35,6 @@ public class FTab {
     }
 
     /**
-     *
      * @return Le nom de l'onglet
      */
     public String getNom(){

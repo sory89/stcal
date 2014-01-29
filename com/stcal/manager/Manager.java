@@ -11,7 +11,7 @@ import java.util.List;
 public interface Manager<Bean> {
 
     /**
-     * Cree un nouvel element
+     * Cree un nouvel element<br />
      * Equivalent à INSERT
      * @param nouveau obj a inserer
      * @return id de l'objet
@@ -40,7 +40,7 @@ public interface Manager<Bean> {
     public int update(Bean table);
 
     /**
-     * Supprime un objet de la base de donné
+     * Supprime un objet de la base de donné<br />
      * équivalent à DELETE
      * @param id id de l'objet à supprimer
      * @return nombre de ligne changé

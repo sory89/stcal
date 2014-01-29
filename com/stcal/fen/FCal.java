@@ -1,6 +1,5 @@
 package com.stcal.fen;
 
-import com.stcal.don.Jour;
 import datechooser.beans.DateChooserPanel;
 import datechooser.events.SelectionChangedEvent;
 import datechooser.events.SelectionChangedListener;
@@ -11,7 +10,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
-import java.util.List;
 
 public class FCal extends FTab{
 

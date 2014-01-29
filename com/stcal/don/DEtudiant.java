@@ -9,10 +9,10 @@ import java.util.ArrayList;
  * Time: 11:42
  * To change this template use File | Settings | File Templates.
  */
-public class Etudiant extends Personne{
+public class DEtudiant extends Personne{
     private boolean lie;
 
-    public Etudiant(String nom, String prenom, ArrayList<String> infos, boolean lie) {
+    public DEtudiant(String nom, String prenom, ArrayList<String> infos, boolean lie) {
         super(nom, prenom, infos);
         this.lie = lie;
     }

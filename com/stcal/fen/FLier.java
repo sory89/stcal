@@ -187,7 +187,7 @@ public class FLier extends FTab {
             html += "Tuteur: " + selectedProfPre + " " + selectedProfNom.toUpperCase() + "<br />";
         }
         if (!selectedEtuPre.equals("") && !selectedEtuNom.equals("")){
-            html += "Etudiant: " + selectedEtuPre + " " + selectedEtuNom.toUpperCase() + "<br />";
+            html += "DEtudiant: " + selectedEtuPre + " " + selectedEtuNom.toUpperCase() + "<br />";
         }
         html += "</html>";
         courant.setText(html);

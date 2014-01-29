@@ -9,9 +9,9 @@ import java.util.ArrayList;
  * Time: 16:56
  * To change this template use File | Settings | File Templates.
  */
-public class Candide extends Personne {
+public class DCandide extends Personne {
 
-    public Candide(String nom, String prenom, ArrayList<String> infos) {
+    public DCandide(String nom, String prenom, ArrayList<String> infos) {
         super(nom, prenom, infos);
     }
     public String toString() {

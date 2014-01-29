@@ -1,13 +1,12 @@
-package com.stcal.calendar;
-import com.stcal.don.*;
+package com.stcal.don;
 
 public class Soutenance
 {
     private Couple cpl;
-    private Candide cdd;
+    private DCandide cdd;
     private int salle;
 
-    public Soutenance(Couple couple, Candide candide)
+    public Soutenance(Couple couple, DCandide candide)
     {
         this.cpl = couple;
         this.cdd = candide;
@@ -25,12 +24,12 @@ public class Soutenance
         this.cpl = cpl;
     }
 
-    public Candide getCdd()
+    public DCandide getCdd()
     {
         return cdd;
     }
 
-    public void setCdd(Candide cdd)
+    public void setCdd(DCandide cdd)
     {
         this.cdd = cdd;
     }

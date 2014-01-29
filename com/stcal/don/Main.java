@@ -14,13 +14,13 @@ public class Main {
         ArrayList<String> infos = new ArrayList<String>();
         ModelListCouple listCouple = new ModelListCouple();
 
-        Etudiant etu1 = new Etudiant("NomEtu_1", "PrenomEtu_1",infos, false);
+        DEtudiant etu1 = new DEtudiant("NomEtu_1", "PrenomEtu_1",infos, false);
         Tuteur tut1 = new Tuteur("NomProf_1","PrenomProf_1",infos);
 
-        Etudiant etu2 = new Etudiant("NomEtu_2", "PrenomEtu_2",infos, false);
+        DEtudiant etu2 = new DEtudiant("NomEtu_2", "PrenomEtu_2",infos, false);
         Tuteur tut2 = new Tuteur("NomProf_2","PrenomProf_2",infos);
 
-        Etudiant etu3 = new Etudiant("NomEtu_3", "PrenomEtu_3",infos, false);
+        DEtudiant etu3 = new DEtudiant("NomEtu_3", "PrenomEtu_3",infos, false);
         Tuteur tut3 = new Tuteur("NomProf_3","PrenomProf_3",infos);
 
         System.out.println(etu1.toString());

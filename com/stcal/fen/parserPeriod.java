@@ -1,10 +1,8 @@
 package com.stcal.fen;
 
-import com.stcal.don.Jour;
 import datechooser.model.multiple.Period;
 
 import java.util.*;
-import java.text.DateFormat;
 
 /**
  * Created with IntelliJ IDEA.

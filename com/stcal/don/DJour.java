@@ -7,7 +7,7 @@ package com.stcal.don;
  * Time: 01:05
  * To change this template use File | Settings | File Templates.
  */
-public class Jour {
+public class DJour {
     protected int nummJour;
 
     @Override
@@ -21,7 +21,7 @@ public class Jour {
 
     protected int numMois;
     protected int numAnnee;
-    public Jour(int nj, int nm,int na){
+    public DJour(int nj, int nm, int na){
 
 
         this.numAnnee=na;

@@ -32,7 +32,7 @@ public class ModelListCouple {
         cpl.getEtu().setLie(true);
     }
 
-    public void add(Etudiant etu, Tuteur tut) {
+    public void add(DEtudiant etu, Tuteur tut) {
         if(etu.getLie()==false) {
             Couple cpl = new Couple(etu, tut);
             listCouple.add(cpl);

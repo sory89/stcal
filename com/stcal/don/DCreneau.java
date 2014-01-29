@@ -1,11 +1,10 @@
-package com.stcal.calendar;
+package com.stcal.don;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 
-public class Creneau {
+public class DCreneau {
     private ArrayList<Soutenance> ListSoutenance = new ArrayList();
     private static int duree;
     private static int max_sout;

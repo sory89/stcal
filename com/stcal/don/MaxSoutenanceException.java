@@ -1,4 +1,4 @@
-package com.stcal.calendar;
+package com.stcal.don;
 
 public class MaxSoutenanceException extends Exception
 {

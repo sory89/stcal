@@ -1,4 +1,4 @@
-package com.stcal.exceptions;
+package com.stcal.control.exceptions;
 
 /**
  * User: Jean

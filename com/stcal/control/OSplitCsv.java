@@ -1,4 +1,4 @@
-package com.stcal;
+package com.stcal.control;
 
 import com.stcal.don.*;
 import javax.swing.*;

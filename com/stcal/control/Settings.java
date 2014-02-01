@@ -1,15 +1,12 @@
-package com.stcal;
+package com.stcal.control;
 
 
 
-import com.stcal.exceptions.NoSettingFileException;
-import com.stcal.exceptions.NoSuchSettingException;
-import com.stcal.exceptions.UncreatableSettingException;
-import com.stcal.exceptions.UnopenableSettingException;
+import com.stcal.Main;
+import com.stcal.control.exceptions.*;
 import com.stcal.fen.FSettings;
-import com.stcal.json.JSONException;
-import com.stcal.json.JSONObject;
-import com.sun.deploy.util.SystemUtils;
+import com.stcal.control.json.JSONException;
+import com.stcal.control.json.JSONObject;
 
 import java.io.*;
 import java.util.HashMap;
@@ -22,15 +19,13 @@ import java.util.Map;
 public class Settings {
 
     protected HashMap<String,String> settings;
-    protected String filepath;
+    private String filepath;
+    protected String filename;
 
-    public Settings(){
-        filepath = System.getProperty("user.home") + System.getProperty("file.separator") + ".stcal" + System.getProperty("file.separator") + "settings.json";
+    public Settings(String nom){
+        filename = nom + ".json";
+        filepath = System.getProperty("user.home") + System.getProperty("file.separator") + ".stcal" + System.getProperty("file.separator") + filename;
         settings = new HashMap<String, String>();
-        settings.put("DBUser","stcal");
-        settings.put("DBPassword","stcal");
-        settings.put("DBServer","localhost");
-        settings.put("DBPort","3306");
     }
 
     /**
@@ -68,7 +63,8 @@ public class Settings {
      * Sauvgarde les parametre dans le fichier
      * @throws UncreatableSettingException en cas d'echec lors de la creation du fichier
      */
-    public void save() throws UncreatableSettingException {
+    public void save() throws UncreatableSettingException, NothingToSaveException {
+        if (settings.size()<=0) throw new NothingToSaveException();
         File config = new File(filepath);
         FileOutputStream stream;
         JSONObject jObject = new JSONObject();
@@ -88,7 +84,7 @@ public class Settings {
             System.err.println(e.getMessage());
             throw new UncreatableSettingException();
         }
-
+        Main.fenStatut("Parametre mis à jour (" + filename + ")");
     }
 
     /**
@@ -142,4 +138,26 @@ public class Settings {
         return settings.size();
     }
 
+    /**
+     * @return le chemin du fichier de parametre
+     */
+    public String getFilepath() {
+        return filepath;
+    }
+
+    /**
+     * @return renvoie le nom du fichier de prametre
+     */
+    public String getFilename() {
+        return filename;
+    }
+
+    @Override
+    public String toString() {
+        return "Settings{" +
+                "settings=" + settings +
+                ", filepath='" + filepath + '\'' +
+                ", filename='" + filename + '\'' +
+                '}';
+    }
 }

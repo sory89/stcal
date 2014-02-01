@@ -1,9 +1,10 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
-import com.stcal.Settings;
-import com.stcal.exceptions.NoSuchSettingException;
-import com.stcal.exceptions.UncreatableSettingException;
+import com.stcal.control.Settings;
+import com.stcal.control.exceptions.NoSuchSettingException;
+import com.stcal.control.exceptions.NothingToSaveException;
+import com.stcal.control.exceptions.UncreatableSettingException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -63,7 +64,11 @@ public class FSettings {
                 continue;
             }
         }
-        settings.save();
+        try {
+            settings.save();
+        } catch (NothingToSaveException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

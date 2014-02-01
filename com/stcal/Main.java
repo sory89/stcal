@@ -1,16 +1,19 @@
 package com.stcal;
 
+import com.stcal.control.DBsettings;
+import com.stcal.control.OSplitCsv;
+import com.stcal.control.Settings;
+import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.don.DCouple;
 import com.stcal.don.DListe;
 import com.stcal.don.DPersonne;
-import com.stcal.exceptions.NoSettingFileException;
-import com.stcal.exceptions.UncreatableSettingException;
-import com.stcal.exceptions.UnopenableSettingException;
+import com.stcal.control.exceptions.NoSettingFileException;
+import com.stcal.control.exceptions.UncreatableSettingException;
+import com.stcal.control.exceptions.UnopenableSettingException;
 import com.stcal.fen.*;
 
 import java.lang.reflect.Method;
 import java.awt.*;
-import java.security.PrivateKey;
 import java.util.ArrayList;
 
 public class Main {
@@ -27,7 +30,7 @@ public class Main {
     private static FLier lier = new FLier();
     private static FStage stage = new FStage();
     private static FCal cal = new FCal();
-    private static Settings settings = new Settings();
+    private static Settings dbsettings = new DBsettings();
 
     /**
      * Construit l'environement graphique de l'application
@@ -39,14 +42,14 @@ public class Main {
         fen.addTab(cal);
         fen.show();
         try {
-            settings.loadfile();
+            dbsettings.loadfile();
         } catch (NoSettingFileException e) {
-            settings.ask();
+            dbsettings.ask();
             try {
-                settings.save();
+                dbsettings.save();
             } catch (UncreatableSettingException e1) {
                 fenStatut("Impossible de creer le fichier de config");
-            }
+            } catch (NothingToSaveException e1) {}
         } catch (UnopenableSettingException e) {
             fenStatut("Impossible de charger le fichier de config");
         }
@@ -59,7 +62,7 @@ public class Main {
         finder.show();
         if (finder.status()==FChooser.CHOSEN){
             try {
-                OSplitCsv.exportcsv(finder.path(),etu);
+                OSplitCsv.exportcsv(finder.path(), etu);
                 System.out.println("Main: exporter");
             }
             catch (Exception x){

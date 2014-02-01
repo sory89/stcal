@@ -1,6 +1,5 @@
-package com.stcal.manager;
+package com.stcal.control.manager;
 
-import java.sql.Connection;
 import java.util.List;
 
 /**

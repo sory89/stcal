@@ -1,4 +1,4 @@
-package com.stcal.manager;
+package com.stcal.control.manager;
 
 import org.apache.commons.dbcp.BasicDataSource;
 

@@ -20,7 +20,7 @@ public class Settings {
 
     protected HashMap<String,String> settings;
     private String filepath;
-    protected String filename;
+    private String filename;
 
     public Settings(String nom){
         filename = nom + ".json";

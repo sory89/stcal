@@ -27,7 +27,7 @@ public class FSettings {
         this.settings = settings;
         fen = new JFrame();
         fen.setTitle("Parametres");
-        fen.setSize(300, 200);
+        fen.setSize(300,(settings.getNbChangeable()+1)*30);
         fen.setLocationRelativeTo(null);
         JPanel pan = new JPanel();
         pan.setLayout(new GridLayout(settings.getNbChangeable()+1,2));

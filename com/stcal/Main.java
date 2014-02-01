@@ -44,15 +44,26 @@ public class Main {
         try {
             dbsettings.loadfile();
         } catch (NoSettingFileException e) {
-            dbsettings.ask();
+            askdbsetting();
+        } catch (UnopenableSettingException e) {
+            fenStatut("Impossible de charger le fichier de config");
+        }
+    }
+
+    public static void askdbsetting() {
+        try {
+            dbsettings.loadfile();
+        }
+        catch (UnopenableSettingException e) {
+            fenStatut("Impossible de charger le fichier de config");
+        } catch (NoSettingFileException e) {
             try {
                 dbsettings.save();
             } catch (UncreatableSettingException e1) {
                 fenStatut("Impossible de creer le fichier de config");
             } catch (NothingToSaveException e1) {}
-        } catch (UnopenableSettingException e) {
-            fenStatut("Impossible de charger le fichier de config");
         }
+        dbsettings.ask();
     }
 
     /**

@@ -24,11 +24,13 @@ public class FSettings {
     protected HashMap<String,JTextField> form;
 
     public FSettings(Settings settings){
+        FMenu menubar = new FMenu();
         this.settings = settings;
         fen = new JFrame();
         fen.setTitle("Parametres");
         fen.setSize(300,(settings.getNbChangeable()+1)*30);
         fen.setLocationRelativeTo(null);
+        fen.setJMenuBar(menubar.getMenubar());
         JPanel pan = new JPanel();
         pan.setLayout(new GridLayout(settings.getNbChangeable()+1,2));
         fen.add(pan);

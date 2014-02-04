@@ -16,6 +16,8 @@ StCal est un logiciel de gestion de stages en entreprise dédié aux enseignants
 
 [MYSQLconnector](http://dev.mysql.com/downloads/connector/j/)
 
+[Json](www.java2s.com/Code/Jar/j/java-json.htm)
+
 ###Fonctionnalités
 
 L'application développée devra simplifier la gestion des stages des étudiants par les professeurs en s'acquittant des contraintes et proposer les fonctionnalités suivantes :

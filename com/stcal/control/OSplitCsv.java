@@ -26,7 +26,7 @@ public class OSplitCsv {
         cont = new DListe();
         Scanner sc = new Scanner(file);
         if (sc.hasNextLine()){
-            System.out.println("OSplitCsv: splitcsv");
+            System.out.println("OSplitCsv: splitcsv") ;
             ligne=sc.nextLine();
             int tligne=ligne.length();
             for(int i=0;i<tligne;i++){

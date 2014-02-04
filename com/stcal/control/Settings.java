@@ -49,7 +49,7 @@ public class Settings {
                 settings.put(key,jObject.getString(key));
             }
         } catch (FileNotFoundException e) {
-            throw new NoSettingFileException();
+            throw new NoSettingFileException() ;
         } catch (IOException e) {
             System.err.println(e.getMessage());
             throw new UnopenableSettingException();

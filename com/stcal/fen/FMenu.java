@@ -25,7 +25,7 @@ public class FMenu {
 
 
         JMenu menufile = new JMenu("File");
-        JMenuItem openetu = new JMenuItem("Importer étudiants...");
+        JMenuItem openetu = new JMenuItem("Importer étudiants...") ;
         openetu.setToolTipText("Importer un ficher CSV d'étudiants.");
         openetu.addActionListener(new ActionListener() {
             @Override

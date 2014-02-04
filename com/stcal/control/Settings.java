@@ -5,8 +5,8 @@ package com.stcal.control;
 import com.stcal.Main;
 import com.stcal.control.exceptions.*;
 import com.stcal.fen.FSettings;
-import com.stcal.control.json.JSONException;
-import com.stcal.control.json.JSONObject;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.*;
 import java.util.HashMap;

@@ -10,15 +10,16 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 public class ModelListCouple {
-    ArrayList<Couple> listCouple = new ArrayList<Couple>();
+    ArrayList<Couple> listCouple;
 
     public ModelListCouple(ArrayList<Couple> list) {
         this.listCouple = list;
     }
 
     public ModelListCouple() {
-
+        this.listCouple = new ArrayList<Couple>();
     }
+
     public ArrayList<Couple> getList() {
         return listCouple;
     }

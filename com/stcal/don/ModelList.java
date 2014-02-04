@@ -13,16 +13,27 @@ public class ModelList<T> {
 
     private ArrayList<T> list;
 
+
     public ModelList(ArrayList<T> list) {
         this.list = list;
     }
-
+    public ModelList() {
+        this.list = new ArrayList<T>();
+    }
     public ArrayList<T> getList() {
         return list;
     }
 
     public void setList(ArrayList<T> list) {
         this.list = list;
+    }
+
+    public int nbPersonne(){
+        return list.size();
+    }
+
+    public T getPersonne(int i){
+        return list.get(i);
     }
 
     public void add() {

@@ -85,12 +85,12 @@ L’interface idéale comporterait une zone réservée à l’affichage des list
 
 
 ##Bug :
-Lors de la création d'un stage, enlever le focus dans les liste
+- Lors de la création d'un stage, enlever le focus dans les liste
 
 ##Remarque :
-_Peut être ajouter une scroll sur les infos 
-_Pour la paramètres de la bdd, ne pas utiliser une Jframe mais une fenetre de dialogue pour éviter l'affichage du menu
-_Les infos d'un stage ne s'affichent pas
-_Ne pas activer le bouton valider si etudiant et tuteur non selectionné
-_Ajouter des titre pour les listes dans Lier
-_Peut être trier les stage par tuteur dans stage
+- Peut être ajouter une scroll sur les infos 
+- Pour la paramètres de la bdd, ne pas utiliser une Jframe mais une fenetre de dialogue pour éviter l'affichage du menu
+- Les infos d'un stage ne s'affichent pas
+- Ne pas activer le bouton valider si etudiant et tuteur non selectionné
+- Ajouter des titre pour les listes dans Lier
+- Peut être trier les stage par tuteur dans stage

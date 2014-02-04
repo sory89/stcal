@@ -83,3 +83,14 @@ L’application pourra éventuellement permettre à l’utilisateur d’effectue
 De plus, l’interface pourra être plus aboutie en fonction du délai restant.
 L’interface idéale comporterait une zone réservée à l’affichage des listes d’étudiants et de professeurs et une zone affichant tous les étudiants affiliés à un professeur lors de la sélection de ce dernier, en plus des différents boutons de création, modification ou suppression des couples.
 
+
+##Bug :
+Lors de la création d'un stage, enlever le focus dans les liste
+
+##Remarque :
+_Peut être ajouter une scroll sur les infos 
+_Pour la paramètres de la bdd, ne pas utiliser une Jframe mais une fenetre de dialogue pour éviter l'affichage du menu
+_Les infos d'un stage ne s'affichent pas
+_Ne pas activer le bouton valider si etudiant et tuteur non selectionné
+_Ajouter des titre pour les listes dans Lier
+_Peut être trier les stage par tuteur dans stage

@@ -63,7 +63,7 @@ public class Settings {
      * Sauvgarde les parametre dans le fichier
      * @throws UncreatableSettingException en cas d'echec lors de la creation du fichier
      */
-    public void save() throws UncreatableSettingException, NothingToSaveException {
+    public void save() throws UncreatableSettingException, NothingToSaveException, JSONException {
         if (settings.size()<=0) throw new NothingToSaveException();
         File config = new File(filepath);
         FileOutputStream stream;

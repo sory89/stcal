@@ -11,6 +11,7 @@ import com.stcal.control.exceptions.NoSettingFileException;
 import com.stcal.control.exceptions.UncreatableSettingException;
 import com.stcal.control.exceptions.UnopenableSettingException;
 import com.stcal.fen.*;
+import org.json.JSONException;
 
 import java.lang.reflect.Method;
 import java.awt.*;
@@ -36,7 +37,7 @@ public class Main {
      * Construit l'environement graphique de l'application
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JSONException {
         fen.addTab(lier) ;
         fen.addTab(stage);
         fen.addTab(cal);
@@ -50,7 +51,7 @@ public class Main {
         }
     }
 
-    public static void askdbsetting() {
+    public static void askdbsetting() throws JSONException {
         try {
             dbsettings.loadfile();
         }

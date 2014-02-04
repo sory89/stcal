@@ -116,7 +116,7 @@ public class OSplitCsv {
         return cont;
     }
 
-    public static void exportcsv(String path,ModelList etu) throws Exception {
+    public static void exportcsv(String path,DListe etu) throws Exception {
         String ligne="";
         int ind=0;
         PrintWriter writer = new PrintWriter(path, "UTF-8");

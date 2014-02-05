@@ -22,7 +22,7 @@ public class FStage extends FTab {
     int i;
 
     /**
-     * Initialisation de l'ongelet
+     * Initialisation de l'onglet
      */
     public FStage(){
         super("Stage");
@@ -64,12 +64,12 @@ public class FStage extends FTab {
         final  JList Fstag = new JList(stag);
         // event
         right.add(new JScrollPane(Fstag));
-        info.setBorder(BorderFactory.createTitledBorder("Info"));
+        info.setBorder(BorderFactory.createTitledBorder("Infos"));
         right.add(info);
         option.setOpaque(false);
         option.setLayout(new GridLayout(3,1));
         right.add(option);
-        JButton supprimer=new JButton("supprimer stage");
+        JButton supprimer=new JButton("Supprimer stage");
         supprimer.addActionListener(new ActionListener() {
 
             @Override
@@ -77,7 +77,7 @@ public class FStage extends FTab {
                 supprimer_stage(Fetu);
             }
         });
-        JButton supprimer1=new JButton("supprimer etudiant");
+        JButton supprimer1=new JButton("Supprimer etudiant");
         option.add(supprimer);
         option.add(supprimer1);
         pan().add(right);

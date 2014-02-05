@@ -1,12 +1,6 @@
 package com.stcal.don;
 
-/**
- * Created with IntelliJ IDEA.
- * User: val
- * Date: 10/12/13
- * Time: 11:50
- * To change this template use File | Settings | File Templates.
- */
+
 public class Couple {
     private Personne etu;
     private Personne tut;

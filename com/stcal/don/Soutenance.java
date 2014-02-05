@@ -2,11 +2,11 @@ package com.stcal.don;
 
 public class Soutenance
 {
-    private Couple cpl;
+    private DCouple cpl;
     private DCandide cdd;
     private int salle;
 
-    public Soutenance(Couple couple, DCandide candide)
+    public Soutenance(DCouple couple, DCandide candide)
     {
         this.cpl = couple;
         this.cdd = candide;
@@ -14,12 +14,12 @@ public class Soutenance
 
     }
 
-    public Couple getCpl()
+    public DCouple getCpl()
     {
         return cpl;
     }
 
-    public void setCpl(Couple cpl)
+    public void setCpl(DCouple cpl)
     {
         this.cpl = cpl;
     }

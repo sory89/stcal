@@ -2,13 +2,8 @@ package com.stcal.don;
 
 import java.util.ArrayList;
 
-/**
- * Created with IntelliJ IDEA.
- * User: val
- * Date: 10/12/13
- * Time: 11:42
- * To change this template use File | Settings | File Templates.
- */
+
+
 public class DEtudiant extends Personne{
     private boolean lie;
 

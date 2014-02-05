@@ -64,9 +64,9 @@ public class FMenu {
         });
         menufile.add(quit);
 
-        JMenu menupref = new JMenu("Preferences");
-        JMenuItem db = new JMenuItem("Base de donnée...");
-        db.setToolTipText("Modifier le server et les identifiants de connection à la base de donnée.");
+        JMenu menupref = new JMenu("Préférences");
+        JMenuItem db = new JMenuItem("Base de données...");
+        db.setToolTipText("Modifier le serveur et les identifiants de connexion à la base de données.");
         db.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

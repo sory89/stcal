@@ -2,13 +2,7 @@ package com.stcal.don;
 
 import java.util.ArrayList;
 
-/**
- * Created with IntelliJ IDEA.
- * User: val
- * Date: 21/01/14
- * Time: 09:18
- * To change this template use File | Settings | File Templates.
- */
+
 public class ModelListCouple {
     ArrayList<Couple> listCouple;
 

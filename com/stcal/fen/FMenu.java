@@ -1,7 +1,6 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
-import org.json.JSONException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -71,11 +70,7 @@ public class FMenu {
         db.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    Main.askdbsetting();
-                } catch (JSONException e1) {
-                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                }
+                Main.askdbsetting();
             }
         });
         menupref.add(db);

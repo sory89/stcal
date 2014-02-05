@@ -50,7 +50,7 @@ public class Main {
         }
     }
 
-    public static void askdbsetting() throws JSONException {
+    public static void askdbsetting(){
         try {
             dbsettings.loadfile();
         }

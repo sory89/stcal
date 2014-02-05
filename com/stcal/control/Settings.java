@@ -63,13 +63,17 @@ public class Settings {
      * Sauvgarde les parametre dans le fichier
      * @throws UncreatableSettingException en cas d'echec lors de la creation du fichier
      */
-    public void save() throws UncreatableSettingException, NothingToSaveException, JSONException {
+    public void save() throws UncreatableSettingException, NothingToSaveException {
         if (settings.size()<=0) throw new NothingToSaveException();
         File config = new File(filepath);
         FileOutputStream stream;
         JSONObject jObject = new JSONObject();
         for(Map.Entry<String, String> entry : settings.entrySet()) {
-            jObject.put(entry.getKey(),entry.getValue().toString());
+            try {
+                jObject.put(entry.getKey(),entry.getValue().toString());
+            } catch (JSONException e) {
+                System.err.println(e.getMessage());
+            }
         }
         try {
             if (!config.exists()){

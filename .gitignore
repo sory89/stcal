@@ -1,13 +1,11 @@
-stcal-calendar.iml 
-
-stcal.iml
-
-stcal1.iml
+*.iml
 
 .git
 
 .idea
 
 *.swp
+
+.out/
 
 com/stcal/Dev.java

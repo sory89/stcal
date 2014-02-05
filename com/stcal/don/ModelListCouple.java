@@ -46,6 +46,19 @@ public class ModelListCouple {
         listCouple.remove(index);
     }
 
+    public int size() {
+
+        return this.listCouple.size();
+    }
+
+    public Couple get(int i) {
+        return this.listCouple.get(i);
+    }
+
+    public void remove(int selectedIndex) {
+        this.listCouple.remove(selectedIndex);
+    }
+
     /*
     public void remplir() {
 

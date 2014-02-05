@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class DListe extends AbstractListModel{
 
-    protected ArrayList<DPersonne> liste = new ArrayList<DPersonne>();
+    protected ArrayList<Personne> liste = new ArrayList<Personne>();
     protected ArrayList<String> labels = new ArrayList<String>();
 
     public ArrayList<String> getLabels (){
@@ -27,11 +27,11 @@ public class DListe extends AbstractListModel{
         }
     }
 
-    public void add(DPersonne humain){
+    public void add(Personne humain){
         liste.add(humain);
     }
 
-    public boolean rmPersonne(DPersonne humain){
+    public boolean rmPersonne(Personne humain){
 
        return liste.remove(humain);
     }
@@ -40,16 +40,20 @@ public class DListe extends AbstractListModel{
         return liste.size();
     }
 
-    public DPersonne getPersonne(int i){
+    public Personne getPersonne(int i){
         return liste.get(i);
     }
 
-    public DPersonne search(String pre,String nom){
+    public Personne search(String pre,String nom){
         for (int i=0;i<liste.size();i++){
+
             if (liste.get(i).is(pre,nom)){
+
                 return liste.get(i);
+
             }
         }
+
         return null;
     }
 

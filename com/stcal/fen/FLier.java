@@ -10,12 +10,12 @@ import java.util.ArrayList;
 public class FLier extends FTab {
 
     protected DefaultListModel profList = new DefaultListModel();
-    protected DefaultListModel etuList = new DefaultListModel();
+    protected static DefaultListModel etuList = new DefaultListModel();
     protected JLabel info = new JLabel("<html>Sélectionner un étudiant ou un prof pour afficher ses infos.</html>");
     protected JLabel courant = new JLabel("courant");
     protected JPanel option= new JPanel();
-    protected ArrayList<String> prenomEtu = new ArrayList<String>();
-    protected ArrayList<String> nomEtu = new ArrayList<String>();
+    protected static ArrayList<String> prenomEtu = new ArrayList<String>();
+    protected static ArrayList<String> nomEtu = new ArrayList<String>();
     protected ArrayList<String> prenomProf = new ArrayList<String>();
     protected ArrayList<String> nomProf = new ArrayList<String>();
     protected String selectedEtuPre = "";
@@ -218,11 +218,11 @@ public class FLier extends FTab {
         }
     }
 
-    public void addEtu(String pre,String nom){
+    public static void addEtu(String pre, String nom){
         prenomEtu.add(pre);
         nomEtu.add(nom);
         etuList.addElement(pre + " " + nom.toUpperCase());
-        refresh();
+
     }
 
     public void delEtu(String nom,String prenom){
@@ -246,4 +246,6 @@ public class FLier extends FTab {
         profList.addElement(pre + " " + nom);
         refresh();
     }
+
+
 }

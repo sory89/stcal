@@ -15,12 +15,25 @@ public class Personne {
     protected String prenom;
     protected ArrayList<String> infos; // catégorie : texte
 
+
+    public Personne(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
+
+    }
     public Personne(String nom, String prenom, ArrayList<String> infos) {
         this.nom = nom;
         this.prenom = prenom;
         this.infos = infos;
     }
 
+    public Personne() {
+
+    }
+
+    public boolean is(String prenom,String nom){
+        return this.prenom.equals(prenom) && this.nom.equals(nom);
+    }
     public String getNom() {
         return nom;
     }
@@ -42,6 +55,7 @@ public class Personne {
     }
 
     public String getInfosAt(int index){
+
         return infos.get(index);
     }
 
@@ -51,5 +65,13 @@ public class Personne {
 
     public String toString(){
         return getClass().getName()+" : prenom = "+this.getPrenom()+" - nom = "+this.getNom();
+    }
+    public void setInfos(String s) {
+        this.infos.add(s);
+    }
+
+
+    public void setLie(boolean lie) {
+
     }
 }

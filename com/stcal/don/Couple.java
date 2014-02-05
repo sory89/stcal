@@ -8,27 +8,27 @@ package com.stcal.don;
  * To change this template use File | Settings | File Templates.
  */
 public class Couple {
-    private DEtudiant etu;
-    private Tuteur tut;
+    private Personne etu;
+    private Personne tut;
 
-    public Couple(DEtudiant etu, Tuteur tut) {
+    public Couple(Personne etu, Personne tut) {
         this.etu = etu;
         this.tut = tut;
     }
 
-    public DEtudiant getEtu() {
+    public Personne getEtu() {
         return etu;
     }
 
-    public void setEtu(DEtudiant etu) {
+    public void setEtu(Personne etu) {
         this.etu = etu;
     }
 
-    public Tuteur getTut() {
+    public Personne getTut() {
         return tut;
     }
 
-    public void setTut(Tuteur tut) {
+    public void setTut(Personne tut) {
         this.tut = tut;
     }
 }

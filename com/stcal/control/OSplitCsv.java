@@ -50,7 +50,9 @@ public class OSplitCsv {
                 System.out.println(nlab);
                 String split[] = ligne.split(SEPs);
                 ArrayList <String> test = new ArrayList<String>(Arrays.asList(split));
-                cont.setLabels(test); } else { }
+                cont.setLabels(test);
+               } else { }
+
         }
 
 
@@ -85,16 +87,23 @@ public class OSplitCsv {
             if (nlab!=ninf) {
                 nligb+=1;
                 er=true;
+
             }
 
             if (!er) {
             String split[] = ligne.split(SEPs);
-            DPersonne perso = new DPersonne();
-            for (int i=0;i<split.length;i++){
-                perso.setInfo(split[i]);
+            Personne perso = new Personne(split[0],split[1]);
+            ArrayList<String> essai = new ArrayList<String>();
+
+
+            for (int i=2;i<split.length;i++){
+
+                essai.add(split[i]);
             }
+                perso.setInfos(essai);
                 cont.add(perso);
-            } else { }
+
+            } else {  }
 
             nlig+=1;
         }
@@ -125,8 +134,8 @@ public class OSplitCsv {
             if (etu.getPersonne(i)!=null){
                 //ligne = etu.getPersonne(i).getPrenom() + ";";
                 //ligne += etu.getPersonne(i).getNom() + ";";
-                for (int j=0;j<etu.getPersonne(i).getInfo().size();j++){
-                    ligne += etu.getPersonne(i).getInfo().get(j) + ";";
+                for (int j=0;j<etu.getPersonne(i).getInfos().size();j++){
+                    ligne += etu.getPersonne(i).getInfos().get(j) + ";";
                 }
                 ind=ligne.length()-1;
                 ligne=ligne.substring(0,ind);

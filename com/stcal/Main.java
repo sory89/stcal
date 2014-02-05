@@ -7,9 +7,7 @@ import com.stcal.control.exceptions.NoSettingFileException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.control.exceptions.UncreatableSettingException;
 import com.stcal.control.exceptions.UnopenableSettingException;
-import com.stcal.don.DCouple;
-import com.stcal.don.DListe;
-import com.stcal.don.DPersonne;
+import com.stcal.don.*;
 import com.stcal.fen.*;
 import org.json.JSONException;
 
@@ -23,7 +21,7 @@ public class Main {
     public static final String PROF = "prof";
     public static final String NONE = "";
 
-    private static ArrayList<DCouple> stages = new ArrayList<DCouple>();
+    public static ModelListCouple stages = new ModelListCouple();
     private static DListe etu = new DListe();
     private static  DListe prof = new DListe();
     private static FChooser finder = new FChooser();
@@ -91,11 +89,11 @@ public class Main {
      * @return faux si le nom/prenom de l'etudiant/prof ne corresponde à personne
      */
     public static boolean lier(String etuPre, String etuNom, String tutPre, String tutNom){
-        DPersonne setu = etu.search(etuPre,etuNom);
-        DPersonne stut = prof.search(tutPre,tutNom);
+        Personne setu =  etu.search(etuPre,etuNom);
+        Personne stut =  prof.search(tutPre,tutNom);
         if (setu!=null && stut!=null){
-            stages.add(new DCouple(setu,stut));
-            stage.addProf(tutPre, tutNom);
+            stages.add(new Couple(setu,stut));
+            stage.change();
             fenStatut("étudiant: " + etuPre + " " + etuNom + ", tuteur: " + tutPre + " " + tutNom + ", stage créé.");
             return true;
         }
@@ -104,40 +102,23 @@ public class Main {
 
     /**
      * Supprime le lien entre un étudiant et un prof
-     * @param tutPre prénom du tuteur
-     * @param tutNom nom du tuteur
      * @return vrai si la delier se passe correctement
      */
-    public static boolean delier(String tutPre,String tutNom){
-        DPersonne stut = prof.search(tutPre,tutNom);
-        ArrayList <DPersonne> listEtu=new ArrayList<DPersonne>();
-        if(stut!=null){
-            if(stage.existe(tutPre,tutNom)){
-                for(int i=0;i<stages.size();i++){
-                    if(stages.get(i).getProf()==stut){
-                        listEtu.add(stages.get(i).getEtu());
-                    }
-                }
-                if(!listEtu.isEmpty()){
-                    for (int i=0;i<listEtu.size();i++){
-                        lier.addEtu(listEtu.get(i).getPrenom(),listEtu.get(i).getNom());
-                    }
-                }
-                if(stages.contains(tutPre+" "+tutNom)){
-                    stages.remove(stut);
-                }
+    public static void delier(Personne etu){
 
-                fenStatut(", tuteur: " + tutPre + " " + tutNom + ", stage supprimé.");
-                return true;
-            }
-        }
-        return false;
+
+                      etu.setLie(false);
+
+                fenStatut(", etudiant: " + etu.getPrenom() + " " + etu.getNom() + ", stage supprimé.");
+
+
+
     }
     
     public static ArrayList<String> etuStage(String profPre,String profNom){
         ArrayList<String> etu = new ArrayList<String>();
         for (int i=0;i<stages.size();i++){
-            if (stages.get(i).getProf().getPrenom()==profPre && stages.get(i).getProf().getNom()==profNom){
+            if (stages.get(i).getTut().getPrenom()==profPre && stages.get(i).getTut().getNom()==profNom){
                 etu.add(stages.get(i).getEtu().toString());
             }
         }
@@ -158,14 +139,19 @@ public class Main {
             System.err.println("Err: type de la personne inconnu.");
             return null;
         }
-        DPersonne selected = all.search(pre,nom);
+        Personne selected = all.search(pre,nom);
         if (selected==null){
             fenStatut("Err: personne non trouvé.");
             System.err.println("Err: personne non trouvé.");
             return null;
         }
         for (int i=0;i<all.getLabels().size();i++){
-            details.add(" " + all.getLabels().get(i) + ": " + selected.getInfo().get(i));
+            if(i==0)
+                details.add(" " + all.getLabels().get(i) + ": " + selected.getNom());
+            else if(i==1)
+                details.add(" " + all.getLabels().get(i) + ": " + selected.getPrenom());
+            else
+            details.add(" " + all.getLabels().get(i) + ": " + selected.getInfos().get(i-2));
         }
         fenStatut("Info de " + pre + " " + nom + ".");
         return details;

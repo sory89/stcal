@@ -9,17 +9,17 @@ import java.util.ArrayList;
 
 public class FStage extends FTab {
 
-    protected DefaultListModel prof = new DefaultListModel();
+    protected DefaultListModel etu = new DefaultListModel();
     protected DefaultListModel stag = new DefaultListModel();
     protected JLabel info = new JLabel("<html>Sélectionner un enseignant ou un stagiaire pour afficher ses infos.</html>");
     protected JPanel option = new JPanel();
     protected ArrayList<String> liste =new ArrayList<String>();
     protected ArrayList<String> tutPre = new ArrayList<String>();
     protected ArrayList<String> tutNom = new ArrayList<String>();
-    protected String selectedTutPre = "";
-    protected String selectedTutNom = "";
+    protected String selectedEtuPre = "";
+    protected String selectedEtuNom = "";
     protected String selectedType = Main.NONE;
-
+    int i;
 
     /**
      * Initialisation de l'ongelet
@@ -27,21 +27,27 @@ public class FStage extends FTab {
     public FStage(){
         super("Stage");
         pan().setLayout(new GridLayout(0, 2));
-        final JList Fprof = new JList(prof);
-        Fprof.addMouseListener(new MouseAdapter() {
+        final JList Fetu = new JList(etu);
+
+        for(i=0;i<Main.stages.size();i++){
+           etu.addElement(Main.stages.get(i).getEtu());
+
+
+        }
+        Fetu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                askInfo(Fprof,Main.PROF);
+                askInfo(Fetu,Main.ETU);
             }
         });
-        Fprof.addKeyListener(new KeyListener() {
+        Fetu.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                askInfo(Fprof, Main.PROF);
+                askInfo(Fetu, Main.ETU);
             }
 
             @Override
@@ -49,7 +55,9 @@ public class FStage extends FTab {
             }
 
         });
-        pan().add(new JScrollPane(Fprof));
+
+
+        pan().add(new JScrollPane(Fetu));
         JPanel right = new JPanel();
         right.setOpaque(false);
         right.setLayout(new GridLayout(3,0));
@@ -66,7 +74,7 @@ public class FStage extends FTab {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                supprimer_stage();
+                supprimer_stage(Fetu);
             }
         });
         JButton supprimer1=new JButton("supprimer etudiant");
@@ -82,12 +90,12 @@ public class FStage extends FTab {
      */
     protected void askInfo(JList pan,String type){
         try {
-            if (type.equals(Main.PROF)){
-                selectedTutPre = tutPre.get(pan.getLeadSelectionIndex());
-                selectedTutNom = tutNom.get(pan.getLeadSelectionIndex());
-                setInfo(Main.personneInfo(type,selectedTutPre, selectedTutNom));
+            if (type.equals(Main.ETU)){
+                selectedEtuPre = tutPre.get(pan.getLeadSelectionIndex());
+                selectedEtuNom = tutNom.get(pan.getLeadSelectionIndex());
+                setInfo(Main.personneInfo(type,selectedEtuPre, selectedEtuNom));
                 stag.removeAllElements();
-                ArrayList<String> inter = Main.etuStage(selectedTutPre,selectedTutNom);
+                ArrayList<String> inter = Main.etuStage(selectedEtuPre,selectedEtuNom);
             }
             selectedType = type;
         }
@@ -97,41 +105,16 @@ public class FStage extends FTab {
         refresh();
     }
 
-    public void addetustage(String pren,String nom1){
-      //  if (tutPre.contains(pre) && tutNom.contains(nom)){
-        liste.add(pren+" "+nom1);
-        stag.addElement(pren+" "+nom1);
-        refresh();
-    }
-    public void addProf(String pre,String nom){
-        if (tutPre.contains(pre) && tutNom.contains(nom)){
-            stag.removeAllElements();
-            return;
-        }
-        tutPre.add(pre);
-        tutNom.add(nom);
-        prof.addElement(pre + " " + nom);
-        refresh();
-    }
 
-    public void delProf(String pre,String nom){
-        if(!tutPre.contains(pre)|| !tutNom.contains(nom)){
-            return;
-        }
-        tutPre.remove(pre);
-        tutNom.remove(nom);
-        prof.removeElement(pre+" "+nom);
-    }
 
-    void supprimer_stage(){
-        if(Main.delier(selectedTutPre,selectedTutNom)){
-            delProf(selectedTutPre, selectedTutNom);
-            for(int i=0;i<liste.size();i++){
-                liste.remove(i);
-            }
-            stag.removeAllElements();
-        }
-        refresh();
+
+
+
+   public void supprimer_stage(JList pan){
+        Main.delier(Main.stages.get(pan.getSelectedIndex()).getEtu());
+        FLier.addEtu(Main.stages.get(pan.getSelectedIndex()).getEtu().getPrenom(),Main.stages.get(pan.getSelectedIndex()).getEtu().getNom());
+        Main.stages.remove(pan.getSelectedIndex());
+        change();
     }
 
     @Override
@@ -146,10 +129,20 @@ public class FStage extends FTab {
     }
 
     public boolean existe(String prenom,String nom){
-        if(prof.contains(prenom+" "+nom)){
+        if(etu.contains(prenom+" "+nom)){
             return true;
         }
         return false;
     }
 
+    public void change() {
+        etu.removeAllElements();
+        for(i=0;i<Main.stages.size();i++){
+            etu.addElement(Main.stages.get(i).getEtu());
+
+
+        }
+        refresh();
+
+    }
 }

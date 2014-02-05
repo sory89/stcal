@@ -9,3 +9,5 @@ stcal1.iml
 .idea
 
 *.swp
+
+com/stcal/Dev.java

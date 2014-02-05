@@ -34,7 +34,7 @@ public class Main {
      * Construit l'environement graphique de l'application
      * @param args
      */
-    public static void main(String[] args) throws JSONException {
+    public static void main(String[] args) {
         fen.addTab(lier) ;
         fen.addTab(stage);
         fen.addTab(cal);

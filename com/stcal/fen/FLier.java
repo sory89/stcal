@@ -137,7 +137,7 @@ public class FLier extends FTab {
 
     protected void askStage(){
             delEtu(selectedEtuPre,selectedEtuNom);
-           // Fetu.remove(selectedEtuIndex);
+            // Fetu.remove(selectedEtuIndex);
             courant.setText("<html>Stage créé.</html>");
             refresh();
     }

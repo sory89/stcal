@@ -14,7 +14,7 @@ import java.util.*;
 public class parserPeriod {
     protected parserDate parse = null;
     protected Iterator<Period> period = null;
-    protected ArrayList<Calendar> dates = new ArrayList<Calendar>();
+    protected List<Calendar> dates = new ArrayList<Calendar>();
 
 
 
@@ -87,7 +87,7 @@ public class parserPeriod {
 
     }
 
-    public ArrayList<Calendar> getDates(){
+    public List<Calendar> getDates(){
 
 
         return dates;

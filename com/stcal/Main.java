@@ -3,18 +3,18 @@ package com.stcal;
 import com.stcal.control.DBsettings;
 import com.stcal.control.OSplitCsv;
 import com.stcal.control.Settings;
+import com.stcal.control.exceptions.NoSettingFileException;
 import com.stcal.control.exceptions.NothingToSaveException;
+import com.stcal.control.exceptions.UncreatableSettingException;
+import com.stcal.control.exceptions.UnopenableSettingException;
 import com.stcal.don.DCouple;
 import com.stcal.don.DListe;
 import com.stcal.don.DPersonne;
-import com.stcal.control.exceptions.NoSettingFileException;
-import com.stcal.control.exceptions.UncreatableSettingException;
-import com.stcal.control.exceptions.UnopenableSettingException;
 import com.stcal.fen.*;
 import org.json.JSONException;
 
-import java.lang.reflect.Method;
 import java.awt.*;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class Main {
@@ -30,9 +30,8 @@ public class Main {
     private static FInterface fen = new FInterface(800,600);
     private static FLier lier = new FLier();
     private static FStage stage = new FStage();
-    private static FCal cal = new FCal();
+    private static FTab cal = new FCal();
     private static Settings dbsettings = new DBsettings();
-
     /**
      * Construit l'environement graphique de l'application
      * @param args
@@ -78,7 +77,7 @@ public class Main {
                 System.out.println("Main: exporter");
             }
             catch (Exception x){
-                System.err.println("erreur écriture fichier");
+                System.err.println("erreur ecriture fichier");
             }
         }
     }

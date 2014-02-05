@@ -6,10 +6,13 @@ import datechooser.events.SelectionChangedListener;
 import datechooser.model.multiple.Period;
 
 import javax.swing.*;
+import javax.swing.text.MaskFormatter;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
+import java.text.ParseException;
 import java.util.*;
+import java.util.List;
+import java.util.regex.Pattern;
 
 public class FCal extends FTab{
 
@@ -21,7 +24,7 @@ public class FCal extends FTab{
     protected JPanel test5 = new JPanel();
     protected JPanel panSoutenance = new JPanel();
     protected JLabel infoChooser = new JLabel("Choisissez les jours de soutenance");
-    protected JLabel creneauLabel = new JLabel("Durée en minutes d'un créneau");
+    protected JLabel creneauLabel = new JLabel("Durée en minutes d'une soutenance");
     protected JLabel debutLabel = new JLabel("Début d'une journée");
     protected JLabel finLabel = new JLabel("Fin d'une journée");
     protected JLabel nbSoutenances = new JLabel("Nombre de Soutenance par créneau");
@@ -29,40 +32,194 @@ public class FCal extends FTab{
     protected JComboBox debutJour = new JComboBox(tab);
     protected JComboBox finJour = new JComboBox(tab);
     public DateChooserPanel chooserDebut= new DateChooserPanel();
-    protected JTextField creneau = new JTextField();
-    protected JTextField soutenance = new JTextField();
+
+
+    protected JFormattedTextField creneau = null;
+    protected JFormattedTextField soutenance = null;
     protected Iterator<Period> datechoisis=null;
-    protected ArrayList<Calendar> recupDates = null;
+    protected List<Calendar> recupDates = null;
     protected  parserPeriod PP = null;
+
+
     protected JButton okPlageJour = new JButton("Valider votre selection");
+    protected boolean condition(){
+
+        if(!(soutenance.getText().isEmpty()) && !chooserDebut.getSelectedPeriodSet().isEmpty() && !creneau.getText().isEmpty()) {
+
+            return true ;
+
+        }
+              else {
+            return false;
+        }
+
+    }
     public FCal() {
         super("cal");
+
+        creneau = new JFormattedTextField();
+        soutenance = new JFormattedTextField();
+
+
+
         test1.setOpaque(false);
         test1.setOpaque(false);
         infoChooser.setOpaque(false);
         okPlageJour.setEnabled(false);
           chooserDebut.addSelectionChangedListener(new SelectionChangedListener() {
-              @Override
+
               public void onSelectionChange(SelectionChangedEvent selectionChangedEvent) {
-                  if(chooserDebut.getSelectedPeriodSet().isEmpty()==false )
-                  okPlageJour.setEnabled(true);
+
+                  if(condition())
+                      okPlageJour.setEnabled(true);
                   else
-                  okPlageJour.setEnabled(false);
+                      okPlageJour.setEnabled(false);
               }
           });
         okPlageJour.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                datechoisis=chooserDebut.getSelection().iterator();
-                PP= new parserPeriod(datechoisis);
+            public void mouseReleased(MouseEvent e) {
+                datechoisis = chooserDebut.getSelection().iterator();
+                PP = new parserPeriod(datechoisis);
                 recupDates = PP.getDates();
-                System.out.println(recupDates);
+                pan().removeAll();
+                refresh();
+
 
 
             }
         }
 
         );
+        pan().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+            }
+        });
+        pan().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+            }
+        });
+        creneau.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+
+            }
+
+        });
+        soutenance.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+            }
+        });
+        creneau.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+
+            }
+
+        });
+        creneau.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+            }
+        });
+        creneau.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+
+            }
+
+        });
+        soutenance.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+
+
+            }
+        });
+
         okPlageJour.validate();
         pan().setLayout(new GridLayout(0,3));
         Dimension dim = new Dimension(1,1);

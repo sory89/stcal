@@ -1,5 +1,10 @@
 package com.stcal.fen;
 
+import com.stcal.Main;
+import com.stcal.control.CALsettings;
+import com.stcal.control.exceptions.NoSuchSettingException;
+import com.stcal.control.exceptions.NothingToSaveException;
+import com.stcal.control.exceptions.UncreatableSettingException;
 import datechooser.beans.DateChooserPanel;
 import datechooser.events.SelectionChangedEvent;
 import datechooser.events.SelectionChangedListener;
@@ -30,7 +35,7 @@ public class FCal extends FTab{
     protected JLabel nbSoutenances = new JLabel("Nombre de Soutenance par créneau");
     String[] tab =  {"7","8","9","10","11","12","13","14","15","16","17","18","19","20"} ;
     protected JComboBox debutJour = new JComboBox(tab);
-    protected JComboBox finJour = new JComboBox(tab);
+    protected JComboBox finJour = new JComboBox();
     public DateChooserPanel chooserDebut= new DateChooserPanel();
 
 
@@ -83,8 +88,25 @@ public class FCal extends FTab{
                 PP = new parserPeriod(datechoisis);
                 recupDates = PP.getDates();
                 pan().removeAll();
-                refresh();
+                try {
+                    Main.calsettings.set("cal", recupDates.toString());
+                    Main.calsettings.set("dursoutenance", creneau.getText());
+                    Main.calsettings.set("nbsoutenance", soutenance.getText());
+                    Main.calsettings.set("debutj", debutJour.getSelectedItem().toString());
+                    Main.calsettings.set("finj", finJour.getSelectedItem().toString());
 
+
+                } catch (NoSuchSettingException e1) {
+                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
+                try {
+                    Main.calsettings.save();
+                } catch (UncreatableSettingException e1) {
+                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                } catch (NothingToSaveException e1) {
+                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
+                refresh();
 
 
             }
@@ -100,6 +122,20 @@ public class FCal extends FTab{
                     okPlageJour.setEnabled(false);
             }
         });
+        debutJour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                finJour.removeAllItems();
+                int tmp =Integer.parseInt(debutJour.getSelectedItem().toString());
+
+                for(tmp=tmp+1;tmp<20;tmp++){
+                    finJour.addItem(tmp);
+
+                }
+                refresh();
+            }
+        });
+
         pan().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {

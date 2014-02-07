@@ -1,5 +1,10 @@
 package com.stcal.fen;
 
+import com.stcal.Main;
+import com.stcal.control.CALsettings;
+import com.stcal.control.exceptions.NoSuchSettingException;
+import com.stcal.control.exceptions.NothingToSaveException;
+import com.stcal.control.exceptions.UncreatableSettingException;
 import datechooser.beans.DateChooserPanel;
 import datechooser.events.SelectionChangedEvent;
 import datechooser.events.SelectionChangedListener;
@@ -83,6 +88,24 @@ public class FCal extends FTab{
                 PP = new parserPeriod(datechoisis);
                 recupDates = PP.getDates();
                 pan().removeAll();
+                try {
+                    Main.calsettings.set("cal", recupDates.toString());
+                    Main.calsettings.set("dursoutenance",creneau.getText());
+                    Main.calsettings.set("nbsoutenance",soutenance.getText());
+                    Main.calsettings.set("debutj",debutJour.getSelectedItem().toString());
+                    Main.calsettings.set("finj", finJour.getSelectedItem().toString());
+
+
+                } catch (NoSuchSettingException e1) {
+                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
+                try {
+                    Main.calsettings.save();
+                } catch (UncreatableSettingException e1) {
+                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                } catch (NothingToSaveException e1) {
+                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
                 refresh();
 
 

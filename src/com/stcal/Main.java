@@ -1,5 +1,6 @@
 package com.stcal;
 
+import com.stcal.control.CALsettings;
 import com.stcal.control.DBsettings;
 import com.stcal.control.OSplitCsv;
 import com.stcal.control.Settings;
@@ -30,6 +31,7 @@ public class Main {
     private static FStage stage = new FStage();
     private static FTab cal = new FCal();
     private static Settings dbsettings = new DBsettings();
+    public static Settings calsettings= new CALsettings();
     /**
      * Construit l'environement graphique de l'application
      * @param args

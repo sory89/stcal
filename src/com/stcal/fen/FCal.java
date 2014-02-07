@@ -35,7 +35,7 @@ public class FCal extends FTab{
     protected JLabel nbSoutenances = new JLabel("Nombre de Soutenance par créneau");
     String[] tab =  {"7","8","9","10","11","12","13","14","15","16","17","18","19","20"} ;
     protected JComboBox debutJour = new JComboBox(tab);
-    protected JComboBox finJour = new JComboBox(tab);
+    protected JComboBox finJour = new JComboBox();
     public DateChooserPanel chooserDebut= new DateChooserPanel();
 
 
@@ -90,9 +90,9 @@ public class FCal extends FTab{
                 pan().removeAll();
                 try {
                     Main.calsettings.set("cal", recupDates.toString());
-                    Main.calsettings.set("dursoutenance",creneau.getText());
-                    Main.calsettings.set("nbsoutenance",soutenance.getText());
-                    Main.calsettings.set("debutj",debutJour.getSelectedItem().toString());
+                    Main.calsettings.set("dursoutenance", creneau.getText());
+                    Main.calsettings.set("nbsoutenance", soutenance.getText());
+                    Main.calsettings.set("debutj", debutJour.getSelectedItem().toString());
                     Main.calsettings.set("finj", finJour.getSelectedItem().toString());
 
 
@@ -109,7 +109,6 @@ public class FCal extends FTab{
                 refresh();
 
 
-
             }
         }
 
@@ -123,6 +122,20 @@ public class FCal extends FTab{
                     okPlageJour.setEnabled(false);
             }
         });
+        debutJour.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                finJour.removeAllItems();
+                int tmp =Integer.parseInt(debutJour.getSelectedItem().toString());
+
+                for(tmp=tmp+1;tmp<20;tmp++){
+                    finJour.addItem(tmp);
+
+                }
+                refresh();
+            }
+        });
+
         pan().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {

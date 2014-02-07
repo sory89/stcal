@@ -1,6 +1,7 @@
+
 com.stcal
+com.stcal.control
+com.stcal.control.exceptions
 com.stcal.don
-com.stcal.exceptions
+com.stcal.don.manager
 com.stcal.fen
-com.stcal.json
-com.stcal.manager

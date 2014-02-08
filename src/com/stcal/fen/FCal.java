@@ -87,6 +87,7 @@ public class FCal extends FTab{
                 datechoisis = chooserDebut.getSelection().iterator();
                 PP = new parserPeriod(datechoisis);
                 recupDates = PP.getDates();
+
                 pan().removeAll();
                 try {
                     Main.calsettings.set("cal", recupDates.toString());

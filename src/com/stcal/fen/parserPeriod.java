@@ -49,16 +49,16 @@ public class parserPeriod {
                     starttmp=new GregorianCalendar(end.get(Calendar.YEAR),0,1);
                      while(endtmp.get(Calendar.DAY_OF_YEAR)>=start.get(Calendar.DAY_OF_YEAR)){
                          if(start.get(Calendar.DAY_OF_WEEK)!=Calendar.SATURDAY && start.get(Calendar.DAY_OF_WEEK)!=Calendar.SUNDAY) {
-                         parse = new parserDate(start);
-                             dates.add(parse.getD());
+
+                             dates.add(start);
 
                          }
                          start.add(Calendar.DAY_OF_YEAR,1);
                      }
                     while(end.get(Calendar.DAY_OF_YEAR)>=starttmp.get(Calendar.DAY_OF_YEAR)){
                         if(starttmp.get(Calendar.DAY_OF_WEEK)!=Calendar.SATURDAY && starttmp.get(Calendar.DAY_OF_WEEK)!=Calendar.SUNDAY) {
-                            parse = new parserDate(starttmp);
-                            dates.add(parse.getD());
+
+                            dates.add(starttmp);
 
                         }
                         starttmp.add(Calendar.DAY_OF_YEAR,1);
@@ -69,8 +69,9 @@ public class parserPeriod {
 
                     while(end.get(Calendar.DAY_OF_YEAR)>=start.get(Calendar.DAY_OF_YEAR)){
                         if(start.get(Calendar.DAY_OF_WEEK)!=Calendar.SATURDAY && start.get(Calendar.DAY_OF_WEEK)!=Calendar.SUNDAY) {
-                            parse = new parserDate(start);
-                            dates.add(parse.getD());
+
+                            dates.add(start);
+
 
                         }
                         start.add(Calendar.DAY_OF_YEAR,1);

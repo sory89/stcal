@@ -14,7 +14,7 @@ import java.util.*;
 public class parserPeriod {
     protected parserDate parse = null;
     protected Iterator<Period> period = null;
-    protected List<Calendar> dates = new ArrayList<Calendar>();
+    protected ArrayList<Calendar> dates = new ArrayList<Calendar>();
 
 
 
@@ -33,24 +33,28 @@ public class parserPeriod {
               parse=null;
             if(tmp.isOneDate()){
 
-              parse = new parserDate(tmp.getStartDate());
 
 
-               dates.add(parse.getD());
+
+               dates.add((Calendar)tmp.getStartDate().clone());
 
 
             }
             else{
                start=tmp.getStartDate();
                end = tmp.getEndDate();
+                System.out.println("Nouvelle periode");
+                System.out.println(start);
+                System.out.println(end);
 
                 if(start.get(Calendar.YEAR)!=end.get(Calendar.YEAR)){
+                    System.out.println("differente année");
                     endtmp=new GregorianCalendar(start.get(Calendar.YEAR),11,31);
                     starttmp=new GregorianCalendar(end.get(Calendar.YEAR),0,1);
                      while(endtmp.get(Calendar.DAY_OF_YEAR)>=start.get(Calendar.DAY_OF_YEAR)){
                          if(start.get(Calendar.DAY_OF_WEEK)!=Calendar.SATURDAY && start.get(Calendar.DAY_OF_WEEK)!=Calendar.SUNDAY) {
 
-                             dates.add(start);
+                             dates.add((Calendar)start.clone());
 
                          }
                          start.add(Calendar.DAY_OF_YEAR,1);
@@ -58,7 +62,7 @@ public class parserPeriod {
                     while(end.get(Calendar.DAY_OF_YEAR)>=starttmp.get(Calendar.DAY_OF_YEAR)){
                         if(starttmp.get(Calendar.DAY_OF_WEEK)!=Calendar.SATURDAY && starttmp.get(Calendar.DAY_OF_WEEK)!=Calendar.SUNDAY) {
 
-                            dates.add(starttmp);
+                            dates.add((Calendar)starttmp.clone());
 
                         }
                         starttmp.add(Calendar.DAY_OF_YEAR,1);
@@ -70,14 +74,16 @@ public class parserPeriod {
                     while(end.get(Calendar.DAY_OF_YEAR)>=start.get(Calendar.DAY_OF_YEAR)){
                         if(start.get(Calendar.DAY_OF_WEEK)!=Calendar.SATURDAY && start.get(Calendar.DAY_OF_WEEK)!=Calendar.SUNDAY) {
 
-                            dates.add(start);
+                            dates.add((Calendar)start.clone());
+
 
 
                         }
-                        start.add(Calendar.DAY_OF_YEAR,1);
+                       start.add(Calendar.DAY_OF_YEAR,1);
                     }
 
                 }
+
 
 
 
@@ -88,7 +94,7 @@ public class parserPeriod {
 
     }
 
-    public List<Calendar> getDates(){
+    public ArrayList<Calendar> getDates(){
 
 
         return dates;

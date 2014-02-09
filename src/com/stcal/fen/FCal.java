@@ -42,7 +42,7 @@ public class FCal extends FTab{
     protected JFormattedTextField creneau = null;
     protected JFormattedTextField soutenance = null;
     protected Iterator<Period> datechoisis=null;
-    protected List<Calendar> recupDates = null;
+    protected ArrayList<Calendar> recupDates = null;
     protected  parserPeriod PP = null;
 
 
@@ -87,7 +87,9 @@ public class FCal extends FTab{
                 datechoisis = chooserDebut.getSelection().iterator();
                 PP = new parserPeriod(datechoisis);
                 recupDates = PP.getDates();
-
+                Iterator<Calendar> test = recupDates.iterator();
+                while (test.hasNext())
+                    System.out.println(test.next());
                 pan().removeAll();
                 try {
                     Main.calsettings.set("cal", recupDates.toString());

@@ -10,7 +10,6 @@ import com.stcal.control.exceptions.UncreatableSettingException;
 import com.stcal.control.exceptions.UnopenableSettingException;
 import com.stcal.don.*;
 import com.stcal.fen.*;
-import org.json.JSONException;
 
 import java.awt.*;
 import java.lang.reflect.Method;
@@ -91,10 +90,10 @@ public class Main {
      * @return faux si le nom/prenom de l'etudiant/prof ne corresponde à personne
      */
     public static boolean lier(String etuPre, String etuNom, String tutPre, String tutNom){
-        Personne setu =  etu.search(etuPre,etuNom);
-        Personne stut =  prof.search(tutPre,tutNom);
+        DPersonne setu =  etu.search(etuPre,etuNom);
+        DPersonne stut =  prof.search(tutPre,tutNom);
         if (setu!=null && stut!=null){
-            stages.add(new Couple(setu,stut));
+            stages.add(new DCouple(setu,stut));
             stage.change();
             fenStatut("étudiant: " + etuPre + " " + etuNom + ", tuteur: " + tutPre + " " + tutNom + ", stage créé.");
             return true;
@@ -106,7 +105,7 @@ public class Main {
      * Supprime le lien entre un étudiant et un prof
      * @return vrai si la delier se passe correctement
      */
-    public static void delier(Personne etu){
+    public static void delier(DPersonne etu){
 
 
                       etu.setLie(false);
@@ -141,7 +140,7 @@ public class Main {
             System.err.println("Err: type de la personne inconnu.");
             return null;
         }
-        Personne selected = all.search(pre,nom);
+        DPersonne selected = all.search(pre,nom);
         if (selected==null){
             fenStatut("Err: personne non trouvé.");
             System.err.println("Err: personne non trouvé.");

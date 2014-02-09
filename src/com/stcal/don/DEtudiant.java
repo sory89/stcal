@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 
-public class DEtudiant extends Personne{
+public class DEtudiant extends DPersonne {
     private boolean lie;
 
     public DEtudiant(String nom, String prenom, ArrayList<String> infos, boolean lie) {

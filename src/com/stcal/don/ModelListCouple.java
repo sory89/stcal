@@ -27,7 +27,7 @@ public class ModelListCouple {
         cpl.getEtu().setLie(true);
     }
 
-    public void add(DEtudiant etu, Tuteur tut) {
+    public void add(DEtudiant etu, DTuteur tut) {
         if(etu.getLie()==false) {
             Couple cpl = new Couple(etu, tut);
             listCouple.add(cpl);

@@ -92,7 +92,7 @@ public class OSplitCsv {
 
             if (!er) {
             String split[] = ligne.split(SEPs);
-            Personne perso = new Personne(split[0],split[1]);
+            DPersonne perso = new DPersonne(split[0],split[1]);
             ArrayList<String> essai = new ArrayList<String>();
 
 

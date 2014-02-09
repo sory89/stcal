@@ -3,7 +3,7 @@ package com.stcal.don;
 import java.util.ArrayList;
 
 
-public class DCandide extends Personne {
+public class DCandide extends DPersonne {
 
     public DCandide(String nom, String prenom, ArrayList<String> infos) {
         super(nom, prenom, infos);

@@ -2,27 +2,27 @@ package com.stcal.don;
 
 
 public class Couple {
-    private Personne etu;
-    private Personne tut;
+    private DPersonne etu;
+    private DPersonne tut;
 
-    public Couple(Personne etu, Personne tut) {
+    public Couple(DPersonne etu, DPersonne tut) {
         this.etu = etu;
         this.tut = tut;
     }
 
-    public Personne getEtu() {
+    public DPersonne getEtu() {
         return etu;
     }
 
-    public void setEtu(Personne etu) {
+    public void setEtu(DPersonne etu) {
         this.etu = etu;
     }
 
-    public Personne getTut() {
+    public DPersonne getTut() {
         return tut;
     }
 
-    public void setTut(Personne tut) {
+    public void setTut(DPersonne tut) {
         this.tut = tut;
     }
 }

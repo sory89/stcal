@@ -2,40 +2,77 @@ package com.stcal.don;
 
 import java.util.ArrayList;
 
-public class DPersonne{
+/**
+ * Created with IntelliJ IDEA.
+ * User: val
+ * Date: 10/12/13
+ * Time: 11:39
+ * To change this template use File | Settings | File Templates.
+ */
+public class DPersonne {
 
-    protected ArrayList<String> info = new ArrayList<String>();
+    protected String nom;
+    protected String prenom;
+    protected ArrayList<String> infos; // catégorie : texte
 
-    public DPersonne(){}
 
-	public DPersonne(String lastname, String firstname){
-		info.add(0,firstname);
-        info.add(1,lastname);
-	}
+    public DPersonne(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
 
-    public void setInfo(String inf){
-        info.add(inf);
     }
-
-    public ArrayList<String> getInfo(){
-        return info;
+    public DPersonne(String nom, String prenom, ArrayList<String> infos) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.infos = infos;
     }
+    public DPersonne() {
 
-	public String getNom()	{
-		return info.get(1);
-	}
-
-	public String getPrenom(){
-		return info.get(0);
-	}
+    }
 
 
     public boolean is(String prenom,String nom){
-        return info.get(0).toLowerCase().equals(prenom.toLowerCase()) && info.get(1).toLowerCase().equals(nom.toLowerCase());
+        return this.prenom.equals(prenom) && this.nom.equals(nom);
+    }
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public ArrayList<String> getInfos() {
+        return infos;
+    }
+
+    public String getInfosAt(int index){
+
+        return infos.get(index);
+    }
+
+
+    public void setInfos(ArrayList<String> infos) {
+        this.infos = infos;
     }
 
     public String toString(){
-        return info.get(0) + " " + info.get(1);
+        return getClass().getName()+" : prenom = "+this.getPrenom()+" - nom = "+this.getNom();
+    }
+    public void setInfos(String s) {
+        this.infos.add(s);
     }
 
+
+    public void setLie(boolean lie) {
+
+    }
 }

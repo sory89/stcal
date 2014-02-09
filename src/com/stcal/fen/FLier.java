@@ -184,7 +184,7 @@ public class FLier extends FTab {
     public void resetCourant(){
         String html = "<html>";
         if (!selectedProfPre.equals("") && !selectedProfNom.equals("")){
-            html += "Tuteur: " + selectedProfPre + " " + selectedProfNom.toUpperCase() + "<br />";
+            html += "DTuteur: " + selectedProfPre + " " + selectedProfNom.toUpperCase() + "<br />";
         }
         if (!selectedEtuPre.equals("") && !selectedEtuNom.equals("")){
             html += "Étudiant: " + selectedEtuPre + " " + selectedEtuNom.toUpperCase() + "<br />";

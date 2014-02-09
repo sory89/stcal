@@ -3,9 +3,9 @@ package com.stcal.don;
 import java.util.ArrayList;
 
 
-public class Tuteur extends Personne {
+public class DTuteur extends DPersonne {
 
-    public Tuteur(String nom, String prenom, ArrayList<String> infos) {
+    public DTuteur(String nom, String prenom, ArrayList<String> infos) {
         super(nom, prenom, infos);
     }
 

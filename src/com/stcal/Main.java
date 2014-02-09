@@ -93,7 +93,7 @@ public class Main {
         DPersonne setu =  etu.search(etuPre,etuNom);
         DPersonne stut =  prof.search(tutPre,tutNom);
         if (setu!=null && stut!=null){
-            stages.add(new Couple(setu,stut));
+            stages.add(new DCouple(setu,stut));
             stage.change();
             fenStatut("étudiant: " + etuPre + " " + etuNom + ", tuteur: " + tutPre + " " + tutNom + ", stage créé.");
             return true;

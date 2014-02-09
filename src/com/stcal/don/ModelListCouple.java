@@ -4,32 +4,32 @@ import java.util.ArrayList;
 
 
 public class ModelListCouple {
-    ArrayList<Couple> listCouple;
+    ArrayList<DCouple> listCouple;
 
-    public ModelListCouple(ArrayList<Couple> list) {
+    public ModelListCouple(ArrayList<DCouple> list) {
         this.listCouple = list;
     }
 
     public ModelListCouple() {
-        this.listCouple = new ArrayList<Couple>();
+        this.listCouple = new ArrayList<DCouple>();
     }
 
-    public ArrayList<Couple> getList() {
+    public ArrayList<DCouple> getList() {
         return listCouple;
     }
 
-    public void setList(ArrayList<Couple> list) {
+    public void setList(ArrayList<DCouple> list) {
         this.listCouple = list;
     }
 
-    public void add(Couple cpl) {
+    public void add(DCouple cpl) {
         listCouple.add(cpl);
         cpl.getEtu().setLie(true);
     }
 
     public void add(DEtudiant etu, DTuteur tut) {
         if(etu.getLie()==false) {
-            Couple cpl = new Couple(etu, tut);
+            DCouple cpl = new DCouple(etu, tut);
             listCouple.add(cpl);
             cpl.getEtu().setLie(true);
         }
@@ -45,7 +45,7 @@ public class ModelListCouple {
         return this.listCouple.size();
     }
 
-    public Couple get(int i) {
+    public DCouple get(int i) {
         return this.listCouple.get(i);
     }
 

@@ -1,5 +1,6 @@
-package com.stcal.fen;
+package com.stcal.control;
 
+import com.stcal.control.parserDate;
 import datechooser.model.multiple.Period;
 
 import java.util.*;

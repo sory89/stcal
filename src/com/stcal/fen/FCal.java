@@ -1,23 +1,19 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
-import com.stcal.control.CALsettings;
 import com.stcal.control.exceptions.NoSuchSettingException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.control.exceptions.UncreatableSettingException;
+import com.stcal.control.parserPeriod;
 import datechooser.beans.DateChooserPanel;
 import datechooser.events.SelectionChangedEvent;
 import datechooser.events.SelectionChangedListener;
 import datechooser.model.multiple.Period;
 
 import javax.swing.*;
-import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.*;
-import java.text.ParseException;
 import java.util.*;
-import java.util.List;
-import java.util.regex.Pattern;
 
 public class FCal extends FTab{
 
@@ -49,12 +45,12 @@ public class FCal extends FTab{
     protected JButton okPlageJour = new JButton("Valider votre selection");
     protected boolean condition(){
 
-        if(!(finJour.getSelectedIndex()==-1) && !(debutJour.getSelectedIndex()==-1) && !(soutenance.getText().isEmpty()) && !chooserDebut.getSelectedPeriodSet().isEmpty() && !creneau.getText().isEmpty()) {
+        if(!(finJour.getSelectedIndex()==-1) && !(debutJour.getSelectedIndex()==-1) && !(soutenance.getText().isEmpty()) && soutenance.getText().matches("\\d{1,10}") && !chooserDebut.getSelectedPeriodSet().isEmpty() && creneau.getText().matches("\\d{1,10}") && !(creneau.getText().isEmpty())) {
 
             return true ;
 
         }
-              else {
+        else {
             return false;
         }
 
@@ -62,8 +58,9 @@ public class FCal extends FTab{
     public FCal() {
         super("Calendrier");
 
-        creneau = new JFormattedTextField();
-        soutenance = new JFormattedTextField();
+            creneau = new JFormattedTextField();
+            soutenance = new JFormattedTextField();
+
 
 
 
@@ -89,10 +86,23 @@ public class FCal extends FTab{
                 datechoisis = chooserDebut.getSelection().iterator();
                 PP = new parserPeriod(datechoisis);
                 recupDates = PP.getDates();
-                Iterator<Calendar> test = recupDates.iterator();
-                while (test.hasNext())
-                    System.out.println(test.next());
+
+                int trololo = Integer.parseInt(finJour.getSelectedItem().toString())-Integer.parseInt(debutJour.getSelectedItem().toString()) ;
+                trololo = (trololo*60)/Integer.parseInt(creneau.getText());
+                Object o[][]=new Object[trololo][recupDates.size()];
+                String s[]=new String[recupDates.size()];
+                for (int i=0;i<recupDates.size();i++){
+                    System.out.println(recupDates.get(i).getTime().toString());
+                }
+                ModeleTableau modeleTableau = new ModeleTableau(o,s);
+                JTable jTable=new JTable(modeleTableau);
+
+                jTable.setRowSelectionAllowed(false);
+                JScrollPane jScrollPane=new JScrollPane(jTable);
                 pan().removeAll();
+
+                pan().add(jScrollPane);
+
                 try {
                     Main.calsettings.set("cal", recupDates.toString());
                     Main.calsettings.set("dursoutenance", creneau.getText());
@@ -138,6 +148,7 @@ public class FCal extends FTab{
 
                 }
                 finJour.setSelectedIndex(-1);
+                okPlageJour.setEnabled(false);
                 refresh();
             }
         });

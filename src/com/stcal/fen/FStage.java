@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
+import com.stcal.don.Type;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +19,7 @@ public class FStage extends FTab {
     protected ArrayList<String> tutNom = new ArrayList<String>();
     protected String selectedEtuPre = "";
     protected String selectedEtuNom = "";
-    protected String selectedType = Main.NONE;
+    protected Type selectedType = Type.NONE;
     int i;
 
     /**
@@ -37,7 +38,7 @@ public class FStage extends FTab {
         Fetu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                askInfo(Fetu,Main.ETU);
+                askInfo(Fetu, Type.ETUDIANT);
             }
         });
         Fetu.addKeyListener(new KeyListener() {
@@ -47,7 +48,7 @@ public class FStage extends FTab {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                askInfo(Fetu, Main.ETU);
+                askInfo(Fetu, Type.ETUDIANT);
             }
 
             @Override
@@ -86,11 +87,11 @@ public class FStage extends FTab {
     /**
      *
      * @param pan
-     * @param type Constante de Main.ETU/Main.PROF/Main.NONE
+     * @param type Constante de Main.ETUDIANT/Main.TUTEUR/Main.NONE
      */
-    protected void askInfo(JList pan,String type){
+    protected void askInfo(JList pan,Type type){
         try {
-            if (type.equals(Main.ETU)){
+            if (type.equals(Type.ETUDIANT)){
                 selectedEtuPre = tutPre.get(pan.getLeadSelectionIndex());
                 selectedEtuNom = tutNom.get(pan.getLeadSelectionIndex());
                 setInfo(Main.personneInfo(type,selectedEtuPre, selectedEtuNom));

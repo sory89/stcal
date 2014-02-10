@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
+import com.stcal.don.Type;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -29,7 +30,7 @@ public class FMenu {
         openetu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.openFile(Main.ETU);
+                Main.openFile(Type.ETUDIANT);
             }
         });
         menufile.add(openetu);
@@ -38,7 +39,7 @@ public class FMenu {
         openprof.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.openFile(Main.PROF);
+                Main.openFile(Type.TUTEUR);
             }
         });
         menufile.add(openprof);

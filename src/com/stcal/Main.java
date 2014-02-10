@@ -17,10 +17,6 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static final String ETU = "etu";
-    public static final String PROF = "prof";
-    public static final String NONE = "";
-
     public static ModelListCouple stages = new ModelListCouple();
     private static DListe etu = new DListe();
     private static  DListe prof = new DListe();
@@ -126,13 +122,13 @@ public class Main {
         return etu;
     }
 
-    public static ArrayList<String> personneInfo(String type,String pre,String nom){
+    public static ArrayList<String> personneInfo(Type type,String pre,String nom){
         ArrayList<String> details = new ArrayList<String>();
         DListe all;
-        if (type.equals(ETU)){
+        if (type.equals(Type.ETUDIANT)){
             all = etu;
         }
-        else if (type.equals(PROF)){
+        else if (type.equals(Type.TUTEUR)){
             all = prof;
         }
         else {
@@ -160,23 +156,23 @@ public class Main {
 
     /**
      * Lance la procedure d'ouverture de fichier
-     * @param type type du contenu du fichier Main.PROF/Main.ETU
+     * @param type type du contenu du fichier Main.TUTEUR/Main.ETUDIANT
      */
-    public static void openFile(String type){
+    public static void openFile(Type type){
         DListe nouveau;
         fenStatut("Navigateur de fichier.");
         finder.show();
         if (finder.status()==FChooser.CHOSEN){
             try {
                 nouveau = OSplitCsv.splitcsv(finder.file());
-                if (type.equals(ETU)){
+                if (type.equals(Type.ETUDIANT)){
                     for (int i=0;i<nouveau.nbPersonne();i++){
                         lier.addEtu(nouveau.getPersonne(i).getPrenom(),nouveau.getPersonne(i).getNom());
                     }
                     etu.add(nouveau);
                     fenStatut(nouveau.nbPersonne() + " étudiants ajoutés de " + finder.path());
                 }
-                else if (type.equals(PROF)){
+                else if (type.equals(Type.TUTEUR)){
                     for (int i=0;i<nouveau.nbPersonne();i++){
                         lier.addProf(nouveau.getPersonne(i).getPrenom(),nouveau.getPersonne(i).getNom());
                     }

@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
+import com.stcal.don.Type;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +24,7 @@ public class FLier extends FTab {
     protected int selectedEtuIndex = 0;
     protected String selectedProfPre = "";
     protected String selectedProfNom = "";
-    protected String selectedType = Main.NONE;
+    protected Type selectedType = Type.NONE;
     protected JList Fetu;
     protected JScrollPane jScrollPane;
 
@@ -35,7 +36,7 @@ public class FLier extends FTab {
         Fprof.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                askInfo(Fprof,Main.PROF);
+                askInfo(Fprof, Type.TUTEUR);
             }
         });
         Fprof.addKeyListener(new KeyListener() {
@@ -46,7 +47,7 @@ public class FLier extends FTab {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                askInfo(Fprof, Main.PROF);
+                askInfo(Fprof, Type.TUTEUR);
             }
 
             @Override
@@ -67,7 +68,7 @@ public class FLier extends FTab {
         opt1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.openFile(Main.ETU);
+                Main.openFile(Type.ETUDIANT);
             }
         });
         option.add(opt1);
@@ -76,7 +77,7 @@ public class FLier extends FTab {
         opt2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.openFile(Main.PROF);
+                Main.openFile(Type.TUTEUR);
             }
         });
         option.add(opt2);
@@ -88,7 +89,7 @@ public class FLier extends FTab {
         Fetu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                askInfo(Fetu, Main.ETU);
+                askInfo(Fetu, Type.ETUDIANT);
             }
         });
         Fetu.addKeyListener(new KeyListener() {
@@ -99,7 +100,7 @@ public class FLier extends FTab {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                askInfo(Fetu, Main.ETU);
+                askInfo(Fetu, Type.ETUDIANT);
             }
 
             @Override
@@ -112,19 +113,19 @@ public class FLier extends FTab {
         refresh();
     }
 
-    protected void askInfo(JList pan,String type){
+    protected void askInfo(JList pan,Type type){
         try {
-            if (type.equals(Main.ETU)){
+            if (type.equals(Type.ETUDIANT)){
                 selectedEtuIndex = pan.getLeadSelectionIndex();
                 selectedEtuPre = prenomEtu.get(selectedEtuIndex);
                 selectedEtuNom = nomEtu.get(selectedEtuIndex);
-                setInfo(Main.personneInfo(Main.ETU,selectedEtuPre, selectedEtuNom));
+                setInfo(Main.personneInfo(Type.ETUDIANT,selectedEtuPre, selectedEtuNom));
 
             }
-            else if (type.equals(Main.PROF)){
+            else if (type.equals(Type.TUTEUR)){
                 selectedProfPre = prenomProf.get(pan.getLeadSelectionIndex());
                 selectedProfNom = nomProf.get(pan.getLeadSelectionIndex());
-                setInfo(Main.personneInfo(Main.PROF,selectedProfPre, selectedProfNom));
+                setInfo(Main.personneInfo(Type.TUTEUR,selectedProfPre, selectedProfNom));
             }
             selectedType = type;
             refresh();
@@ -150,7 +151,7 @@ public class FLier extends FTab {
             opt1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Main.openFile(Main.ETU);
+                    Main.openFile(Type.ETUDIANT);
                 }
             });
             option.add(opt1);
@@ -162,7 +163,7 @@ public class FLier extends FTab {
             opt2.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Main.openFile(Main.PROF);
+                    Main.openFile(Type.TUTEUR);
                 }
             });
             option.add(opt2);
@@ -205,11 +206,11 @@ public class FLier extends FTab {
         refresh();
     }
 
-    public void add(String type,String pre,String nom){
-        if (type.equals(Main.ETU)){
+    public void add(Type type,String pre,String nom){
+        if (type.equals(Type.ETUDIANT)){
             addEtu(pre,nom);
         }
-        else if (type.equals(Main.PROF)){
+        else if (type.equals(Type.TUTEUR)){
             addProf(pre,nom);
         }
         else {

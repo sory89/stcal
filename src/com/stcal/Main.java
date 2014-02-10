@@ -72,7 +72,7 @@ public class Main {
                 System.out.println("Main: exporter");
             }
             catch (Exception x){
-                System.err.println("erreur ecriture fichier");
+                System.err.println("Erreur écriture fichier");
             }
         }
     }
@@ -106,7 +106,7 @@ public class Main {
 
                       etu.setLie(false);
 
-                fenStatut(", etudiant: " + etu.getPrenom() + " " + etu.getNom() + ", stage supprimé.");
+                fenStatut(", étudiant: " + etu.getPrenom() + " " + etu.getNom() + ", stage supprimé.");
 
 
 
@@ -138,8 +138,8 @@ public class Main {
         }
         DPersonne selected = all.search(pre,nom);
         if (selected==null){
-            fenStatut("Err: personne non trouvé.");
-            System.err.println("Err: personne non trouvé.");
+            fenStatut("Err : personne non trouvée.");
+            System.err.println("Err : personne non trouvée.");
             return null;
         }
         for (int i=0;i<all.getLabels().size();i++){

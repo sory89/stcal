@@ -20,12 +20,4 @@ public class DTuteur extends DPersonne {
         return super.toString();
     }
 
-    public boolean getLie() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-
-    public void setLie(boolean lie) {
-
-    }
 }

@@ -1,4 +1,4 @@
-package com.stcal.don;
+package com.stcal.control.exceptions;
 
 public class MaxSoutenanceException extends Exception
 {

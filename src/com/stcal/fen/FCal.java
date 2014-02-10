@@ -49,7 +49,7 @@ public class FCal extends FTab{
     protected JButton okPlageJour = new JButton("Valider votre selection");
     protected boolean condition(){
 
-        if(!(soutenance.getText().isEmpty()) && !chooserDebut.getSelectedPeriodSet().isEmpty() && !creneau.getText().isEmpty()) {
+        if(!(finJour.getSelectedIndex()==-1) && !(debutJour.getSelectedIndex()==-1) && !(soutenance.getText().isEmpty()) && !chooserDebut.getSelectedPeriodSet().isEmpty() && !creneau.getText().isEmpty()) {
 
             return true ;
 
@@ -81,9 +81,11 @@ public class FCal extends FTab{
                       okPlageJour.setEnabled(false);
               }
           });
-        okPlageJour.addMouseListener(new MouseAdapter() {
+        okPlageJour.addActionListener(new ActionListener() {
+
+
             @Override
-            public void mouseReleased(MouseEvent e) {
+            public void actionPerformed(ActionEvent e) {
                 datechoisis = chooserDebut.getSelection().iterator();
                 PP = new parserPeriod(datechoisis);
                 recupDates = PP.getDates();
@@ -135,6 +137,7 @@ public class FCal extends FTab{
                     finJour.addItem(tmp);
 
                 }
+                finJour.setSelectedIndex(-1);
                 refresh();
             }
         });
@@ -144,6 +147,7 @@ public class FCal extends FTab{
             public void keyTyped(KeyEvent e) {
                 if(condition())
                     okPlageJour.setEnabled(true);
+
                 else
                     okPlageJour.setEnabled(false);
             }

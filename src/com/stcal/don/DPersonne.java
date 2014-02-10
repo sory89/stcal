@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Time: 11:39
  * To change this template use File | Settings | File Templates.
  */
-public class DPersonne {
+public abstract class DPersonne {
 
     protected String nom;
     protected String prenom;

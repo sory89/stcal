@@ -111,7 +111,7 @@ public class Main {
 
 
     }
-    
+
     public static ArrayList<String> etuStage(String profPre,String profNom){
         ArrayList<String> etu = new ArrayList<String>();
         for (int i=0;i<stages.size();i++){
@@ -164,7 +164,7 @@ public class Main {
         finder.show();
         if (finder.status()==FChooser.CHOSEN){
             try {
-                nouveau = OSplitCsv.splitcsv(finder.file());
+                nouveau = OSplitCsv.splitcsv(finder.file(), type.toString());
                 if (type.equals(Type.ETUDIANT)){
                     for (int i=0;i<nouveau.nbPersonne();i++){
                         lier.addEtu(nouveau.getPersonne(i).getPrenom(),nouveau.getPersonne(i).getNom());

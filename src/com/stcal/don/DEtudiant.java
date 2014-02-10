@@ -12,6 +12,11 @@ public class DEtudiant extends DPersonne {
         this.lie = lie;
     }
 
+    public DEtudiant(String nom, String prenom) {
+        super(nom, prenom);
+        this.lie = false;
+    }
+
     public boolean getLie() {
         return lie;
     }

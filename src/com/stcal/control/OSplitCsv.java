@@ -1,5 +1,6 @@
 package com.stcal.control;
 
+import com.stcal.Main;
 import com.stcal.don.*;
 import javax.swing.*;
 
@@ -17,7 +18,7 @@ public class OSplitCsv {
     public static final char SEP = ';';
 
 
-    public static DListe splitcsv(File file) throws Exception {
+    public static DListe splitcsv(File file, String type) throws Exception {
         String ligne,errf="Les erreurs suivantes ont été detectées dans le fichier CSV : \n",warf="";
         char cp=' ';
         int nlab=1,nlig=1,nligb=0,nligv=0;
@@ -92,8 +93,13 @@ public class OSplitCsv {
 
             if (!er) {
             String split[] = ligne.split(SEPs);
-            DPersonne perso = new DPersonne(split[0],split[1]);
-            ArrayList<String> essai = new ArrayList<String>();
+                DPersonne perso = null;
+                if(type.toString() == Type.ETUDIANT.toString())
+                    perso = new DEtudiant(split[0],split[1]);
+                if(type.toString() == Type.TUTEUR.toString())
+                    perso = new DTuteur(split[0],split[1]);
+
+                ArrayList<String> essai = new ArrayList<String>();
 
 
             for (int i=2;i<split.length;i++){

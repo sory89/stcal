@@ -60,7 +60,7 @@ public class FCal extends FTab{
 
     }
     public FCal() {
-        super("cal");
+        super("Calendrier");
 
         creneau = new JFormattedTextField();
         soutenance = new JFormattedTextField();

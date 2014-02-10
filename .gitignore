@@ -6,6 +6,8 @@
 
 *.swp
 
-.out/
+out/
+
+*.jean.*
 
 com/stcal/Dev.java

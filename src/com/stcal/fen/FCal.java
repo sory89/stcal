@@ -16,7 +16,7 @@ import java.awt.event.*;
 import java.util.*;
 
 public class FCal extends FTab{
-
+    protected DefaultListModel etu = new DefaultListModel();
     protected JPanel test1 = new JPanel();
     protected JPanel test2 = new JPanel();
     protected JPanel panfin = new JPanel();
@@ -86,22 +86,33 @@ public class FCal extends FTab{
                 datechoisis = chooserDebut.getSelection().iterator();
                 PP = new parserPeriod(datechoisis);
                 recupDates = PP.getDates();
+                pan().removeAll();
+                pan().setLayout(new GridLayout(0,recupDates.size()+1));
 
                 int trololo = Integer.parseInt(finJour.getSelectedItem().toString())-Integer.parseInt(debutJour.getSelectedItem().toString()) ;
                 trololo = (trololo*60)/Integer.parseInt(creneau.getText());
                 Object o[][]=new Object[trololo][recupDates.size()];
-                String s[]=new String[recupDates.size()];
-                for (int i=0;i<recupDates.size();i++){
-                    System.out.println(recupDates.get(i).getTime().toString());
+                String s[] =new String[recupDates.size()];
+                final JList Fetu = new JList(etu);
+                 int j ;
+                for(j=0;j<Main.stages.size();j++){
+                    etu.addElement(Main.stages.get(j).getEtu());
+
+
                 }
-                ModeleTableau modeleTableau = new ModeleTableau(o,s);
-                JTable jTable=new JTable(modeleTableau);
+                pan().add(Fetu);
+                for (int i=0;i<recupDates.size();i++){
+                    String[]  caca=new String[1];
+                    caca[0]=""+recupDates.get(i).get(Calendar.DAY_OF_MONTH)+"/"+(recupDates.get(i).get(Calendar.MONTH)+1)+"/"+recupDates.get(i).get(Calendar.YEAR)+"" ;
 
-                jTable.setRowSelectionAllowed(false);
-                JScrollPane jScrollPane=new JScrollPane(jTable);
-                pan().removeAll();
+                    pan().add(new JScrollPane(new JTable(new Object[trololo][1],caca)));
+                }
 
-                pan().add(jScrollPane);
+
+
+                      refresh();
+
+
 
                 try {
                     Main.calsettings.set("cal", recupDates.toString());

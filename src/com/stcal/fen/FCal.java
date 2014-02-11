@@ -11,6 +11,7 @@ import datechooser.events.SelectionChangedListener;
 import datechooser.model.multiple.Period;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
@@ -85,7 +86,7 @@ public class FCal extends FTab{
             public void actionPerformed(ActionEvent e) {
                 datechoisis = chooserDebut.getSelection().iterator();
                 PP = new parserPeriod(datechoisis);
-                recupDates = PP.getDates();
+                recupDates = (ArrayList<Calendar>) PP.getDates();
                 pan().removeAll();
                 pan().setLayout(new GridLayout(0,recupDates.size()+1));
 
@@ -97,20 +98,22 @@ public class FCal extends FTab{
                  int j ;
                 for(j=0;j<Main.stages.size();j++){
                     etu.addElement(Main.stages.get(j).getEtu());
-
-
                 }
-                pan().add(Fetu);
-                for (int i=0;i<recupDates.size();i++){
-                    String[]  caca=new String[1];
-                    caca[0]=""+recupDates.get(i).get(Calendar.DAY_OF_MONTH)+"/"+(recupDates.get(i).get(Calendar.MONTH)+1)+"/"+recupDates.get(i).get(Calendar.YEAR)+"" ;
+                String titre[]=new String[recupDates.size()];
+                Object mod[][]=new Object[recupDates.size()][trololo];
 
-                    pan().add(new JScrollPane(new JTable(new Object[trololo][1],caca)));
-                }
+                for(int i=0;i<recupDates.size();i++)
+                    titre[i] = "" + recupDates.get(i).get(Calendar.DAY_OF_MONTH) + "/" + (recupDates.get(i).get(Calendar.MONTH) + 1) + "/" + recupDates.get(i).get(Calendar.YEAR) + "";
 
+                DefaultTableModel tableModel=new DefaultTableModel(mod,titre);
 
+                JTable jTable=new JTable(tableModel);
 
-                      refresh();
+                jTable.setRowHeight(60,60);
+                pan().setLayout(new BorderLayout());
+                pan().add(new JScrollPane(jTable),BorderLayout.EAST);
+                pan().add(Fetu,BorderLayout.CENTER);
+                refresh();
 
 
 

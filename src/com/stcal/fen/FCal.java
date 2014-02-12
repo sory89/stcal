@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
+import com.stcal.control.Datas;
 import com.stcal.control.exceptions.NoSuchSettingException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.control.exceptions.UncreatableSettingException;
@@ -104,8 +105,8 @@ public class FCal extends FTab{
                 trololo = (trololo*60)/Integer.parseInt(creneau.getText());
                 final JList Fetu = new JList(etu);
                 int j ;
-                for(j=0;j<Main.stages.size();j++){
-                    etu.addElement(Main.stages.get(j).getEtu());
+                for(j=0;j< Datas.stages.size();j++){
+                    etu.addElement(Datas.stages.get(j).getEtu());
                 }
                 titre=new String[recupDates.size()];
                 mod=new Object[recupDates.size()][trololo];

@@ -8,7 +8,6 @@ import java.util.Calendar;
 
 public class DCreneau {
     private ArrayList<Soutenance> ListSoutenance = new ArrayList();
-    private static int duree;
     private static int max_sout;
     private Calendar date_debut;
     private Calendar date_fin;
@@ -33,15 +32,7 @@ public class DCreneau {
         this.date_fin = date_fin;
     }
 
-    public int getDuree()
-    {
-        return duree;
-    }
 
-    public void setDuree(int duree)
-    {
-        this.duree = duree;
-    }
 
     public int getMax_sout()
     {
@@ -63,6 +54,12 @@ public class DCreneau {
     {
         int position = ListSoutenance.indexOf(sout);
         ListSoutenance.remove(position);
+    }
+    public String toString(){
+
+
+        return  ""+this.date_debut.get(Calendar.HOUR_OF_DAY)+"H";
+
     }
 
 }

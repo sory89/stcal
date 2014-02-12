@@ -117,15 +117,21 @@ public class FCal extends FTab{
                 int fj =Integer.parseInt(finJour.getSelectedItem().toString());
                 int k;
                 int i;
-               for(i=0;i<trololo;i++){
-                   for(k=0;k<recupDates.size();k++){
+                for(k=0;k<recupDates.size();k++){
+                    for(i=0;i<trololo;i++){
 
-                   }
+                        o[i][k]=new DCreneau();
+                        o[i][k].setDate_debut(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR),recupDates.get(k).get(Calendar.MONTH),recupDates.get(k).get(Calendar.DAY_OF_MONTH),dj+i,0));
+                        o[i][k].setDate_fin(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR),recupDates.get(k).get(Calendar.MONTH),recupDates.get(k).get(Calendar.DAY_OF_MONTH),dj+i+1,0));
+                        o[i][k].setMax_sout(Integer.parseInt(soutenance.getText()));
+
+
+                    }
 
 
 
 
-               }
+                }
                 pan().addComponentListener(new ComponentListener() {
                     @Override
                     public void componentResized(ComponentEvent e) {

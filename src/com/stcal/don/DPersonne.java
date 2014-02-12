@@ -65,7 +65,10 @@ public abstract class DPersonne {
     }
 
     public String toString(){
-        return getClass().getName()+" : prenom = "+this.getPrenom()+" - nom = "+this.getNom();
+        return this.getPrenom()+" "+this.getNom();
+    }
+    public String toStringc(){
+        return this.getPrenom()+" "+this.getNom();
     }
     public void setInfos(String s) {
         this.infos.add(s);

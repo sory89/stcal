@@ -1,26 +1,24 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
-import com.stcal.control.Datas;
 import com.stcal.control.exceptions.NoSuchSettingException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.control.exceptions.UncreatableSettingException;
 import com.stcal.control.parserPeriod;
+import com.stcal.don.DCreneau;
 import datechooser.beans.DateChooserPanel;
 import datechooser.events.SelectionChangedEvent;
 import datechooser.events.SelectionChangedListener;
 import datechooser.model.multiple.Period;
 
 import javax.swing.*;
+import javax.swing.TransferHandler;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.*;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Iterator;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.*;
 
 public class FCal extends FTab{
     protected DefaultListModel etu = new DefaultListModel();
@@ -40,18 +38,13 @@ public class FCal extends FTab{
     protected JComboBox debutJour = new JComboBox(tab);
     protected JComboBox finJour = new JComboBox();
     public DateChooserPanel chooserDebut= new DateChooserPanel();
-
+    protected JTable jt=null;
 
     protected JFormattedTextField creneau = null;
     protected JFormattedTextField soutenance = null;
     protected Iterator<Period> datechoisis=null;
     protected ArrayList<Calendar> recupDates = null;
     protected  parserPeriod PP = null;
-
-    protected String titre[];
-    protected Object mod[][];
-    protected DefaultTableModel tableModel;
-    protected JTable jTable;
 
 
     protected JButton okPlageJour = new JButton("Valider votre selection");
@@ -67,11 +60,12 @@ public class FCal extends FTab{
         }
 
     }
+
     public FCal() {
         super("Calendrier");
 
-        creneau = new JFormattedTextField();
-        soutenance = new JFormattedTextField();
+            creneau = new JFormattedTextField();
+            soutenance = new JFormattedTextField();
 
 
 
@@ -98,83 +92,100 @@ public class FCal extends FTab{
                 datechoisis = chooserDebut.getSelection().iterator();
                 PP = new parserPeriod(datechoisis);
                 recupDates = (ArrayList<Calendar>) PP.getDates();
+
+               final int trololo = ((Integer.parseInt(finJour.getSelectedItem().toString())-Integer.parseInt(debutJour.getSelectedItem().toString()) )*60)/Integer.parseInt(creneau.getText());
+
                 pan().removeAll();
-                pan().setLayout(new GridLayout(0,recupDates.size()+1));
+                pan().setLayout(new GridBagLayout());
+                GridBagConstraints c= new GridBagConstraints();
 
-                int trololo = Integer.parseInt(finJour.getSelectedItem().toString())-Integer.parseInt(debutJour.getSelectedItem().toString()) ;
-                trololo = (trololo*60)/Integer.parseInt(creneau.getText());
-                final JList Fetu = new JList(etu);
-                int j ;
-                for(j=0;j< Datas.stages.size();j++){
-                    etu.addElement(Datas.stages.get(j).getEtu());
+                c.fill = GridBagConstraints.BOTH;
+
+                c.gridx=0;
+                c.gridy=0;
+
+                c.gridwidth=1;
+                c.gridheight=trololo;
+                c.weightx=0;
+                c.weighty=1;
+                c.ipadx=200;
+
+
+
+                DCreneau o[][]=new DCreneau[trololo][recupDates.size()];
+                int dj = Integer.parseInt(debutJour.getSelectedItem().toString());
+                int fj =Integer.parseInt(finJour.getSelectedItem().toString());
+                int k;
+                int i;
+                for(k=0;k<recupDates.size();k++){
+                    for(i=0;i<trololo;i++){
+
+                        o[i][k]=new DCreneau();
+                        o[i][k].setDate_debut(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR),recupDates.get(k).get(Calendar.MONTH),recupDates.get(k).get(Calendar.DAY_OF_MONTH),dj+i,0));
+                        o[i][k].setDate_fin(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR),recupDates.get(k).get(Calendar.MONTH),recupDates.get(k).get(Calendar.DAY_OF_MONTH),dj+i+1,0));
+                        o[i][k].setMax_sout(Integer.parseInt(soutenance.getText()));
+
+
+                    }
+
+
+
+
                 }
-                titre=new String[recupDates.size()];
-                mod=new Object[recupDates.size()][trololo];
-
-                for(int i=0;i<recupDates.size();i++)
-                    titre[i] = "" + recupDates.get(i).get(Calendar.DAY_OF_MONTH) + "/" + (recupDates.get(i).get(Calendar.MONTH) + 1) + "/" + recupDates.get(i).get(Calendar.YEAR) + "";
-                tableModel=new DefaultTableModel(mod,titre);
-                jTable=new JTable(tableModel);
-                jTable.setRowHeight(60,60);
-                jTable.setTransferHandler(new TransferHandler() {
-                    public boolean canImport(TransferHandler.TransferSupport support) {
-                        // for the demo, we'll only support drops (not clipboard paste)
-                        if (!support.isDrop()) {
-                            return false;
-                        }
-
-                        // we only import Strings
-                        if (!support.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-                            return false;
-                        }
-                        return true;
+                pan().addComponentListener(new ComponentListener() {
+                    @Override
+                    public void componentResized(ComponentEvent e) {
+                        jt.setRowHeight((pan().getHeight() - 20) / trololo);
                     }
-                    public boolean importData(TransferSupport support) {
-                        // if we can't handle the import, say so
-                        if (!canImport(support)) {
-                            return false;
-                        }
-                        // fetch the drop location
-                        JTable.DropLocation dl = (JTable.DropLocation) support
-                                .getDropLocation();
-                        int row = dl.getRow();
-                        // fetch the data and bail if this fails
-                        String data;
-                        try {
-                            data = (String) support.getTransferable().getTransferData(
-                                    DataFlavor.stringFlavor);
-                        } catch (UnsupportedFlavorException e) {
-                            return false;
-                        } catch (IOException e) {
-                            return false;
-                        }
-                        String[] rowData = data.split(",");
-                        tableModel.insertRow(row, rowData);
-                        Rectangle rect = jTable.getCellRect(row, 0, false);
-                        if (rect != null) {
-                            jTable.scrollRectToVisible(rect);
-                        }
-                        etu.removeAllElements();
-                        return true;
+
+                    @Override
+                    public void componentMoved(ComponentEvent e) {
+                        //To change body of implemented methods use File | Settings | File Templates.
+                    }
+
+                    @Override
+                    public void componentShown(ComponentEvent e) {
+                        //To change body of implemented methods use File | Settings | File Templates.
+                    }
+
+                    @Override
+                    public void componentHidden(ComponentEvent e) {
+                        //To change body of implemented methods use File | Settings | File Templates.
                     }
                 });
-                Fetu.setFocusable(false);
+                String titre[] =new String[recupDates.size()];
+                final JList Fetu = new JList(etu);
+                pan().add(new JScrollPane(Fetu),c);
+                 int j ;
+                for(j=0;j<Main.stages.size();j++){
+                    etu.addElement(Main.stages.get(j) );
+                }
                 Fetu.setDragEnabled(true);
-                Fetu.addMouseListener(new MouseAdapter() {
-                    public void mouseClicked(MouseEvent me) {
-                        if (SwingUtilities.isLeftMouseButton(me) && me.getClickCount() % 2 == 0) {
-                            String text = (String) etu.getElementAt(0);
-                            String[] rowData = text.split(",");
-                            tableModel.insertRow(jTable.getRowCount(), rowData);
-                            etu.removeAllElements();
-                        }
-                    }
-                });
 
 
-                pan().setLayout(new BorderLayout());
-                pan().add(new JScrollPane(jTable),BorderLayout.EAST);
-                pan().add(Fetu,BorderLayout.CENTER);
+                for(i=0;i<recupDates.size();i++)
+                    titre[i] = "" + recupDates.get(i).get(Calendar.DAY_OF_MONTH) + "/" + (recupDates.get(i).get(Calendar.MONTH) + 1) + "/" + recupDates.get(i).get(Calendar.YEAR) + "";
+
+
+
+                jt=new JTable(o,titre);
+                jt.setRowSelectionAllowed(false);
+                jt.setRowHeight((pan().getHeight() - 20) / trololo);
+                jt.setDropMode(DropMode.ON);
+
+                GridBagConstraints cc= new GridBagConstraints();
+                cc.fill = GridBagConstraints.BOTH;
+                cc.gridx=1;
+                cc.gridy=0;
+
+                cc.gridwidth=recupDates.size();
+                cc.gridheight=trololo+1;
+                cc.weightx=1;
+                cc.weighty=1;
+
+                pan().add(new JScrollPane(jt), cc);
+
+
                 refresh();
 
 
@@ -185,6 +196,8 @@ public class FCal extends FTab{
                     Main.calsettings.set("nbsoutenance", soutenance.getText());
                     Main.calsettings.set("debutj", debutJour.getSelectedItem().toString());
                     Main.calsettings.set("finj", finJour.getSelectedItem().toString());
+
+
                 } catch (NoSuchSettingException e1) {
                     e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }
@@ -196,6 +209,7 @@ public class FCal extends FTab{
                     e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }
                 refresh();
+
 
             }
         }

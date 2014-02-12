@@ -13,8 +13,13 @@ import datechooser.model.multiple.Period;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.*;
-import java.util.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
 
 public class FCal extends FTab{
     protected DefaultListModel etu = new DefaultListModel();
@@ -41,6 +46,11 @@ public class FCal extends FTab{
     protected Iterator<Period> datechoisis=null;
     protected ArrayList<Calendar> recupDates = null;
     protected  parserPeriod PP = null;
+
+    protected String titre[];
+    protected Object mod[][];
+    protected DefaultTableModel tableModel;
+    protected JTable jTable;
 
 
     protected JButton okPlageJour = new JButton("Valider votre selection");
@@ -92,24 +102,78 @@ public class FCal extends FTab{
 
                 int trololo = Integer.parseInt(finJour.getSelectedItem().toString())-Integer.parseInt(debutJour.getSelectedItem().toString()) ;
                 trololo = (trololo*60)/Integer.parseInt(creneau.getText());
-                Object o[][]=new Object[trololo][recupDates.size()];
-                String s[] =new String[recupDates.size()];
                 final JList Fetu = new JList(etu);
-                 int j ;
+                int j ;
                 for(j=0;j<Main.stages.size();j++){
                     etu.addElement(Main.stages.get(j).getEtu());
                 }
-                String titre[]=new String[recupDates.size()];
-                Object mod[][]=new Object[recupDates.size()][trololo];
+                titre=new String[recupDates.size()];
+                mod=new Object[recupDates.size()][trololo];
+
 
                 for(int i=0;i<recupDates.size();i++)
                     titre[i] = "" + recupDates.get(i).get(Calendar.DAY_OF_MONTH) + "/" + (recupDates.get(i).get(Calendar.MONTH) + 1) + "/" + recupDates.get(i).get(Calendar.YEAR) + "";
-
-                DefaultTableModel tableModel=new DefaultTableModel(mod,titre);
-
-                JTable jTable=new JTable(tableModel);
-
+                tableModel=new DefaultTableModel(mod,titre);
+                jTable=new JTable(tableModel);
                 jTable.setRowHeight(60,60);
+
+
+                jTable.setTransferHandler(new TransferHandler() {
+                    public boolean canImport(TransferHandler.TransferSupport support) {
+                        // for the demo, we'll only support drops (not clipboard paste)
+                        if (!support.isDrop()) {
+                            return false;
+                        }
+
+                        // we only import Strings
+                        if (!support.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+                            return false;
+                        }
+                        return true;
+                    }
+                    public boolean importData(TransferSupport support) {
+                        // if we can't handle the import, say so
+                        if (!canImport(support)) {
+                            return false;
+                        }
+                        // fetch the drop location
+                        JTable.DropLocation dl = (JTable.DropLocation) support
+                                .getDropLocation();
+                        int row = dl.getRow();
+                        // fetch the data and bail if this fails
+                        String data;
+                        try {
+                            data = (String) support.getTransferable().getTransferData(
+                                    DataFlavor.stringFlavor);
+                        } catch (UnsupportedFlavorException e) {
+                            return false;
+                        } catch (IOException e) {
+                            return false;
+                        }
+                        String[] rowData = data.split(",");
+                        tableModel.insertRow(row, rowData);
+                        Rectangle rect = jTable.getCellRect(row, 0, false);
+                        if (rect != null) {
+                            jTable.scrollRectToVisible(rect);
+                        }
+                        etu.removeAllElements();
+                        return true;
+                    }
+                });
+                Fetu.setFocusable(false);
+                Fetu.setDragEnabled(true);
+                Fetu.addMouseListener(new MouseAdapter() {
+                    public void mouseClicked(MouseEvent me) {
+                        if (SwingUtilities.isLeftMouseButton(me) && me.getClickCount() % 2 == 0) {
+                            String text = (String) etu.getElementAt(0);
+                            String[] rowData = text.split(",");
+                            tableModel.insertRow(jTable.getRowCount(), rowData);
+                            etu.removeAllElements();
+                        }
+                    }
+                });
+
+
                 pan().setLayout(new BorderLayout());
                 pan().add(new JScrollPane(jTable),BorderLayout.EAST);
                 pan().add(Fetu,BorderLayout.CENTER);

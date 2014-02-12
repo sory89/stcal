@@ -78,9 +78,7 @@ public class FStage extends FTab {
                 supprimer_stage(Fetu);
             }
         });
-        JButton supprimer1=new JButton("Supprimer etudiant");
         option.add(supprimer);
-        option.add(supprimer1);
         pan().add(right);
     }
 

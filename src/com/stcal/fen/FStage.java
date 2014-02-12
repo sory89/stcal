@@ -81,7 +81,6 @@ public class FStage extends FTab {
         option.add(supprimer);
         pan().add(right);
     }
-
     /**
      *
      * @param pan

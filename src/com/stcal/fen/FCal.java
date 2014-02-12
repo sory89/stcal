@@ -199,7 +199,6 @@ public class FCal extends FTab{
                 }
                 refresh();
 
-
             }
         }
 

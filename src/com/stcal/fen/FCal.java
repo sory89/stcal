@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
+import com.stcal.control.Datas;
 import com.stcal.control.exceptions.NoSuchSettingException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.control.exceptions.UncreatableSettingException;
@@ -157,8 +158,8 @@ public class FCal extends FTab{
                 final JList Fetu = new JList(etu);
                 pan().add(new JScrollPane(Fetu),c);
                  int j ;
-                for(j=0;j<Main.stages.size();j++){
-                    etu.addElement(Main.stages.get(j) );
+                for(j=0;j< Datas.stages.size();j++){
+                    etu.addElement(Datas.stages.get(j) );
                 }
                 Fetu.setDragEnabled(true);
 

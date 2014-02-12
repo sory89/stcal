@@ -5,15 +5,19 @@ import com.stcal.control.exceptions.NoSuchSettingException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.control.exceptions.UncreatableSettingException;
 import com.stcal.control.parserPeriod;
+import com.stcal.don.DCreneau;
 import datechooser.beans.DateChooserPanel;
 import datechooser.events.SelectionChangedEvent;
 import datechooser.events.SelectionChangedListener;
 import datechooser.model.multiple.Period;
 
 import javax.swing.*;
+import javax.swing.TransferHandler;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.*;
 
 public class FCal extends FTab{
@@ -34,7 +38,7 @@ public class FCal extends FTab{
     protected JComboBox debutJour = new JComboBox(tab);
     protected JComboBox finJour = new JComboBox();
     public DateChooserPanel chooserDebut= new DateChooserPanel();
-
+    protected JTable jt=null;
 
     protected JFormattedTextField creneau = null;
     protected JFormattedTextField soutenance = null;
@@ -56,6 +60,7 @@ public class FCal extends FTab{
         }
 
     }
+
     public FCal() {
         super("Calendrier");
 
@@ -87,32 +92,94 @@ public class FCal extends FTab{
                 datechoisis = chooserDebut.getSelection().iterator();
                 PP = new parserPeriod(datechoisis);
                 recupDates = (ArrayList<Calendar>) PP.getDates();
-                pan().removeAll();
-                pan().setLayout(new GridLayout(0,recupDates.size()+1));
 
-                int trololo = Integer.parseInt(finJour.getSelectedItem().toString())-Integer.parseInt(debutJour.getSelectedItem().toString()) ;
-                trololo = (trololo*60)/Integer.parseInt(creneau.getText());
-                Object o[][]=new Object[trololo][recupDates.size()];
-                String s[] =new String[recupDates.size()];
+               final int trololo = ((Integer.parseInt(finJour.getSelectedItem().toString())-Integer.parseInt(debutJour.getSelectedItem().toString()) )*60)/Integer.parseInt(creneau.getText());
+
+                pan().removeAll();
+                pan().setLayout(new GridBagLayout());
+                GridBagConstraints c= new GridBagConstraints();
+
+                c.fill = GridBagConstraints.BOTH;
+
+                c.gridx=0;
+                c.gridy=0;
+
+                c.gridwidth=1;
+                c.gridheight=trololo;
+                c.weightx=0;
+                c.weighty=1;
+                c.ipadx=200;
+
+
+
+                DCreneau o[][]=new DCreneau[trololo][recupDates.size()];
+                int dj = Integer.parseInt(debutJour.getSelectedItem().toString());
+                int fj =Integer.parseInt(finJour.getSelectedItem().toString());
+                int k;
+                int i;
+               for(i=0;i<trololo;i++){
+                   for(k=0;k<recupDates.size();k++){
+
+                   }
+
+
+
+
+               }
+                pan().addComponentListener(new ComponentListener() {
+                    @Override
+                    public void componentResized(ComponentEvent e) {
+                        jt.setRowHeight((pan().getHeight() - 20) / trololo);
+                    }
+
+                    @Override
+                    public void componentMoved(ComponentEvent e) {
+                        //To change body of implemented methods use File | Settings | File Templates.
+                    }
+
+                    @Override
+                    public void componentShown(ComponentEvent e) {
+                        //To change body of implemented methods use File | Settings | File Templates.
+                    }
+
+                    @Override
+                    public void componentHidden(ComponentEvent e) {
+                        //To change body of implemented methods use File | Settings | File Templates.
+                    }
+                });
+                String titre[] =new String[recupDates.size()];
                 final JList Fetu = new JList(etu);
+                pan().add(new JScrollPane(Fetu),c);
                  int j ;
                 for(j=0;j<Main.stages.size();j++){
-                    etu.addElement(Main.stages.get(j).getEtu());
+                    etu.addElement(Main.stages.get(j) );
                 }
-                String titre[]=new String[recupDates.size()];
-                Object mod[][]=new Object[recupDates.size()][trololo];
+                Fetu.setDragEnabled(true);
 
-                for(int i=0;i<recupDates.size();i++)
+
+                for(i=0;i<recupDates.size();i++)
                     titre[i] = "" + recupDates.get(i).get(Calendar.DAY_OF_MONTH) + "/" + (recupDates.get(i).get(Calendar.MONTH) + 1) + "/" + recupDates.get(i).get(Calendar.YEAR) + "";
 
-                DefaultTableModel tableModel=new DefaultTableModel(mod,titre);
 
-                JTable jTable=new JTable(tableModel);
 
-                jTable.setRowHeight(60,60);
-                pan().setLayout(new BorderLayout());
-                pan().add(new JScrollPane(jTable),BorderLayout.EAST);
-                pan().add(Fetu,BorderLayout.CENTER);
+                jt=new JTable(o,titre);
+                jt.setRowSelectionAllowed(false);
+                jt.setRowHeight((pan().getHeight() - 20) / trololo);
+                jt.setDropMode(DropMode.ON);
+
+                GridBagConstraints cc= new GridBagConstraints();
+                cc.fill = GridBagConstraints.BOTH;
+                cc.gridx=1;
+                cc.gridy=0;
+
+                cc.gridwidth=recupDates.size();
+                cc.gridheight=trololo+1;
+                cc.weightx=1;
+                cc.weighty=1;
+
+                pan().add(new JScrollPane(jt), cc);
+
+
                 refresh();
 
 

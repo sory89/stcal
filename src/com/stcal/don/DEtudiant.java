@@ -28,4 +28,7 @@ public class DEtudiant extends DPersonne {
     public String toString(){
         return super.toString()+" - lié = "+this.getLie();
     }
+    public String toStringc(){
+        return super.toString() ;
+    }
 }

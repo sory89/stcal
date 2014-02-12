@@ -21,7 +21,7 @@ public class Main {
     private static DListe etu = new DListe();
     private static  DListe prof = new DListe();
     private static FChooser finder = new FChooser();
-    private static FInterface fen = new FInterface(800,600);
+    public static FInterface fen = new FInterface(800,600);
     private static FLier lier = new FLier();
     private static FStage stage = new FStage();
     private static FTab cal = new FCal();

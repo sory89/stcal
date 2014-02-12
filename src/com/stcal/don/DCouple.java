@@ -25,6 +25,12 @@ public class DCouple {
     public DPersonne getTut(){
         return tut;
     }
+    public String toString(){
+
+
+        return ""+etu.getPrenom() +" "+etu.getNom()+""  ;
+
+    }
 
 
 

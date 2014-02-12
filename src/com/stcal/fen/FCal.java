@@ -110,7 +110,6 @@ public class FCal extends FTab{
                 titre=new String[recupDates.size()];
                 mod=new Object[recupDates.size()][trololo];
 
-
                 for(int i=0;i<recupDates.size();i++)
                     titre[i] = "" + recupDates.get(i).get(Calendar.DAY_OF_MONTH) + "/" + (recupDates.get(i).get(Calendar.MONTH) + 1) + "/" + recupDates.get(i).get(Calendar.YEAR) + "";
                 tableModel=new DefaultTableModel(mod,titre);

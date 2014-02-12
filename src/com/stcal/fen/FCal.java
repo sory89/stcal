@@ -116,8 +116,6 @@ public class FCal extends FTab{
                 tableModel=new DefaultTableModel(mod,titre);
                 jTable=new JTable(tableModel);
                 jTable.setRowHeight(60,60);
-
-
                 jTable.setTransferHandler(new TransferHandler() {
                     public boolean canImport(TransferHandler.TransferSupport support) {
                         // for the demo, we'll only support drops (not clipboard paste)

@@ -187,8 +187,6 @@ public class FCal extends FTab{
                     Main.calsettings.set("nbsoutenance", soutenance.getText());
                     Main.calsettings.set("debutj", debutJour.getSelectedItem().toString());
                     Main.calsettings.set("finj", finJour.getSelectedItem().toString());
-
-
                 } catch (NoSuchSettingException e1) {
                     e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }

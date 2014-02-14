@@ -8,6 +8,6 @@
 
 out/
 
-*.jean.*
+*.gnr.*
 
 com/stcal/Dev.java

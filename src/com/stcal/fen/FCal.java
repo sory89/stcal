@@ -44,7 +44,7 @@ public class FCal extends FTab{
     protected JComboBox finJour = new JComboBox();
     public DateChooserPanel chooserDebut= new DateChooserPanel();
     protected JTable jt=null;
-   protected JButton supprimers = new JButton("Supprimer ce stage");
+    protected JButton supprimers = new JButton("Supprimer ce stage");
     protected JFormattedTextField creneau = null;
     protected JFormattedTextField soutenance = null;
     protected Iterator<Period> datechoisis=null;
@@ -240,8 +240,8 @@ public class FCal extends FTab{
                 supprimers.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if(fs.getSelectedItem()!=-1){
-                          DCouple dfc= (DCouple) jls.getSelectedValue() ;
+                        if(fs.getSelectedItem()!=null){
+                            DCouple dfc= (DCouple) jls.getSelectedValue() ;
                             Main.stages.add(dfc);
                             DCreneau dc = (DCreneau) jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn());
                             dc.removedcp(dfc);

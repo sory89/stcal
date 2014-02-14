@@ -27,6 +27,7 @@ public class Main {
     private static FTab cal = new FCal();
     private static Settings dbsettings = new DBsettings();
     public static Settings calsettings= new CALsettings();
+    public static String[][] colors=null;
     /**
      * Construit l'environement graphique de l'application
      * @param args

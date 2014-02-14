@@ -49,6 +49,9 @@ public class ModelListCouple {
         return this.listCouple.get(i);
     }
 
+    public void remove(DCouple dc) {
+        this.listCouple.remove(dc);
+    }
     public void remove(int selectedIndex) {
         this.listCouple.remove(selectedIndex);
     }

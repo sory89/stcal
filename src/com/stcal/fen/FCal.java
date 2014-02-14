@@ -5,7 +5,10 @@ import com.stcal.control.exceptions.NoSuchSettingException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.control.exceptions.UncreatableSettingException;
 import com.stcal.control.parserPeriod;
+import com.stcal.don.CustomRenderer;
+import com.stcal.don.DCouple;
 import com.stcal.don.DCreneau;
+import com.stcal.don.Soutenance;
 import datechooser.beans.DateChooserPanel;
 import datechooser.events.SelectionChangedEvent;
 import datechooser.events.SelectionChangedListener;
@@ -13,7 +16,9 @@ import datechooser.model.multiple.Period;
 
 import javax.swing.*;
 import javax.swing.TransferHandler;
+import javax.swing.event.CellEditorListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
 import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
@@ -39,13 +44,13 @@ public class FCal extends FTab{
     protected JComboBox finJour = new JComboBox();
     public DateChooserPanel chooserDebut= new DateChooserPanel();
     protected JTable jt=null;
-
+   protected JButton supprimers = new JButton("Supprimer ce stage");
     protected JFormattedTextField creneau = null;
     protected JFormattedTextField soutenance = null;
     protected Iterator<Period> datechoisis=null;
     protected ArrayList<Calendar> recupDates = null;
     protected  parserPeriod PP = null;
-
+    protected DCoupleTransferHandler kikoo = new DCoupleTransferHandler();
 
     protected JButton okPlageJour = new JButton("Valider votre selection");
     protected boolean condition(){
@@ -93,45 +98,46 @@ public class FCal extends FTab{
                 PP = new parserPeriod(datechoisis);
                 recupDates = (ArrayList<Calendar>) PP.getDates();
 
-               final int trololo = ((Integer.parseInt(finJour.getSelectedItem().toString())-Integer.parseInt(debutJour.getSelectedItem().toString()) )*60)/Integer.parseInt(creneau.getText());
+                final int trololo = ((Integer.parseInt(finJour.getSelectedItem().toString()) - Integer.parseInt(debutJour.getSelectedItem().toString())) * 60) / Integer.parseInt(creneau.getText());
 
                 pan().removeAll();
                 pan().setLayout(new GridBagLayout());
-                GridBagConstraints c= new GridBagConstraints();
+                GridBagConstraints c = new GridBagConstraints();
 
                 c.fill = GridBagConstraints.BOTH;
 
-                c.gridx=0;
-                c.gridy=0;
+                c.gridx = 0;
+                c.gridy = 0;
 
-                c.gridwidth=1;
-                c.gridheight=trololo;
-                c.weightx=0;
-                c.weighty=1;
-                c.ipadx=200;
+                c.gridwidth = 1;
+                c.gridheight = trololo;
+                c.weightx = 0;
+                c.weighty = 1;
+                c.ipadx = 200;
 
 
+                DCreneau o[][] = new DCreneau[trololo][recupDates.size()];
+                Main.colors=new String[trololo][recupDates.size()];
 
-                DCreneau o[][]=new DCreneau[trololo][recupDates.size()];
                 int dj = Integer.parseInt(debutJour.getSelectedItem().toString());
-                int fj =Integer.parseInt(finJour.getSelectedItem().toString());
+                int fj = Integer.parseInt(finJour.getSelectedItem().toString());
                 int k;
                 int i;
-                for(k=0;k<recupDates.size();k++){
-                    for(i=0;i<trololo;i++){
+                for (k = 0; k < recupDates.size(); k++) {
+                    for (i = 0; i < trololo; i++) {
 
-                        o[i][k]=new DCreneau();
-                        o[i][k].setDate_debut(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR),recupDates.get(k).get(Calendar.MONTH),recupDates.get(k).get(Calendar.DAY_OF_MONTH),dj+i,0));
-                        o[i][k].setDate_fin(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR),recupDates.get(k).get(Calendar.MONTH),recupDates.get(k).get(Calendar.DAY_OF_MONTH),dj+i+1,0));
+                        o[i][k] = new DCreneau();
+                        o[i][k].setDate_debut(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + i, 0));
+                        o[i][k].setDate_fin(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + i + 1, 0));
                         o[i][k].setMax_sout(Integer.parseInt(soutenance.getText()));
-
+                        Main.colors[i][k]="white";
 
                     }
 
 
-
-
                 }
+
+
                 pan().addComponentListener(new ComponentListener() {
                     @Override
                     public void componentResized(ComponentEvent e) {
@@ -153,43 +159,165 @@ public class FCal extends FTab{
                         //To change body of implemented methods use File | Settings | File Templates.
                     }
                 });
-                String titre[] =new String[recupDates.size()];
-                final JList Fetu = new JList(etu);
-                pan().add(new JScrollPane(Fetu),c);
-                 int j ;
-                for(j=0;j<Main.stages.size();j++){
-                    etu.addElement(Main.stages.get(j) );
+                String titre[] = new String[recupDates.size()];
+                final DefaultComboBoxModel fet = new DefaultComboBoxModel();
+                final JList Fetu = new JList(fet);
+                pan().add(new JScrollPane(Fetu), c);
+                int j;
+                for (j = 0; j < Main.stages.size(); j++) {
+
+                    fet.addElement(Main.stages.get(j));
+                    System.out.println(Main.stages.get(j).getClass());
                 }
                 Fetu.setDragEnabled(true);
+                Fetu.setTransferHandler(kikoo);
 
 
-                for(i=0;i<recupDates.size();i++)
+                for (i = 0; i < recupDates.size(); i++)
                     titre[i] = "" + recupDates.get(i).get(Calendar.DAY_OF_MONTH) + "/" + (recupDates.get(i).get(Calendar.MONTH) + 1) + "/" + recupDates.get(i).get(Calendar.YEAR) + "";
 
 
+                jt = new JTable(o, titre) {
 
-                jt=new JTable(o,titre);
+                    public boolean isCellEditable(int row, int column) {
+
+                        return false;
+
+                    }
+
+                };
+                jt.setCellSelectionEnabled(true);
                 jt.setRowSelectionAllowed(false);
+
+                jt.setEnabled(true);
                 jt.setRowHeight((pan().getHeight() - 20) / trololo);
                 jt.setDropMode(DropMode.ON);
-
-                GridBagConstraints cc= new GridBagConstraints();
+                jt.setDragEnabled(true);
+                jt.setTransferHandler(kikoo);
+                jt.setColumnSelectionAllowed(false);
+                GridBagConstraints cc = new GridBagConstraints();
                 cc.fill = GridBagConstraints.BOTH;
-                cc.gridx=1;
-                cc.gridy=0;
+                cc.gridx = 1;
+                cc.gridy = 0;
 
-                cc.gridwidth=recupDates.size();
-                cc.gridheight=trololo+1;
-                cc.weightx=1;
-                cc.weighty=1;
+                cc.gridwidth = recupDates.size();
+                cc.gridheight = trololo + 1;
+                cc.weightx = 1;
+                cc.weighty = 1;
 
                 pan().add(new JScrollPane(jt), cc);
+                jt.setDefaultRenderer(Object.class,new CustomRenderer());
+                final DefaultComboBoxModel fs = new DefaultComboBoxModel();
+                final JList jls = new JList(fs);
+                c = new GridBagConstraints();
+
+                c.fill = GridBagConstraints.BOTH;
+
+                c.gridx = recupDates.size() + 1;
+                c.gridy = 0;
+
+                c.gridwidth = 1;
+                c.gridheight = trololo / 2;
+                c.weightx = 0;
+                c.weighty = 1;
+                c.ipadx = 200;
+                pan().add(new JScrollPane(jls), c);
+
+                c.fill = GridBagConstraints.BOTH;
+
+                c.gridx = recupDates.size() + 1;
+                c.gridy = trololo/2;
+
+                c.gridwidth = 1;
+                c.gridheight = 1;
+                c.weightx = 0;
+                c.weighty = 1;
+                c.ipadx = 200;
+                pan().add(supprimers,c);
 
 
                 refresh();
+                supprimers.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if(fs.getSelectedItem()!=-1){
+                          DCouple dfc= (DCouple) jls.getSelectedValue() ;
+                            Main.stages.add(dfc);
+                            DCreneau dc = (DCreneau) jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn());
+                            dc.removedcp(dfc);
+
+                            fs.removeAllElements();
+
+                            int m;
+                            ArrayList<Soutenance> ars = dc.toStringtest();
+                            for (m = 0; m < ars.size(); m++)
+                                fs.addElement(ars.get(m).getCpl());
+                            refresh();
 
 
+                        }
+                    }
+                });
 
+                jt.addMouseListener(new MouseListener() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        //To change body of implemented methods use File | Settings | File Templates.
+                    }
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        int j;
+                        fet.removeAllElements();
+                        for(j=0;j<Main.stages.size();j++){
+
+                            fet.addElement(Main.stages.get(j));
+                            System.out.println(j);
+                        }
+                        refresh();                }
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+                        fs.removeAllElements();
+                        DCreneau dc = (DCreneau) jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn());
+                        int m;
+                        ArrayList<Soutenance> ars = dc.toStringtest();
+                        for (m = 0; m < ars.size(); m++)
+                            fs.addElement(ars.get(m).getCpl());
+
+                        int j;
+                        fet.removeAllElements();
+                        for(j=0;j<Main.stages.size();j++){
+
+                            fet.addElement(Main.stages.get(j));
+
+                        }
+
+                        refresh();
+                    }
+
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        int j;
+                        fet.removeAllElements();
+                        for(j=0;j<Main.stages.size();j++){
+
+                            fet.addElement(Main.stages.get(j));
+                            System.out.println(j);
+                        }
+                        refresh();                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        int j;
+                        fet.removeAllElements();
+                        for(j=0;j<Main.stages.size();j++){
+
+                            fet.addElement(Main.stages.get(j));
+                            System.out.println(j);
+                        }
+                        refresh();                    }
+                });
                 try {
                     Main.calsettings.set("cal", recupDates.toString());
                     Main.calsettings.set("dursoutenance", creneau.getText());
@@ -215,22 +343,47 @@ public class FCal extends FTab{
         }
 
         );
-        pan().addMouseListener(new MouseAdapter() {
+
+        pan().addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (condition())
-                    okPlageJour.setEnabled(true);
-                else
-                    okPlageJour.setEnabled(false);
+
+                    if (condition())
+                        okPlageJour.setEnabled(true);
+                    else
+                        okPlageJour.setEnabled(false);
+
+
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                //To change body of implemented methods use File | Settings | File Templates.
             }
         });
         debutJour.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 finJour.removeAllItems();
-                int tmp =Integer.parseInt(debutJour.getSelectedItem().toString());
+                int tmp = Integer.parseInt(debutJour.getSelectedItem().toString());
 
-                for(tmp=tmp+1;tmp<20;tmp++){
+                for (tmp = tmp + 1; tmp < 20; tmp++) {
                     finJour.addItem(tmp);
 
                 }

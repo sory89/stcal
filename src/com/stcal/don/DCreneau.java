@@ -61,5 +61,48 @@ public class DCreneau {
         return  ""+this.date_debut.get(Calendar.HOUR_OF_DAY)+"H";
 
     }
+    public void addSBC(DCouple dc){
 
+        ListSoutenance.add(new Soutenance(dc,null));
+        System.out.println(dc+" ajouter à "+this.date_debut);
+
+
+    }
+    public ArrayList<Soutenance> toStringtest(){
+
+        return ListSoutenance;
+
+
+
+    }
+    public void removedcp(DCouple dcp){
+         int i ;
+        for(i=0;i<ListSoutenance.size();i++){
+
+            if(ListSoutenance.get(i).getCpl() == dcp)
+                ListSoutenance.remove(i);
+
+
+        }
+
+
+
+    }
+    public boolean isProfIn(DPersonne proff){
+
+        int i;
+        for(i=0;i<ListSoutenance.size();i++){
+
+            if(ListSoutenance.get(i).getCdd() == proff)
+                return false ;
+            else if(ListSoutenance.get(i).getCpl().getTut()==proff)
+                return false;
+
+
+        }
+        return true;
+
+
+
+    }
 }

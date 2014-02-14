@@ -14,6 +14,14 @@ public class Soutenance
 
     }
 
+    public Soutenance(DCouple couple)
+    {
+        this.cpl = couple;
+        this.cdd = null;
+        this.salle = 204;
+
+    }
+
     public DCouple getCpl()
     {
         return cpl;

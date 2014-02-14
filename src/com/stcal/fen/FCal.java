@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
+import com.stcal.control.Datas;
 import com.stcal.control.exceptions.NoSuchSettingException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.control.exceptions.UncreatableSettingException;
@@ -164,10 +165,10 @@ public class FCal extends FTab{
                 final JList Fetu = new JList(fet);
                 pan().add(new JScrollPane(Fetu), c);
                 int j;
-                for (j = 0; j < Main.stages.size(); j++) {
+                for (j = 0; j < Datas.stages.size(); j++) {
 
-                    fet.addElement(Main.stages.get(j));
-                    System.out.println(Main.stages.get(j).getClass());
+                    fet.addElement(Datas.stages.get(j));
+                    System.out.println(Datas.stages.get(j).getClass());
                 }
                 Fetu.setDragEnabled(true);
                 Fetu.setTransferHandler(kikoo);
@@ -242,7 +243,7 @@ public class FCal extends FTab{
                     public void actionPerformed(ActionEvent e) {
                         if(fs.getSelectedItem()!=null){
                             DCouple dfc= (DCouple) jls.getSelectedValue() ;
-                            Main.stages.add(dfc);
+                            Datas.stages.add(dfc);
                             DCreneau dc = (DCreneau) jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn());
                             dc.removedcp(dfc);
 
@@ -269,9 +270,9 @@ public class FCal extends FTab{
                     public void mousePressed(MouseEvent e) {
                         int j;
                         fet.removeAllElements();
-                        for(j=0;j<Main.stages.size();j++){
+                        for(j=0;j<Datas.stages.size();j++){
 
-                            fet.addElement(Main.stages.get(j));
+                            fet.addElement(Datas.stages.get(j));
                             System.out.println(j);
                         }
                         refresh();                }
@@ -287,9 +288,9 @@ public class FCal extends FTab{
 
                         int j;
                         fet.removeAllElements();
-                        for(j=0;j<Main.stages.size();j++){
+                        for(j=0;j<Datas.stages.size();j++){
 
-                            fet.addElement(Main.stages.get(j));
+                            fet.addElement(Datas.stages.get(j));
 
                         }
 
@@ -300,9 +301,9 @@ public class FCal extends FTab{
                     public void mouseEntered(MouseEvent e) {
                         int j;
                         fet.removeAllElements();
-                        for(j=0;j<Main.stages.size();j++){
+                        for(j=0;j<Datas.stages.size();j++){
 
-                            fet.addElement(Main.stages.get(j));
+                            fet.addElement(Datas.stages.get(j));
                             System.out.println(j);
                         }
                         refresh();                    }
@@ -311,9 +312,9 @@ public class FCal extends FTab{
                     public void mouseExited(MouseEvent e) {
                         int j;
                         fet.removeAllElements();
-                        for(j=0;j<Main.stages.size();j++){
+                        for(j=0;j<Datas.stages.size();j++){
 
-                            fet.addElement(Main.stages.get(j));
+                            fet.addElement(Datas.stages.get(j));
                             System.out.println(j);
                         }
                         refresh();                    }

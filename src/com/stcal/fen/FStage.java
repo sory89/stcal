@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
+import com.stcal.control.Datas;
 import com.stcal.don.Type;
 
 import javax.swing.*;
@@ -30,8 +31,8 @@ public class FStage extends FTab {
         pan().setLayout(new GridLayout(0, 2));
         final JList Fetu = new JList(etu);
 
-        for(i=0;i<Main.stages.size();i++){
-           etu.addElement(Main.stages.get(i).getEtu());
+        for(i=0;i< Datas.stages.size();i++){
+           etu.addElement(Datas.stages.get(i).getEtu());
 
 
         }
@@ -78,9 +79,7 @@ public class FStage extends FTab {
                 supprimer_stage(Fetu);
             }
         });
-        JButton supprimer1=new JButton("Supprimer etudiant");
         option.add(supprimer);
-        option.add(supprimer1);
         pan().add(right);
     }
 
@@ -112,9 +111,9 @@ public class FStage extends FTab {
 
 
    public void supprimer_stage(JList pan){
-        Main.delier(Main.stages.get(pan.getSelectedIndex()).getEtu());
-        FLier.addEtu(Main.stages.get(pan.getSelectedIndex()).getEtu().getPrenom(),Main.stages.get(pan.getSelectedIndex()).getEtu().getNom());
-        Main.stages.remove(pan.getSelectedIndex());
+        Main.delier(Datas.stages.get(pan.getSelectedIndex()).getEtu());
+        FLier.addEtu(Datas.stages.get(pan.getSelectedIndex()).getEtu().getPrenom(), Datas.stages.get(pan.getSelectedIndex()).getEtu().getNom());
+        Datas.stages.remove(pan.getSelectedIndex());
         change();
     }
 
@@ -138,8 +137,8 @@ public class FStage extends FTab {
 
     public void change() {
         etu.removeAllElements();
-        for(i=0;i<Main.stages.size();i++){
-            etu.addElement(Main.stages.get(i).getEtu());
+        for(i=0;i< Datas.stages.size();i++){
+            etu.addElement(Datas.stages.get(i).getEtu());
 
 
         }

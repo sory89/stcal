@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
+import com.stcal.control.Datas;
 import com.stcal.don.CustomRenderer;
 import com.stcal.don.DCouple;
 import com.stcal.don.DCreneau;
@@ -59,7 +60,7 @@ public class DCoupleTransferHandler extends TransferHandler {
 
             dcc.addSBC(dc);
 
-            Main.stages.remove(dc);
+            Datas.stages.remove(dc);
             }
             else{
                 System.out.println("Non j'crois pas ! Il est de déjà dans ce creneau le prof ! REPORT !!!!!!!!!!");

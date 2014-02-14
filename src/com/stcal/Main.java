@@ -1,9 +1,6 @@
 package com.stcal;
 
-import com.stcal.control.CALsettings;
-import com.stcal.control.DBsettings;
-import com.stcal.control.OSplitCsv;
-import com.stcal.control.Settings;
+import com.stcal.control.*;
 import com.stcal.control.exceptions.NoSettingFileException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.control.exceptions.UncreatableSettingException;
@@ -17,9 +14,6 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static ModelListCouple stages = new ModelListCouple();
-    private static DListe etu = new DListe();
-    private static  DListe prof = new DListe();
     private static FChooser finder = new FChooser();
     public static FInterface fen = new FInterface(800,600);
     private static FLier lier = new FLier();
@@ -69,7 +63,7 @@ public class Main {
         finder.show();
         if (finder.status()==FChooser.CHOSEN){
             try {
-                OSplitCsv.exportcsv(finder.path(), etu);
+                OSplitCsv.exportcsv(finder.path(), Datas.etu);
                 System.out.println("Main: exporter");
             }
             catch (Exception x){
@@ -87,10 +81,10 @@ public class Main {
      * @return faux si le nom/prenom de l'etudiant/prof ne corresponde à personne
      */
     public static boolean lier(String etuPre, String etuNom, String tutPre, String tutNom){
-        DPersonne setu =  etu.search(etuPre,etuNom);
-        DPersonne stut =  prof.search(tutPre,tutNom);
+        DPersonne setu =  Datas.etu.search(etuPre,etuNom);
+        DPersonne stut =  Datas.prof.search(tutPre,tutNom);
         if (setu!=null && stut!=null){
-            stages.add(new DCouple(setu,stut));
+            Datas.stages.add(new DCouple(setu,stut));
             stage.change();
             fenStatut("étudiant: " + etuPre + " " + etuNom + ", tuteur: " + tutPre + " " + tutNom + ", stage créé.");
             return true;
@@ -115,9 +109,9 @@ public class Main {
 
     public static ArrayList<String> etuStage(String profPre,String profNom){
         ArrayList<String> etu = new ArrayList<String>();
-        for (int i=0;i<stages.size();i++){
-            if (stages.get(i).getTut().getPrenom()==profPre && stages.get(i).getTut().getNom()==profNom){
-                etu.add(stages.get(i).getEtu().toString());
+        for (int i=0;i< Datas.stages.size();i++){
+            if (Datas.stages.get(i).getTut().getPrenom()==profPre && Datas.stages.get(i).getTut().getNom()==profNom){
+                etu.add(Datas.stages.get(i).getEtu().toString());
             }
         }
         return etu;
@@ -127,10 +121,10 @@ public class Main {
         ArrayList<String> details = new ArrayList<String>();
         DListe all;
         if (type.equals(Type.ETUDIANT)){
-            all = etu;
+            all = Datas.etu;
         }
         else if (type.equals(Type.TUTEUR)){
-            all = prof;
+            all = Datas.prof;
         }
         else {
             fenStatut("Err: type de la personne inconnu.");
@@ -170,14 +164,14 @@ public class Main {
                     for (int i=0;i<nouveau.nbPersonne();i++){
                         lier.addEtu(nouveau.getPersonne(i).getPrenom(),nouveau.getPersonne(i).getNom());
                     }
-                    etu.add(nouveau);
+                    Datas.etu.add(nouveau);
                     fenStatut(nouveau.nbPersonne() + " étudiants ajoutés de " + finder.path());
                 }
                 else if (type.equals(Type.TUTEUR)){
                     for (int i=0;i<nouveau.nbPersonne();i++){
                         lier.addProf(nouveau.getPersonne(i).getPrenom(),nouveau.getPersonne(i).getNom());
                     }
-                    prof.add(nouveau);
+                    Datas.prof.add(nouveau);
                     fenStatut(nouveau.nbPersonne() + " enseignants ajoutés de" + finder.path());
                 }
                 else {

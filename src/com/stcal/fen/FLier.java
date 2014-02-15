@@ -42,6 +42,7 @@ public class FLier extends FTab {
         pan().setLayout(new GridLayout(0, 3));
 
         Fprof = new JList(Datas.prof);
+        Fprof.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Fprof.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -105,6 +106,8 @@ public class FLier extends FTab {
 
 
         Fetu = new JList(Datas.etu);
+        Fetu.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
         Fetu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -164,7 +167,7 @@ public class FLier extends FTab {
 
     public void resetOption(){
         option.removeAll();
-        if (etuList.isEmpty()){
+        if (Datas.etu.isEmpty()){
             JButton opt1 = new JButton("Importer étudiants");
             opt1.setToolTipText("Ouvrir un fichier d'étudiants CSV");
             opt1.addActionListener(new ActionListener() {
@@ -176,18 +179,19 @@ public class FLier extends FTab {
             option.add(opt1);
         }
 
-        if (profList.isEmpty()){
+        if (Datas.prof.isEmpty()){
             JButton opt2 = new JButton("Importer enseignants");
             opt2.setToolTipText("Ouvrir un fichier d'enseignants CSV");
             opt2.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     Main.openFile(Type.TUTEUR);
+                    refresh();
                 }
             });
             option.add(opt2);
         }
-        if (!etuList.isEmpty() && !profList.isEmpty()){
+        if (!Datas.etu.isEmpty() && !Datas.prof.isEmpty()){
             JButton opt6 = new JButton("Valider");
             opt6.setToolTipText("Confirme le stage courant");
             opt6.addActionListener(new ActionListener() {
@@ -200,6 +204,11 @@ public class FLier extends FTab {
         }
         refresh();
     }
+
+
+
+
+
 
     public void resetCourant(){
         String html = "<html>";

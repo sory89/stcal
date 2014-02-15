@@ -20,15 +20,15 @@ public class CustomRenderer extends DefaultTableCellRenderer
         Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
           int i;
         int y;
-        for (y=0;y<table.getColumnCount();y++){
-            for(i=0;i<table.getRowCount();i++)  {
+        for (y=0;y<table.getRowCount();y++){
+            for(i=0;i<table.getColumnCount();i++)  {
 
-                if(Main.colors[i][y]=="red"){
+                if(Main.colors[y][i]=="red"){
                  if(column==i && row==y)
                      c.setBackground(Color.red);
 
 
-                }else if(Main.colors[i][y]=="green"){
+                }else if(Main.colors[y][i]=="green"){
 
                     if(column==i && row==y)
                         c.setBackground(Color.green);

@@ -18,6 +18,8 @@ import datechooser.model.multiple.Period;
 import javax.swing.*;
 import javax.swing.TransferHandler;
 import javax.swing.event.CellEditorListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import java.awt.*;
@@ -211,7 +213,35 @@ public class FCal extends FTab{
                 final DefaultComboBoxModel fs = new DefaultComboBoxModel();
                 final JList jls = new JList(fs);
                 c = new GridBagConstraints();
+                Fetu.addListSelectionListener(new ListSelectionListener() {
+                    @Override
+                    public void valueChanged(ListSelectionEvent e) {
+                        int y;
+                        int i;
+                        DCouple person = (DCouple) Fetu.getSelectedValue() ;
+                        if(person!=null){
+                            for (y=0;y<jt.getRowCount();y++){
+                                for(i=0;i<jt.getColumnCount();i++)  {
 
+                                    DCreneau dte = (DCreneau) jt.getValueAt(y,i);
+
+                                    if(dte.isProfIn(person.getTut()) && dte.toStringtest().size()<dte.getMax_sout() ){
+                                        Main.colors[y][i]="green";
+
+
+
+                                    }else
+                                    {
+                                        Main.colors[y][i]="red";
+                                    }
+
+                                } }}
+                        jt.setDefaultRenderer(Object.class,new CustomRenderer());
+                        jt.revalidate();
+                        jt.repaint();
+                        refresh();
+                    }
+                });
                 c.fill = GridBagConstraints.BOTH;
 
                 c.gridx = recupDates.size() + 1;
@@ -275,6 +305,7 @@ public class FCal extends FTab{
                             fet.addElement(Datas.stages.get(j));
                             System.out.println(j);
                         }
+                        jt.setDefaultRenderer(Object.class,new CustomRenderer());
                         refresh();                }
 
                     @Override
@@ -291,6 +322,8 @@ public class FCal extends FTab{
                         for(j=0;j<Datas.stages.size();j++){
 
                             fet.addElement(Datas.stages.get(j));
+
+
 
                         }
 

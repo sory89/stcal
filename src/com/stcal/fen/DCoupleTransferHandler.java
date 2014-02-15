@@ -19,6 +19,7 @@ public class DCoupleTransferHandler extends TransferHandler {
     DataFlavor DCFlavor = new DataFlavor(com.stcal.don.DCouple.class, "DCouple");
     DataFlavor[] flavors = new DataFlavor[] {DCFlavor};
     JList liste = null;
+    JTable jt=null;
     /**
      * Implemented to return true if the support can provide string values.
      */
@@ -47,25 +48,36 @@ public class DCoupleTransferHandler extends TransferHandler {
             DCouple dc = (DCouple) support.getTransferable().getTransferData(DCFlavor);
 
             JTable table = (JTable) support.getComponent();
-
+           jt=table;
             DCreneau dcc = ( DCreneau) table.getValueAt(dl.getRow(),dl.getColumn());
-            int x;
-            int y;
 
 
 
 
 
-            if(dcc.isProfIn(dc.getTut())){
 
+
+            if(dcc.isProfIn(dc.getTut())  ){
+             if (dcc.toStringtest().size() < dcc.getMax_sout()){
             dcc.addSBC(dc);
 
-            Datas.stages.remove(dc);
+            Datas.stages.remove(dc);  }
+                else{
+                 System.out.println("Trop de soutenance dans ce creneau GROS ! Tu PEUX  PAS TEST !");
+             }
             }
             else{
                 System.out.println("Non j'crois pas ! Il est de déjà dans ce creneau le prof ! REPORT !!!!!!!!!!");
             }
+            int i;
+            int y;
+            for (y=0;y<jt.getRowCount();y++){
+                for(i=0;i<jt.getColumnCount();i++)  {
 
+                    Main.colors[y][i]="white";
+                }     }
+            jt.revalidate();
+            jt.repaint();
 
             return true;
         } catch (UnsupportedFlavorException e) {

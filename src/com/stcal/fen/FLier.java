@@ -1,6 +1,10 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
+import com.stcal.control.Datas;
+import com.stcal.don.DEtudiant;
+import com.stcal.don.DListe;
+import com.stcal.don.DPersonne;
 import com.stcal.don.Type;
 
 import javax.swing.*;
@@ -13,8 +17,7 @@ public class FLier extends FTab {
     protected DefaultListModel profList = new DefaultListModel();
     protected static DefaultListModel etuList = new DefaultListModel();
     protected JLabel info = new JLabel("<html>Sélectionner un étudiant ou un prof pour afficher ses infos.</html>");
-    protected JLabel courant = new JLabel("courant");
-    protected JPanel option= new JPanel();
+
     protected static ArrayList<String> prenomEtu = new ArrayList<String>();
     protected static ArrayList<String> nomEtu = new ArrayList<String>();
     protected ArrayList<String> prenomProf = new ArrayList<String>();
@@ -25,14 +28,20 @@ public class FLier extends FTab {
     protected String selectedProfPre = "";
     protected String selectedProfNom = "";
     protected Type selectedType = Type.NONE;
+
+
+    protected JLabel courant = new JLabel("courant");
+    protected JPanel option= new JPanel();
     protected JList Fetu;
+    protected JList Fprof;
     protected JScrollPane jScrollPane;
 
 
     public FLier(){
         super("Lier");
         pan().setLayout(new GridLayout(0, 3));
-        final JList Fprof = new JList(profList);
+
+        Fprof = new JList(Datas.prof);
         Fprof.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -55,6 +64,8 @@ public class FLier extends FTab {
             }
 
         });
+
+
         pan().add(new JScrollPane(Fprof));
         JPanel centre = new JPanel();
         centre.setOpaque(false);
@@ -78,14 +89,22 @@ public class FLier extends FTab {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.openFile(Type.TUTEUR);
-            }
-        });
+                /*
+                System.out.println("taille : " + Datas.prof.getSize());
+                for (int i=0;i<Datas.prof.getSize(); i++){
+                    System.out.println(Datas.prof.getElementAt(i).getPrenom());
+                }
+                */
+        }});
         option.add(opt2);
         centre.add(option);
         info.setBorder(BorderFactory.createTitledBorder("Info"));
         centre.add(info);
         pan().add(centre);
-        Fetu = new JList(etuList);
+
+
+
+        Fetu = new JList(Datas.etu);
         Fetu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -137,7 +156,7 @@ public class FLier extends FTab {
     }
 
     protected void askStage(){
-            delEtu(selectedEtuPre,selectedEtuNom);
+            //delEtu(selectedEtuPre,selectedEtuNom);
             // Fetu.remove(selectedEtuIndex);
             courant.setText("<html>Stage créé.</html>");
             refresh();
@@ -226,6 +245,7 @@ public class FLier extends FTab {
 
     }
 
+    /*
     public void delEtu(String nom,String prenom){
         if(Main.lier(selectedEtuPre,selectedEtuNom,selectedProfPre,selectedProfNom))
         {
@@ -241,6 +261,7 @@ public class FLier extends FTab {
             refresh();
         }
     }
+    */
     public void addProf(String pre,String nom){
         prenomProf.add(pre);
         nomProf.add(nom);

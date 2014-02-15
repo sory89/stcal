@@ -51,7 +51,7 @@ public class OSplitCsv {
                 System.out.println(nlab);
                 String split[] = ligne.split(SEPs);
                 ArrayList <String> test = new ArrayList<String>(Arrays.asList(split));
-                cont.setLabels(test);
+                //cont.setLabels(test);
                } else { }
 
         }
@@ -94,9 +94,9 @@ public class OSplitCsv {
             if (!er) {
             String split[] = ligne.split(SEPs);
                 DPersonne perso = null;
-                if(type.toString() == Type.ETUDIANT.toString())
+                if(type.equals(Type.ETUDIANT.toString()))
                     perso = new DEtudiant(split[0],split[1]);
-                if(type.toString() == Type.TUTEUR.toString())
+                if(type.equals(Type.TUTEUR.toString()))
                     perso = new DTuteur(split[0],split[1]);
 
                 ArrayList<String> essai = new ArrayList<String>();
@@ -107,7 +107,7 @@ public class OSplitCsv {
                 essai.add(split[i]);
             }
                 perso.setInfos(essai);
-                cont.add(perso);
+                cont.addElement(perso);
 
             } else {  }
 
@@ -135,13 +135,13 @@ public class OSplitCsv {
         String ligne="";
         int ind=0;
         PrintWriter writer = new PrintWriter(path, "UTF-8");
-        for (int i=0;i<etu.nbPersonne();i++){
+        for (int i=0;i<etu.getSize();i++){
             ligne="";
-            if (etu.getPersonne(i)!=null){
+            if (etu.getElementAt(i)!=null){
                 //ligne = etu.getPersonne(i).getPrenom() + ";";
                 //ligne += etu.getPersonne(i).getNom() + ";";
-                for (int j=0;j<etu.getPersonne(i).getInfos().size();j++){
-                    ligne += etu.getPersonne(i).getInfos().get(j) + ";";
+                for (int j=0;j<etu.getElementAt(i).getInfos().size();j++){
+                    ligne += etu.getElementAt(i).getInfos().get(j) + ";";
                 }
                 ind=ligne.length()-1;
                 ligne=ligne.substring(0,ind);

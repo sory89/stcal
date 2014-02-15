@@ -73,19 +73,16 @@ public class Main {
 
     /**
      *
-     * @param etuPre prénom de l'etudiant
-     * @param etuNom nom de l'étudiant
-     * @param tutPre prénom du tuteur
-     * @param tutNom prénom du tuteur
+     * @param etuLier étudiant
+     * @param tutLier tuteur
      * @return faux si le nom/prenom de l'etudiant/prof ne corresponde à personne
      */
-    public static boolean lier(String etuPre, String etuNom, String tutPre, String tutNom){
-        DPersonne setu =  Datas.etu.search(etuPre,etuNom);
-        DPersonne stut =  Datas.prof.search(tutPre,tutNom);
-        if (setu!=null && stut!=null){
-            Datas.stages.add(new DCouple(setu,stut));
+    public static boolean lier(DEtudiant etuLier, DTuteur tutLier){
+
+        if (etuLier!=null && tutLier!=null){
+            Datas.stages.add(new DCouple(etuLier,tutLier));
             stage.change();
-            fenStatut("étudiant: " + etuPre + " " + etuNom + ", tuteur: " + tutPre + " " + tutNom + ", stage créé.");
+            fenStatut("étudiant: " + etuLier.getPrenom() + " " + etuLier.getNom() + ", tuteur: " + tutLier.getPrenom() + " " + tutLier.getNom() + ", stage créé.");
             return true;
         }
         return false;
@@ -130,6 +127,7 @@ public class Main {
             System.err.println("Err: type de la personne inconnu.");
             return null;
         }
+        /*
         DPersonne selected = all.search(pre,nom);
         if (selected==null){
             fenStatut("Err : personne non trouvée.");
@@ -145,6 +143,7 @@ public class Main {
             details.add(" " + all.getLabels().get(i) + ": " + selected.getInfos().get(i-2));
         }
         fenStatut("Info de " + pre + " " + nom + ".");
+        */
         return details;
     }
 
@@ -160,18 +159,16 @@ public class Main {
             try {
                 nouveau = OSplitCsv.splitcsv(finder.file(), type.toString());
                 if (type.equals(Type.ETUDIANT)){
-                    for (int i=0;i<nouveau.nbPersonne();i++){
-                        lier.addEtu(nouveau.getPersonne(i).getPrenom(),nouveau.getPersonne(i).getNom());
+                    for (int i=0; i<nouveau.getSize();i++){
+                        Datas.etu.addElement(nouveau.getElementAt(i));
                     }
-                    Datas.etu.add(nouveau);
-                    fenStatut(nouveau.nbPersonne() + " étudiants ajoutés de " + finder.path());
+                    fenStatut(nouveau.getSize() + " étudiants ajoutés de " + finder.path());
                 }
                 else if (type.equals(Type.TUTEUR)){
-                    for (int i=0;i<nouveau.nbPersonne();i++){
-                        lier.addProf(nouveau.getPersonne(i).getPrenom(),nouveau.getPersonne(i).getNom());
+                    for (int i=0; i<nouveau.getSize();i++){
+                        Datas.prof.addElement(nouveau.getElementAt(i));
                     }
-                    Datas.prof.add(nouveau);
-                    fenStatut(nouveau.nbPersonne() + " enseignants ajoutés de" + finder.path());
+                    fenStatut(nouveau.getSize() + " enseignants ajoutés de" + finder.path());
                 }
                 else {
                     System.err.println("Main: openFile: type not defined");

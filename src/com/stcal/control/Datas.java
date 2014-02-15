@@ -1,6 +1,7 @@
 package com.stcal.control;
 
 import com.stcal.don.DListe;
+import com.stcal.don.DPersonne;
 import com.stcal.don.ModelListCouple;
 
 /**
@@ -10,8 +11,8 @@ import com.stcal.don.ModelListCouple;
 
 public class Datas {
 
-    public static final ModelListCouple stages = new ModelListCouple();
-    public static final DListe etu = new DListe();
-    public static final DListe prof = new DListe();
+    public static ModelListCouple stages = new ModelListCouple();
+    public static DListe etu = new DListe();
+    public static DListe prof = new DListe();
 
 }

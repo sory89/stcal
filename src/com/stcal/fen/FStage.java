@@ -13,18 +13,6 @@ import java.util.ArrayList;
 
 public class FStage extends FTab {
 
-    /*
-    protected DefaultListModel etu = new DefaultListModel();
-    protected DefaultListModel stag = new DefaultListModel();
-    protected ArrayList<String> liste =new ArrayList<String>();
-    protected ArrayList<String> tutPre = new ArrayList<String>();
-    protected ArrayList<String> tutNom = new ArrayList<String>();
-    protected String selectedEtuPre = "";
-    protected String selectedEtuNom = "";
-    protected Type selectedType = Type.NONE;
-    int i;
-    */
-
     protected JList Fstage;
     protected JLabel info = new JLabel("<html>Sélectionner un stage pour afficher ses informations.</html>");
     protected JPanel option = new JPanel();
@@ -106,11 +94,6 @@ public class FStage extends FTab {
         }
         refresh();
     }
-
-
-
-
-
 
    public void supprimer_stage(JList<DCouple> pan){
        Datas.etu.addElement(pan.getSelectedValue().getEtu());

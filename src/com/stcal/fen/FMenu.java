@@ -31,6 +31,7 @@ public class FMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.openFile(Type.ETUDIANT);
+
             }
         });
         menufile.add(openetu);

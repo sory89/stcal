@@ -90,10 +90,10 @@ public class FLier extends FTab {
     protected void askInfo(JList<DPersonne> pan,Type type){
         try {
             if (type.equals(Type.ETUDIANT)){
-                setInfo(pan.getSelectedValue().getInfos());
+                info.setText(setInfo(pan.getSelectedValue().getInfos()));
             }
             else if (type.equals(Type.TUTEUR)){
-                setInfo(pan.getSelectedValue().getInfos());
+                info.setText(setInfo(pan.getSelectedValue().getInfos()));
             }
             refresh();
             resetCourant(pan);
@@ -146,6 +146,7 @@ public class FLier extends FTab {
                     askStage();
                     Fetu.clearSelection();
                     Fprof.clearSelection();
+                    info.setText("");
                 }
             });
             option.add(opt6);
@@ -180,14 +181,14 @@ public class FLier extends FTab {
     }
 
 
-    public void setInfo(ArrayList<String> details){
+    public String setInfo(ArrayList<String> details){
         String newInfo = "<html>";
         info.setText("");
         for (int i=0;i<details.size();i++){
             newInfo += details.get(i) + "<br />";
         }
         newInfo += "</html>";
-        info.setText(newInfo);
         refresh();
+        return newInfo;
     }
 }

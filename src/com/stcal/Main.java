@@ -77,6 +77,7 @@ public class Main {
      * @param tutLier tuteur
      * @return faux si le nom/prenom de l'etudiant/prof ne corresponde à personne
      */
+    /*
     public static boolean lier(DEtudiant etuLier, DTuteur tutLier){
 
         if (etuLier!=null && tutLier!=null){
@@ -87,7 +88,7 @@ public class Main {
         }
         return false;
     }
-
+    */
     /**
      * Supprime le lien entre un étudiant et un prof
      * @return vrai si la delier se passe correctement

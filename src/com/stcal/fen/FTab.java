@@ -47,7 +47,9 @@ public class FTab {
      * Elle est faite pour etre réecite dans les classes heritant de cette classe.
      * @param details les chaines de caratere à afficher
      */
-    public void setInfo(ArrayList<String> details){}
+    public String setInfo(ArrayList<String> details){
+        return null;
+    }
 
 
 }

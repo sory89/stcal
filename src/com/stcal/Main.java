@@ -80,7 +80,7 @@ public class Main {
     public static boolean lier(DEtudiant etuLier, DTuteur tutLier){
 
         if (etuLier!=null && tutLier!=null){
-            Datas.stages.add(new DCouple(etuLier,tutLier));
+            Datas.stages.addElement(new DCouple(etuLier,tutLier));
             stage.change();
             fenStatut("étudiant: " + etuLier.getPrenom() + " " + etuLier.getNom() + ", tuteur: " + tutLier.getPrenom() + " " + tutLier.getNom() + ", stage créé.");
             return true;

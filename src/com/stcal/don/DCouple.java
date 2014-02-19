@@ -18,11 +18,11 @@ public class DCouple {
         this.tut = tut;
     }
 
-    public DPersonne getEtu(){
+    public DEtudiant getEtu(){
         return etu;
     }
 
-    public DPersonne getTut(){
+    public DTuteur getTut(){
         return tut;
     }
     public String toString(){

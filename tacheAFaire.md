@@ -28,7 +28,7 @@
 - Gérer le panneau des actions (en bas de l'écran)
 
 ##Florian :
-- Je sais pas finalelent, à compléter
+- Rédaction des différents rapports
 
 ##Ismael :
 - Je sais pas finalelent, à compléter

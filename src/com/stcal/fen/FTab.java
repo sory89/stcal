@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ public class FTab {
     public FTab(String titre){
         nom = titre;
         tabpan.setOpaque(false);
+        tabpan.setBorder(new EmptyBorder(10,10,10,10)) ;
     }
 
     /**

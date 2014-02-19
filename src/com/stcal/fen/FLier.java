@@ -5,6 +5,7 @@ import com.stcal.control.Datas;
 import com.stcal.don.*;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
@@ -21,26 +22,33 @@ public class FLier extends FTab {
 
     public FLier(){
         super("Lier");
-        pan().setLayout(new GridLayout(0, 3));
+        pan().setLayout(new GridLayout(0, 3,10,10));
 
         Fprof = new JList<DPersonne>(Datas.prof);
         Fprof.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        Fprof.setBorder(BorderFactory.createTitledBorder("Liste des enseignants"));
         Fprof.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 askInfo(Fprof, Type.TUTEUR);
             }
         });
+        JPanel PanelProf = new JPanel();
+        PanelProf.setLayout(new BorderLayout());
+        PanelProf.setOpaque(false);
+        PanelProf.add(new JLabel("Liste des enseignants", SwingConstants.CENTER),BorderLayout.NORTH);
+        PanelProf.add(new JScrollPane(Fprof), BorderLayout.CENTER);
+        pan().add(PanelProf);
 
-        pan().add(new JScrollPane(Fprof));
+
+
         JPanel centre = new JPanel();
         centre.setOpaque(false);
         centre.setLayout(new GridLayout(3, 0));
         courant.setBorder(BorderFactory.createTitledBorder("Courant"));
         centre.add(courant);
         option.setOpaque(false);
-        option.setLayout(new GridLayout(8, 0));
+        option.setLayout(new GridLayout(2, 0, 20, 20));
+        option.setBorder(new EmptyBorder(20,0,20,0));
         JButton opt1 = new JButton("Importer étudiants");
         opt1.setToolTipText("Ouvrir un fichier d'étudiants CSV");
         opt1.addActionListener(new ActionListener() {
@@ -71,15 +79,18 @@ public class FLier extends FTab {
 
         Fetu = new JList(Datas.etu);
         Fetu.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        Fetu.setBorder(BorderFactory.createTitledBorder("Liste des étudiants"));
         Fetu.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 askInfo(Fetu, Type.ETUDIANT);
             }
         });
-
-        pan().add(new JScrollPane(Fetu));
+        JPanel PanelEtu = new JPanel();
+        PanelEtu.setLayout(new BorderLayout());
+        PanelEtu.setOpaque(false);
+        PanelEtu.add(new JLabel("Liste des étudiants", SwingConstants.CENTER),BorderLayout.NORTH);
+        PanelEtu.add(new JScrollPane(Fetu), BorderLayout.CENTER);
+        pan().add(PanelEtu);
         refresh();
     }
 

@@ -23,11 +23,9 @@ public class FStage extends FTab {
      */
     public FStage(){
         super("Stage");
-        pan().setLayout(new GridLayout(0, 2));
+        pan().setLayout(new GridLayout(0, 2,10,10));
         Fstage = new JList<DCouple>(Datas.stages);
         Fstage.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        Fstage.setBorder(BorderFactory.createTitledBorder("Liste des stages"));
-
         Fstage.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -35,8 +33,12 @@ public class FStage extends FTab {
             }
         });
 
-
-        pan().add(new JScrollPane(Fstage));
+        JPanel PanelCpl = new JPanel();
+        PanelCpl.setLayout(new BorderLayout());
+        PanelCpl.setOpaque(false);
+        PanelCpl.add(new JLabel("Liste des stages", SwingConstants.CENTER),BorderLayout.NORTH);
+        PanelCpl.add(new JScrollPane(Fstage), BorderLayout.CENTER);
+        pan().add(PanelCpl);
         JPanel right = new JPanel();
         right.setOpaque(false);
         right.setLayout(new GridLayout(3,0));

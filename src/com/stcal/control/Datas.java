@@ -18,4 +18,14 @@ public class Datas {
     public static DListe etu = new DListe();
     public static DListe prof = new DListe();
 
+
+    public static void load(){
+
+    }
+
+
+    public static void save(){
+
+    }
+
 }

@@ -61,7 +61,7 @@ public class DCoupleTransferHandler extends TransferHandler {
              if (dcc.toStringtest().size() < dcc.getMax_sout()){
             dcc.addSBC(dc);
 
-            Datas.stages.remove(dc);  }
+            Datas.stages.removeElement(dc);  }
                 else{
                  System.out.println("Trop de soutenance dans ce creneau GROS ! Tu PEUX  PAS TEST !");
              }

@@ -272,7 +272,7 @@ public class FCal extends FTab{
                     public void actionPerformed(ActionEvent e) {
                         if(fs.getSelectedItem()!=null){
                             DCouple dfc= (DCouple) jls.getSelectedValue() ;
-                            Datas.stages.add(dfc);
+                            Datas.stages.addElement(dfc);
                             DCreneau dc = (DCreneau) jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn());
                             dc.removedcp(dfc);
 

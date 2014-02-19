@@ -77,7 +77,6 @@ public class FCal extends FTab{
 
 
         test1.setOpaque(false);
-        test1.setOpaque(false);
         infoChooser.setOpaque(false);
         okPlageJour.setEnabled(false);
           chooserDebut.addSelectionChangedListener(new SelectionChangedListener() {
@@ -520,13 +519,19 @@ public class FCal extends FTab{
         Dimension dim = new Dimension(1,1);
         test1.add(infoChooser);
         pancreneau.setLayout(new GridLayout(4, 0));
+        pancreneau.setOpaque(false);
         panSoutenance.setLayout(new GridLayout(4, 0));
+        panSoutenance.setOpaque(false);
         test1.setLayout(new GridLayout(4, 0));
         test4.setLayout(new GridLayout(4, 0));
+        test4.setOpaque(false);
         test5.setLayout(new GridLayout(3, 0));
+        test5.setOpaque(false);
         test1.add(chooserDebut, BorderLayout.NORTH);
         test2.setLayout(new GridLayout(4, 0));
+        test2.setOpaque(false);
         panfin.setLayout(new GridLayout(4, 0));
+        panfin.setOpaque(false);
         pancreneau.add(creneauLabel);
         pancreneau.add(creneau);
         panSoutenance.add(nbSoutenances);

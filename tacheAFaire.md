@@ -2,7 +2,7 @@
 
 ##Général :
 
-- Corriger les éventuelles fautes d'ortographes
+- Corriger les éventuelles fautes d'orthographe
 
 ##Valentin :
 - Rendre l'interface plus agréable
@@ -15,12 +15,12 @@
 - Gérer la sauvegarde dans la BDD
 
 ##Mehdi :
-- Gérer les candides pour la calendrier
-- Gérer l'export en ics
+- Gérer les candides pour le calendrier
+- Gérer l'export en ICS
 - Gérer les salles et sauvegarder dans le json
 
 ##Nicolas :
-- Corriger les bug de l'improt csv avec les séparateurs
+- Corriger les bug de l'import csv avec les séparateurs
 - Ajouter les labels infos dans l'arraylist infos des DPersonne ( téléphone : 06 xx xx xx xx) avec le séparateur :
 - vérifier l'export csv
 

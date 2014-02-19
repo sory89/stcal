@@ -1,103 +1,93 @@
 package com.stcal.fen;
 
-import com.stcal.Main;
 import com.stcal.control.Datas;
+import com.stcal.don.DCouple;
 import com.stcal.don.Type;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
 public class FStage extends FTab {
 
-    protected DefaultListModel etu = new DefaultListModel();
-    protected DefaultListModel stag = new DefaultListModel();
-    protected JLabel info = new JLabel("<html>Sélectionner un enseignant ou un stagiaire pour afficher ses infos.</html>");
+    protected JList Fstage;
+    protected JLabel info = new JLabel("<html>Sélectionner un stage pour afficher ses informations.</html>");
     protected JPanel option = new JPanel();
-    protected ArrayList<String> liste =new ArrayList<String>();
-    protected ArrayList<String> tutPre = new ArrayList<String>();
-    protected ArrayList<String> tutNom = new ArrayList<String>();
-    protected String selectedEtuPre = "";
-    protected String selectedEtuNom = "";
-    protected Type selectedType = Type.NONE;
-    int i;
-
+    protected JLabel infosEtu;
+    protected JLabel infosTut;
     /**
      * Initialisation de l'onglet
      */
     public FStage(){
         super("Stage");
         pan().setLayout(new GridLayout(0, 2));
-        final JList Fetu = new JList(etu);
+        Fstage = new JList<DCouple>(Datas.stages);
+        Fstage.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        Fstage.setBorder(BorderFactory.createTitledBorder("Liste des stages"));
 
-        for(i=0;i< Datas.stages.size();i++){
-           etu.addElement(Datas.stages.get(i).getEtu());
-
-
-        }
-        Fetu.addMouseListener(new MouseAdapter() {
+        Fstage.addListSelectionListener(new ListSelectionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                askInfo(Fetu, Type.ETUDIANT);
+            public void valueChanged(ListSelectionEvent e) {
+                askInfo(Fstage);
             }
         });
-        Fetu.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                askInfo(Fetu, Type.ETUDIANT);
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-            }
-
-        });
 
 
-        pan().add(new JScrollPane(Fetu));
+        pan().add(new JScrollPane(Fstage));
         JPanel right = new JPanel();
         right.setOpaque(false);
         right.setLayout(new GridLayout(3,0));
-        final  JList Fstag = new JList(stag);
+
+        infosEtu = new JLabel();
+        infosTut = new JLabel();
+        JTabbedPane ongletInfos = new JTabbedPane();
+        ongletInfos.add("Étudiant",infosEtu);
+        ongletInfos.add("Tuteurs", infosTut);
+        ongletInfos.setBorder(BorderFactory.createTitledBorder("Informations"));
+
         // event
-        right.add(new JScrollPane(Fstag));
-        info.setBorder(BorderFactory.createTitledBorder("Infos"));
+        right.add(new JScrollPane(ongletInfos));
+        info.setBorder(BorderFactory.createTitledBorder("Courant"));
         right.add(info);
         option.setOpaque(false);
         option.setLayout(new GridLayout(3,1));
         right.add(option);
-        JButton supprimer=new JButton("Supprimer stage");
+        final JButton supprimer=new JButton("Supprimer stage");
+        supprimer.setEnabled(false);
         supprimer.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                supprimer_stage(Fetu);
+                supprimer_stage(Fstage);
+                Datas.stages.remove(Fstage.getSelectedIndex());
+                Fstage.clearSelection();
+                infosTut.setText("");
+                infosEtu.setText("");
+                info.setText("Stage supprimé.");
             }
         });
         option.add(supprimer);
+        Fstage.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                supprimer.setEnabled(!Fstage.isSelectionEmpty());
+            }
+        });
+
         pan().add(right);
     }
 
     /**
      *
      * @param pan
-     * @param type Constante de Main.ETUDIANT/Main.TUTEUR/Main.NONE
      */
-    protected void askInfo(JList pan,Type type){
+    protected void askInfo(JList<DCouple> pan){
         try {
-            if (type.equals(Type.ETUDIANT)){
-                selectedEtuPre = tutPre.get(pan.getLeadSelectionIndex());
-                selectedEtuNom = tutNom.get(pan.getLeadSelectionIndex());
-                setInfo(Main.personneInfo(type,selectedEtuPre, selectedEtuNom));
-                stag.removeAllElements();
-                ArrayList<String> inter = Main.etuStage(selectedEtuPre,selectedEtuNom);
-            }
-            selectedType = type;
+            infosEtu.setText(setInfo(pan.getSelectedValue().getEtu().getInfos()));
+            infosTut.setText(setInfo(pan.getSelectedValue().getTut().getInfos()));
         }
         catch (Exception ex){
             System.err.println("err: FTab: event JList: " + ex.getMessage());
@@ -105,20 +95,12 @@ public class FStage extends FTab {
         refresh();
     }
 
-
-
-
-
-
-   public void supprimer_stage(JList pan){
-        Main.delier(Datas.stages.get(pan.getSelectedIndex()).getEtu());
-        FLier.addEtu(Datas.stages.get(pan.getSelectedIndex()).getEtu().getPrenom(), Datas.stages.get(pan.getSelectedIndex()).getEtu().getNom());
-        Datas.stages.remove(pan.getSelectedIndex());
-        change();
-    }
+   public void supprimer_stage(JList<DCouple> pan){
+       Datas.etu.addElement(pan.getSelectedValue().getEtu());
+   }
 
     @Override
-    public void setInfo(ArrayList<String> details){
+    public String setInfo(ArrayList<String> details){
         String newInfo = "<html>";
         info.setText("");
         for (int i=0;i<details.size();i++){
@@ -126,23 +108,6 @@ public class FStage extends FTab {
         }
         newInfo += "</html>";
         refresh();
-    }
-
-    public boolean existe(String prenom,String nom){
-        if(etu.contains(prenom+" "+nom)){
-            return true;
-        }
-        return false;
-    }
-
-    public void change() {
-        etu.removeAllElements();
-        for(i=0;i< Datas.stages.size();i++){
-            etu.addElement(Datas.stages.get(i).getEtu());
-
-
-        }
-        refresh();
-
+        return newInfo;
     }
 }

@@ -28,7 +28,7 @@ public class DCouple {
     public String toString(){
 
 
-        return ""+etu.getPrenom() +" "+etu.getNom()+""  ;
+        return "Étudiant : "+etu.getPrenom() +" "+etu.getNom()+" - Tuteur : "+tut.getPrenom()+" "+tut.getNom()  ;
 
     }
 

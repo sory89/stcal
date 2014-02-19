@@ -2,8 +2,6 @@ package com.stcal.control;
 
 import com.stcal.don.DCouple;
 import com.stcal.don.DListe;
-import com.stcal.don.DPersonne;
-import com.stcal.don.ModelListCouple;
 
 import javax.swing.*;
 

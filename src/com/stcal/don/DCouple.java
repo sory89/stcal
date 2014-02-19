@@ -2,19 +2,19 @@ package com.stcal.don;
 
 public class DCouple {
 
-    protected DPersonne etu = null;
-    protected DPersonne tut = null;
+    protected DEtudiant etu = null;
+    protected DTuteur tut = null;
 
-    public DCouple(DPersonne etu, DPersonne prof){
+    public DCouple(DEtudiant etu, DTuteur prof){
         this.etu = etu;
         this.tut = prof;
     }
 
-    public void setEtu(DPersonne etu){
+    public void setEtu(DEtudiant etu){
         this.etu = etu;
     }
 
-    public void setTut(DPersonne tut){
+    public void setTut(DTuteur tut){
         this.tut = tut;
     }
 

@@ -30,10 +30,11 @@ public abstract class DPersonne {
 
     }
 
-
+    /*
     public boolean is(String prenom,String nom){
         return this.prenom.equals(prenom) && this.nom.equals(nom);
     }
+    */
     public String getNom() {
         return nom;
     }
@@ -72,10 +73,5 @@ public abstract class DPersonne {
     }
     public void setInfos(String s) {
         this.infos.add(s);
-    }
-
-
-    public void setLie(boolean lie) {
-
     }
 }

@@ -72,49 +72,6 @@ public class Main {
         }
     }
 
-    /**
-     *
-     * @param etuLier étudiant
-     * @param tutLier tuteur
-     * @return faux si le nom/prenom de l'etudiant/prof ne corresponde à personne
-     */
-    /*
-    public static boolean lier(DEtudiant etuLier, DTuteur tutLier){
-
-        if (etuLier!=null && tutLier!=null){
-            Datas.stages.addElement(new DCouple(etuLier,tutLier));
-            stage.change();
-            fenStatut("étudiant: " + etuLier.getPrenom() + " " + etuLier.getNom() + ", tuteur: " + tutLier.getPrenom() + " " + tutLier.getNom() + ", stage créé.");
-            return true;
-        }
-        return false;
-    }
-    */
-    /**
-     * Supprime le lien entre un étudiant et un prof
-     * @return vrai si la delier se passe correctement
-     */
-    public static void delier(DPersonne etu){
-
-
-                      etu.setLie(false);
-
-                fenStatut(", étudiant: " + etu.getPrenom() + " " + etu.getNom() + ", stage supprimé.");
-
-
-
-    }
-
-    public static ArrayList<String> etuStage(String profPre,String profNom){
-        ArrayList<String> etu = new ArrayList<String>();
-        for (int i=0;i< Datas.stages.size();i++){
-            if (Datas.stages.get(i).getTut().getPrenom()==profPre && Datas.stages.get(i).getTut().getNom()==profNom){
-                etu.add(Datas.stages.get(i).getEtu().toString());
-            }
-        }
-        return etu;
-    }
-
     public static ArrayList<String> personneInfo(Type type,String pre,String nom){
         ArrayList<String> details = new ArrayList<String>();
         DListe all;

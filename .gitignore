@@ -9,5 +9,6 @@
 out/
 
 *.gnr.*
+*.gign.*
 
 com/stcal/Dev.java

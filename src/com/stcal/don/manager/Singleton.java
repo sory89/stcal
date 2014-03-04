@@ -2,7 +2,6 @@ package com.stcal.don.manager;
 
 import com.stcal.control.DBsettings;
 import com.stcal.control.exceptions.NoSuchSettingException;
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
 import org.apache.commons.dbcp.BasicDataSource;
 
 import javax.sql.DataSource;

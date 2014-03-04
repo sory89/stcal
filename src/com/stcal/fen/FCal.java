@@ -16,17 +16,14 @@ import datechooser.events.SelectionChangedListener;
 import datechooser.model.multiple.Period;
 
 import javax.swing.*;
-import javax.swing.TransferHandler;
-import javax.swing.event.CellEditorListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Iterator;
 
 public class FCal extends FTab{
     protected DefaultListModel etu = new DefaultListModel();

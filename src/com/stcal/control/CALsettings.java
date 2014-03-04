@@ -1,7 +1,5 @@
 package com.stcal.control;
 
-import com.stcal.Main;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Mehdi

@@ -1,7 +1,7 @@
 package com.stcal.fen;
 
 import javax.swing.*;
-import javax.swing.filechooser.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.io.File;
 

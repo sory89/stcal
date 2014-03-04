@@ -2,13 +2,13 @@ package com.stcal.fen;
 
 import com.stcal.control.Datas;
 import com.stcal.don.DCouple;
-import com.stcal.don.Type;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class FStage extends FTab {

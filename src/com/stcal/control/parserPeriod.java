@@ -1,9 +1,11 @@
 package com.stcal.control;
 
-import com.stcal.control.parserDate;
 import datechooser.model.multiple.Period;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Iterator;
 
 /**
  * Created with IntelliJ IDEA.

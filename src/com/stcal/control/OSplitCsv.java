@@ -1,12 +1,10 @@
 package com.stcal.control;
 
-import com.stcal.Main;
 import com.stcal.don.*;
-import javax.swing.*;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.PrintWriter;
-import java.lang.String;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;

@@ -1,7 +1,6 @@
 package com.stcal.don;
 
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.Enumeration;
 
 public class DListe extends DefaultListModel<DPersonne> {

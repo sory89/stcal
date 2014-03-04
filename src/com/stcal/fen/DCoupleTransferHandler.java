@@ -2,13 +2,10 @@ package com.stcal.fen;
 
 import com.stcal.Main;
 import com.stcal.control.Datas;
-import com.stcal.don.CustomRenderer;
 import com.stcal.don.DCouple;
 import com.stcal.don.DCreneau;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;

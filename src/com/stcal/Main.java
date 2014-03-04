@@ -5,7 +5,8 @@ import com.stcal.control.exceptions.NoSettingFileException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.control.exceptions.UncreatableSettingException;
 import com.stcal.control.exceptions.UnopenableSettingException;
-import com.stcal.don.*;
+import com.stcal.don.DListe;
+import com.stcal.don.Type;
 import com.stcal.fen.*;
 
 import java.awt.*;
@@ -22,11 +23,18 @@ public class Main {
     private static Settings dbsettings = new DBsettings();
     public static Settings calsettings= new CALsettings();
     public static String[][] colors=null;
+
     /**
      * Construit l'environement graphique de l'application
      * @param args
      */
     public static void main(String[] args) {
+        Datas.load((DBsettings)dbsettings);
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            public void run() {
+                Datas.save((DBsettings)dbsettings);
+            }
+        }));
         fen.addTab(lier) ;
         fen.addTab(stage);
         fen.addTab(cal);

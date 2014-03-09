@@ -5,13 +5,19 @@ public class Soutenance
     private DCouple cpl;
     private DCandide cdd;
     private int salle;
-
+    private int id;
     public Soutenance(DCouple couple, DCandide candide)
     {
         this.cpl = couple;
         this.cdd = candide;
         this.salle = 204;
-
+    }
+    public Soutenance(int id,DCouple couple, DCandide candide,int salle)
+    {
+        this.id=id;
+        this.cpl = couple;
+        this.cdd = candide;
+        this.salle = salle;
     }
 
     public Soutenance(DCouple couple)
@@ -46,9 +52,16 @@ public class Soutenance
     {
         return salle;
     }
+    public int getId(){
+        return id;
+    }
 
     public void setSalle(int salle)
     {
         this.salle = salle;
+    }
+
+    public void setId(int id){
+        this.id=id;
     }
 }

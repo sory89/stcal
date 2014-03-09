@@ -1,34 +1,28 @@
 package com.stcal.don.manager;
 
-import com.stcal.don.DPersonne;
-
 import java.util.List;
 
 /**
- * @author Jean
- * @version 19/02/2014
+ * Created by ismail on 24/02/14.
  */
-
-public class DPersonneManager implements Manager<DPersonne> {
-
-
+public class DCandideManager implements Manager {
     @Override
-    public int create(DPersonne nouveau) {
+    public int create(Object nouveau) {
         return 0;
     }
 
     @Override
-    public DPersonne read(int id) {
+    public Object read(int id) {
         return null;
     }
 
     @Override
-    public List<DPersonne> readall() {
+    public List readall() {
         return null;
     }
 
     @Override
-    public int update(DPersonne table) {
+    public int update(Object table) {
         return 0;
     }
 

@@ -18,6 +18,7 @@ import datechooser.model.multiple.Period;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -51,8 +52,15 @@ public class FCal extends FTab{
     protected ArrayList<Calendar> recupDates = null;
     protected  parserPeriod PP = null;
     protected DCoupleTransferHandler kikoo = new DCoupleTransferHandler();
-
+    protected DefaultTableModel salles = null;
+    protected JDialog jdi=null;
     protected JButton okPlageJour = new JButton("Valider votre selection");
+
+
+
+    /* Test d'activation du bouton de validation du formulaire
+       Il suffit de changer le if pour que les tests sur les composants du formulaire soient mis à jours
+     */
     protected boolean condition(){
 
         if(!(finJour.getSelectedIndex()==-1) && !(debutJour.getSelectedIndex()==-1) && !(soutenance.getText().isEmpty()) && soutenance.getText().matches("\\d{1,10}") && !chooserDebut.getSelectedPeriodSet().isEmpty() && creneau.getText().matches("\\d{1,10}") && !(creneau.getText().isEmpty())) {
@@ -63,7 +71,6 @@ public class FCal extends FTab{
         else {
             return false;
         }
-
     }
 
     public FCal() {
@@ -78,25 +85,23 @@ public class FCal extends FTab{
         test1.setOpaque(false);
         infoChooser.setOpaque(false);
         okPlageJour.setEnabled(false);
-          chooserDebut.addSelectionChangedListener(new SelectionChangedListener() {
 
-              public void onSelectionChange(SelectionChangedEvent selectionChangedEvent) {
 
-                  if(condition())
-                      okPlageJour.setEnabled(true);
-                  else
-                      okPlageJour.setEnabled(false);
-              }
-          });
+
+        /* Listener du bouton de validation de formulaire */
         okPlageJour.addActionListener(new ActionListener() {
 
 
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                //Récupération des des periode sous forme d'iterator
                 datechoisis = chooserDebut.getSelection().iterator();
+                //Transformation des Period en une arraylist de jours ouvrables
                 PP = new parserPeriod(datechoisis);
                 recupDates = (ArrayList<Calendar>) PP.getDates();
 
+                //Calcul du nombre de creneau dans une journée
                 final int trololo = ((Integer.parseInt(finJour.getSelectedItem().toString()) - Integer.parseInt(debutJour.getSelectedItem().toString())) * 60) / Integer.parseInt(creneau.getText());
 
                 pan().removeAll();
@@ -373,6 +378,17 @@ public class FCal extends FTab{
         }
 
         );
+
+        chooserDebut.addSelectionChangedListener(new SelectionChangedListener() {
+
+            public void onSelectionChange(SelectionChangedEvent selectionChangedEvent) {
+
+                if(condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
+            }
+        });
 
         pan().addMouseListener(new MouseListener() {
             @Override

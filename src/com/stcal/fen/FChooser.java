@@ -25,14 +25,14 @@ public class FChooser {
         switch (ret){
             case JFileChooser.APPROVE_OPTION :
                 result = CHOSEN;
-                System.out.println("FChooser: selected " + finder.getSelectedFile().getPath());
+                System.out.println("FChooser: Selected " + finder.getSelectedFile().getPath());
                 break;
             case JFileChooser.CANCEL_OPTION :
                 System.out.println("FChooser: Sélection annulée");
                 result = CANCELED;
                 break;
             default :
-                System.out.println("FChooser: erreur");
+                System.out.println("FChooser: Erreur");
                 result = ERROR;
                 break;
         }

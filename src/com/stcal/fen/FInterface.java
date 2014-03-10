@@ -23,7 +23,7 @@ public class FInterface {
         tabs.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                Main.fenStatut("Ongelet");
+                Main.fenStatut("Onglet");
             }
         });
         fen.add(tabs);

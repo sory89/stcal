@@ -25,8 +25,5 @@ public class DEtudiant extends DPersonne {
         this.lie = lie;
     }
 
-    public String toString(){
-        return super.toString()+" - lié = "+this.getLie();
-    }
 
 }

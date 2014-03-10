@@ -91,8 +91,8 @@ public class Main {
             all = Datas.prof;
         }
         else {
-            fenStatut("Err: type de la personne inconnu.");
-            System.err.println("Err: type de la personne inconnu.");
+            fenStatut("Err: Type de la personne inconnu.");
+            System.err.println("Err: Type de la personne inconnu.");
             return null;
         }
         /*
@@ -144,8 +144,8 @@ public class Main {
                 }
             }
             catch (Exception ex){
-                fenStatut("Err: impossible d'ouvrir le fichier.");
-                System.err.println("erreur ouverture fichier : " + ex.getMessage());
+                fenStatut("Err: Impossible d'ouvrir le fichier.");
+                System.err.println("Erreur ouverture fichier : " + ex.getMessage());
             }
         }
         else {

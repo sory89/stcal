@@ -3,6 +3,8 @@ package com.stcal.fen;
 import com.stcal.Main;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 public class FInterface {
@@ -11,7 +13,6 @@ public class FInterface {
     protected JLabel status = new JLabel("Idle");
     protected JTabbedPane tabs = new JTabbedPane();
 
-
     public FInterface(int x,int y){
         Main.mac(fen);
         fen.setSize(x, y);
@@ -19,6 +20,12 @@ public class FInterface {
         fen.setLocationRelativeTo(null);
         FMenu menubar = new FMenu();
         fen.setJMenuBar(menubar.getMenubar());
+        tabs.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                Main.fenStatut("Ongelet");
+            }
+        });
         fen.add(tabs);
         JPanel statusPanel = new JPanel();
         statusPanel.setOpaque(false);

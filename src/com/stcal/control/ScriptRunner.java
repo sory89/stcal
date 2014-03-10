@@ -1,7 +1,7 @@
 /*
  * Slightly modified version of the com.ibatis.common.jdbc.ScriptRunner class
  * from the iBATIS Apache project. Only removed dependency on Resource class
- * and a constructor 
+ * and a constructor.
  */
 /*
  *  Copyright 2004 Clinton Begin
@@ -145,8 +145,6 @@ public class ScriptRunner {
 							.lastIndexOf(getDelimiter())));
 					command.append(" ");
 					Statement statement = conn.createStatement();
-
-					println(command);
 
 					boolean hasResults = false;
 					if (stopOnError) {

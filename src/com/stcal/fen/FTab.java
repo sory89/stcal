@@ -16,7 +16,7 @@ public class FTab {
     public FTab(String titre){
         nom = titre;
         tabpan.setOpaque(false);
-        tabpan.setBorder(new EmptyBorder(10,10,10,10)) ;
+        tabpan.setBorder(new EmptyBorder(10,10,10,10));
     }
 
     /**

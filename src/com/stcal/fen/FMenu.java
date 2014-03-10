@@ -6,6 +6,7 @@ import com.stcal.don.Type;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class FMenu {
 
@@ -76,6 +77,21 @@ public class FMenu {
             }
         });
         menupref.add(db);
+        menupref.addSeparator();
+        JMenuItem dbr = new JMenuItem("Reset connection");
+        dbr.setToolTipText("Ferme la connection à la base de donnée et ouvre en une nouvel.");
+        dbr.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Main.resetConnection();
+                    Main.fenStatut("Connection à la base de donnée fermé et reouverte.");
+                } catch (SQLException e1) {
+                    Main.fenStatut(e1.getMessage());
+                }
+            }
+        });
+        menupref.add(dbr);
 
 
         menubar.add(menufile);

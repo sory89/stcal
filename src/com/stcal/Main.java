@@ -11,6 +11,7 @@ import com.stcal.fen.*;
 
 import java.awt.*;
 import java.lang.reflect.Method;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Main {
@@ -183,6 +184,14 @@ public class Main {
                 t.printStackTrace();
             }
         }
+    }
+
+    /**
+     * detruit la connection à la base de donne precedente et en recree une autre
+     */
+    public static void resetConnection() throws SQLException {
+        DBsettings set = (DBsettings)dbsettings;
+        set.getNewConnection();
     }
 
 }

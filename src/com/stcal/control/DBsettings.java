@@ -29,7 +29,9 @@ public class DBsettings extends Settings {
      */
     public Connection getNewConnection() throws SQLException {
         Singleton sing = new Singleton(this);
-        return sing.DS.getConnection();
+        if (con!=null) con.close();
+        con = sing.DS.getConnection();
+        return con;
     }
 
     /**
@@ -39,7 +41,7 @@ public class DBsettings extends Settings {
      */
     public Connection getConnection() throws SQLException {
         if (con == null){
-            con = getNewConnection();
+            getNewConnection();
         }
         return con;
     }

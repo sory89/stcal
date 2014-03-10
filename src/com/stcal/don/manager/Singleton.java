@@ -14,8 +14,8 @@ import java.sql.Connection;
 
 public class Singleton {
 
-    public static final String DRIVER = "com.mysql.jdbc.Driver";
-    public static final String URL = "jdbc:mysql://localhost/stcal";
+    public static final String DRIVER   = "com.mysql.jdbc.Driver";
+    public static final String URL      = "jdbc:mysql://localhost/";
 
     private DBsettings dbsettings;
     public final DataSource DS =  new BasicDataSource();

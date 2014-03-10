@@ -29,12 +29,6 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        Datas.load((DBsettings)dbsettings);
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            public void run() {
-                Datas.save((DBsettings)dbsettings);
-            }
-        }));
         fen.addTab(lier) ;
         fen.addTab(stage);
         fen.addTab(cal);
@@ -46,6 +40,12 @@ public class Main {
         } catch (UnopenableSettingException e) {
             fenStatut("Impossible de charger le fichier de config");
         }
+        Datas.load((DBsettings)dbsettings);
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            public void run() {
+                Datas.save((DBsettings)dbsettings);
+            }
+        }));
     }
 
     public static void askdbsetting(){

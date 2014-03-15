@@ -80,16 +80,16 @@ public class FMenu {
         });
         menupref.add(db);
         menupref.addSeparator();
-        JMenuItem dbr = new JMenuItem("Reset connection");
+        JMenuItem dbr = new JMenuItem("Reset DB connection");
         dbr.setToolTipText("Ferme la connection à la base de donnée et ouvre en une nouvel.");
         dbr.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     Main.resetConnection();
-                    Main.fenStatut("Connection à la base de donnée fermé et reouverte.");
+                    Message.popnotice("Connection à la base de donnée fermé et reouverte avec succes.");
                 } catch (SQLException e1) {
-                    Main.fenStatut(e1.getMessage());
+                    Message.poperror(e1);
                 }
             }
         });

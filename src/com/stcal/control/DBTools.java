@@ -1,12 +1,7 @@
 package com.stcal.control;
 
-import com.stcal.Main;
-import com.stcal.control.exceptions.NoSettingFileException;
-import com.stcal.control.exceptions.NothingToSaveException;
-import com.stcal.control.exceptions.UncreatableSettingException;
-import com.stcal.control.exceptions.UnopenableSettingException;
-
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -29,10 +24,9 @@ public class DBTools {
         final DBsettings param = new DBsettings();
         try {
             param.loadfile();
-        } catch (NoSettingFileException e) {
+        } catch (FileNotFoundException e) {
+            Message.out.print(e.getMessage() + " -> demande des infos à l'utilisateur.");
             askdbsetting(param);
-        } catch (UnopenableSettingException e) {
-            Message.poperror("Impossible de charger le fichier de config");
         }
         Datas.load(param);
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
@@ -83,16 +77,8 @@ public class DBTools {
     public static void askdbsetting(Settings dbsettings){
         try {
             dbsettings.loadfile();
+        } catch (FileNotFoundException e) {
+            dbsettings.ask();
         }
-        catch (UnopenableSettingException e) {
-            Message.poperror("Impossible de charger le fichier de config, la configuration par defaut sera utilisé.");
-        } catch (NoSettingFileException e) {
-            try {
-                dbsettings.save();
-            } catch (UncreatableSettingException e1) {
-                Message.poperror("Impossible de creer le fichier de config.");
-            } catch (NothingToSaveException e1) {}
-        }
-        dbsettings.ask();
     }
 }

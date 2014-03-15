@@ -1,9 +1,9 @@
 package com.stcal.control;
 
 
-
 import com.stcal.Main;
-import com.stcal.control.exceptions.*;
+import com.stcal.control.exceptions.NoSuchSettingException;
+import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.fen.FSettings;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,41 +29,47 @@ public class Settings {
     }
 
     /**
-     * Charge le fichier de config
-     * @throws NoSettingFileException
-     * @throws UnopenableSettingException
+     * Charge le fichier de configuration
+     * @throws IOException
+     * @throws JSONException
      */
-    public void loadfile() throws NoSettingFileException, UnopenableSettingException {
+    public boolean loadfile() throws FileNotFoundException {
         File config = new File(filepath);
         FileInputStream stream;
+        stream = new FileInputStream(config);
+        StringBuffer fileContent = new StringBuffer("");
+        byte[] buffer = new byte[1024];
         try {
-            stream = new FileInputStream(config);
-            StringBuffer fileContent = new StringBuffer("");
-            byte[] buffer = new byte[1024];
             while (stream.read(buffer) != -1) {
                 fileContent.append(new String(buffer));
             }
-            JSONObject jObject = new JSONObject(fileContent.toString());
-            for(Map.Entry<String, String> entry : settings.entrySet()) {
-                String key = entry.getKey();
-                settings.put(key,jObject.getString(key));
-            }
-        } catch (FileNotFoundException e) {
-            throw new NoSettingFileException();
         } catch (IOException e) {
-            System.err.println(e.getMessage());
-            throw new UnopenableSettingException();
-        } catch (JSONException e) {
-            System.err.println(e.getMessage());
-            throw new UnopenableSettingException();
+            Message.poperror("Erreure à l'ouverture du fichier de configuration: " + e.getMessage());
+            return false;
         }
+        JSONObject jObject = null;
+        try {
+            jObject = new JSONObject(fileContent.toString());
+        } catch (JSONException e) {
+            Message.poperror("Erreure à la lercture de " + filename + ": " + e.getMessage());
+            return false;
+        }
+        for(Map.Entry<String, String> entry : settings.entrySet()) {
+            String key = entry.getKey();
+            try {
+                settings.put(key,jObject.getString(key));
+            } catch (JSONException e) {
+                Message.popwarning("Erreure à la lercture de " + key + " dans " + filename + ": " + e.getMessage());
+            }
+        }
+        return true;
     }
 
     /**
      * Sauvgarde les parametre dans le fichier
-     * @throws UncreatableSettingException en cas d'echec lors de la creation du fichier
+     * @throws NothingToSaveException si le fichier ne contient pas de parametre
      */
-    public void save() throws UncreatableSettingException, NothingToSaveException {
+    public void save() throws NothingToSaveException {
         if (settings.size()<=0) throw new NothingToSaveException();
         File config = new File(filepath);
         FileOutputStream stream;
@@ -72,7 +78,7 @@ public class Settings {
             try {
                 jObject.put(entry.getKey(),entry.getValue().toString());
             } catch (JSONException e) {
-                System.err.println(e.getMessage());
+                Message.err.println(e.getMessage());
             }
         }
         try {
@@ -85,8 +91,7 @@ public class Settings {
             buffer.close();
         }
         catch (IOException e) {
-            System.err.println(e.getMessage());
-            throw new UncreatableSettingException();
+            Message.poperror("Errerue lors de la sauvegarde de " + filename + ": " + e.getMessage());
         }
         Main.fenStatut("Parametre mis à jour (" + filename + ")");
     }

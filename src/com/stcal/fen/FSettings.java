@@ -28,9 +28,15 @@ public class FSettings {
         pan.setLayout(new GridLayout(settings.getNbChangeable(),2));
         form = new HashMap<String, JTextField>();
         for(Map.Entry<String, String> entry : settings.getall().entrySet()) {
-            JLabel label = new JLabel(entry.getKey());
+            JLabel label;
+            try {
+                label = new JLabel(settings.getDescOf(entry.getKey()));
+            } catch (NoSuchSettingException e) {
+                Message.err.println(e.getMessage());
+                label = new JLabel(entry.getKey());
+            }
             JTextField input = new JTextField(entry.getValue());
-            form.put(entry.getKey(),input);
+            form.put(entry.getKey(), input);
             pan.add(label);
             pan.add(input);
         }
@@ -41,6 +47,7 @@ public class FSettings {
                 settings.set(entry.getKey(),entry.getValue().getText());
             } catch (NoSuchSettingException e) {
                 Message.err.println(e);
+                continue;
             }
         }
         try {

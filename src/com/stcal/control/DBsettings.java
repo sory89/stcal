@@ -16,10 +16,14 @@ public class DBsettings extends Settings {
 
     public DBsettings(){
         super("dbsettings");
-        settings.put("DBUser","stcal");
-        settings.put("DBPassword","stcal");
-        settings.put("DBServer","localhost");
         settings.put("DBPort","3306");
+        settings.put("DBServer","localhost");
+        settings.put("DBPassword","stcal");
+        settings.put("DBUser","stcal");
+        humanmsg.put("DBUser","Nom d\'utilisateur:");
+        humanmsg.put("DBPassword","Mot de passe:");
+        humanmsg.put("DBServer","Serveur MySql:");
+        humanmsg.put("DBPort","Port:");
     }
 
     /**

@@ -58,7 +58,7 @@ public class Message {
     public static boolean popquestion(String msg){
         JOptionPane pop = new JOptionPane();
         boolean inter = (pop.showConfirmDialog(null,msg,"coucou",2) == 0);
-        out.println(msg + "\nreponse: " + inter);
+        out.println(msg + "\treponse: " + inter);
         Main.fenStatut("ok");
         return inter;
     }

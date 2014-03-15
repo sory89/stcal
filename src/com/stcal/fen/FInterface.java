@@ -21,6 +21,7 @@ public class FInterface {
         fen.setSize(x, y);
         fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fen.setLocationRelativeTo(null);
+        fen.setTitle("STCal");
         FMenu menubar = new FMenu();
         fen.setJMenuBar(menubar.getMenubar());
         tabs.addChangeListener(new ChangeListener() {

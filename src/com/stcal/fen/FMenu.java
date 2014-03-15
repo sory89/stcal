@@ -26,6 +26,23 @@ public class FMenu {
         });*/
         menuaction.add(lier);
 
+        JMenu menuOther = new JMenu("?");
+        JMenuItem help = new JMenuItem("Aide");
+        JMenuItem raccourcis = new JMenuItem("Raccourcis");
+        JMenuItem aPropos = new JMenuItem("À propos de STCal");
+        final JOptionPane jop1 = new JOptionPane();
+        aPropos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jop1.showMessageDialog(null, "Logiciel STCal crée dans le cadre du projet tuteuré de l'IUT de Belfort. " +
+                        "Créé par Florian BARROIS, Nicolas DEVILLERS, Valentin JEANROY, Mehdi LOISEL Jean Mercadier, Ismael TAHLEB et Willeme VERDEAUX  ", "À propos", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        menuOther.add(help);
+        menuOther.add(raccourcis);
+        menuOther.addSeparator();
+        menuOther.add(aPropos);
 
         JMenu menufile = new JMenu("File");
         JMenuItem openetu = new JMenuItem("Importer étudiants...") ;
@@ -57,6 +74,9 @@ public class FMenu {
             }
         });
         menufile.add(export);
+        JMenuItem exportIcs = new JMenuItem("Exporter au format ICS");
+        exportIcs.setToolTipText("Exporter le calendrier au format ICS.");
+        menufile.add(exportIcs);
         menufile.addSeparator();
         JMenuItem quit = new JMenuItem("Quitter");
         quit.setToolTipText("Fermer l'application");
@@ -97,9 +117,11 @@ public class FMenu {
         menupref.add(dbr);
 
 
+
         menubar.add(menufile);
         menubar.add(menuaction);
         menubar.add(menupref);
+        menubar.add(menuOther);
     }
 
     public JMenuBar getMenubar(){

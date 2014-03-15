@@ -1,7 +1,6 @@
 package com.stcal.control;
 
 
-import com.stcal.Main;
 import com.stcal.control.exceptions.NoSuchSettingException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.fen.FSettings;
@@ -95,7 +94,7 @@ public class Settings {
         catch (IOException e) {
             Message.poperror("Errerue lors de la sauvegarde de " + filename + ": " + e.getMessage());
         }
-        Main.fenStatut("Parametre mis à jour (" + filename + ")");
+        Message.status("Parametre mis à jour (" + filename + ")");
     }
 
     /**

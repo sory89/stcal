@@ -8,12 +8,10 @@ import com.stcal.fen.*;
 import javax.swing.*;
 import java.awt.*;
 import java.lang.reflect.Method;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Main {
 
-    public static final DBsettings dbsettings;
     private static FChooser finder;
     private static FLier lier;
     private static FStage stage;
@@ -29,7 +27,6 @@ public class Main {
         stage       = new FStage();
         cal         = new FCal();
         fen         = new FInterface(800,600);
-        dbsettings  = DBTools.startup();
         calsettings = new CALsettings();
         colors      = null;
     }
@@ -39,6 +36,7 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
+        DBTools.startup();
         fen.addTab(lier) ;
         fen.addTab(stage);
         fen.addTab(cal);
@@ -71,14 +69,14 @@ public class Main {
             all = Datas.prof;
         }
         else {
-            fenStatut("Err: Type de la personne inconnu.");
+            Message.status("Err: Type de la personne inconnu.");
             System.err.println("Err: Type de la personne inconnu.");
             return null;
         }
         /*
         DPersonne selected = all.search(pre,nom);
         if (selected==null){
-            fenStatut("Err : personne non trouvée.");
+            status("Err : personne non trouvée.");
             System.err.println("Err : personne non trouvée.");
             return null;
         }
@@ -90,7 +88,7 @@ public class Main {
             else
             details.add(" " + all.getLabels().get(i) + ": " + selected.getInfos().get(i-2));
         }
-        fenStatut("Info de " + pre + " " + nom + ".");
+        status("Info de " + pre + " " + nom + ".");
         */
         return details;
     }
@@ -101,7 +99,7 @@ public class Main {
      */
     public static void openFile(Type type){
         DListe nouveau;
-        fenStatut("Navigateur de fichier.");
+        Message.status("Navigateur de fichier.");
         finder.show();
         if (finder.status()==FChooser.CHOSEN){
             try {
@@ -110,13 +108,13 @@ public class Main {
                     for (int i=0; i<nouveau.getSize();i++){
                         Datas.etu.addElement(nouveau.getElementAt(i));
                     }
-                    fenStatut(nouveau.getSize() + " étudiants ajoutés de " + finder.path());
+                    Message.status(nouveau.getSize() + " étudiants ajoutés de " + finder.path());
                 }
                 else if (type.equals(Type.TUTEUR)){
                     for (int i=0; i<nouveau.getSize();i++){
                         Datas.prof.addElement(nouveau.getElementAt(i));
                     }
-                    fenStatut(nouveau.getSize() + " enseignants ajoutés de" + finder.path());
+                    Message.status(nouveau.getSize() + " enseignants ajoutés de" + finder.path());
                 }
                 else {
                     System.err.println("Main: openFile: type not defined");
@@ -124,23 +122,15 @@ public class Main {
                 }
             }
             catch (Exception ex){
-                fenStatut("Err: Impossible d'ouvrir le fichier.");
+                Message.status("Err: Impossible d'ouvrir le fichier.");
                 System.err.println("Erreur ouverture fichier : " + ex.getMessage());
             }
         }
         else {
-            fenStatut("Ouverture annulée.");
+            Message.status("Ouverture annulée.");
         }
         fen.refresh();
         lier.resetOption();
-    }
-
-    /**
-     * Met un message en footer de la fenetre
-     * @param text message a afficher
-     */
-    public static void fenStatut(String text){
-        fen.setStatus(text);
     }
 
     /**
@@ -161,18 +151,9 @@ public class Main {
                 method.invoke(null, window, true);
             }
             catch (Throwable t) {
-                System.err.println("Not compatible OSX");
-                t.printStackTrace();
+                Message.poperror("Not compatible OSX: " + t.getMessage());
             }
         }
-    }
-
-    /**
-     * detruit la connection à la base de donne precedente et en recree une autre
-     */
-    public static void resetConnection() throws SQLException {
-        DBsettings set = (DBsettings) dbsettings;
-        set.getNewConnection();
     }
 
 }

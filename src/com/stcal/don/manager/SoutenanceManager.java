@@ -46,7 +46,6 @@ public class SoutenanceManager implements Manager<Soutenance> {
             catch (Exception ignore){}
             e.printStackTrace();
         }
-
         return id;
     }
 
@@ -67,7 +66,7 @@ public class SoutenanceManager implements Manager<Soutenance> {
                 con.rollback();
             }
             catch (Exception ignore){}
-            e.printStackTrace();
+            Message.err.println(e.getMessage());
         }
         return null;    }
 
@@ -88,7 +87,7 @@ public class SoutenanceManager implements Manager<Soutenance> {
                 con.rollback();
             }
             catch (Exception ignore){}
-            e.printStackTrace();
+            Message.err.println(e.getMessage());
         }
         return resultats;
     }
@@ -110,7 +109,7 @@ public class SoutenanceManager implements Manager<Soutenance> {
             if (1 != n) Message.err.println("erreur update");
         }
         catch (Exception e) {
-            e.printStackTrace();
+            Message.err.println(e.getMessage());
             try {
                 con.rollback();
                 pstm.close();
@@ -136,10 +135,10 @@ public class SoutenanceManager implements Manager<Soutenance> {
             pstm.setInt(1,id);
             n = pstm.executeUpdate();
             con.commit();
-            if (1 != n) System.err.println("erreur delete soutenance manager");
+            if (1 != n) Message.err.println("erreur delete soutenance manager");
         }
         catch (SQLException e) {
-            e.printStackTrace();
+            Message.err.println(e.getMessage());
             try {
                 con.rollback();
                 pstm.close();

@@ -12,9 +12,18 @@ import javax.swing.*;
 
 public class Datas {
 
-    public static DefaultListModel<DCouple> stages = new DefaultListModel<DCouple>();
-    public static DListe etu = new DListe();
-    public static DListe prof = new DListe();
+    public static final DefaultListModel<DCouple> stages;
+    public static final DListe etu;
+    public static final DListe prof;
+
+    static {
+        stages = new DefaultListModel<DCouple>();
+        etu    = new DListe();
+        //DEtudiantManager etuman = new DEtudiantManager();
+        // etu    = etuman.readall();
+        // TODO Imcompatiblité a cause de DListe
+        prof   = new DListe();
+    }
 
     /**
      * Charge la base de donne et les place dans les objet de la classe

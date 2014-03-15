@@ -75,8 +75,8 @@ public class FMenu {
         db.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.dbsettings.popup().pop();
-                DBTools.askdbsetting(Main.dbsettings);
+                DBTools.dbsettings.popup().pop();
+                DBTools.askdbsetting(DBTools.dbsettings);
             }
         });
         menupref.add(db);
@@ -87,7 +87,7 @@ public class FMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Main.resetConnection();
+                    DBTools.resetConnection();
                     Message.popnotice("Connection à la base de donnée fermé et reouverte avec succes.");
                 } catch (SQLException e1) {
                     Message.poperror(e1);

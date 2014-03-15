@@ -1,12 +1,12 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
+import com.stcal.control.CustomRenderer;
 import com.stcal.control.Datas;
 import com.stcal.control.Message;
 import com.stcal.control.exceptions.NoSuchSettingException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.control.parserPeriod;
-import com.stcal.don.CustomRenderer;
 import com.stcal.don.DCouple;
 import com.stcal.don.DCreneau;
 import com.stcal.don.Soutenance;

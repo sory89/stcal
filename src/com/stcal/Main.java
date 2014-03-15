@@ -27,7 +27,7 @@ public class Main {
         finder      = new FChooser();
         lier        = new FLier();
         stage       = new FStage();
-        cal         = new FTab("Calendrier");
+        cal         = new FCal();
         fen         = new FInterface(800,600);
         dbsettings  = DBTools.startup();
         calsettings = new CALsettings();

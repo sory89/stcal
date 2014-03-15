@@ -153,7 +153,7 @@ public class Main {
             String methodName = "setWindowCanFullScreen";
             try {
                 ImageIcon img = new ImageIcon("res/stcal-icon.png");
-                com.apple.eawt.Application.getApplication().setDockIconImage(img.getImage());
+                //com.apple.eawt.Application.getApplication().setDockIconImage(img.getImage());
                 System.setProperty("apple.laf.useScreenMenuBar","true");
                 System.setProperty("com.apple.mrj.application.apple.menu.about.name","StCal");
                 Class<?> clazz = Class.forName(className);

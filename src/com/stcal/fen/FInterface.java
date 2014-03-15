@@ -14,6 +14,8 @@ public class FInterface {
     protected JTabbedPane tabs = new JTabbedPane();
 
     public FInterface(int x,int y){
+        ImageIcon img = new ImageIcon("res/stcal-icon.png");
+        fen.setIconImage(img.getImage());
         Main.mac(fen);
         fen.setSize(x, y);
         fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

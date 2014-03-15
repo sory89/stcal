@@ -1,5 +1,6 @@
 package com.stcal.don;
 
+import com.stcal.control.Message;
 import com.stcal.control.exceptions.MaxSoutenanceException;
 
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class DCreneau {
     public void addSBC(DCouple dc){
 
         ListSoutenance.add(new Soutenance(dc,null));
-        System.out.println(dc+" ajouter à "+this.date_debut);
+        Message.out.println(dc+" ajouter à "+this.date_debut);
 
 
     }

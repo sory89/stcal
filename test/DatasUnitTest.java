@@ -1,5 +1,5 @@
+import com.stcal.control.DBTools;
 import com.stcal.control.DBsettings;
-import com.stcal.control.Datas;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ public class DatasUnitTest {
     public void test() throws Exception {
         DBsettings set = new DBsettings();
         set.set("DBPassword","nothing");
-        Assert.assertFalse(Datas.isset(set));
+        Assert.assertFalse(DBTools.isset(set));
     }
 
 }

@@ -1,11 +1,9 @@
 package com.stcal.fen;
 
-import com.stcal.Main;
+import com.stcal.control.Message;
 import com.stcal.control.Settings;
 import com.stcal.control.exceptions.NoSuchSettingException;
 import com.stcal.control.exceptions.NothingToSaveException;
-import com.stcal.control.exceptions.UncreatableSettingException;
-import org.json.JSONException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,21 +43,15 @@ public class FSettings {
         ok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    submit();
-                    fen.setVisible(false);
-                } catch (UncreatableSettingException e1) {
-                    Main.fenStatut("Impossible de creer le fichier de configuration");
-                } catch (JSONException e1) {
-                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                }
+                submit();
+                fen.setVisible(false);
             }
         });
         pan.add(ok);
         fen.setVisible(true);
     }
 
-    public void submit() throws UncreatableSettingException, JSONException {
+    public void submit() {
         for(Map.Entry<String,JTextField> entry : form.entrySet()) {
             try {
                 settings.set(entry.getKey(),entry.getValue().getText());
@@ -70,7 +62,7 @@ public class FSettings {
         try {
             settings.save();
         } catch (NothingToSaveException e) {
-            System.out.println(e.getMessage());
+            Message.out.println(e.getMessage());
         }
     }
 

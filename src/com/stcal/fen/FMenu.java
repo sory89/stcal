@@ -1,6 +1,8 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
+import com.stcal.control.DBTools;
+import com.stcal.control.Message;
 import com.stcal.don.Type;
 
 import javax.swing.*;
@@ -61,7 +63,7 @@ public class FMenu {
         quit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("FMenu: JMenu exit");
+                Message.out.println("FMenu: JMenu exit");
                 System.exit(0);
             }
         });
@@ -73,21 +75,21 @@ public class FMenu {
         db.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.askdbsetting();
+                DBTools.askdbsetting(Main.dbsettings);
             }
         });
         menupref.add(db);
         menupref.addSeparator();
-        JMenuItem dbr = new JMenuItem("Reset connection");
+        JMenuItem dbr = new JMenuItem("Reset DB connection");
         dbr.setToolTipText("Ferme la connection à la base de donnée et ouvre en une nouvel.");
         dbr.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     Main.resetConnection();
-                    Main.fenStatut("Connection à la base de donnée fermé et reouverte.");
+                    Message.popnotice("Connection à la base de donnée fermé et reouverte avec succes.");
                 } catch (SQLException e1) {
-                    Main.fenStatut(e1.getMessage());
+                    Message.poperror(e1);
                 }
             }
         });

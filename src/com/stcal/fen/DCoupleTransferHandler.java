@@ -2,6 +2,7 @@ package com.stcal.fen;
 
 import com.stcal.Main;
 import com.stcal.control.Datas;
+import com.stcal.control.Message;
 import com.stcal.don.DCouple;
 import com.stcal.don.DCreneau;
 
@@ -60,11 +61,11 @@ public class DCoupleTransferHandler extends TransferHandler {
 
             Datas.stages.removeElement(dc);  }
                 else{
-                 System.out.println("Trop de soutenance dans ce creneau GROS ! Tu PEUX  PAS TEST !");
+                 Message.err.println("Trop de soutenance dans ce creneau GROS ! Tu PEUX  PAS TEST !");
              }
             }
             else{
-                System.out.println("Non j'crois pas ! Il est de déjà dans ce creneau le prof ! REPORT !!!!!!!!!!");
+                Message.err.println("Non j'crois pas ! Il est de déjà dans ce creneau le prof ! REPORT !!!!!!!!!!");
             }
             int i;
             int y;
@@ -132,9 +133,9 @@ public class DCoupleTransferHandler extends TransferHandler {
 
         for (DataFlavor dataFlavor : flavors) {
             if (dataFlavor.getRepresentationClass() == com.stcal.don.DCouple.class) return true;
-            System.out.println(dataFlavor.getRepresentationClass());
+            Message.out.println(dataFlavor.getRepresentationClass());
         }
-        System.out.println("non j'crois pas3");
+        Message.err.println("non j'crois pas3");
         return true;
     }
 

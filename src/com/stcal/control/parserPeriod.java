@@ -46,12 +46,12 @@ public class parserPeriod {
             else{
                 start=tmp.getStartDate();
                 end = tmp.getEndDate();
-                System.out.println("Nouvelle periode");
-                System.out.println(start);
-                System.out.println(end);
+                Message.out.println("Nouvelle periode");
+                Message.out.println(start);
+                Message.out.println(end);
 
                 if(start.get(Calendar.YEAR)!=end.get(Calendar.YEAR)){
-                    System.out.println("differente année");
+                    Message.out.println("differente année");
                     endtmp=new GregorianCalendar(start.get(Calendar.YEAR),11,31);
                     starttmp=new GregorianCalendar(end.get(Calendar.YEAR),0,1);
                     while(endtmp.get(Calendar.DAY_OF_YEAR)>=start.get(Calendar.DAY_OF_YEAR)){

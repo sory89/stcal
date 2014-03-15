@@ -2,8 +2,6 @@ package com.stcal;
 
 import com.stcal.control.*;
 import com.stcal.control.exceptions.NoSettingFileException;
-import com.stcal.control.exceptions.NothingToSaveException;
-import com.stcal.control.exceptions.UncreatableSettingException;
 import com.stcal.control.exceptions.UnopenableSettingException;
 import com.stcal.don.DListe;
 import com.stcal.don.Type;
@@ -16,14 +14,25 @@ import java.util.ArrayList;
 
 public class Main {
 
-    private static FChooser finder = new FChooser();
+    private static FChooser finder;
+    private static FLier lier;
+    private static FStage stage;
+    private static FTab cal;
+
     public static FInterface fen = new FInterface(800,600);
-    private static FLier lier = new FLier();
-    private static FStage stage = new FStage();
-    private static FTab cal = new FCal();
-    private static Settings dbsettings = new DBsettings();
+    public static Settings dbsettings = new DBsettings();
     public static Settings calsettings= new CALsettings();
     public static String[][] colors=null;
+
+    static {
+        finder      = new FChooser();
+        lier        = new FLier();
+        stage       = new FStage();
+        cal         = new FTab("Calendrier");
+        fen         = new FInterface(800,600);
+        dbsettings  = DBTools.startup();
+        calsettings = new CALsettings();
+    }
 
     /**
      * Construit l'environement graphique de l'application
@@ -34,35 +43,6 @@ public class Main {
         fen.addTab(stage);
         fen.addTab(cal);
         fen.show();
-        try {
-            dbsettings.loadfile();
-        } catch (NoSettingFileException e) {
-            askdbsetting();
-        } catch (UnopenableSettingException e) {
-            fenStatut("Impossible de charger le fichier de config");
-        }
-        Datas.load((DBsettings)dbsettings);
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            public void run() {
-                Datas.save((DBsettings)dbsettings);
-            }
-        }));
-    }
-
-    public static void askdbsetting(){
-        try {
-            dbsettings.loadfile();
-        }
-        catch (UnopenableSettingException e) {
-            fenStatut("Impossible de charger le fichier de config");
-        } catch (NoSettingFileException e) {
-            try {
-                dbsettings.save();
-            } catch (UncreatableSettingException e1) {
-                fenStatut("Impossible de creer le fichier de config");
-            } catch (NothingToSaveException e1) {}
-        }
-        dbsettings.ask();
     }
 
     /**

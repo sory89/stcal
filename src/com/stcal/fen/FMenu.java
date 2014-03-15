@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
+import com.stcal.control.DBTools;
 import com.stcal.don.Type;
 
 import javax.swing.*;
@@ -73,7 +74,7 @@ public class FMenu {
         db.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.askdbsetting();
+                DBTools.askdbsetting(Main.dbsettings);
             }
         });
         menupref.add(db);

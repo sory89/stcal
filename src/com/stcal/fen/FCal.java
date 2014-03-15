@@ -362,7 +362,7 @@ public class FCal extends FTab{
 
 
                 } catch (NoSuchSettingException e1) {
-                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                    Message.err.println(e1.getMessage());
                 }
                 try {
                     Main.calsettings.save();

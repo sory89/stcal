@@ -111,7 +111,7 @@ public class Settings {
      * @throws NoSuchSettingException si propertie n'existe pas dans les parametre
      */
     public void set(String propertie,String value) throws NoSuchSettingException {
-        if (!settings.containsKey(propertie)) throw new NoSuchSettingException();
+        if (!settings.containsKey(propertie)) throw new NoSuchSettingException(propertie,filename);
         settings.put(propertie,value);
     }
 
@@ -122,7 +122,7 @@ public class Settings {
      * @throws NoSuchSettingException
      */
     public String get(String propertie) throws NoSuchSettingException {
-        if (!settings.containsKey(propertie)) throw new NoSuchSettingException();
+        if (!settings.containsKey(propertie)) throw new NoSuchSettingException(propertie,filename);
         return settings.get(propertie);
     }
 

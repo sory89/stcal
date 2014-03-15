@@ -16,7 +16,7 @@ import java.sql.Connection;
 public class Singleton {
 
     public static final String DRIVER   = "com.mysql.jdbc.Driver";
-    public static final String URL      = "jdbc:mysql://localhost/";
+    public static final String PREFIX = "jdbc:mysql://";
 
     private DBsettings dbsettings;
     public final DataSource DS =  new BasicDataSource();
@@ -30,9 +30,13 @@ public class Singleton {
             ds.setPassword(dbsettings.get("DBPassword"));
             ds.setUsername(dbsettings.get("DBUser"));
         } catch (NoSuchSettingException e) {
-            System.err.println("Singleton: no db user or no db password");
+            Message.err.println(e);
         }
-        ds.setUrl(URL);
+        try {
+            ds.setUrl(PREFIX + dbsettings.get("DBServer") + ":" + dbsettings.get("DBPort"));
+        } catch (NoSuchSettingException e) {
+            Message.err.println(e.getMessage());
+        }
         ds.setDefaultAutoCommit(false);
         ds.setDefaultTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
     }

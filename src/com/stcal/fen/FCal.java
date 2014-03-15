@@ -2,6 +2,7 @@ package com.stcal.fen;
 
 import com.stcal.Main;
 import com.stcal.control.Datas;
+import com.stcal.control.Message;
 import com.stcal.control.exceptions.NoSuchSettingException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.control.exceptions.UncreatableSettingException;
@@ -171,7 +172,7 @@ public class FCal extends FTab{
                 for (j = 0; j < Datas.stages.size(); j++) {
 
                     fet.addElement(Datas.stages.get(j));
-                    System.out.println(Datas.stages.get(j).getClass());
+                    Message.out.println(Datas.stages.get(j).getClass());
                 }
                 Fetu.setDragEnabled(true);
                 Fetu.setTransferHandler(kikoo);
@@ -304,7 +305,7 @@ public class FCal extends FTab{
                         for(j=0;j<Datas.stages.size();j++){
 
                             fet.addElement(Datas.stages.get(j));
-                            System.out.println(j);
+                            Message.out.println(j);
                         }
                         jt.setDefaultRenderer(Object.class,new CustomRenderer());
                         refresh();                }
@@ -338,7 +339,7 @@ public class FCal extends FTab{
                         for(j=0;j<Datas.stages.size();j++){
 
                             fet.addElement(Datas.stages.get(j));
-                            System.out.println(j);
+                            Message.out.println(j);
                         }
                         refresh();                    }
 
@@ -349,7 +350,7 @@ public class FCal extends FTab{
                         for(j=0;j<Datas.stages.size();j++){
 
                             fet.addElement(Datas.stages.get(j));
-                            System.out.println(j);
+                            Message.out.println(j);
                         }
                         refresh();                    }
                 });

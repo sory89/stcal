@@ -7,6 +7,7 @@ import com.stcal.don.DListe;
 import com.stcal.don.Type;
 import com.stcal.fen.*;
 
+import javax.swing.*;
 import java.awt.*;
 import java.lang.reflect.Method;
 import java.sql.SQLException;
@@ -53,10 +54,10 @@ public class Main {
         if (finder.status()==FChooser.CHOSEN){
             try {
                 OSplitCsv.exportcsv(finder.path(), Datas.etu);
-                System.out.println("Main: exporter");
+                Message.out.println("Main: exporter");
             }
             catch (Exception x){
-                System.err.println("Erreur écriture fichier");
+                Message.err.println("Erreur écriture fichier");
             }
         }
     }
@@ -141,7 +142,6 @@ public class Main {
      */
     public static void fenStatut(String text){
         fen.setStatus(text);
-        System.out.println(text);
     }
 
     /**
@@ -153,6 +153,8 @@ public class Main {
             String className = "com.apple.eawt.FullScreenUtilities";
             String methodName = "setWindowCanFullScreen";
             try {
+                ImageIcon img = new ImageIcon("res/stcal-icon.png");
+                com.apple.eawt.Application.getApplication().setDockIconImage(img.getImage());
                 System.setProperty("apple.laf.useScreenMenuBar","true");
                 System.setProperty("com.apple.mrj.application.apple.menu.about.name","StCal");
                 Class<?> clazz = Class.forName(className);

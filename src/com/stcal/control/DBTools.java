@@ -28,7 +28,7 @@ public class DBTools {
         } catch (NoSettingFileException e) {
             askdbsetting(param);
         } catch (UnopenableSettingException e) {
-            Main.fenStatut("Impossible de charger le fichier de config");
+            Message.poperror("Impossible de charger le fichier de config");
         }
         Datas.load(param);
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
@@ -39,9 +39,9 @@ public class DBTools {
         try {
             if (!isset(param)) reset(param);
         } catch (SQLException e) {
-            Main.fenStatut(e.getMessage());
+            Message.poperror(e);
         } catch (IOException eio){
-            Main.fenStatut(eio.getMessage());
+            Message.poperror(eio);
         }
         return param;
     }

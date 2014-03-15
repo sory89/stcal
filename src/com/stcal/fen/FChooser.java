@@ -1,5 +1,7 @@
 package com.stcal.fen;
 
+import com.stcal.control.Message;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
@@ -25,14 +27,14 @@ public class FChooser {
         switch (ret){
             case JFileChooser.APPROVE_OPTION :
                 result = CHOSEN;
-                System.out.println("FChooser: Selected " + finder.getSelectedFile().getPath());
+                Message.out.println("FChooser: Selected " + finder.getSelectedFile().getPath());
                 break;
             case JFileChooser.CANCEL_OPTION :
-                System.out.println("FChooser: Sélection annulée");
+                Message.out.println("FChooser: Sélection annulée");
                 result = CANCELED;
                 break;
             default :
-                System.out.println("FChooser: Erreur");
+                Message.out.println("FChooser: Erreur");
                 result = ERROR;
                 break;
         }

@@ -25,7 +25,7 @@ public class OSplitCsv {
         cont = new DListe();
         Scanner sc = new Scanner(file);
         if (sc.hasNextLine()){
-            System.out.println("OSplitCsv: splitcsv");
+            Message.out.println("OSplitCsv: splitcsv");
             ligne=sc.nextLine();
             int tligne=ligne.length();
             for(int i=0;i<tligne;i++){
@@ -46,7 +46,7 @@ public class OSplitCsv {
                 }
             }
             if(!er) {
-                System.out.println(nlab);
+                Message.out.println(nlab);
                 String split[] = ligne.split(SEPs);
                 ArrayList <String> test = new ArrayList<String>(Arrays.asList(split));
                 //cont.setLabels(test);
@@ -116,14 +116,13 @@ public class OSplitCsv {
         if (nligb!=0) {
             errf=errf + "\n- Il y a "+nligb+"/"+nlig+" lignes ne correspondant pas à la ligne de libellés";
         }
-        msg = new JOptionPane();
         if (er) {
-            msg.showMessageDialog(null, errf, "Erreur de fichier CSV :", JOptionPane.ERROR_MESSAGE);
+            Message.poperror(errf);
             sc.close();
             return null;
         }
         if (wr) {
-            msg.showMessageDialog(null, warf, "Attention :", JOptionPane.WARNING_MESSAGE);
+            Message.popwarning(warf);
         }
         sc.close();
         return cont;

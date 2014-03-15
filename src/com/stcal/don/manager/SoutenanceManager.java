@@ -1,5 +1,6 @@
 package com.stcal.don.manager;
 
+import com.stcal.control.Message;
 import com.stcal.don.DCandide;
 import com.stcal.don.DCouple;
 import com.stcal.don.Soutenance;
@@ -106,7 +107,7 @@ public class SoutenanceManager implements Manager<Soutenance> {
             pstm.setInt(4,table.getId());
             n = pstm.executeUpdate();
             con.commit();
-            if (1 != n) System.out.println("erreur update");
+            if (1 != n) Message.err.println("erreur update");
         }
         catch (Exception e) {
             e.printStackTrace();

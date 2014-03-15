@@ -1,6 +1,7 @@
 package com.stcal.don.manager;
 
 import com.stcal.control.DBsettings;
+import com.stcal.control.Message;
 import com.stcal.control.exceptions.NoSuchSettingException;
 import org.apache.commons.dbcp.BasicDataSource;
 
@@ -22,7 +23,7 @@ public class Singleton {
 
     public Singleton(DBsettings dbsettings){
         this.dbsettings = dbsettings;
-        System.out.println("Initializing connection");
+        Message.out.println("Initializing connection");
         BasicDataSource ds = (BasicDataSource) DS;
         ds.setDriverClassName(DRIVER);
         try {

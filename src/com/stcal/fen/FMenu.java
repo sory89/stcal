@@ -2,6 +2,7 @@ package com.stcal.fen;
 
 import com.stcal.Main;
 import com.stcal.control.DBTools;
+import com.stcal.control.Message;
 import com.stcal.don.Type;
 
 import javax.swing.*;
@@ -62,7 +63,7 @@ public class FMenu {
         quit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("FMenu: JMenu exit");
+                Message.out.println("FMenu: JMenu exit");
                 System.exit(0);
             }
         });

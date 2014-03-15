@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
+import com.stcal.control.Message;
 import com.stcal.control.Settings;
 import com.stcal.control.exceptions.NoSuchSettingException;
 import com.stcal.control.exceptions.NothingToSaveException;
@@ -70,7 +71,7 @@ public class FSettings {
         try {
             settings.save();
         } catch (NothingToSaveException e) {
-            System.out.println(e.getMessage());
+            Message.out.println(e.getMessage());
         }
     }
 

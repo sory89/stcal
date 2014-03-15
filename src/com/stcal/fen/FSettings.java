@@ -7,8 +7,6 @@ import com.stcal.control.exceptions.NothingToSaveException;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,19 +16,10 @@ import java.util.Map;
  */
 public class FSettings {
 
-    protected JFrame fen;
-    protected Settings settings;
-    protected HashMap<String,JTextField> form;
-
     public FSettings(Settings settings){
-        this.settings = settings;
-        fen = new JFrame();
-        fen.setTitle("Parametres");
-        fen.setSize(300,(settings.getNbChangeable()+1)*30);
-        fen.setLocationRelativeTo(null);
+        HashMap<String,JTextField> form;
         JPanel pan = new JPanel();
-        pan.setLayout(new GridLayout(settings.getNbChangeable()+1,2));
-        fen.add(pan);
+        pan.setLayout(new GridLayout(settings.getNbChangeable(),2));
         form = new HashMap<String, JTextField>();
         for(Map.Entry<String, String> entry : settings.getall().entrySet()) {
             JLabel label = new JLabel(entry.getKey());
@@ -39,19 +28,8 @@ public class FSettings {
             pan.add(label);
             pan.add(input);
         }
-        JButton ok = new JButton("Valider");
-        ok.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                submit();
-                fen.setVisible(false);
-            }
-        });
-        pan.add(ok);
-        fen.setVisible(true);
-    }
-
-    public void submit() {
+        JOptionPane pop = new JOptionPane();
+        pop.showMessageDialog(null, pan, "Parametre", JOptionPane.PLAIN_MESSAGE);
         for(Map.Entry<String,JTextField> entry : form.entrySet()) {
             try {
                 settings.set(entry.getKey(),entry.getValue().getText());

@@ -22,12 +22,7 @@ public class DBTools {
      */
     public static DBsettings startup(){
         final DBsettings param = new DBsettings();
-        try {
-            param.loadfile();
-        } catch (FileNotFoundException e) {
-            Message.out.print(e.getMessage() + " -> demande des infos à l'utilisateur.");
-            askdbsetting(param);
-        }
+        askdbsetting(param);
         Datas.load(param);
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             public void run() {
@@ -74,11 +69,20 @@ public class DBTools {
         }
     }
 
-    public static void askdbsetting(Settings dbsettings){
+    public static void askdbsetting(final DBsettings dbsettings){
         try {
             dbsettings.loadfile();
         } catch (FileNotFoundException e) {
             dbsettings.ask();
         }
+        do {
+            try {
+                dbsettings.getConnection();
+                return;
+            } catch (SQLException e){
+                Message.poperror("Connection à la base de donné impossible: " + e.getMessage());
+                dbsettings.ask();
+            }
+        } while (true);
     }
 }

@@ -1,7 +1,6 @@
 package com.stcal.control;
 
 
-import com.stcal.Main;
 import com.stcal.control.exceptions.NoSuchSettingException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.fen.FSettings;
@@ -19,6 +18,7 @@ import java.util.Map;
 public class Settings {
 
     protected HashMap<String,String> settings;
+    protected HashMap<String,String> humanmsg;
     private String filepath;
     private String filename;
 
@@ -26,6 +26,7 @@ public class Settings {
         filename = nom + ".json";
         filepath = System.getProperty("user.home") + System.getProperty("file.separator") + ".stcal" + System.getProperty("file.separator") + filename;
         settings = new HashMap<String, String>();
+        humanmsg = new HashMap<String, String>();
     }
 
     /**
@@ -93,7 +94,7 @@ public class Settings {
         catch (IOException e) {
             Message.poperror("Errerue lors de la sauvegarde de " + filename + ": " + e.getMessage());
         }
-        Main.fenStatut("Parametre mis à jour (" + filename + ")");
+        Message.status("Parametre mis à jour (" + filename + ")");
     }
 
     /**
@@ -124,6 +125,27 @@ public class Settings {
     public String get(String propertie) throws NoSuchSettingException {
         if (!settings.containsKey(propertie)) throw new NoSuchSettingException(propertie,filename);
         return settings.get(propertie);
+    }
+
+    /**
+     * @param propertie
+     * @return la description de la propertie sinon renvoi propertie
+     * @throws NoSuchSettingException
+     */
+    public String getDescOf(String propertie) throws NoSuchSettingException {
+        if (!settings.containsKey(propertie)) throw new NoSuchSettingException(propertie,filename);
+        if (humanmsg.containsKey(propertie)) return humanmsg.get(propertie);
+        return propertie;
+    }
+
+    /**
+     * @param propertie un propertie
+     * @param desc la description de la propertie
+     * @throws NoSuchSettingException
+     */
+    public void setDescOf(String propertie,String desc) throws NoSuchSettingException {
+        if (!settings.containsKey(propertie)) throw new NoSuchSettingException(propertie,filename);
+        humanmsg.put(propertie,desc);
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.stcal.don;
+package com.stcal.control;
 
 import com.stcal.Main;
 

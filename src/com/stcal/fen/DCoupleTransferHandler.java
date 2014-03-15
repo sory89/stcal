@@ -79,9 +79,9 @@ public class DCoupleTransferHandler extends TransferHandler {
 
             return true;
         } catch (UnsupportedFlavorException e) {
-            e.printStackTrace();
+            Message.err.println(e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+            Message.err.println(e.getMessage());
         }
         return false;
     }

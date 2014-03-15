@@ -28,7 +28,7 @@ public class Message {
 
     public static void poperror(String msg){
         err.println("ERROR:   " + msg);
-        Main.fenStatut("erreur: " + msg);
+        Main.fen.setStatus("erreur: " + msg);
         JOptionPane pop = new JOptionPane();
         pop.showMessageDialog(null, msg, "Error", JOptionPane.ERROR_MESSAGE);
     }
@@ -39,7 +39,7 @@ public class Message {
 
     public static void popwarning(String msg){
         err.println("WARNING: " + msg);
-        Main.fenStatut("warning: " + msg);
+        Main.fen.setStatus("warning: " + msg);
         JOptionPane pop = new JOptionPane();
         pop.showMessageDialog(null, msg, "Warning", JOptionPane.WARNING_MESSAGE);
     }
@@ -50,7 +50,7 @@ public class Message {
 
     public static void popnotice(String msg){
         out.println("NOTICE:  " + msg);
-        Main.fenStatut("notice: " + msg);
+        Main.fen.setStatus("notice: " + msg);
         JOptionPane pop = new JOptionPane();
         pop.showMessageDialog(null, msg, "Notice", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -58,9 +58,17 @@ public class Message {
     public static boolean popquestion(String msg){
         JOptionPane pop = new JOptionPane();
         boolean inter = (pop.showConfirmDialog(null,msg,"coucou",2) == 0);
-        out.println(msg + "\nreponse: " + inter);
-        Main.fenStatut("ok");
+        out.println(msg + "\treponse: " + inter);
+        status("ok");
         return inter;
     }
 
+    /**
+     * Met un message en footer de la fenetre
+     * @param text message a afficher
+     */
+    public static void status(String text){
+        Main.fen.setStatus(text);
+        out.println("STATUS:  " + text);
+    }
 }

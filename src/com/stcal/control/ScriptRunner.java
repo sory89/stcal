@@ -1,7 +1,7 @@
 /*
  * Slightly modified version of the com.ibatis.common.jdbc.ScriptRunner class
  * from the iBATIS Apache project. Only removed dependency on Resource class
- * and a constructor.
+ * and a constructor. Also some small adaptations to this project.
  */
 /*
  *  Copyright 2004 Clinton Begin

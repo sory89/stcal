@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import com.stcal.Main;
+import com.stcal.control.Message;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -25,7 +26,7 @@ public class FInterface {
         tabs.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                Main.fenStatut("Onglet");
+                Message.status("Onglet");
             }
         });
         fen.add(tabs);

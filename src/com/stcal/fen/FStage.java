@@ -6,6 +6,9 @@ import com.stcal.don.DCouple;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,19 +33,25 @@ public class FStage extends FTab {
         Fstage.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                askInfo(Fstage);
+                askInfo();
             }
         });
+
 
         final JPanel PanelCpl = new JPanel();
         PanelCpl.setLayout(new BorderLayout());
         PanelCpl.setOpaque(false);
-        PanelCpl.add(new JLabel("Liste des stages", SwingConstants.CENTER),BorderLayout.NORTH);
+        PanelCpl.add(new JLabel("Liste des stages", SwingConstants.CENTER), BorderLayout.NORTH);
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 // Create and set up the content pane.
                 newContentPane = new DynamicTreeDemo();
-                PanelCpl.add(newContentPane,BorderLayout.CENTER);
+                PanelCpl.add(newContentPane, BorderLayout.CENTER);
+                newContentPane.getTree().addTreeSelectionListener(new TreeSelectionListener() {
+                    @Override
+                    public void valueChanged(TreeSelectionEvent e) {
+                        askInfo();            }
+                });
             }
         });
         PanelCpl.add(new JScrollPane(Fstage), BorderLayout.CENTER);
@@ -102,12 +111,20 @@ public class FStage extends FTab {
 
     /**
      *
-     * @param pan
+     * @param
      */
-    protected void askInfo(JList<DCouple> pan){
+    protected void askInfo(){
         try {
-            infosEtu.setText(setInfo(pan.getSelectedValue().getEtu().getInfos()));
-            infosTut.setText(setInfo(pan.getSelectedValue().getTut().getInfos()));
+            if(newContentPane.isDCoupleSelected()){
+                DCouple cpl = (DCouple)((DefaultMutableTreeNode)(newContentPane.getTreePanel().tree).getLastSelectedPathComponent()).getUserObject();
+                infosEtu.setText(setInfo(cpl.getEtu().getInfos()));
+                infosTut.setText(setInfo(cpl.getTut().getInfos()));
+                System.out.println("infos focus du jtree : "+cpl.getEtu().getNom());
+            }
+            else{
+                infosTut.setText("");
+                infosEtu.setText("");
+            }
         }
         catch (Exception ex){
             System.err.println("err: FTab: event JList: " + ex.getMessage());

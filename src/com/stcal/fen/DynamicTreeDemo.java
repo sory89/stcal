@@ -15,16 +15,18 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class DynamicTreeDemo extends JPanel implements ActionListener {
-    private static String ADD_COMMAND = "add";
     private static String REMOVE_COMMAND = "remove";
-    private static String CLEAR_COMMAND = "clear";
+
 
     public DynamicTree treePanel;
-
     public DynamicTree getTreePanel() {
         return treePanel;
     }
+    public JTree getTree(){
+        return getTreePanel().getTree();
+    }
 
+    public JButton removeButton;
     public DynamicTreeDemo() {
         super(new BorderLayout());
 
@@ -32,7 +34,7 @@ public class DynamicTreeDemo extends JPanel implements ActionListener {
         populateTree(treePanel);
 
 
-        final JButton removeButton = new JButton("Supprimer stage");
+        removeButton = new JButton("Supprimer stage");
         removeButton.setEnabled(false);
         removeButton.setActionCommand(REMOVE_COMMAND);
         removeButton.addActionListener(this);
@@ -40,7 +42,7 @@ public class DynamicTreeDemo extends JPanel implements ActionListener {
         treePanel.getTree().addTreeSelectionListener(new TreeSelectionListener() {
             @Override
             public void valueChanged(TreeSelectionEvent e) {
-                removeButton.setEnabled(!isSelectionEmpty() && ((DefaultMutableTreeNode)treePanel.getTree().getLastSelectedPathComponent()).isLeaf() && !((DefaultMutableTreeNode)treePanel.getTree().getLastSelectedPathComponent()).isRoot());
+                removeButton.setEnabled(!isSelectionEmpty() && isDCoupleSelected());
             }
         });
 
@@ -102,19 +104,15 @@ public class DynamicTreeDemo extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
-
-        if (ADD_COMMAND.equals(command)) {
-            Datas.stages.addElement(new DCouple(new DEtudiant("Etu", "diant"), new DTuteur("Tut", "eur")));
-            populateTree(treePanel);
-            for(int i=0; i<Datas.stages.size();i++){
-                System.out.println(Datas.stages.getElementAt(i).toString());
-            }
-        } else if (REMOVE_COMMAND.equals(command)) {
+        if (REMOVE_COMMAND.equals(command)) {
             treePanel.removeDCoupleFromJtree(Datas.stages);
             treePanel.expandAll();
-        } else if (CLEAR_COMMAND.equals(command)) {
-            // Clear button clicked.
-            treePanel.clear();
         }
+    }
+
+    public Boolean isDCoupleSelected(){
+        if(((DefaultMutableTreeNode)this.getTree().getLastSelectedPathComponent()).isLeaf() && !((DefaultMutableTreeNode)this.getTree().getLastSelectedPathComponent()).isRoot())
+            return true;
+        return false;
     }
 }

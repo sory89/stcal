@@ -155,7 +155,7 @@ class DynamicTree extends JPanel {
                     treeModel.removeNodeFromParent((MutableTreeNode)tree.getLastSelectedPathComponent());
                 }
                 treeModel.reload();
-
+                tree.setSelectionRow(0);
             }
             else{
                 System.out.println("Suppression annulée : Stage non contenu dans les données.");

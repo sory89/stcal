@@ -8,6 +8,6 @@ package com.stcal.control.exceptions;
 public class NothingToSaveException extends Exception {
 
     public NothingToSaveException() {
-        super("Pas de parametre dans cette classe.");
+        super("Pas de paramètre dans cette classe.");
     }
 }

@@ -45,14 +45,14 @@ public class Settings {
                 fileContent.append(new String(buffer));
             }
         } catch (IOException e) {
-            Message.poperror("Erreure à l'ouverture du fichier de configuration: " + e.getMessage());
+            Message.poperror("Erreur à l'ouverture du fichier de configuration: " + e.getMessage());
             return false;
         }
         JSONObject jObject = null;
         try {
             jObject = new JSONObject(fileContent.toString());
         } catch (JSONException e) {
-            Message.poperror("Erreure à la lercture de " + filename + ": " + e.getMessage());
+            Message.poperror("Erreur à la lecture de " + filename + ": " + e.getMessage());
             return false;
         }
         for(Map.Entry<String, String> entry : settings.entrySet()) {
@@ -60,7 +60,7 @@ public class Settings {
             try {
                 settings.put(key,jObject.getString(key));
             } catch (JSONException e) {
-                Message.popwarning("Erreure à la lercture de " + key + " dans " + filename + ": " + e.getMessage());
+                Message.popwarning("Erreur à la lecture de " + key + " dans " + filename + ": " + e.getMessage());
             }
         }
         return true;
@@ -92,9 +92,9 @@ public class Settings {
             buffer.close();
         }
         catch (IOException e) {
-            Message.poperror("Errerue lors de la sauvegarde de " + filename + ": " + e.getMessage());
+            Message.poperror("Erreur lors de la sauvegarde de " + filename + ": " + e.getMessage());
         }
-        Message.status("Parametre mis à jour (" + filename + ")");
+        Message.status("Paramètre mis à jour (" + filename + ")");
     }
 
     /**

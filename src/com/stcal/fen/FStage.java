@@ -58,7 +58,7 @@ public class FStage extends FTab {
         pan().add(PanelCpl);
         JPanel right = new JPanel();
         right.setOpaque(false);
-        right.setLayout(new GridLayout(3,0));
+        right.setLayout(new GridLayout(2,0));
 
         infosEtu = new JLabel();
         infosTut = new JLabel();
@@ -71,41 +71,6 @@ public class FStage extends FTab {
         right.add(new JScrollPane(ongletInfos));
         info.setBorder(BorderFactory.createTitledBorder("Courant"));
         right.add(info);
-        option.setOpaque(false);
-        option.setLayout(new GridLayout(3,1));
-        right.add(option);
-        final JButton supprimer=new JButton("Supprimer stage");
-        supprimer.setEnabled(false);
-        supprimer.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                supprimer_stage(Fstage);
-                Datas.stages.remove(Fstage.getSelectedIndex());
-                Fstage.clearSelection();
-                infosTut.setText("");
-                infosEtu.setText("");
-                info.setText("Stage supprimé.");
-            }
-        });
-        option.add(supprimer);
-
-        /*
-        Fstage.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                supprimer.setEnabled(!newContentPane.isSelectionEmpty());
-            }
-        }); */
-
-        /*
-        newContentPane.getTreePanel().getTree().addTreeSelectionListener(new TreeSelectionListener() {
-            @Override
-            public void valueChanged(TreeSelectionEvent e) {
-                //To change body of implemented methods use File | Settings | File Templates.
-            }
-        });    */
-
         pan().add(right);
     }
 

@@ -6,6 +6,8 @@ import com.stcal.don.DCouple;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +20,7 @@ public class FStage extends FTab {
     protected JPanel option = new JPanel();
     protected JLabel infosEtu;
     protected JLabel infosTut;
+    public static DynamicTreeDemo newContentPane;
     /**
      * Initialisation de l'onglet
      */
@@ -33,10 +36,17 @@ public class FStage extends FTab {
             }
         });
 
-        JPanel PanelCpl = new JPanel();
+        final JPanel PanelCpl = new JPanel();
         PanelCpl.setLayout(new BorderLayout());
         PanelCpl.setOpaque(false);
         PanelCpl.add(new JLabel("Liste des stages", SwingConstants.CENTER),BorderLayout.NORTH);
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                // Create and set up the content pane.
+                newContentPane = new DynamicTreeDemo();
+                PanelCpl.add(newContentPane,BorderLayout.CENTER);
+            }
+        });
         PanelCpl.add(new JScrollPane(Fstage), BorderLayout.CENTER);
         pan().add(PanelCpl);
         JPanel right = new JPanel();
@@ -72,12 +82,22 @@ public class FStage extends FTab {
             }
         });
         option.add(supprimer);
+
+        /*
         Fstage.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                supprimer.setEnabled(!Fstage.isSelectionEmpty());
+                supprimer.setEnabled(!newContentPane.isSelectionEmpty());
             }
-        });
+        }); */
+
+        /*
+        newContentPane.getTreePanel().getTree().addTreeSelectionListener(new TreeSelectionListener() {
+            @Override
+            public void valueChanged(TreeSelectionEvent e) {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });    */
 
         pan().add(right);
     }
@@ -97,9 +117,9 @@ public class FStage extends FTab {
         refresh();
     }
 
-   public void supprimer_stage(JList<DCouple> pan){
+    public void supprimer_stage(JList<DCouple> pan){
        Datas.etu.addElement(pan.getSelectedValue().getEtu());
-   }
+    }
 
     @Override
     public String setInfo(ArrayList<String> details){
@@ -111,5 +131,9 @@ public class FStage extends FTab {
         newInfo += "</html>";
         refresh();
         return newInfo;
+    }
+
+    public void refreshTree(){
+        newContentPane.populateTree(newContentPane.getTreePanel());
     }
 }

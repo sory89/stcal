@@ -116,10 +116,12 @@ public class FLier extends FTab {
     }
 
     protected void askStage(){
-            Datas.stages.addElement(new DCouple((DEtudiant)Fetu.getSelectedValue(), (DTuteur) Fprof.getSelectedValue()));
-            Datas.etu.remove(Fetu.getSelectedIndex());
-            courant.setText("<html>Stage créé.</html>");
-            refresh();
+        Datas.stages.addElement(new DCouple((DEtudiant)Fetu.getSelectedValue(), (DTuteur) Fprof.getSelectedValue()));
+        Datas.etu.remove(Fetu.getSelectedIndex());
+        FStage.newContentPane.populateTree(FStage.newContentPane.getTreePanel());
+        System.out.println("Création du stage "+Datas.stages.getSize());
+        courant.setText("<html>Stage créé.</html>");
+        refresh();
     }
 
     public void resetOption(){

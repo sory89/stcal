@@ -75,7 +75,7 @@ public class FMenu {
         db.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.dbsettings.ask();
+                Main.dbsettings.popup().pop();
                 DBTools.askdbsetting(Main.dbsettings);
             }
         });

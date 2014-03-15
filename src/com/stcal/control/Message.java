@@ -55,4 +55,12 @@ public class Message {
         pop.showMessageDialog(null, msg, "Notice", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    public static boolean popquestion(String msg){
+        JOptionPane pop = new JOptionPane();
+        boolean inter = (pop.showConfirmDialog(null,msg,"coucou",2) == 0);
+        out.println(msg + "\nreponse: " + inter);
+        Main.fenStatut("ok");
+        return inter;
+    }
+
 }

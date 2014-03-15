@@ -73,15 +73,15 @@ public class DBTools {
         try {
             dbsettings.loadfile();
         } catch (FileNotFoundException e) {
-            dbsettings.ask();
+            dbsettings.popup().pop();
         }
         do {
             try {
                 dbsettings.getNewConnection();
                 return;
             } catch (SQLException e){
-                Message.poperror("Connection à la base de donné impossible: " + e.getMessage());
-                dbsettings.ask();
+                if(!Message.popquestion(e.getMessage()+"\nRessayer? (cancel fermera l'application)")) System.exit(1);
+                dbsettings.popup().pop();
             }
         } while (true);
     }

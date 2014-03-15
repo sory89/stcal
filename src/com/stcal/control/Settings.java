@@ -100,7 +100,7 @@ public class Settings {
      * Ouvre une fenettre avec l'utilisateur afin de pouvoir modifier les parametres
      * @return la fenetre cree
      */
-    public FSettings ask(){
+    public FSettings popup(){
         return new FSettings(this);
     }
 

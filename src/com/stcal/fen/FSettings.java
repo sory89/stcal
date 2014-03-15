@@ -16,7 +16,13 @@ import java.util.Map;
  */
 public class FSettings {
 
+    Settings settings;
+
     public FSettings(Settings settings){
+        this.settings = settings;
+    }
+
+    public void pop(){
         HashMap<String,JTextField> form;
         JPanel pan = new JPanel();
         pan.setLayout(new GridLayout(settings.getNbChangeable(),2));

@@ -56,7 +56,7 @@ public class DBTools {
      * @return zero si pas d'erreure
      */
     public static void reset(DBsettings param) throws IOException, SQLException {
-        Message.popnotice(" la base de donne va etre (re)initialisé.");
+        Message.popnotice(" La base de donnée va être réinitialisée.");
         ScriptRunner runner = new ScriptRunner(param.getConnection(),false,true);
         runner.runScript(new BufferedReader(new FileReader("res/stcal.sql")));
     }

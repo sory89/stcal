@@ -34,7 +34,7 @@ public class FSettings {
             try {
                 settings.set(entry.getKey(),entry.getValue().getText());
             } catch (NoSuchSettingException e) {
-                continue;
+                Message.err.println(e);
             }
         }
         try {

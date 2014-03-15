@@ -77,7 +77,7 @@ public class DBTools {
         }
         do {
             try {
-                dbsettings.getConnection();
+                dbsettings.getNewConnection();
                 return;
             } catch (SQLException e){
                 Message.poperror("Connection à la base de donné impossible: " + e.getMessage());

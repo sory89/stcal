@@ -8,7 +8,6 @@ import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 import javax.swing.tree.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.

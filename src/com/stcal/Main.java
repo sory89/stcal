@@ -13,13 +13,13 @@ import java.util.ArrayList;
 
 public class Main {
 
+    public static final DBsettings dbsettings;
     private static FChooser finder;
     private static FLier lier;
     private static FStage stage;
     private static FTab cal;
 
     public static final FInterface fen;
-    public static final Settings dbsettings;
     public static final Settings calsettings;
     public static       String[][] colors;
 
@@ -171,7 +171,7 @@ public class Main {
      * detruit la connection à la base de donne precedente et en recree une autre
      */
     public static void resetConnection() throws SQLException {
-        DBsettings set = (DBsettings)dbsettings;
+        DBsettings set = (DBsettings) dbsettings;
         set.getNewConnection();
     }
 

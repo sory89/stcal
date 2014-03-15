@@ -9,7 +9,10 @@ import com.stcal.control.exceptions.UnopenableSettingException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * @author Jean
@@ -19,7 +22,8 @@ import java.sql.*;
 public class DBTools {
 
     /**
-     * fonction appellé au lancement du programe
+     * Traitement de base de donne au lancement de l'application
+     * @return les parametre de connections;
      */
     public static DBsettings startup(){
         final DBsettings param = new DBsettings();
@@ -52,6 +56,7 @@ public class DBTools {
      * @return zero si pas d'erreure
      */
     public static void reset(DBsettings param) throws IOException, SQLException {
+        Message.popnotice(" la base de donne va etre (re)initialisé.");
         ScriptRunner runner = new ScriptRunner(param.getConnection(),false,true);
         runner.runScript(new BufferedReader(new FileReader("res/stcal.sql")));
     }
@@ -80,12 +85,12 @@ public class DBTools {
             dbsettings.loadfile();
         }
         catch (UnopenableSettingException e) {
-            Main.fenStatut("Impossible de charger le fichier de config");
+            Message.poperror("Impossible de charger le fichier de config, la configuration par defaut sera utilisé.");
         } catch (NoSettingFileException e) {
             try {
                 dbsettings.save();
             } catch (UncreatableSettingException e1) {
-                Main.fenStatut("Impossible de creer le fichier de config");
+                Message.poperror("Impossible de creer le fichier de config.");
             } catch (NothingToSaveException e1) {}
         }
         dbsettings.ask();

@@ -4,7 +4,6 @@ import com.stcal.don.DCouple;
 import com.stcal.don.DListe;
 
 import javax.swing.*;
-import java.sql.SQLException;
 
 /**
  * @author Jean

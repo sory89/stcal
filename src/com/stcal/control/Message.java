@@ -8,6 +8,8 @@ import java.io.PrintStream;
 /**
  * @author Jean
  * @version 10/03/2014
+ *
+ * Cette classe redefinie toute les sortie pour aller dans les logs ou dans les popup
  */
 
 public class Message {

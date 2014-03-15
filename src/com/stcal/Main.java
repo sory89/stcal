@@ -1,8 +1,6 @@
 package com.stcal;
 
 import com.stcal.control.*;
-import com.stcal.control.exceptions.NoSettingFileException;
-import com.stcal.control.exceptions.UnopenableSettingException;
 import com.stcal.don.DListe;
 import com.stcal.don.Type;
 import com.stcal.fen.*;
@@ -20,10 +18,10 @@ public class Main {
     private static FStage stage;
     private static FTab cal;
 
-    public static FInterface fen = new FInterface(800,600);
-    public static Settings dbsettings = new DBsettings();
-    public static Settings calsettings= new CALsettings();
-    public static String[][] colors=null;
+    public static final FInterface fen;
+    public static final Settings dbsettings;
+    public static final Settings calsettings;
+    public static       String[][] colors;
 
     static {
         finder      = new FChooser();
@@ -33,6 +31,7 @@ public class Main {
         fen         = new FInterface(800,600);
         dbsettings  = DBTools.startup();
         calsettings = new CALsettings();
+        colors      = null;
     }
 
     /**

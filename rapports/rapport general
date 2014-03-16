@@ -1,6 +1,14 @@
 \documentclass[a4paper,10pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[frenchb]{babel}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{1pt}
+\fancyfoot[L]{Projet StCal}
+\fancyfoot[R]{IUT de Belfort}
+\date{}
 
 \frenchbsetup{StandardLists=true}
 
@@ -17,6 +25,13 @@
 
 \part{Introduction}
   \paragraph{}
+    En tant qu'étudiants de deuxième année d'IUT informatique, nous sommes amenés à réaliser plusieurs projets, souvent en groupe de quelques personnes, correspondant à notre domaine d'études.
+    Qu'ils soient principalement scolaires ou plus tournés vers une utilisation générale concrète dans la vie réelle, chacun de ces projets demeure enrichissant, instructif vis-à-vis des technologies utilisées et du travail de groupe et permet de vivre une expérience collective potentiellement motivatrice pour de futurs employeurs.
+    
+  \paragraph{}
+    La durée et la complexité de ces projets varient, mais le plus conséquent et le plus long est sans nul doute le projet tutoré, que nous devons réaliser sur une durée d'environ un an et pour lequel nous devons effectuer la démarche d'un véritable projet industriel, c'est-à-dire trouver un client, instaurer un cahier des charges à partir d'une idée, et concevoir un produit possédant un usage concret correspondant aux besoins du client, avant de finalement livrer le produit à ce dernier.
+    
+  \paragraph{}  
     Dans le cadre de notre projet tutoré, nous avons dû réfléchir à un secteur d'activité nécessitant des outils informatiques relativement simples mais essentiels. 
     Ainsi, au vu du besoin éprouvé par nos enseignants de travailler avec des outils plus simples, nous avons choisi de réaliser une application à utilité pédagogique.
     Cette application aura pour but de faciliter la gestion des stages des étudiants de quatrième semestre ainsi que la mise en place d'un calendrier des soutenances orales des étudiants présentant leur stage à leurs professeurs.

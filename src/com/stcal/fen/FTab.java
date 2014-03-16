@@ -3,6 +3,7 @@ package com.stcal.fen;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FTab {
 
@@ -48,7 +49,7 @@ public class FTab {
      * Elle est faite pour etre réecite dans les classes heritant de cette classe.
      * @param details les chaines de caratere à afficher
      */
-    public String setInfo(ArrayList<String> details){
+    public String setInfo(List<String> details){
         return null;
     }
 

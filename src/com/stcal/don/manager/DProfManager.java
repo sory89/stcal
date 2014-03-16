@@ -1,5 +1,6 @@
 package com.stcal.don.manager;
 
+import com.stcal.control.Message;
 import com.stcal.don.DPersonne;
 import com.stcal.don.DProf;
 
@@ -20,6 +21,9 @@ public class DProfManager implements Manager<DProf> {
     private PreparedStatement pstm = null;
     private ResultSet rset = null;
 
+    public DProfManager(Connection con) {
+        this.con = con;
+    }
 
     @Override
     public int create(DProf nouveau) {
@@ -44,7 +48,7 @@ public class DProfManager implements Manager<DProf> {
                 con.rollback();
             }
             catch (Exception ignore){}
-            e.printStackTrace();
+            Message.err.println(e.getMessage());
         }
         return id;
     }
@@ -67,23 +71,95 @@ public class DProfManager implements Manager<DProf> {
                 con.rollback();
             }
             catch (Exception ignore){}
-            e.printStackTrace();
+            Message.err.println(e.getMessage());
         }
         return null;
     }
 
     @Override
     public List<DProf> readall() {
-        return null;
+        List<DProf> resultats = new ArrayList<DProf>();
+        String sql = "SELECT `id_prof`, `nom_prof`, `pre_prof`, `info_prof` FROM `Professeur` WHERE 1";
+        try {
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            rset = stmt.executeQuery(sql);
+            con.commit();
+            while (rset.next()){
+                DProf ok = new DProf(rset.getString("nom_prof"),rset.getString("pre_prof"), Arrays.asList(rset.getString("info_prof").split(";")));
+                ok.setDb_id(rset.getInt("id_prof"));
+                resultats.add(ok);
+            }
+        }
+        catch (SQLException e){
+            try {
+                con.rollback();
+            }
+            catch (Exception ignore){}
+            Message.err.println(e.getMessage());
+        }
+        return resultats;
     }
 
     @Override
     public int update(DProf table) {
-        return 0;
+        int n = -1;
+        PreparedStatement pstm = null;
+        try {
+            String sql = "UPDATE `Professeur` SET `nom_prof`=?,`pre_prof`=?,`info_prof`=? WHERE `id_prof`=?";
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1,table.getNom());
+            pstm.setString(2,table.getPrenom());
+            StringBuilder sb = new StringBuilder();
+            for (int i=0;i<table.getInfos().size();i+=1) sb.append(table.getInfos().get(i) + ";");
+            pstm.setString(3, sb.toString());
+            pstm.setInt(4, table.getDb_id());
+            n = pstm.executeUpdate();
+            con.commit();
+            if (1 != n) Message.err.println("erreur update on DProfManager id: " + table.getDb_id());
+        }
+        catch (Exception e) {
+            Message.err.println(e.getMessage());
+            try {
+                con.rollback();
+                pstm.close();
+            }
+            catch (Exception localException1) {  }
+        }
+        finally {
+            try {
+                pstm.close();
+            }
+            catch (Exception localException2) { }
+        }
+        return n;
     }
 
     @Override
     public int delete(int id) {
-        return 0;
+        int n = -1;
+        PreparedStatement pstm = null;
+        try {
+            String sql = "delete from `Professeur` where `id_prof`=?";
+            pstm = con.prepareStatement(sql);
+            pstm.setInt(1, id);
+            n = pstm.executeUpdate();
+            con.commit();
+            if (1 != n) Message.err.println("erreur delete DProfManager id: " + id);
+        }
+        catch (SQLException e) {
+            Message.err.println(e.getMessage());
+            try {
+                con.rollback();
+                pstm.close();
+            }
+            catch (Exception localException1) {  }
+        }
+        finally {
+            try {
+                pstm.close();
+            }
+            catch (Exception localException2) { }
+        }
+        return n;
     }
 }

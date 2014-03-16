@@ -15,7 +15,7 @@ public abstract class DPersonne {
     protected String nom;
     protected String prenom;
     protected List<String> infos; // catégorie : texte
-    protected int db_id;
+    protected int db_id = -1;
 
 
     public DPersonne(String nom, String prenom) {

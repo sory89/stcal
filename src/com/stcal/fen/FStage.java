@@ -12,7 +12,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.util.List;
 
 public class FStage extends FTab {
 
@@ -102,7 +102,7 @@ public class FStage extends FTab {
     }
 
     @Override
-    public String setInfo(ArrayList<String> details){
+    public String setInfo(List<String> details){
         String newInfo = "<html>";
         info.setText("");
         for (int i=0;i<details.size();i++){

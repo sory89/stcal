@@ -62,39 +62,25 @@ public class FCal extends FTab{
        Il suffit de changer le if pour que les tests sur les composants du formulaire soient mis à jours
      */
     protected boolean condition(){
-
-        if(!(finJour.getSelectedIndex()==-1) && !(debutJour.getSelectedIndex()==-1) && !(soutenance.getText().isEmpty()) && soutenance.getText().matches("\\d{1,10}") && !chooserDebut.getSelectedPeriodSet().isEmpty() && creneau.getText().matches("\\d{1,10}") && !(creneau.getText().isEmpty())) {
-
+        if(!(finJour.getSelectedIndex()==-1) && !(debutJour.getSelectedIndex()==-1) && !(soutenance.getText().isEmpty()) && soutenance.getText().matches("\\d{1,10}")
+                && !chooserDebut.getSelectedPeriodSet().isEmpty() && creneau.getText().matches("\\d{1,10}") && !(creneau.getText().isEmpty()))
             return true ;
-
-        }
-        else {
-            return false;
-        }
+        return false;
     }
 
     public FCal() {
         super("Calendrier");
-
-            creneau = new JFormattedTextField();
-            soutenance = new JFormattedTextField();
-
-
-
+        creneau = new JFormattedTextField();
+        soutenance = new JFormattedTextField();
 
         test1.setOpaque(false);
         infoChooser.setOpaque(false);
         okPlageJour.setEnabled(false);
 
-
-
         /* Listener du bouton de validation de formulaire */
         okPlageJour.addActionListener(new ActionListener() {
-
-
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 //Récupération des des periode sous forme d'iterator
                 datechoisis = chooserDebut.getSelection().iterator();
                 //Transformation des Period en une arraylist de jours ouvrables
@@ -102,62 +88,53 @@ public class FCal extends FTab{
                 recupDates = (ArrayList<Calendar>) PP.getDates();
 
                 //Calcul du nombre de creneau dans une journée
-                final int trololo = ((Integer.parseInt(finJour.getSelectedItem().toString()) - Integer.parseInt(debutJour.getSelectedItem().toString())) * 60) / Integer.parseInt(creneau.getText());
+                final int totalCreneaux = ((Integer.parseInt(finJour.getSelectedItem().toString()) - Integer.parseInt(debutJour.getSelectedItem().toString())) * 60) / Integer.parseInt(creneau.getText());
 
                 pan().removeAll();
                 pan().setLayout(new GridBagLayout());
                 GridBagConstraints c = new GridBagConstraints();
 
                 c.fill = GridBagConstraints.BOTH;
-
                 c.gridx = 0;
                 c.gridy = 0;
-
                 c.gridwidth = 1;
-                c.gridheight = trololo;
+                c.gridheight = totalCreneaux;
                 c.weightx = 0;
                 c.weighty = 1;
                 c.ipadx = 200;
 
 
-                DCreneau o[][] = new DCreneau[trololo][recupDates.size()];
-                Main.colors=new String[trololo][recupDates.size()];
+                DCreneau o[][] = new DCreneau[totalCreneaux][recupDates.size()];
+                Main.colors=new String[totalCreneaux][recupDates.size()];
 
                 int dj = Integer.parseInt(debutJour.getSelectedItem().toString());
                 int fj = Integer.parseInt(finJour.getSelectedItem().toString());
                 int k;
                 int i;
                 for (k = 0; k < recupDates.size(); k++) {
-                    for (i = 0; i < trololo; i++) {
-
+                    for (i = 0; i < totalCreneaux; i++) {
                         o[i][k] = new DCreneau();
                         o[i][k].setDate_debut(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + i, 0));
                         o[i][k].setDate_fin(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + i + 1, 0));
                         o[i][k].setMax_sout(Integer.parseInt(soutenance.getText()));
                         Main.colors[i][k]="white";
-
                     }
-
-
                 }
 
 
                 pan().addComponentListener(new ComponentListener() {
                     @Override
                     public void componentResized(ComponentEvent e) {
-                        jt.setRowHeight((pan().getHeight() - 20) / trololo);
+                        jt.setRowHeight((pan().getHeight() - 20) / totalCreneaux);
                     }
-
                     @Override
                     public void componentMoved(ComponentEvent e) {
                         //To change body of implemented methods use File | Settings | File Templates.
                     }
-
                     @Override
                     public void componentShown(ComponentEvent e) {
                         //To change body of implemented methods use File | Settings | File Templates.
                     }
-
                     @Override
                     public void componentHidden(ComponentEvent e) {
                         //To change body of implemented methods use File | Settings | File Templates.
@@ -169,7 +146,6 @@ public class FCal extends FTab{
                 pan().add(new JScrollPane(Fetu), c);
                 int j;
                 for (j = 0; j < Datas.stages.size(); j++) {
-
                     fet.addElement(Datas.stages.get(j));
                     Message.out.println(Datas.stages.get(j).getClass());
                 }
@@ -182,19 +158,15 @@ public class FCal extends FTab{
 
 
                 jt = new JTable(o, titre) {
-
                     public boolean isCellEditable(int row, int column) {
-
                         return false;
-
                     }
-
                 };
                 jt.setCellSelectionEnabled(true);
                 jt.setRowSelectionAllowed(false);
 
                 jt.setEnabled(true);
-                jt.setRowHeight((pan().getHeight() - 20) / trololo);
+                jt.setRowHeight((pan().getHeight() - 20) / totalCreneaux);
                 jt.setDropMode(DropMode.ON);
                 jt.setDragEnabled(true);
                 jt.setTransferHandler(kikoo);
@@ -205,7 +177,7 @@ public class FCal extends FTab{
                 cc.gridy = 0;
 
                 cc.gridwidth = recupDates.size();
-                cc.gridheight = trololo + 1;
+                cc.gridheight = totalCreneaux + 1;
                 cc.weightx = 1;
                 cc.weighty = 1;
 
@@ -223,20 +195,14 @@ public class FCal extends FTab{
                         if(person!=null){
                             for (y=0;y<jt.getRowCount();y++){
                                 for(i=0;i<jt.getColumnCount();i++)  {
-
                                     DCreneau dte = (DCreneau) jt.getValueAt(y,i);
-
-                                    if(dte.isProfIn(person.getTut()) && dte.toStringtest().size()<dte.getMax_sout() ){
+                                    if(dte.isProfIn(person.getTut()) && dte.toStringtest().size()<dte.getMax_sout() )
                                         Main.colors[y][i]="green";
-
-
-
-                                    }else
-                                    {
+                                    else
                                         Main.colors[y][i]="red";
-                                    }
-
-                                } }}
+                                }
+                            }
+                        }
                         jt.setDefaultRenderer(Object.class,new CustomRenderer());
                         jt.revalidate();
                         jt.repaint();
@@ -249,7 +215,7 @@ public class FCal extends FTab{
                 c.gridy = 0;
 
                 c.gridwidth = 1;
-                c.gridheight = trololo / 2;
+                c.gridheight = totalCreneaux / 2;
                 c.weightx = 0;
                 c.weighty = 1;
                 c.ipadx = 200;
@@ -258,7 +224,7 @@ public class FCal extends FTab{
                 c.fill = GridBagConstraints.BOTH;
 
                 c.gridx = recupDates.size() + 1;
-                c.gridy = trololo/2;
+                c.gridy = totalCreneaux/2;
 
                 c.gridwidth = 1;
                 c.gridheight = 1;
@@ -321,11 +287,7 @@ public class FCal extends FTab{
                         int j;
                         fet.removeAllElements();
                         for(j=0;j<Datas.stages.size();j++){
-
                             fet.addElement(Datas.stages.get(j));
-
-
-
                         }
 
                         refresh();
@@ -370,8 +332,6 @@ public class FCal extends FTab{
                     Message.err.println(e1.getMessage());
                 }
                 refresh();
-
-
             }
         }
 
@@ -391,31 +351,23 @@ public class FCal extends FTab{
         pan().addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
-                    if (condition())
-                        okPlageJour.setEnabled(true);
-                    else
-                        okPlageJour.setEnabled(false);
-
-
-
+                if (condition())
+                    okPlageJour.setEnabled(true);
+                else
+                    okPlageJour.setEnabled(false);
             }
-
             @Override
             public void mousePressed(MouseEvent e) {
                 //To change body of implemented methods use File | Settings | File Templates.
             }
-
             @Override
             public void mouseReleased(MouseEvent e) {
                 //To change body of implemented methods use File | Settings | File Templates.
             }
-
             @Override
             public void mouseEntered(MouseEvent e) {
                 //To change body of implemented methods use File | Settings | File Templates.
             }
-
             @Override
             public void mouseExited(MouseEvent e) {
                 //To change body of implemented methods use File | Settings | File Templates.
@@ -429,7 +381,6 @@ public class FCal extends FTab{
 
                 for (tmp = tmp + 1; tmp < 20; tmp++) {
                     finJour.addItem(tmp);
-
                 }
                 finJour.setSelectedIndex(-1);
                 okPlageJour.setEnabled(false);
@@ -442,7 +393,6 @@ public class FCal extends FTab{
             public void keyTyped(KeyEvent e) {
                 if(condition())
                     okPlageJour.setEnabled(true);
-
                 else
                     okPlageJour.setEnabled(false);
             }
@@ -470,7 +420,6 @@ public class FCal extends FTab{
                     okPlageJour.setEnabled(true);
                 else
                     okPlageJour.setEnabled(false);
-
             }
 
         });
@@ -506,7 +455,6 @@ public class FCal extends FTab{
                     okPlageJour.setEnabled(true);
                 else
                     okPlageJour.setEnabled(false);
-
             }
 
         });
@@ -542,7 +490,6 @@ public class FCal extends FTab{
                     okPlageJour.setEnabled(true);
                 else
                     okPlageJour.setEnabled(false);
-
             }
 
         });
@@ -553,8 +500,6 @@ public class FCal extends FTab{
                     okPlageJour.setEnabled(true);
                 else
                     okPlageJour.setEnabled(false);
-
-
             }
         });
 
@@ -581,7 +526,7 @@ public class FCal extends FTab{
         panSoutenance.add(nbSoutenances);
         panSoutenance.add(soutenance);
         test5.add(okPlageJour,BorderLayout.CENTER);
-         test1.add(test2);
+        test1.add(test2);
         panfin.add(debutLabel);
         panfin.add(debutJour);
         panfin.add(finLabel);
@@ -593,12 +538,5 @@ public class FCal extends FTab{
         pan().add(test1,BorderLayout.WEST);
         pan().add(test4,BorderLayout.CENTER);
         pan().add(test5,BorderLayout.EAST);
-
-
-
-
     }
-
-
-
 }

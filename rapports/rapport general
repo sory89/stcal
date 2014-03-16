@@ -2,9 +2,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[frenchb]{babel}
 
+\frenchbsetup{StandardLists=true}
 
 \title{\Huge{Projet Stcal}\\ {\Large Rapport général}}
-\author{Florian Barrois}
+\author{Florian Barrois \and Nicolas Devillers \and Valentin Jeanroy \and Mehdi Loisel \and Jean Mercadier \and Ismail Talbi \and Willem Verdeaux}
 
 
 \begin{document}
@@ -37,8 +38,21 @@
 
 
 \part{Présentation du sujet}
-    L'application développée sera mise à disposition exclusive des enseignants. Les étudiants concernés n'auront quant à eux aucun accès à l'application, que ce soit pour ajouter, supprimer, consulter ou éditer des données.
 
+  \paragraph{}
+    Depuis de nombreuses années, les professeurs de notre établissement, et sûrement bien d'autres, s'occupent des stages en s'adaptant aux outils existants.
+    En effet, à ce jour, la méthode employée pour réaliser cette tâche se compose de la gestion d'une part des informations, et d'autre part du planning des soutenances, en utilisant respectivement des logiciels tels que Microsoft Excel, et les fonctionnalités de calendrier de Google.
+    La mission dont nous nous sommes acquittés consiste donc à aider les responsables de stage, non pas par la recherche d'outils plus appropriés, mais par la création d'une application qui sera spécifiquement prévue à cet usage et qui demeurera parfaitement adaptée aux besoins des usagers, notamment du personnel enseignant.
+
+    Ainsi la difficulté de ce défi est conséquente, puisque nous ne connaissons aucun outil similaire existant pouvant servir de référence ou permettant d'étayer notre réflexion.
+    
+
+
+    L'application développée sera mise à disposition exclusive des enseignants. 
+    Les étudiants concernés n'auront quant à eux aucun accès à l'application, que ce soit pour ajouter, supprimer, consulter ou éditer des données.
+
+    
+    
 %Le sujet est divisé en plusieurs étapes. 
 %Tout d'abord, il est nécessaire de d'établir une liste des stagiaires et une liste des professeurs et ainsi attribuer à chaque étudiant un enseignant dit responsable de stage.
 
@@ -69,7 +83,7 @@
   %   Affichage du couple enseignant/étudiant lors de la sélection de l'horaire choisi ?
   % Drag & drop des étudiants et enseignants sur l'horaire choisi ?
 
-  \chapter{Développement et contraintes} % A RÉORGANISER
+  \chapter{Développement et contraintes}
 
     Le développement s'effectuera en quatre étapes, qui contiendront différentes tâches. Ces étapes et tâches seront ordonnées tel que le côté fonctionnel de l'application soit prioritaire :
 
@@ -100,14 +114,14 @@
 	\paragraph{}
 	L’application comportera une fonction de création d’emploi du temps vide et une seconde permettant le remplissage de celui-ci avec les soutenances de chacun des étudiants.
 	Les plages horaires réservées contiendront les informations suivantes :
-	\newline
-	- Le nom de l’enseignant tuteur
-	\newline
-	- Le nom de l’enseignant candide 
-	\newline
-	- Le nom de l’étudiant
-	\newline
-	- Le numéro de la salle d’entretien
+
+	\begin{itemize}
+	  \item Le nom de l’enseignant tuteur
+	  \item Le nom de l’enseignant candide 
+	  \item Le nom de l’étudiant
+	  \item Le numéro de la salle d’entretien
+	\end{itemize}
+
 
 	\paragraph{}
 	Le logiciel possèdera également une option d’export du calendrier généré au format ICS compatible avec Google et iCal.
@@ -116,15 +130,13 @@
 	\paragraph{}
 
 	Le produit devra être capable de résoudre les cas suivants en affichant un message d’erreur et en ignorant la dernière action effectuée :
-	- en cas de création d'une soutenance à un horaire incompatible pour l'enseignant tuteur ;
-	\newline
-	- en cas de création d'une soutenance à un horaire incompatible pour l'enseignant candide ;
-	\newline
-	- en cas de création d'une soutenance ayant lieu dans une salle déjà réquisitionnée à cet horaire ;
-	\newline
-	- si toutes les salles d’entretien sont occupées à un horaire donné, cette plage horaire devra être inaccessible pour placer d’autres soutenances.
-
-      
+	
+	\begin{itemize}
+	  \item En cas de création d'une soutenance à un horaire incompatible pour l'enseignant tuteur ;
+	  \item En cas de création d'une soutenance à un horaire incompatible pour l'enseignant candide ;
+	  \item En cas de création d'une soutenance ayant lieu dans une salle déjà réquisitionnée à cet horaire ;
+	  \item Si toutes les salles d’entretien sont occupées à un horaire donné, cette plage horaire devra être inaccessible pour placer d’autres soutenances.
+	\end{itemize}
 
     \section{Troisième étape}
       \subsection{Développement}
@@ -147,7 +159,7 @@
       Lors de la première utilisation du logiciel, l'utilisateur devra entrer les paramètres correspondant à la base de données qui stockera les informations, à savoir le nom du serveur, le port utilisé, le nom d'utilisateur et le mot de passe.
       Une fois les champs renseignés, ces paramètres seront également mémorisés et la restauration de session devra passer par un accès cette base de données pour afficher les informations précédemment enregistrées.
       Le programme sera donc contraint de rechercher l'existence d'un fichier de configuration dans l'ordinateur afin de savoir si l'application est utilisée ou non pour la première fois.
-      Si c'est le cas, une fenêtre contenant les différents paramètres à renseigner mentionnés précédemment apparaît, et les valeurs entrées sont mémorisées dans un nouveau fichier de configuration.
+      Si c'est le cas, une fenêtre contenant les différents paramètres à renseigner mentionnés précédemment, apparaît et les valeurs entrées sont mémorisées dans un nouveau fichier de configuration.
       
 \part{Réalisation}
   \setcounter{chapter}{0}

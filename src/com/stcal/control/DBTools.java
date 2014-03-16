@@ -44,12 +44,12 @@ public class DBTools {
     }
 
     /**
-     * (re)cree la base de donne
-     * @param param paramettres de connection
-     * @return zero si pas d'erreure
+     * (re)cree la base de donnees
+     * @param param parametres de connection
+     * @return zero si pas d'erreur
      */
     public static void resetDatabase(DBsettings param) throws IOException, SQLException {
-        Message.popnotice(" La base de donnée va être réinitialisée.");
+        Message.popnotice(" La base de données va être réinitialisée.");
         ScriptRunner runner = new ScriptRunner(param.getConnection(),false,true);
         runner.runScript(new BufferedReader(new FileReader("res/stcal.sql")));
     }
@@ -88,7 +88,7 @@ public class DBTools {
                 dbsettings.getNewConnection();
                 return;
             } catch (SQLException e){
-                if(!Message.popquestion(e.getMessage()+"\nRessayer? (cancel fermera l'application)")) System.exit(1);
+                if(!Message.popquestion(e.getMessage()+"\nRéessayer? (cancel fermera l'application)")) System.exit(1);
                 dbsettings.popup().pop();
             }
         } while (true);

@@ -51,7 +51,7 @@ public class Main {
         if (finder.status()==FChooser.CHOSEN){
             try {
                 OSplitCsv.exportcsv(finder.path(), Datas.etu);
-                Message.out.println("Main: exporter");
+                Message.out.println("Main : exporter");
             }
             catch (Exception x){
                 Message.err.println("Erreur écriture fichier");

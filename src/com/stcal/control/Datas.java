@@ -1,9 +1,11 @@
 package com.stcal.control;
 
 import com.stcal.don.DCouple;
-import com.stcal.don.DListe;
+import com.stcal.don.DPersonne;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jean
@@ -13,16 +15,16 @@ import javax.swing.*;
 public class Datas {
 
     public static final DefaultListModel<DCouple> stages;
-    public static final DListe etu;
-    public static final DListe prof;
+    public static final List<DPersonne> etu;
+    public static final List<DPersonne> prof;
 
     static {
         stages = new DefaultListModel<DCouple>();
-        etu    = new DListe();
+        etu    = new ArrayList<DPersonne>();
         //DEtudiantManager etuman = new DEtudiantManager();
         // etu    = etuman.readall();
-        // TODO Imcompatiblité a cause de DListe
-        prof   = new DListe();
+        // TODO Imcompatiblité a cause de List
+        prof   = new ArrayList<DPersonne>();
     }
 
     /**

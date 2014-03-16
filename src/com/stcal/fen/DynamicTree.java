@@ -147,7 +147,7 @@ class DynamicTree extends JPanel {
             if(listCpl.contains(cpl)){
                 listCpl.removeElement(cpl);
                 System.out.println("Stage supprimé.");
-                Datas.etu.addElement(cpl.getEtu());
+                Datas.etu.add(cpl.getEtu());
                 if(((MutableTreeNode) tree.getLastSelectedPathComponent()).getParent().getChildCount()==1){
                     treeModel.removeNodeFromParent((MutableTreeNode)((MutableTreeNode) tree.getLastSelectedPathComponent()).getParent());
                 }

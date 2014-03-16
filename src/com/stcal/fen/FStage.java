@@ -98,7 +98,7 @@ public class FStage extends FTab {
     }
 
     public void supprimer_stage(JList<DCouple> pan){
-       Datas.etu.addElement(pan.getSelectedValue().getEtu());
+       Datas.etu.add(pan.getSelectedValue().getEtu());
     }
 
     @Override

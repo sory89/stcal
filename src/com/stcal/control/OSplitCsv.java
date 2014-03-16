@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -16,13 +17,13 @@ public class OSplitCsv {
     public static final char SEP = ';';
 
 
-    public static DListe splitcsv(File file, String type) throws Exception {
+    public static List splitcsv(File file, String type) throws Exception {
         String ligne,errf="Les erreurs suivantes ont été detectées dans le fichier CSV : \n",warf="";
         char cp=' ';
         int nlab=1,nlig=1,nligb=0,nligv=0;
         boolean er=false,wr=false;
-        DListe cont;
-        cont = new DListe();
+        List cont;
+        cont = new ArrayList<DCouple>();
         Scanner sc = new Scanner(file);
         if (sc.hasNextLine()){
             Message.out.println("OSplitCsv: splitcsv");
@@ -105,7 +106,7 @@ public class OSplitCsv {
                 essai.add(split[i]);
             }
                 perso.setInfos(essai);
-                cont.addElement(perso);
+                cont.add(perso);
 
             } else {  }
 
@@ -128,17 +129,17 @@ public class OSplitCsv {
         return cont;
     }
 
-    public static void exportcsv(String path,DListe etu) throws Exception {
+    public static void exportcsv(String path,List<DPersonne> etu) throws Exception {
         String ligne="";
         int ind=0;
         PrintWriter writer = new PrintWriter(path, "UTF-8");
-        for (int i=0;i<etu.getSize();i++){
+        for (int i=0;i<etu.size();i++){
             ligne="";
-            if (etu.getElementAt(i)!=null){
+            if (etu.get(i)!=null){
                 //ligne = etu.getPersonne(i).getPrenom() + ";";
                 //ligne += etu.getPersonne(i).getNom() + ";";
-                for (int j=0;j<etu.getElementAt(i).getInfos().size();j++){
-                    ligne += etu.getElementAt(i).getInfos().get(j) + ";";
+                for (int j=0;j<etu.get(i).getInfos().size();j++){
+                    ligne += etu.get(i).getInfos().get(j) + ";";
                 }
                 ind=ligne.length()-1;
                 ligne=ligne.substring(0,ind);

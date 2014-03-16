@@ -1,5 +1,5 @@
 package com.stcal.don;
 
-public class DCandide extends DPersonne {
+public class DCandide extends DProf {
 
 }

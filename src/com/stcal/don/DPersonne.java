@@ -1,6 +1,7 @@
 package com.stcal.don;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,7 +14,8 @@ public abstract class DPersonne {
 
     protected String nom;
     protected String prenom;
-    protected ArrayList<String> infos; // catégorie : texte
+    protected List<String> infos; // catégorie : texte
+    protected int db_id;
 
 
     public DPersonne(String nom, String prenom) {
@@ -21,7 +23,7 @@ public abstract class DPersonne {
         this.prenom = prenom;
 
     }
-    public DPersonne(String nom, String prenom, ArrayList<String> infos) {
+    public DPersonne(String nom, String prenom, List<String> infos) {
         this.nom = nom;
         this.prenom = prenom;
         this.infos = infos;
@@ -30,11 +32,19 @@ public abstract class DPersonne {
 
     }
 
-    /*
-    public boolean is(String prenom,String nom){
-        return this.prenom.equals(prenom) && this.nom.equals(nom);
+    public int getDb_id() {
+        return db_id;
     }
-    */
+
+    public void setDb_id(int db_id) {
+        this.db_id = db_id;
+    }
+
+    /*
+        public boolean is(String prenom,String nom){
+            return this.prenom.equals(prenom) && this.nom.equals(nom);
+        }
+        */
     public String getNom() {
         return nom;
     }
@@ -51,7 +61,7 @@ public abstract class DPersonne {
         this.prenom = prenom;
     }
 
-    public ArrayList<String> getInfos() {
+    public List<String> getInfos() {
         return infos;
     }
 

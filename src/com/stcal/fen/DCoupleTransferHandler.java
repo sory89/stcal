@@ -61,11 +61,11 @@ public class DCoupleTransferHandler extends TransferHandler {
 
             Datas.stages.removeElement(dc);  }
                 else{
-                 Message.err.println("Trop de soutenance dans ce creneau GROS ! Tu PEUX  PAS TEST !");
+                 Message.err.println("Erreur : Le nombre de soutenances dans ce creneau est au maximum.");
              }
             }
             else{
-                Message.err.println("Non j'crois pas ! Il est de déjà dans ce creneau le prof ! REPORT !!!!!!!!!!");
+                Message.err.println("Erreur : Ce professeur est déjà présent à ce créneau.");
             }
             int i;
             int y;

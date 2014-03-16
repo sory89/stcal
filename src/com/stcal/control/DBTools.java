@@ -23,8 +23,8 @@ public class DBTools {
     }
 
     /**
-     * Traitement de base de donne au lancement de l'application
-     * @return les parametre de connections;
+     * Traitement de base de donnees au lancement de l'application
+     * @return les parametres de connection;
      */
     public static void startup(){
         askdbsetting(dbsettings);
@@ -55,9 +55,9 @@ public class DBTools {
     }
 
     /**
-     * verfie si la base de donne est cree
-     * @param param paramettres de connection
-     * @return renvoie vraie si la base existe
+     * verfie si la base de donnees est creee
+     * @param param parametres de connection
+     * @return renvoie vrai si la base existe
      */
     public static boolean isset(DBsettings param) throws SQLException {
         Connection con = param.getConnection();
@@ -95,7 +95,7 @@ public class DBTools {
     }
 
     /**
-     * detruit la connection à la base de donne precedente et en recree une autre
+     * detruit la connection à la base de donnees precedente et en recree une autre
      */
     public static void resetConnection() throws SQLException {
         dbsettings.getNewConnection();

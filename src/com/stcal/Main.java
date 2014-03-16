@@ -1,14 +1,14 @@
 package com.stcal;
 
 import com.stcal.control.*;
-import com.stcal.don.DListe;
-import com.stcal.don.Type;
+import com.stcal.don.*;
 import com.stcal.fen.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -61,7 +61,7 @@ public class Main {
 
     public static ArrayList<String> personneInfo(Type type,String pre,String nom){
         ArrayList<String> details = new ArrayList<String>();
-        DListe all;
+        List all;
         if (type.equals(Type.ETUDIANT)){
             all = Datas.etu;
         }
@@ -98,23 +98,23 @@ public class Main {
      * @param type type du contenu du fichier Main.TUTEUR/Main.ETUDIANT
      */
     public static void openFile(Type type){
-        DListe nouveau;
+        List<DPersonne> nouveau;
         Message.status("Navigateur de fichier.");
         finder.show();
         if (finder.status()==FChooser.CHOSEN){
             try {
                 nouveau = OSplitCsv.splitcsv(finder.file(), type.toString());
                 if (type.equals(Type.ETUDIANT)){
-                    for (int i=0; i<nouveau.getSize();i++){
-                        Datas.etu.addElement(nouveau.getElementAt(i));
+                    for (int i=0; i<nouveau.size();i++){
+                        Datas.etu.add(nouveau.get(i));
                     }
-                    Message.status(nouveau.getSize() + " étudiants ajoutés de " + finder.path());
+                    Message.status(nouveau.size() + " étudiants ajoutés de " + finder.path());
                 }
                 else if (type.equals(Type.TUTEUR)){
-                    for (int i=0; i<nouveau.getSize();i++){
-                        Datas.prof.addElement(nouveau.getElementAt(i));
+                    for (int i=0; i<nouveau.size();i++){
+                        Datas.prof.add(nouveau.get(i));
                     }
-                    Message.status(nouveau.getSize() + " enseignants ajoutés de" + finder.path());
+                    Message.status(nouveau.size() + " enseignants ajoutés de" + finder.path());
                 }
                 else {
                     System.err.println("Main: openFile: type not defined");

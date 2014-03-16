@@ -25,7 +25,9 @@ public class FLier extends FTab {
         super("Lier");
         pan().setLayout(new GridLayout(0, 3,10,10));
 
-        Fprof = new JList<DPersonne>(Datas.prof);
+        DefaultListModel<DPersonne> model = new DefaultListModel<DPersonne>();
+        for(DPersonne val : Datas.prof) model.addElement(val);
+        Fprof = new JList<DPersonne>(model);
         Fprof.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Fprof.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -78,7 +80,9 @@ public class FLier extends FTab {
 
 
 
-        Fetu = new JList(Datas.etu);
+        DefaultListModel<DPersonne> model1 = new DefaultListModel<DPersonne>();
+        for(DPersonne val : Datas.etu) model1.addElement(val);
+        Fetu = new JList(model1);
         Fetu.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Fetu.addListSelectionListener(new ListSelectionListener() {
             @Override

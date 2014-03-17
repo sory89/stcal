@@ -35,6 +35,7 @@ public class FCal extends FTab{
     protected JPanel pancreneau = new JPanel();
     protected JPanel test5 = new JPanel();
     protected JPanel panSoutenance = new JPanel();
+
     protected JLabel infoChooser = new JLabel("Choisissez les jours de soutenance");
     protected JLabel creneauLabel = new JLabel("Durée en minutes d'une soutenance");
     protected JLabel debutLabel = new JLabel("Début d'une journée");
@@ -60,7 +61,7 @@ public class FCal extends FTab{
 
     /* Test d'activation du bouton de validation du formulaire
        Il suffit de changer le if pour que les tests sur les composants du formulaire soient mis à jours
-     */
+    */
     protected boolean condition(){
         if(!(finJour.getSelectedIndex()==-1) && !(debutJour.getSelectedIndex()==-1) && !(soutenance.getText().isEmpty()) && soutenance.getText().matches("\\d{1,10}")
                 && !chooserDebut.getSelectedPeriodSet().isEmpty() && creneau.getText().matches("\\d{1,10}") && !(creneau.getText().isEmpty()))

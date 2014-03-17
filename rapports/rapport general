@@ -1,19 +1,10 @@
 \documentclass[a4paper,10pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[frenchb]{babel}
-\usepackage{fancyhdr}
 
-\pagestyle{fancy}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{1pt}
-\fancyfoot[L]{Projet StCal}
-\fancyfoot[R]{IUT de Belfort}
-\date{}
-
-\frenchbsetup{StandardLists=true}
 
 \title{\Huge{Projet Stcal}\\ {\Large Rapport général}}
-\author{Florian Barrois \and Nicolas Devillers \and Valentin Jeanroy \and Mehdi Loisel \and Jean Mercadier \and Ismail Taleb \and Willem Verdeaux}
+\author{Florian Barrois}
 
 
 \begin{document}
@@ -25,13 +16,6 @@
 
 \part{Introduction}
   \paragraph{}
-    En tant qu'étudiants de deuxième année d'IUT informatique, nous sommes amenés à réaliser plusieurs projets, souvent en groupe de quelques personnes, correspondant à notre domaine d'études.
-    Qu'ils soient principalement scolaires ou plus tournés vers une utilisation générale concrète dans la vie réelle, chacun de ces projets demeure enrichissant, instructif vis-à-vis des technologies utilisées et du travail de groupe et permet de vivre une expérience collective potentiellement motivatrice pour de futurs employeurs.
-    
-  \paragraph{}
-    La durée et la complexité de ces projets varient, mais le plus conséquent et le plus long est sans nul doute le projet tutoré, que nous devons réaliser sur une durée d'environ un an et pour lequel nous devons effectuer la démarche d'un véritable projet industriel, c'est-à-dire trouver un client, instaurer un cahier des charges à partir d'une idée, et concevoir un produit possédant un usage concret correspondant aux besoins du client, avant de finalement livrer le produit à ce dernier.
-    
-  \paragraph{}  
     Dans le cadre de notre projet tutoré, nous avons dû réfléchir à un secteur d'activité nécessitant des outils informatiques relativement simples mais essentiels. 
     Ainsi, au vu du besoin éprouvé par nos enseignants de travailler avec des outils plus simples, nous avons choisi de réaliser une application à utilité pédagogique.
     Cette application aura pour but de faciliter la gestion des stages des étudiants de quatrième semestre ainsi que la mise en place d'un calendrier des soutenances orales des étudiants présentant leur stage à leurs professeurs.
@@ -53,21 +37,21 @@
 
 
 \part{Présentation du sujet}
-
   \paragraph{}
     Depuis de nombreuses années, les professeurs de notre établissement, et sûrement bien d'autres, s'occupent des stages en s'adaptant aux outils existants.
     En effet, à ce jour, la méthode employée pour réaliser cette tâche se compose de la gestion d'une part des informations, et d'autre part du planning des soutenances, en utilisant respectivement des logiciels tels que Microsoft Excel, et les fonctionnalités de calendrier de Google.
     La mission dont nous nous sommes acquittés consiste donc à aider les responsables de stage, non pas par la recherche d'outils plus appropriés, mais par la création d'une application qui sera spécifiquement prévue à cet usage et qui demeurera parfaitement adaptée aux besoins des usagers, notamment du personnel enseignant.
 
+  \paragraph{}
     Ainsi la difficulté de ce défi est conséquente, puisque nous ne connaissons aucun outil similaire existant pouvant servir de référence ou permettant d'étayer notre réflexion.
-    
-
-
+    Notre groupe de sept étudiants sera donc chargé de trouver la bonne démarche à suivre en mettant à profit toutes les connaissances, qu'elles aient été acquises en cours ou à la suite de recherches liées au projet.
+    Les connaissances utilisées relèveront de la mise en place d'une interface graphique, de la gestion de classes et de bases de données, en plus de toutes les notions apprises liées au langage utilisé, à savoir le Java.
+  
+  \paragraph{}
+    Le résultat ne consistera en aucun cas en une plate-forme de consultation des stages.
     L'application développée sera mise à disposition exclusive des enseignants. 
     Les étudiants concernés n'auront quant à eux aucun accès à l'application, que ce soit pour ajouter, supprimer, consulter ou éditer des données.
 
-    
-    
 %Le sujet est divisé en plusieurs étapes. 
 %Tout d'abord, il est nécessaire de d'établir une liste des stagiaires et une liste des professeurs et ainsi attribuer à chaque étudiant un enseignant dit responsable de stage.
 
@@ -98,7 +82,7 @@
   %   Affichage du couple enseignant/étudiant lors de la sélection de l'horaire choisi ?
   % Drag & drop des étudiants et enseignants sur l'horaire choisi ?
 
-  \chapter{Développement et contraintes}
+  \chapter{Développement et contraintes} % A RÉORGANISER
 
     Le développement s'effectuera en quatre étapes, qui contiendront différentes tâches. Ces étapes et tâches seront ordonnées tel que le côté fonctionnel de l'application soit prioritaire :
 
@@ -129,14 +113,14 @@
 	\paragraph{}
 	L’application comportera une fonction de création d’emploi du temps vide et une seconde permettant le remplissage de celui-ci avec les soutenances de chacun des étudiants.
 	Les plages horaires réservées contiendront les informations suivantes :
-
-	\begin{itemize}
-	  \item Le nom de l’enseignant tuteur
-	  \item Le nom de l’enseignant candide 
-	  \item Le nom de l’étudiant
-	  \item Le numéro de la salle d’entretien
-	\end{itemize}
-
+	\newline
+	- Le nom de l’enseignant tuteur
+	\newline
+	- Le nom de l’enseignant candide 
+	\newline
+	- Le nom de l’étudiant
+	\newline
+	- Le numéro de la salle d’entretien
 
 	\paragraph{}
 	Le logiciel possèdera également une option d’export du calendrier généré au format ICS compatible avec Google et iCal.
@@ -145,13 +129,15 @@
 	\paragraph{}
 
 	Le produit devra être capable de résoudre les cas suivants en affichant un message d’erreur et en ignorant la dernière action effectuée :
-	
-	\begin{itemize}
-	  \item En cas de création d'une soutenance à un horaire incompatible pour l'enseignant tuteur ;
-	  \item En cas de création d'une soutenance à un horaire incompatible pour l'enseignant candide ;
-	  \item En cas de création d'une soutenance ayant lieu dans une salle déjà réquisitionnée à cet horaire ;
-	  \item Si toutes les salles d’entretien sont occupées à un horaire donné, cette plage horaire devra être inaccessible pour placer d’autres soutenances.
-	\end{itemize}
+	- en cas de création d'une soutenance à un horaire incompatible pour l'enseignant tuteur ;
+	\newline
+	- en cas de création d'une soutenance à un horaire incompatible pour l'enseignant candide ;
+	\newline
+	- en cas de création d'une soutenance ayant lieu dans une salle déjà réquisitionnée à cet horaire ;
+	\newline
+	- si toutes les salles d’entretien sont occupées à un horaire donné, cette plage horaire devra être inaccessible pour placer d’autres soutenances.
+
+      
 
     \section{Troisième étape}
       \subsection{Développement}
@@ -174,8 +160,16 @@
       Lors de la première utilisation du logiciel, l'utilisateur devra entrer les paramètres correspondant à la base de données qui stockera les informations, à savoir le nom du serveur, le port utilisé, le nom d'utilisateur et le mot de passe.
       Une fois les champs renseignés, ces paramètres seront également mémorisés et la restauration de session devra passer par un accès cette base de données pour afficher les informations précédemment enregistrées.
       Le programme sera donc contraint de rechercher l'existence d'un fichier de configuration dans l'ordinateur afin de savoir si l'application est utilisée ou non pour la première fois.
-      Si c'est le cas, une fenêtre contenant les différents paramètres à renseigner mentionnés précédemment, apparaît et les valeurs entrées sont mémorisées dans un nouveau fichier de configuration.
-      
+      Si c'est le cas, une fenêtre contenant les différents paramètres à renseigner mentionnés précédemment apparaît, et les valeurs entrées sont mémorisées dans un nouveau fichier de configuration.
+      ~\\
+      ~\\
+      ~\\
+	\paragraph{}
+	  Ces étapes consistuent ainsi le fil conducteur du projet. 
+	  Il faut également noter l'existence d'une autre étape effectuée en parallèle : la réalisation de l'interface graphique.
+	  En effet, celle-ci offre la possibilité d'entrevoir le rendu final qui sera livré au client et facilite également la visibilité quant à l'évolution du projet.
+	  Elle permet aussi d'incorporer directement dans le logiciel les fonctions programmées en interne au fur et à mesure que le projet progresse et tient ainsi le rôle de de plate-forme de tests.   
+	
 \part{Réalisation}
   \setcounter{chapter}{0}
   \chapter{Chap 1}	

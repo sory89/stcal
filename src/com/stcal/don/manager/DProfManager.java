@@ -1,7 +1,6 @@
 package com.stcal.don.manager;
 
 import com.stcal.control.Message;
-import com.stcal.don.DPersonne;
 import com.stcal.don.DProf;
 
 import java.sql.*;

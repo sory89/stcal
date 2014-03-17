@@ -1,9 +1,14 @@
 package com.stcal.control;
 
+import com.stcal.Main;
 import com.stcal.don.DCouple;
+import com.stcal.don.DEtudiant;
 import com.stcal.don.DPersonne;
+import com.stcal.don.DProf;
+import com.stcal.don.manager.DProfManager;
 
 import javax.swing.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,16 +20,24 @@ import java.util.List;
 public class Datas {
 
     public static final DefaultListModel<DCouple> stages;
-    public static final List<DPersonne> etu;
-    public static final List<DPersonne> prof;
+    public static final List<DEtudiant> etu;
+    public static final List<DProf> prof;
 
     static {
         stages = new DefaultListModel<DCouple>();
-        etu    = new ArrayList<DPersonne>();
+        etu    = new ArrayList<DEtudiant>();
         //DEtudiantManager etuman = new DEtudiantManager();
         // etu    = etuman.readall();
         // TODO Imcompatiblité a cause de List
-        prof   = new ArrayList<DPersonne>();
+        List<DProf> inter;
+        try {
+            DProfManager dpm = new DProfManager(DBTools.dbsettings.getConnection());
+            inter   = dpm.readall();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            inter   = new ArrayList<DProf>();
+        }
+        prof = inter;
     }
 
     /**

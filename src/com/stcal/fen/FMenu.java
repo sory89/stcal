@@ -34,7 +34,7 @@ public class FMenu {
         aPropos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jop1.showMessageDialog(null, "Logiciel STCal crée dans le cadre du projet tuteuré de l'IUT de Belfort. " +
+                jop1.showMessageDialog(null, "Logiciel STCal créé dans le cadre du projet tuteuré de l'IUT de Belfort. " +
                         "Créé par Florian BARROIS, Nicolas DEVILLERS, Valentin JEANROY, Mehdi LOISEL Jean Mercadier, Ismael TAHLEB et Willeme VERDEAUX  ", "À propos", JOptionPane.INFORMATION_MESSAGE);
             }
         });
@@ -102,13 +102,13 @@ public class FMenu {
         menupref.add(db);
         menupref.addSeparator();
         JMenuItem dbr = new JMenuItem("Reset DB connection");
-        dbr.setToolTipText("Ferme la connection à la base de donnée et ouvre en une nouvel.");
+        dbr.setToolTipText("Ferme la connection à la base de données et en ouvre une nouvelle.");
         dbr.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     DBTools.resetConnection();
-                    Message.popnotice("Connection à la base de donnée fermé et reouverte avec succes.");
+                    Message.popnotice("Connection à la base de données fermée et réouverte avec succès.");
                 } catch (SQLException e1) {
                     Message.poperror(e1);
                 }

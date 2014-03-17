@@ -41,8 +41,8 @@ public class FSettings {
             pan.add(input);
         }
         JOptionPane pop = new JOptionPane();
-        Message.out.println("Ouverture paramettre " + settings.getFilename());
-        pop.showMessageDialog(null, pan, "Parametre", JOptionPane.PLAIN_MESSAGE);
+        Message.out.println("Ouverture paramètre " + settings.getFilename());
+        pop.showMessageDialog(null, pan, "Paramètre", JOptionPane.PLAIN_MESSAGE);
         for(Map.Entry<String,JTextField> entry : form.entrySet()) {
             try {
                 settings.set(entry.getKey(),entry.getValue().getText());

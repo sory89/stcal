@@ -1,8 +1,7 @@
 package com.stcal;
 
 import com.stcal.control.*;
-import com.stcal.don.DPersonne;
-import com.stcal.don.Type;
+import com.stcal.don.*;
 import com.stcal.fen.*;
 
 import javax.swing.*;

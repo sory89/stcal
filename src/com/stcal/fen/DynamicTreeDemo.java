@@ -2,6 +2,7 @@ package com.stcal.fen;
 
 import com.stcal.control.Datas;
 import com.stcal.don.DCouple;
+import com.stcal.don.DEtudiant;
 import com.stcal.don.DTuteur;
 
 import javax.swing.*;

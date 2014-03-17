@@ -21,7 +21,6 @@ public abstract class DPersonne {
     public DPersonne(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
-        this.infos = new ArrayList<String>();
 
     }
     public DPersonne(String nom, String prenom, List<String> infos) {

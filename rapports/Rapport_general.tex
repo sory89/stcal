@@ -94,7 +94,7 @@
   %   Affichage du couple enseignant/étudiant lors de la sélection de l'horaire choisi ?
   % Drag & drop des étudiants et enseignants sur l'horaire choisi ?
 
-  \chapter{Développement et contraintes} % A RÉORGANISER
+  \chapter{Développement et contraintes}
 
     Le développement s'effectuera en quatre étapes, qui contiendront différentes tâches. Ces étapes et tâches seront ordonnées tel que le côté fonctionnel de l'application soit prioritaire :
 
@@ -125,15 +125,14 @@
 	\paragraph{}
 	L’application comportera une fonction de création d’emploi du temps vide et une seconde permettant le remplissage de celui-ci avec les soutenances de chacun des étudiants.
 	Les plages horaires réservées contiendront les informations suivantes :
-	\newline
-	- Le nom de l’enseignant tuteur
-	\newline
-	- Le nom de l’enseignant candide 
-	\newline
-	- Le nom de l’étudiant
-	\newline
-	- Le numéro de la salle d’entretien
-
+	\renewcommand\labelitemi{\textbullet}
+	\begin{itemize}
+	  \item Le nom de l’enseignant tuteur;
+	  \item Le nom de l’enseignant candide ;
+	  \item Le nom de l’étudiant;
+	  \item Le numéro de la salle d’entretien.
+	\end{itemize}
+	
 	\paragraph{}
 	Le logiciel possèdera également une option d’export du calendrier généré au format ICS compatible avec Google et iCal.
 	
@@ -141,14 +140,15 @@
 	\paragraph{}
 
 	Le produit devra être capable de résoudre les cas suivants en affichant un message d’erreur et en ignorant la dernière action effectuée :
-	- en cas de création d'une soutenance à un horaire incompatible pour l'enseignant tuteur ;
 	\newline
-	- en cas de création d'une soutenance à un horaire incompatible pour l'enseignant candide ;
-	\newline
-	- en cas de création d'une soutenance ayant lieu dans une salle déjà réquisitionnée à cet horaire ;
-	\newline
-	- si toutes les salles d’entretien sont occupées à un horaire donné, cette plage horaire devra être inaccessible pour placer d’autres soutenances.
-
+	\renewcommand\labelitemi{\textbullet}
+	\begin{itemize}
+	  \item en cas de création d'une soutenance à un horaire incompatible pour l'enseignant tuteur ;
+	  \item en cas de création d'une soutenance à un horaire incompatible pour l'enseignant candide ;
+	  \item en cas de création d'une soutenance ayant lieu dans une salle déjà réquisitionnée à cet horaire ;
+	  \item si toutes les salles d’entretien venaient à être occupées à un horaire donné, cette plage horaire devra être inaccessible pour placer d’autres soutenances.
+	\end{itemize}
+  
       
 
     \section{Troisième étape}

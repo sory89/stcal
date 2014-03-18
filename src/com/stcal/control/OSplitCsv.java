@@ -4,6 +4,7 @@ import com.stcal.don.*;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,7 +18,7 @@ public class OSplitCsv {
     public static final char SEP = ';';
 
 
-    public static List splitcsv(File file, String type) throws Exception {
+    public static List splitcsv(File file, String type) throws FileNotFoundException {
         String ligne,errf="Les erreurs suivantes ont été detectées dans le fichier CSV : \n",warf="";
         char cp=' ';
         int nlab=1,nlig=1,nligb=0,nligv=0;

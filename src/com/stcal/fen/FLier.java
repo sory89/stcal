@@ -2,6 +2,8 @@ package com.stcal.fen;
 
 import com.stcal.Main;
 import com.stcal.control.Datas;
+import com.stcal.control.ListTools;
+import com.stcal.control.Message;
 import com.stcal.don.*;
 
 import javax.swing.*;
@@ -24,10 +26,7 @@ public class FLier extends FTab {
     public FLier(){
         super("Lier");
         pan().setLayout(new GridLayout(0, 3,10,10));
-
-        DefaultListModel<DPersonne> model = new DefaultListModel<DPersonne>();
-        for(DPersonne val : Datas.prof) model.addElement(val);
-        Fprof = new JList<DPersonne>(model);
+        Fprof = new JList<DPersonne>(ListTools.listModel(Datas.prof));
         Fprof.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Fprof.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -78,11 +77,7 @@ public class FLier extends FTab {
         centre.add(scrollPane);
         pan().add(centre);
 
-
-
-        DefaultListModel<DPersonne> model1 = new DefaultListModel<DPersonne>();
-        for(DPersonne val : Datas.etu) model1.addElement(val);
-        Fetu = new JList(model1);
+        Fetu = new JList(ListTools.listModel(Datas.etu));
         Fetu.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         Fetu.addListSelectionListener(new ListSelectionListener() {
             @Override

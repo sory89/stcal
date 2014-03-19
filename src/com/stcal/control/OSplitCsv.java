@@ -95,7 +95,7 @@ public class OSplitCsv {
                 if(type.equals(Type.ETUDIANT.toString()))
                     perso = new DEtudiant(split[0],split[1]);
                 if(type.equals(Type.TUTEUR.toString()))
-                    perso = new DTuteur(split[0],split[1]);
+                    perso = new DProf(split[0],split[1]);
 
                 ArrayList<String> essai = new ArrayList<String>();
 
@@ -128,7 +128,7 @@ public class OSplitCsv {
         return cont;
     }
 
-    public static void exportcsv(String path,DListe etu) throws Exception {
+    public static void exportcsv(String path,DefaultListModel<DPersonne> etu) throws Exception {
         String ligne="";
         int ind=0;
         PrintWriter writer = new PrintWriter(path, "UTF-8");

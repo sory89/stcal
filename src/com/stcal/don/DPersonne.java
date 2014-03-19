@@ -14,6 +14,7 @@ public abstract class DPersonne {
     protected String nom;
     protected String prenom;
     protected ArrayList<String> infos; // catégorie : texte
+    protected int db_id = -1;
 
 
     public DPersonne(String nom, String prenom) {
@@ -28,6 +29,14 @@ public abstract class DPersonne {
     }
     public DPersonne() {
 
+    }
+
+    public int getDb_id() {
+        return db_id;
+    }
+
+    public void setDb_id(int db_id) {
+        this.db_id = db_id;
     }
 
     /*

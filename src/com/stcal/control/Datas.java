@@ -2,6 +2,7 @@ package com.stcal.control;
 
 import com.stcal.don.DCouple;
 import com.stcal.don.DListe;
+import com.stcal.don.DPersonne;
 
 import javax.swing.*;
 
@@ -13,16 +14,13 @@ import javax.swing.*;
 public class Datas {
 
     public static final DefaultListModel<DCouple> stages;
-    public static final DListe etu;
-    public static final DListe prof;
+    public static final DefaultListModel<DPersonne> etu;
+    public static final DefaultListModel<DPersonne> prof;
 
     static {
         stages = new DefaultListModel<DCouple>();
-        etu    = new DListe();
-        //DEtudiantManager etuman = new DEtudiantManager();
-        // etu    = etuman.readall();
-        // TODO Imcompatiblité a cause de DListe
-        prof   = new DListe();
+        etu    = new DefaultListModel<DPersonne>();
+        prof   = new DefaultListModel<DPersonne>();
     }
 
     /**

@@ -3,17 +3,17 @@ package com.stcal.don;
 import java.util.ArrayList;
 
 
-public class DTuteur extends DPersonne {
+public class DProf extends DPersonne {
 
-    public DTuteur(String nom, String prenom, ArrayList<String> infos) {
+    public DProf(String nom, String prenom, ArrayList<String> infos) {
         super(nom, prenom, infos);
     }
 
-    public DTuteur(String nom, String prenom) {
+    public DProf(String nom, String prenom) {
         super(nom, prenom);
     }
 
-    public DTuteur() {
+    public DProf() {
     }
 
     public String toString(){

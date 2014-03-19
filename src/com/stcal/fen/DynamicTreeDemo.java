@@ -2,8 +2,7 @@ package com.stcal.fen;
 
 import com.stcal.control.Datas;
 import com.stcal.don.DCouple;
-import com.stcal.don.DEtudiant;
-import com.stcal.don.DTuteur;
+import com.stcal.don.DProf;
 
 import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
@@ -56,8 +55,8 @@ public class DynamicTreeDemo extends JPanel implements ActionListener {
 
     }
 
-    private ArrayList<DTuteur> getEachTut(DefaultListModel<DCouple> listCouple){
-        ArrayList<DTuteur> eachTut = new ArrayList<DTuteur>();
+    private ArrayList<DProf> getEachTut(DefaultListModel<DCouple> listCouple){
+        ArrayList<DProf> eachTut = new ArrayList<DProf>();
         if(eachTut.isEmpty()){
             eachTut.add(listCouple.get(0).getTut());
         }
@@ -83,7 +82,7 @@ public class DynamicTreeDemo extends JPanel implements ActionListener {
     }
 
     public void populateTree(DynamicTree treePanel) {
-        ArrayList<DTuteur> ltut=new ArrayList<DTuteur>();
+        ArrayList<DProf> ltut=new ArrayList<DProf>();
         treePanel.clear();
         if(!Datas.stages.isEmpty())
             ltut= getEachTut(Datas.stages);

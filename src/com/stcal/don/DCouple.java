@@ -3,9 +3,9 @@ package com.stcal.don;
 public class DCouple {
 
     protected DEtudiant etu = null;
-    protected DTuteur tut = null;
+    protected DProf tut = null;
 
-    public DCouple(DEtudiant etu, DTuteur prof){
+    public DCouple(DEtudiant etu, DProf prof){
         this.etu = etu;
         this.tut = prof;
     }
@@ -14,7 +14,7 @@ public class DCouple {
         this.etu = etu;
     }
 
-    public void setTut(DTuteur tut){
+    public void setTut(DProf tut){
         this.tut = tut;
     }
 
@@ -22,7 +22,7 @@ public class DCouple {
         return etu;
     }
 
-    public DTuteur getTut(){
+    public DProf getTut(){
         return tut;
     }
     public String toString(){

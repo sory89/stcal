@@ -2,6 +2,7 @@ package com.stcal;
 
 import com.stcal.control.*;
 import com.stcal.don.DListe;
+import com.stcal.don.DPersonne;
 import com.stcal.don.Type;
 import com.stcal.fen.*;
 
@@ -61,7 +62,7 @@ public class Main {
 
     public static ArrayList<String> personneInfo(Type type,String pre,String nom){
         ArrayList<String> details = new ArrayList<String>();
-        DListe all;
+        DefaultListModel<DPersonne> all;
         if (type.equals(Type.ETUDIANT)){
             all = Datas.etu;
         }

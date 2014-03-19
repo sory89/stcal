@@ -116,7 +116,7 @@ public class FLier extends FTab {
     }
 
     protected void askStage(){
-        Datas.stages.addElement(new DCouple((DEtudiant)Fetu.getSelectedValue(), (DTuteur) Fprof.getSelectedValue()));
+        Datas.stages.addElement(new DCouple((DEtudiant)Fetu.getSelectedValue(), (DProf) Fprof.getSelectedValue()));
         Datas.etu.remove(Fetu.getSelectedIndex());
         FStage.newContentPane.populateTree(FStage.newContentPane.getTreePanel());
         System.out.println("Création du stage "+Datas.stages.getSize());
@@ -183,7 +183,7 @@ public class FLier extends FTab {
 
     public void resetCourant(JList<DPersonne> list){
         String html = "<html>";
-        if (list.getSelectedValue() instanceof DTuteur){
+        if (list.getSelectedValue() instanceof DProf){
             html += "Tuteur: " + list.getSelectedValue().getPrenom() + " " + list.getSelectedValue().getNom().toUpperCase() + "<br />";
         }
         if (list.getSelectedValue() instanceof DEtudiant){

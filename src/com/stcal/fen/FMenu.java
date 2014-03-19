@@ -8,6 +8,8 @@ import com.stcal.don.Type;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class FMenu {
@@ -30,12 +32,14 @@ public class FMenu {
         JMenuItem help = new JMenuItem("Aide");
         JMenuItem raccourcis = new JMenuItem("Raccourcis");
         JMenuItem aPropos = new JMenuItem("À propos de STCal");
-        final JOptionPane jop1 = new JOptionPane();
+        //final JOptionPane jop1 = new JOptionPane();
         aPropos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jop1.showMessageDialog(null, "Logiciel STCal créé dans le cadre du projet tuteuré de l'IUT de Belfort. " +
-                        "Créé par Florian BARROIS, Nicolas DEVILLERS, Valentin JEANROY, Mehdi LOISEL Jean Mercadier, Ismael TAHLEB et Willeme VERDEAUX  ", "À propos", JOptionPane.INFORMATION_MESSAGE);
+                Message.popnotice("Le logiciel STCal a été créé par des étudiants dans le cadre du projet tutoré de l'IUT de Belfort. \n" +
+                        "Sa conception et sa réalisation ont été entièrement réalisées par Florian BARROIS, Nicolas DEVILLERS, \nValentin JEANROY, Mehdi LOISEL Jean MERCADIER, Ismail TALEB et Willeme VERDEAUX.\n\n " +
+                        "Il est destiné à faciliter la gestion des stages d'étudiants en proposant des fonctionnalités pour les stages propres à l'application \n ainsi qu'un outil de création de calendrier permettant la mise en place des soutenances orales des étudiants." +
+                        "\n\n Les sources du projet sont disponibles à l'adresse URL suivante : https://github.com/Ricain/stcal" ,"A propos");
             }
         });
 

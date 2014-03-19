@@ -61,13 +61,8 @@
   
   \paragraph{}
     Le résultat ne consistera en aucun cas en une plate-forme de consultation des stages.
-    L'application développée sera mise à disposition exclusive des enseignants. 
+    L'application développée sera mise à disposition exclusive des enseignants et du personnel responsable des stages. 
     Les étudiants concernés n'auront quant à eux aucun accès à l'application, que ce soit pour ajouter, supprimer, consulter ou éditer des données.
-
-%Le sujet est divisé en plusieurs étapes. 
-%Tout d'abord, il est nécessaire de d'établir une liste des stagiaires et une liste des professeurs et ainsi attribuer à chaque étudiant un enseignant dit responsable de stage.
-
-
     
     
     
@@ -85,16 +80,8 @@
     \end{enumerate}
   
   
-  
-  
-  % Association enseignant/étudiant
-  %     Contrainte limitant l'association d'un étudiant à un seul enseignant.
-  % Gestion du planning des soutenances de stage
-  %   Affichage de l'horaire choisi lors de la sélection du couple enseignant/étudiant ?
-  %   Affichage du couple enseignant/étudiant lors de la sélection de l'horaire choisi ?
-  % Drag & drop des étudiants et enseignants sur l'horaire choisi ?
 
-  \chapter{Développement et contraintes} % A RÉORGANISER
+  \chapter{Développement et contraintes}
 
     Le développement s'effectuera en quatre étapes, qui contiendront différentes tâches. Ces étapes et tâches seront ordonnées tel que le côté fonctionnel de l'application soit prioritaire :
 
@@ -125,36 +112,36 @@
 	\paragraph{}
 	L’application comportera une fonction de création d’emploi du temps vide et une seconde permettant le remplissage de celui-ci avec les soutenances de chacun des étudiants.
 	Les plages horaires réservées contiendront les informations suivantes :
-	\newline
-	- Le nom de l’enseignant tuteur
-	\newline
-	- Le nom de l’enseignant candide 
-	\newline
-	- Le nom de l’étudiant
-	\newline
-	- Le numéro de la salle d’entretien
-
+	\renewcommand\labelitemi{\textbullet}
+	\begin{itemize}
+	  \item Le nom de l’enseignant tuteur;
+	  \item Le nom de l’enseignant candide ;
+	  \item Le nom de l’étudiant;
+	  \item Le numéro de la salle d’entretien.
+	\end{itemize}
+	
 	\paragraph{}
-	Le logiciel possèdera également une option d’export du calendrier généré au format ICS compatible avec Google et iCal.
+	Le logiciel possédera également une option d’export du calendrier généré au format ICS compatible avec Google et iCal.
 	
       \subsection{Contraintes}
 	\paragraph{}
 
 	Le produit devra être capable de résoudre les cas suivants en affichant un message d’erreur et en ignorant la dernière action effectuée :
-	- en cas de création d'une soutenance à un horaire incompatible pour l'enseignant tuteur ;
 	\newline
-	- en cas de création d'une soutenance à un horaire incompatible pour l'enseignant candide ;
-	\newline
-	- en cas de création d'une soutenance ayant lieu dans une salle déjà réquisitionnée à cet horaire ;
-	\newline
-	- si toutes les salles d’entretien sont occupées à un horaire donné, cette plage horaire devra être inaccessible pour placer d’autres soutenances.
-
+	\renewcommand\labelitemi{\textbullet}
+	\begin{itemize}
+	  \item en cas de création d'une soutenance à un horaire incompatible pour l'enseignant tuteur ;
+	  \item en cas de création d'une soutenance à un horaire incompatible pour l'enseignant candide ;
+	  \item en cas de création d'une soutenance ayant lieu dans une salle déjà réquisitionnée à cet horaire ;
+	  \item si toutes les salles d’entretien venaient à être occupées à un horaire donné, cette plage horaire devra être inaccessible pour placer d’autres soutenances.
+	\end{itemize}
+  
       
 
     \section{Troisième étape}
       \subsection{Développement}
 	\paragraph{}
-	Le produit possèdera un outil de création de base de données dans laquelle les stages pourront être stockés. Les informations enregistrées seront identiques à celles affichées sur les horaires de soutenances. 
+	Le produit possédera un outil de création de base de données dans laquelle les stages pourront être stockés. Les informations enregistrées seront identiques à celles affichées sur les horaires de soutenances. 
 	La base de données créée pourra ensuite être reliée à un client léger, comme un site web dynanmique, et sera consultable par les étudiants.
 
       \subsection{Contraintes}
@@ -192,11 +179,24 @@
     Les quatre étapes principales, ainsi que celle concernant l'interface graphique, vont pouvoir être rattachées à un véritable support.
     
   \paragraph{}
-    Les futurs utilisateurs du produit seront 
+    Les futurs utilisateurs du produit seront relativement nombreux, par conséquent les systèmes d'exploitation peuvent varier, avec notamment Windows, connu et employé couramment par une grande communauté de personnes, Linux, qui est très utilisé dans le cadre de nos études, et Mac OS, qui devient de plus en plus répandu.
+    C'est pourquoi toute l'application sera programmée en Java, ce qui permettra l'usage du logiciel sous n'importe quelle plate-forme et favorisera une programmation orientée objet.
+    Tout au long de cette partie, les outils auxquels nous avons fait appel et qui se seront mentionnés se trouveront donc être des fonctions et des objets instanciés en Java.
   
   
   
-  \chapter{Chap 1}
+  \chapter{Étape 1 : l'interface graphique}
+    \paragraph{}
+      
+  
+  \chapter{Étape 2 : la création des stages}
+    \paragraph{}
+      Afin de créer les stages, il est d'abord nécessaire d'établir la liste des étudiants de l'année courante ainsi que la liste des professeurs de l'établissement.
+      L'application ne possédera aucune fonctionnalité d'établissement de listes.
+      En revanche, elle sera munie  
+    
+    
+    
     \section{Une section}
   \chapter{Chap 2}
     \section{Une section}

@@ -48,11 +48,17 @@ public class Message {
        popnotice(e.getMessage());
     }
 
-    public static void popnotice(String msg){
+    public static void popnotice(String msg)
+    {
+        popnotice(msg,"Notice");
+    }
+
+    public static void popnotice(String msg,String title){
         out.println("NOTICE:  " + msg);
         Main.fen.setStatus("notice: " + msg);
         JOptionPane pop = new JOptionPane();
-        pop.showMessageDialog(null, msg, "Notice", JOptionPane.INFORMATION_MESSAGE);
+        pop.showMessageDialog(null, msg, title, JOptionPane.INFORMATION_MESSAGE);
+
     }
 
     public static boolean popquestion(String msg){

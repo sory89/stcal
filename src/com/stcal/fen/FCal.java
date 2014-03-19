@@ -14,8 +14,10 @@ import datechooser.beans.DateChooserPanel;
 import datechooser.events.SelectionChangedEvent;
 import datechooser.events.SelectionChangedListener;
 import datechooser.model.multiple.Period;
+import sun.awt.VerticalBagLayout;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -28,19 +30,19 @@ import java.util.Iterator;
 
 public class FCal extends FTab{
     protected DefaultListModel etu = new DefaultListModel();
-    protected JPanel test1 = new JPanel();
-    protected JPanel test2 = new JPanel();
+    protected JPanel dateChooserPanel = new JPanel();
+    protected JPanel dateSettingsPanel = new JPanel();
     protected JPanel panfin = new JPanel();
-    protected JPanel test4 = new JPanel();
+    protected JPanel settingsPanel = new JPanel();
     protected JPanel pancreneau = new JPanel();
-    protected JPanel test5 = new JPanel();
+    protected JPanel validPanel = new JPanel();
     protected JPanel panSoutenance = new JPanel();
 
     protected JLabel infoChooser = new JLabel("Choisissez les jours de soutenance");
-    protected JLabel creneauLabel = new JLabel("Durée en minutes d'une soutenance");
-    protected JLabel debutLabel = new JLabel("Début d'une journée");
-    protected JLabel finLabel = new JLabel("Fin d'une journée");
-    protected JLabel nbSoutenances = new JLabel("Nombre de Soutenance par créneau");
+    protected JLabel creneauLabel = new JLabel("(4) Durée soutenance (en min)");
+    protected JLabel debutLabel = new JLabel("(2) Début journée");
+    protected JLabel finLabel = new JLabel("(3) Fin journée");
+    protected JLabel nbSoutenances = new JLabel("(5) Nombre soutenances par créneau");
     String[] tab =  {"7","8","9","10","11","12","13","14","15","16","17","18","19","20"} ;
     protected JComboBox debutJour = new JComboBox(tab);
     protected JComboBox finJour = new JComboBox();
@@ -55,7 +57,7 @@ public class FCal extends FTab{
     protected DCoupleTransferHandler kikoo = new DCoupleTransferHandler();
     protected DefaultTableModel salles = null;
     protected JDialog jdi=null;
-    protected JButton okPlageJour = new JButton("Valider votre selection");
+    protected JButton okPlageJour = new JButton("Générer le planning");
 
 
 
@@ -73,8 +75,7 @@ public class FCal extends FTab{
         super("Calendrier");
         creneau = new JFormattedTextField();
         soutenance = new JFormattedTextField();
-
-        test1.setOpaque(false);
+        dateChooserPanel.setOpaque(false);
         infoChooser.setOpaque(false);
         okPlageJour.setEnabled(false);
 
@@ -505,39 +506,47 @@ public class FCal extends FTab{
         });
 
         okPlageJour.validate();
-        pan().setLayout(new GridLayout(0,3));
         Dimension dim = new Dimension(1,1);
-        test1.add(infoChooser);
-        pancreneau.setLayout(new GridLayout(4, 0));
-        pancreneau.setOpaque(false);
-        panSoutenance.setLayout(new GridLayout(4, 0));
-        panSoutenance.setOpaque(false);
-        test1.setLayout(new GridLayout(4, 0));
-        test4.setLayout(new GridLayout(4, 0));
-        test4.setOpaque(false);
-        test5.setLayout(new GridLayout(3, 0));
-        test5.setOpaque(false);
-        test1.add(chooserDebut, BorderLayout.NORTH);
-        test2.setLayout(new GridLayout(4, 0));
-        test2.setOpaque(false);
-        panfin.setLayout(new GridLayout(4, 0));
-        panfin.setOpaque(false);
-        pancreneau.add(creneauLabel);
-        pancreneau.add(creneau);
-        panSoutenance.add(nbSoutenances);
-        panSoutenance.add(soutenance);
-        test5.add(okPlageJour,BorderLayout.CENTER);
-        test1.add(test2);
+        // Marges
+        pancreneau.setBorder(new EmptyBorder(5,5,5,5));
+        panfin.setBorder(new EmptyBorder(5, 5, 5, 5));
+        settingsPanel.setBorder(BorderFactory.createEtchedBorder());
+        dateSettingsPanel.setBorder(new EmptyBorder(20,0,0,0));
+        dateSettingsPanel.setOpaque(false);
+        validPanel.setOpaque(false);
+        validPanel.setBorder(new EmptyBorder(0,20,0,0));
+
+        // Panel affichage selecteur dates
+        dateChooserPanel.setLayout(new BorderLayout());
+        dateChooserPanel.add(new JLabel("(1) Sélection des dates de soutenances :"), BorderLayout.NORTH);
+        chooserDebut.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        dateChooserPanel.add(chooserDebut, BorderLayout.CENTER);
+        //Panel paramètres
+        settingsPanel.setLayout(new GridLayout(1,2));
+        panfin.setLayout(new BoxLayout(panfin,BoxLayout.Y_AXIS));
         panfin.add(debutLabel);
         panfin.add(debutJour);
         panfin.add(finLabel);
         panfin.add(finJour);
-        test4.add(pancreneau);
-        test4.add(panfin);
-        test4.add(panSoutenance);
-        test1.setSize(dim);
-        pan().add(test1,BorderLayout.WEST);
-        pan().add(test4,BorderLayout.CENTER);
-        pan().add(test5,BorderLayout.EAST);
+        settingsPanel.add(panfin);
+        pancreneau.setLayout(new BoxLayout(pancreneau,BoxLayout.Y_AXIS));
+        pancreneau.add(creneauLabel);
+        pancreneau.add(creneau);
+        pancreneau.add(nbSoutenances);
+        pancreneau.add(soutenance);
+        settingsPanel.add(pancreneau);
+
+        //Panel validation
+        validPanel.setLayout(new GridLayout(2,1));
+        validPanel.add(infoChooser);
+        validPanel.add(okPlageJour);
+        //Panel paramètres+validation des dates
+        dateSettingsPanel.setLayout(new BorderLayout());
+        dateSettingsPanel.add(settingsPanel,BorderLayout.CENTER);
+        dateSettingsPanel.add(validPanel, BorderLayout.EAST);
+        // Panel calendrier principal
+        pan().setLayout(new GridLayout(2,0));
+        pan().add(dateChooserPanel);
+        pan().add(dateSettingsPanel);
     }
 }

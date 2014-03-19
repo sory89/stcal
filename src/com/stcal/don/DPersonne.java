@@ -19,7 +19,7 @@ public abstract class DPersonne {
 
     public DPersonne(String nom, String prenom) {
         this.nom = nom;
-        this.prenom = prenom;
+        this.prenom = prenom ;
 
     }
     public DPersonne(String nom, String prenom, ArrayList<String> infos) {

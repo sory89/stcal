@@ -17,7 +17,7 @@ public class FMenu {
     public FMenu(){
         JMenu menuaction = new JMenu("Actions");
         JMenuItem lier = new JMenuItem("Lier");
-        lier.setToolTipText("Lier l'étudiant et l'enseignant.");
+        lier.setToolTipText("Lier un étudiant à un enseignant.");
         /*lier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -28,8 +28,10 @@ public class FMenu {
 
         JMenu menuOther = new JMenu("?");
         JMenuItem help = new JMenuItem("Aide");
+        help.setToolTipText("Ouvrir le manuel.");
         JMenuItem raccourcis = new JMenuItem("Raccourcis");
         JMenuItem aPropos = new JMenuItem("À propos de STCal");
+        aPropos.setToolTipText("Découvrir le projet STCal.");
         aPropos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -45,8 +47,8 @@ public class FMenu {
         menuOther.addSeparator();
         menuOther.add(aPropos);
 
-        JMenu menufile = new JMenu("File");
-        JMenuItem openetu = new JMenuItem("Importer étudiants...") ;
+        JMenu menufile = new JMenu("Fichier");
+        JMenuItem openetu = new JMenuItem("Importer étudiants") ;
         openetu.setToolTipText("Importer un ficher CSV d'étudiants.");
         openetu.addActionListener(new ActionListener() {
             @Override
@@ -56,7 +58,7 @@ public class FMenu {
             }
         });
         menufile.add(openetu);
-        JMenuItem openprof = new JMenuItem("Importer enseignants...");
+        JMenuItem openprof = new JMenuItem("Importer enseignants");
         openprof.setToolTipText("Importer un fichier CSV d'enseignants.");
         openprof.addActionListener(new ActionListener() {
             @Override
@@ -91,7 +93,7 @@ public class FMenu {
         menufile.add(quit);
 
         JMenu menupref = new JMenu("Préférences");
-        JMenuItem db = new JMenuItem("Base de données...");
+        JMenuItem db = new JMenuItem("Base de données");
         db.setToolTipText("Modifier le serveur et les identifiants de connexion à la base de données.");
         db.addActionListener(new ActionListener() {
             @Override
@@ -102,14 +104,14 @@ public class FMenu {
         });
         menupref.add(db);
         menupref.addSeparator();
-        JMenuItem dbr = new JMenuItem("Reset DB connection");
-        dbr.setToolTipText("Ferme la connection à la base de donnée et ouvre en une nouvel.");
+        JMenuItem dbr = new JMenuItem("Réinitialiser la connexion");
+        dbr.setToolTipText("Fermer la connexion actuelle à la base de données et en ouvrir une nouvelle.");
         dbr.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     DBTools.resetConnection();
-                    Message.popnotice("Connection à la base de donnée fermé et reouverte avec succes.");
+                    Message.popnotice("Connexion à la base de données fermée et rouverte avec succès.");
                 } catch (SQLException e1) {
                     Message.poperror(e1);
                 }

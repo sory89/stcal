@@ -1,25 +1,42 @@
 \documentclass[a4paper,10pt]{report}
+
 \usepackage[utf8]{inputenc}
 \usepackage[frenchb]{babel}
-\usepackage{fancyhdr}
 \usepackage[T1]{fontenc}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{listings}
 
-\pagestyle{fancy}
-\renewcommand\headrulewidth{0pt}
-\renewcommand\footrulewidth{.5pt}
-\fancyfoot[L]{Projet STCal - rapport technique}
-\fancyfoot[R]{IUT-BM}
-\lhead{}
-\rhead{}
-\date{}
 
-\renewcommand{\chaptername}{}
+\title{Rapport Technique}
 
-\title{\Huge{Projet STCal}\\ {\Large Rapport technique}}
-\author{Florian Barrois \and Nicolas Devillers \and Valentin Jeanroy \and Mehdi Loisel \and Jean Mercadier \and Ismail Taleb \and Willem Verdeaux}
+\author{Florian Barrois \and Nicolas Devillers \and Valentin Jeanroy \and Mehdi Loisel \and Jean Mercadier \and Ismail Taleb \and Willeme Verdeaux}
+
+\lstset{
+language=Java,
+basicstyle=\footnotesize,
+numbers=left,
+numberstyle=\normalsize,
+numbersep=5pt,
+}
 
 \begin{document}
 
-coucou
+\thispagestyle{headings}
 
-\end{document} 
+\maketitle
+
+\tableofcontents
+
+\chapter*{Introduction}
+
+\chapter{Installation}
+
+
+\chapter{Enviroment de devellopment}
+
+
+\chapter{Modelisation}
+
+\chapter*{Conclusion}
+
+\end{document}

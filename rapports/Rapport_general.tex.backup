@@ -188,33 +188,30 @@
   
   \chapter{Étape 1 : l'interface graphique}
 	\paragraph{}
-	  L'interface de l'application contiendra une barre de menu donnant accès aux multiples possibilités offertes par l'application.
-	  Le corps de l'interface affichera quant à lui trois onglets principaux dédiés aux différentes fonctionnalités du logiciel. 
+	  L'interface de l'application contiendra un menu et trois onglets. 
 	  
 	\paragraph{Le menu}
 	% Actions -> lier : opérationnel ??
 	% Fichier -> Export de calendrier opérationnel ??
 	% Fichier -> Différence export / export au format ICS ??
 	% ? -> Raccourcis : opérationnels ??
-	  \paragraph{}
-	    La barre de menu sera composée elle-même de plusieurs sous menus.
-	  \paragraph{}
-	    Le premier sous menu sera intitulé ``Fichier``. Il offrira la possibilité d'importer une liste d'étudiants et une liste de professeurs depuis un fichier au format CSV.
-	    Il présentera également une fonction d'export, notamment pour le calendrier généré. Cette fonction exportera le planning des soutenances au format ICS, qui permettra la compatibilité avec les calendriers Google notamment.
-	    La dernière option de ce menu servira à fermer l'application.
-	  \paragraph{}
-	    Le deuxième sous menu aura pour libellé ''Actions``, et proposera de lier un étudiant à un enseignant. 
-	    Cette fonctionnalité ne fonctionnera que si l'utilisateur a auparavant sélectionné l'étudiant et l'enseignant concernés.
-	  \paragraph{}
-	  Le troisième champ sera nommé ''Préférences``.
+	  ~~\\
+	  La barre de menu sera composée elle-même de plusieurs sous menus.
+	  \newline
+	  Le premier sous menu sera intitulé ``Fichier``. Il offrira la possibilité d'importer une liste d'étudiants et une liste de professeurs depuis un fichier au format CSV.
+	  Il présentera également une fonction d'export, notamment pour le calendrier généré. Cette fonction exportera le planning des soutenances au format ICS, qui permettra la compatibilité avec les calendriers Google notamment.
+	  La dernière option du menu servira à fermer l'application.
+	  \newline
+	  Le deuxième sous menu aura pour libellé ''Actions``, et proposera de lier un étudiant à un enseignant. 
+	  Cette fonctionnalité ne fonctionnera que si l'utilisateur a auparavant sélectionné l'étudiant et l'enseignant concernés.
+	  \newline
+	  Le troisième champ sera nommé ''Préférence``.
 	  Il sera dédié au côté Base de Données du programme.
-	  Un de ses onglets aura le libellé ''Base de données`` et ouvrira une fenêtre permettant à l'utilisateur de mettre à jour les paramètres de la base de données énumérés dans la quatrième étape du cahier des charges. 
+	  Un de ses onglets aura le libellé ''Base de données`` et permettra à l'utilisateur de mettre à jour les paramètres de la base de données énumérés dans la quatrième étape du cahier des charges. 
 	  Un autre onglet donnera l'opportunité de réinitialiser la connexion à la base de données correspondant aux paramètres en vigueur.
-	  \paragraph{}
+	  \newline
 	  La quatrième et dernière rubrique proposera un champ ''Aide``, qui affichera le manuel d'utilisateur, ainsi qu'un champ qui redirigera l'usager vers une brève présentation du projet STCal. 
       
-	  \paragraph{Les onglets}
-  
   
   \chapter{Étape 2 : la création des stages}
     \paragraph{}

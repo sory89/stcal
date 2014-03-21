@@ -1,0 +1,69 @@
+\select@language {french}
+\contentsline {part}{I\hspace {1em}Introduction}{4}
+\contentsline {paragraph}{}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {paragraph}{}{5}
+\contentsline {part}{II\hspace {1em}Pr\IeC {\'e}sentation du sujet}{6}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {part}{III\hspace {1em}Cahier des charges}{8}
+\contentsline {chapter}{\numberline {1}Fonctionnalit\IeC {\'e}s}{9}
+\contentsline {chapter}{\numberline {2}D\IeC {\'e}veloppement et contraintes}{10}
+\contentsline {section}{\numberline {2.1}Premi\IeC {\`e}re \IeC {\'e}tape}{10}
+\contentsline {subsection}{\numberline {2.1.1}D\IeC {\'e}veloppement}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {subsection}{\numberline {2.1.2}Contraintes}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {section}{\numberline {2.2}Deuxi\IeC {\`e}me \IeC {\'e}tape}{10}
+\contentsline {subsection}{\numberline {2.2.1}D\IeC {\'e}veloppement}{10}
+\contentsline {paragraph}{}{10}
+\contentsline {paragraph}{}{11}
+\contentsline {subsection}{\numberline {2.2.2}Contraintes}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {section}{\numberline {2.3}Troisi\IeC {\`e}me \IeC {\'e}tape}{11}
+\contentsline {subsection}{\numberline {2.3.1}D\IeC {\'e}veloppement}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {subsection}{\numberline {2.3.2}Contraintes}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {section}{\numberline {2.4}Quatri\IeC {\`e}me \IeC {\'e}tape}{11}
+\contentsline {subsection}{\numberline {2.4.1}D\IeC {\'e}veloppement}{11}
+\contentsline {paragraph}{}{11}
+\contentsline {subsection}{\numberline {2.4.2}Contraintes}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {paragraph}{}{12}
+\contentsline {part}{IV\hspace {1em}R\IeC {\'e}alisation}{13}
+\contentsline {paragraph}{}{14}
+\contentsline {paragraph}{}{14}
+\contentsline {chapter}{\numberline {1}\IeC {\'E}tape 1 : l'interface graphique}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{Le menu}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{}{15}
+\contentsline {paragraph}{Les onglets}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{L'onglet Lier}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{L'onglet Stage}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{17}
+\contentsline {paragraph}{}{17}
+\contentsline {chapter}{\numberline {2}\IeC {\'E}tape 2 : la cr\IeC {\'e}ation des stages}{18}
+\contentsline {paragraph}{}{18}
+\contentsline {section}{\numberline {2.1}Une section}{18}
+\contentsline {chapter}{\numberline {3}Chap 2}{19}
+\contentsline {section}{\numberline {3.1}Une section}{19}
+\contentsline {part}{V\hspace {1em}Difficult\IeC {\'e}s rencontr\IeC {\'e}es}{20}
+\contentsline {chapter}{\numberline {4}Difficult\IeC {\'e}s techniques}{21}
+\contentsline {chapter}{\numberline {5}R\IeC {\'e}partition des t\IeC {\^a}ches}{22}
+\contentsline {chapter}{\numberline {6}Organisation}{23}
+\contentsline {part}{VI\hspace {1em}Conclusion}{24}

@@ -42,7 +42,7 @@ public class FCal extends FTab{
     protected JLabel creneauLabel = new JLabel("(4) Durée soutenance (en min)");
     protected JLabel debutLabel = new JLabel("(2) Début journée");
     protected JLabel finLabel = new JLabel("(3) Fin journée");
-    protected JLabel nbSoutenances = new JLabel("(5) Nombre soutenances par créneau");
+    protected JLabel nbSoutenances = new JLabel("(5) Nombre de soutenances par créneau");
     String[] tab =  {"7","8","9","10","11","12","13","14","15","16","17","18","19","20"} ;
     protected JComboBox debutJour = new JComboBox(tab);
     protected JComboBox finJour = new JComboBox();

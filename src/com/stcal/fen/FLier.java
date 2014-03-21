@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class FLier extends FTab {
     protected JLabel info = new JLabel("<html>Sélectionner un étudiant ou un enseignant pour afficher ses informations.</html>");
-    protected JLabel courant = new JLabel("courant");
+    protected JLabel courant = new JLabel("Aucune personne sélectionnée");
     protected JPanel option= new JPanel();
     protected JList Fetu;
     protected JList Fprof;
@@ -45,7 +45,7 @@ public class FLier extends FTab {
         JPanel centre = new JPanel();
         centre.setOpaque(false);
         centre.setLayout(new GridLayout(3, 0));
-        courant.setBorder(BorderFactory.createTitledBorder("Courant"));
+        courant.setBorder(BorderFactory.createTitledBorder("Personne courante"));
         centre.add(courant);
         option.setOpaque(false);
         option.setLayout(new GridLayout(2, 0, 20, 20));
@@ -68,12 +68,9 @@ public class FLier extends FTab {
         }});
         option.add(opt2);
         centre.add(option);
-        info.setBorder(BorderFactory.createTitledBorder("Informations"));
 
-        // TODO scroll vertical non autorisé mais trouver solution pour afficher le texte correctement
-        JScrollPane scrollPane = new JScrollPane(info);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        centre.add(scrollPane);
+        centre.add(info);
+
         pan().add(centre);
 
 

@@ -3,6 +3,7 @@ package com.stcal.don;
 import com.stcal.control.Message;
 import com.stcal.control.exceptions.MaxSoutenanceException;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -57,9 +58,13 @@ public class DCreneau {
         ListSoutenance.remove(position);
     }
     public String toString(){
-
-
-        return  ""+this.date_debut.get(Calendar.HOUR_OF_DAY)+"H";
+        Calendar dateDepart = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm" );
+        String str = sdf.format(date_debut.getTime())+"\n";
+        for(Soutenance sout : ListSoutenance){
+            str += sout.getCpl().toString()+"\n";
+        }
+        return  str;
 
     }
     public void addSBC(DCouple dc){

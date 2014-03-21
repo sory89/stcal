@@ -64,12 +64,11 @@ public class FStage extends FTab {
         infosTut = new JLabel();
         JTabbedPane ongletInfos = new JTabbedPane();
         ongletInfos.add("Étudiant",infosEtu);
-        ongletInfos.add("Tuteurs", infosTut);
+        ongletInfos.add("Tuteur", infosTut);
         ongletInfos.setBorder(BorderFactory.createTitledBorder("Informations"));
 
         // event
         right.add(new JScrollPane(ongletInfos));
-        info.setBorder(BorderFactory.createTitledBorder("Courant"));
         right.add(info);
         pan().add(right);
     }

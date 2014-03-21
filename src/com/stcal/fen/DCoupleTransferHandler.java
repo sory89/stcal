@@ -65,7 +65,7 @@ public class DCoupleTransferHandler extends TransferHandler {
              }
             }
             else{
-                Message.err.println("Impossible d'insérer un même professeur pour une même soutenance");
+                Message.err.println("Impossible d'insérer un même professeur pour une même soutenance.");
             }
             int i;
             int y;

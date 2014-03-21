@@ -6,15 +6,15 @@ public class Soutenance
     private DCandide cdd;
     private int salle;
     private int id;
+
     public Soutenance(DCouple couple, DCandide candide)
     {
         this.cpl = couple;
         this.cdd = candide;
         this.salle = 204;
     }
-    public Soutenance(int id,DCouple couple, DCandide candide,int salle)
+    public Soutenance(DCouple couple, DCandide candide,int salle)
     {
-        this.id=id;
         this.cpl = couple;
         this.cdd = candide;
         this.salle = salle;

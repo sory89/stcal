@@ -8,10 +8,20 @@ import java.util.Calendar;
 
 
 public class DCreneau {
+    private int id;
     private ArrayList<Soutenance> ListSoutenance = new ArrayList();
     private static int max_sout;
     private Calendar date_debut;
     private Calendar date_fin;
+
+    public DCreneau(int max_sout,Calendar date_debut,Calendar date_fin){
+        this.max_sout=max_sout;
+        this.date_fin=date_fin;
+        this.date_debut=date_debut;
+    }
+
+    public DCreneau() {}
+
 
     public Calendar getDate_debut()
     {
@@ -33,7 +43,7 @@ public class DCreneau {
         this.date_fin = date_fin;
     }
 
-
+    public int getId(){return id;}
 
     public int getMax_sout()
     {
@@ -85,9 +95,6 @@ public class DCreneau {
 
 
         }
-
-
-
     }
     public boolean isProfIn(DPersonne proff){
 
@@ -105,5 +112,9 @@ public class DCreneau {
 
 
 
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

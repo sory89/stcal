@@ -82,10 +82,10 @@ CREATE TABLE IF NOT EXISTS `Salle` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Soutenace`
+-- Structure de la table `Soutenance`
 --
 
-CREATE TABLE IF NOT EXISTS `Soutenace` (
+CREATE TABLE IF NOT EXISTS `Soutenance` (
   `id_sout` int(11) NOT NULL AUTO_INCREMENT,
   `id_salle` int(11) NOT NULL,
   `id_crenau` int(11) NOT NULL,
@@ -97,3 +97,14 @@ CREATE TABLE IF NOT EXISTS `Soutenace` (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
+--
+--Structure de la table creneau
+--
+
+CREATE TABLE IF NOT EXISTS `creneau` (
+  `id_creneau` int(11) NOT NULL AUTO_INCREMENT,
+  `max_soutenance` int(11) NOT NULL,
+  `date-debut` date NOT NULL,
+  `date-fin` date NOT NULL,
+  PRIMARY KEY (`id_creneau`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

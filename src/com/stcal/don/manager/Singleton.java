@@ -19,7 +19,7 @@ public class Singleton {
     public static final String PREFIX = "jdbc:mysql://";
 
     private DBsettings dbsettings;
-    public final DataSource DS =  new BasicDataSource();
+    public static final DataSource DS =  new BasicDataSource();
 
     public Singleton(DBsettings dbsettings){
         this.dbsettings = dbsettings;

@@ -46,13 +46,24 @@
 \contentsline {paragraph}{}{15}
 \contentsline {paragraph}{}{15}
 \contentsline {paragraph}{Les onglets}{16}
-\contentsline {chapter}{\numberline {2}\IeC {\'E}tape 2 : la cr\IeC {\'e}ation des stages}{17}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{L'onglet Lier}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{L'onglet Stage}{16}
+\contentsline {paragraph}{}{16}
+\contentsline {paragraph}{}{16}
 \contentsline {paragraph}{}{17}
-\contentsline {section}{\numberline {2.1}Une section}{17}
-\contentsline {chapter}{\numberline {3}Chap 2}{18}
-\contentsline {section}{\numberline {3.1}Une section}{18}
-\contentsline {part}{V\hspace {1em}Difficult\IeC {\'e}s rencontr\IeC {\'e}es}{19}
-\contentsline {chapter}{\numberline {4}Difficult\IeC {\'e}s techniques}{20}
-\contentsline {chapter}{\numberline {5}R\IeC {\'e}partition des t\IeC {\^a}ches}{21}
-\contentsline {chapter}{\numberline {6}Organisation}{22}
-\contentsline {part}{VI\hspace {1em}Conclusion}{23}
+\contentsline {paragraph}{}{17}
+\contentsline {chapter}{\numberline {2}\IeC {\'E}tape 2 : la cr\IeC {\'e}ation des stages}{18}
+\contentsline {paragraph}{}{18}
+\contentsline {section}{\numberline {2.1}Une section}{18}
+\contentsline {chapter}{\numberline {3}Chap 2}{19}
+\contentsline {section}{\numberline {3.1}Une section}{19}
+\contentsline {part}{V\hspace {1em}Difficult\IeC {\'e}s rencontr\IeC {\'e}es}{20}
+\contentsline {chapter}{\numberline {4}Difficult\IeC {\'e}s techniques}{21}
+\contentsline {chapter}{\numberline {5}R\IeC {\'e}partition des t\IeC {\^a}ches}{22}
+\contentsline {chapter}{\numberline {6}Organisation}{23}
+\contentsline {part}{VI\hspace {1em}Conclusion}{24}

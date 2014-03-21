@@ -90,7 +90,6 @@ public class DynamicTreeDemo extends JPanel implements ActionListener {
         System.out.println("Nombre de profs : "+ltut.size());
         for(int i = 0; i < ltut.size(); i++){
             DefaultMutableTreeNode tuteur = new DefaultMutableTreeNode(ltut.get(i));
-            //Et une branche en plus ! Une !
             for(int j=0; j<Datas.stages.size(); j++){
                 if(Datas.stages.getElementAt(j).getTut().getNom()==ltut.get(i).getNom() && Datas.stages.getElementAt(j).getTut().getPrenom()==ltut.get(i).getPrenom()){
                     tuteur.add(new DefaultMutableTreeNode(Datas.stages.getElementAt(j)));

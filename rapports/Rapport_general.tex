@@ -29,7 +29,7 @@
 \part{Introduction}
   \paragraph{}
     Dans le cadre de notre projet tutoré, nous avons dû réfléchir à un secteur d'activité nécessitant des outils informatiques relativement simples mais essentiels. 
-    Ainsi, au vu du besoin éprouvé par nos enseignants de travailler avec des outils plus simples, nous avons choisi de réaliser une application à utilité pédagogique.
+    Ainsi, au vu du besoin éprouvé par nos enseignants de travailler avec des outils plus simples, nous avons choisi de réaliser un progiciel à utilité pédagogique.
     Cette application aura pour but de faciliter la gestion des stages des étudiants de quatrième semestre ainsi que la mise en place d'un calendrier des soutenances orales des étudiants présentant leur stage à leurs professeurs.
 
   \paragraph{}
@@ -56,8 +56,8 @@
 
   \paragraph{}
     Ainsi la difficulté de ce défi est conséquente, puisque nous ne connaissons aucun outil similaire existant pouvant servir de référence ou permettant d'étayer notre réflexion.
-    Notre groupe de sept étudiants sera donc chargé de trouver la bonne démarche à suivre en mettant à profit toutes les connaissances, qu'elles aient été acquises en cours ou à la suite de recherches liées au projet.
-    Les connaissances utilisées relèveront de la mise en place d'une interface graphique, de la gestion de classes et de bases de données, en plus de toutes les notions apprises liées au langage utilisé, à savoir le Java.
+    Notre groupe de sept étudiants a donc été chargé de trouver la bonne démarche à suivre en mettant à profit toutes les connaissances, qu'elles aient été acquises en cours ou à la suite de recherches liées au projet.
+    Les connaissances utilisées relèvent de la mise en place d'une interface graphique, de la gestion de classes et de bases de données, en plus de toutes les notions apprises liées au langage utilisé, à savoir le Java.
   
   \paragraph{}
     Le résultat ne consistera en aucun cas en une plate-forme de consultation des stages.
@@ -121,7 +121,7 @@
 	\end{itemize}
 	
 	\paragraph{}
-	Le logiciel possédera également une option d’export du calendrier généré au format ICS compatible avec Google et iCal.
+	Le progiciel possédera également une option d’export du calendrier généré au format ICS compatible avec Google et iCal.
 	
       \subsection{Contraintes}
 	\paragraph{}
@@ -148,7 +148,7 @@
       \subsection{Contraintes}
 	\paragraph{}
 	La contrainte principale de cette étape consiste à éviter la présence de doublons dans la base données. 
-	Le logiciel devra donc afficher un message d'erreur si les données telles que le nom et le prénom d'une personne, étudiant ou enseignant, entrées dans l'application sont déjà présentes dans la base de données. 
+	Le progiciel devra donc afficher un message d'erreur si les données telles que le nom et le prénom d'une personne, étudiant ou enseignant, entrées dans l'application sont déjà présentes dans la base de données. 
       
     \section{Quatrième étape}
       \subsection{Développement}
@@ -157,7 +157,7 @@
 
       \subsection{Contraintes}
 	\paragraph{}
-      Lors de la première utilisation du logiciel, l'utilisateur devra entrer les paramètres correspondant à la base de données qui stockera les informations, à savoir le nom du serveur, le port utilisé, le nom d'utilisateur et le mot de passe.
+      Lors de la première utilisation du progiciel, l'utilisateur devra entrer les paramètres correspondant à la base de données qui stockera les informations, à savoir le nom du serveur, le port utilisé, le nom d'utilisateur et le mot de passe.
       Une fois les champs renseignés, ces paramètres seront également mémorisés et la restauration de session devra passer par un accès cette base de données pour afficher les informations précédemment enregistrées.
       Le programme sera donc contraint de rechercher l'existence d'un fichier de configuration dans l'ordinateur afin de savoir si l'application est utilisée ou non pour la première fois.
       Si c'est le cas, une fenêtre contenant les différents paramètres à renseigner mentionnés précédemment apparaît, et les valeurs entrées sont mémorisées dans un nouveau fichier de configuration.
@@ -168,7 +168,7 @@
 	  Ces étapes consistuent ainsi le fil conducteur du projet. 
 	  Il faut également noter l'existence d'une autre étape effectuée en parallèle : la réalisation de l'interface graphique.
 	  En effet, celle-ci offre la possibilité d'entrevoir le rendu final qui sera livré au client et facilite également la visibilité quant à l'évolution du projet.
-	  Elle permet aussi d'incorporer directement dans le logiciel les fonctions programmées en interne au fur et à mesure que le projet progresse et tient ainsi le rôle de de plate-forme de tests.   
+	  Elle permet aussi d'incorporer directement dans le progiciel les fonctions programmées en interne au fur et à mesure que le projet progresse et tient ainsi le rôle de de plate-forme de tests.   
 	
 \part{Réalisation}
   \setcounter{chapter}{0}
@@ -181,15 +181,15 @@
 	  
 	\paragraph{}
 	  Les futurs utilisateurs du produit seront relativement nombreux, par conséquent les systèmes d'exploitation peuvent varier, avec notamment Windows, connu et employé couramment par une grande communauté de personnes, Linux, qui est très utilisé dans le cadre de nos études, et Mac OS, qui devient de plus en plus répandu.
-	  C'est pourquoi toute l'application sera programmée en Java, ce qui permettra l'usage du logiciel sous n'importe quelle plate-forme et favorisera une programmation orientée objet.
+	  C'est pourquoi toute l'application sera programmée en Java, ce qui permettra l'usage du progiciel sous n'importe quelle plate-forme et favorisera une programmation orientée objet.
 	  Tout au long de cette partie, les outils auxquels nous avons fait appel et qui se seront mentionnés se trouveront donc être des fonctions et des objets instanciés en Java.
 	  Quant à l'interface graphique, elle sera implémentée à partir la bibliothèque graphique Java Swing.
   
   
   \chapter{Étape 1 : l'interface graphique}
 	\paragraph{}
-	  L'interface de l'application contiendra une barre de menu donnant accès aux multiples possibilités offertes par l'application.
-	  Le corps de l'interface affichera quant à lui trois onglets principaux dédiés aux différentes fonctionnalités du logiciel. 
+	  L'interface de l'application contient une barre de menu donnant accès aux multiples possibilités offertes par l'application.
+	  Le corps de l'interface affiche quant à lui trois onglets principaux dédiés aux différentes fonctionnalités du progiciel. 
 	  
 	\paragraph{Le menu}
 	% Actions -> lier : opérationnel ??
@@ -197,25 +197,81 @@
 	% Fichier -> Différence export / export au format ICS ??
 	% ? -> Raccourcis : opérationnels ??
 	  \paragraph{}
-	    La barre de menu sera composée elle-même de plusieurs sous menus.
+	    La barre de menu est composée elle-même de plusieurs sous menus.
 	  \paragraph{}
-	    Le premier sous menu sera intitulé ``Fichier``. Il offrira la possibilité d'importer une liste d'étudiants et une liste de professeurs depuis un fichier au format CSV.
-	    Il présentera également une fonction d'export, notamment pour le calendrier généré. Cette fonction exportera le planning des soutenances au format ICS, qui permettra la compatibilité avec les calendriers Google notamment.
-	    La dernière option de ce menu servira à fermer l'application.
+	    Le premier sous menu est intitulé ``Fichier``. Il offre la possibilité d'importer une liste d'étudiants et une liste de professeurs depuis un fichier au format CSV.
+	    Il présente également une fonction d'export, notamment pour le calendrier généré. Cette fonction exporte le planning des soutenances au format ICS, qui permet la compatibilité avec les calendriers Google notamment.
+	    La dernière option de ce menu sert à fermer l'application.
 	  \paragraph{}
-	    Le deuxième sous menu aura pour libellé ''Actions``, et proposera de lier un étudiant à un enseignant. 
-	    Cette fonctionnalité ne fonctionnera que si l'utilisateur a auparavant sélectionné l'étudiant et l'enseignant concernés.
+	    Le deuxième sous menu a pour libellé ''Actions``, et propose de lier un étudiant à un enseignant. 
+	    Cette fonctionnalité ne fonctionne que si l'utilisateur a auparavant sélectionné l'étudiant et l'enseignant concernés.
 	  \paragraph{}
-	  Le troisième champ sera nommé ''Préférences``.
-	  Il sera dédié au côté Base de Données du programme.
-	  Un de ses onglets aura le libellé ''Base de données`` et ouvrira une fenêtre permettant à l'utilisateur de mettre à jour les paramètres de la base de données énumérés dans la quatrième étape du cahier des charges. 
-	  Un autre onglet donnera l'opportunité de réinitialiser la connexion à la base de données correspondant aux paramètres en vigueur.
+	    Le troisième champ est nommé ''Préférences``.
+	    Il est dédié au côté Base de Données du programme.
+	    Un de ses onglets possède le libellé ''Base de données`` et ouvre une fenêtre permettant à l'utilisateur de mettre à jour les paramètres de la base de données énumérés dans la quatrième étape du cahier des charges. 
+	    Un autre onglet donne l'opportunité de réinitialiser la connexion à la base de données correspondant aux paramètres en vigueur.
 	  \paragraph{}
-	  La quatrième et dernière rubrique proposera un champ ''Aide``, qui affichera le manuel d'utilisateur, ainsi qu'un champ qui redirigera l'usager vers une brève présentation du projet STCal. 
+	    La quatrième et dernière rubrique propose un champ ''Aide``, qui affiche le manuel d'utilisateur, ainsi qu'un champ qui redirige l'usager vers une brève présentation du projet STCal. 
       
 	  \paragraph{Les onglets}
-  
-  
+	  %Lier -> zone Informations opérationnelle ?
+	  
+	  
+	    \paragraph{}
+	      Trois onglets sont accessibles à l'utilisateur.
+	  
+	    \paragraph{L'onglet Lier}
+	      \paragraph{}
+		La première page est destinée à afficher les acteurs principaux, à savoir les étudiants et les enseignants. 
+		En effet, on peut diviser cette page intitulée ''Lier`` en trois parties.
+		
+	      \paragraph{}
+		La partie de gauche affiche une liste de professeurs importée depuis un fichier CSV, et de la même manière, la partie de droite montre une liste d'étudiants provenant d'un deuxième fichier au format CSV.
+		Les personnes, étudiants et enseignants, contenues dans ces listes ne sont alors caractérisées que par leur nom et leur prénom.
+	      
+	      \paragraph{}
+		La partie centrale contient les appels aux fonctions nécessaires à l'import des fichiers d'étudiants d'une part, et à l'import des fichiers d'enseignants d'autre part.
+		Ces fonctions demeurent accessibles grâce à des boutons portant le libellé correspondant.
+		Ces boutons ne sont disponibles qu'une fois chacun : après l'import d'un fichier d'étudiants, respectivement d'enseignants, le bouton consacré à cette tâche n'est plus présent.
+		Toutefois, il reste possible de réaliser de nouveaux imports à partir de la barre de menu située en haut de l'interface de l'application.
+		Les personnes précédemment affichées dans la liste des objets du type de l'import immédiatement effectué sont alors remplacées par les valeurs du nouveau fichier.  
+		
+	      \paragraph{}      
+		La zone centrale présente également une portion révélant le statut et les nom et prénom de la dernière personne sélectionnée.
+		Une fois un étudiant et un professeur sélectionnés, un bouton de validation apparaît.
+		Après avoir enclenché ce bouton, les identifiants de la dernière personne sélectionnée disparaissent pour laisser place à la phrase de confirmation ''Stage créé``.
+		En effet, on considérera comme stages les couples étudiant/enseignant effectués.
+		Un stage est alors formé et consultable dans l'onglet ''Stages``. 
+		L'étudiant concerné est alors effacé de la liste, en revanche, le professeur conserve sa disponibilité pour s'occuper des stages d'autres étudiants.
+		Aucun étudiant n'étant alors sélectionné, le bouton de validation reste inaccessible jusqu'à ce qu'un enseignant et un nouvel étudiant soient sélectionnés.
+		
+	    \paragraph{L'onglet Stage}
+		\paragraph{}
+		  L'onglet ''Stage`` contient également deux sections.
+		  
+		\paragraph{}
+		  La partie gauche est consacrée à l'affichage des différents stages créés dans l'onglet précédent.
+		  Cette affichage est présenté sous forme d'arborescence.
+		  Le dossier racine a pour titre ''Listes des stages``.
+		  Il contient alors plusieurs sous-dossiers correspondant aux professeurs liés à au moins un étudiant.
+		  Ces sous-dossiers possèdent des fichiers représentant les étudiants liés à l'enseignant en question.
+		  
+		\paragraph{}
+		  Dans cette moitié gauche se trouve également un bouton permettant la suppression d'un stage.
+		  Ce bouton est accessible uniquement dans le cas où un étudiant est sélectionné.
+		  Les dossiers-professeurs ainsi que le dossier racine ne peuvent être supprimés.
+		  La dossier racine est donc toujours présent dans cette section.
+		  Un dossier, représentant un professeur ne disparaît que lorsqu'il ne contient aucun étudiant.
+		  Ainsi, en cas de suppression du dernier stagiaire rattaché à un enseignant, le dossier symbolisant ce dernier disparaît en même temps que le fichier-étudiant.
+		  De cette manière, un dossier n'est jamais vide.
+		  
+		\paragraph{}
+		  Lorsqu'un étudiant est supprimé de cette arborescence, le stage est effacé.
+		  L'étudiant réapparaît alors dans la liste de tous les étudiants située dans l'onglet ''Lier`` et redevient disponible pour une affectation à un professeur.
+		  
+		  
+	      
+	      
   \chapter{Étape 2 : la création des stages}
     \paragraph{}
       Afin de créer les stages, il est d'abord nécessaire d'établir la liste des étudiants de l'année courante ainsi que la liste des professeurs de l'établissement.

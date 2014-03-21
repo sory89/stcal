@@ -31,7 +31,7 @@ public class DEtudiantManager implements Manager<DEtudiant> {
     public int create(DEtudiant nouveau) {
         int id=0;
         ResultSet key;
-        String sql="INSERT INTO `Etudiants`(`etu_id`,`nom_etu`,`pre_etu`,`info_etu`,`lie_etu`) VALUES(NULL,?,?,?,?)";
+        String sql="INSERT INTO `etudiants`(`etu_id`, `nom_etu`, `pre_etu`, `info_etu`, `lie_etu`) VALUES (NULL,?,?,?,?)";
         try {
             pstm=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             pstm.setString(1,nouveau.getNom());
@@ -53,14 +53,15 @@ public class DEtudiantManager implements Manager<DEtudiant> {
     @Override
     public DEtudiant read(int id) {
 
-        String sql="SELECT num_etu,nom_etu,prenom_etu,infos_etu,lie_etu FROM etudiant WHERE num_etu=?";
+
+        String sql="SELECT `etu_id`, `nom_etu`, `pre_etu`, `info_etu`, `lie_etu` FROM `etudiants` WHERE `etu_id`=?";
         try {
             pstm=con.prepareStatement(sql);
             pstm.setInt(1, id);
             resultSet=pstm.executeQuery();
             resultSet.next();
             con.commit();
-            return new DEtudiant(resultSet.getString("nom_etu"),resultSet.getString("prenom_etu"), Arrays.asList(resultSet.getString("infos_etu").split(";")),resultSet.getBoolean("lie_etu"));
+            return new DEtudiant(resultSet.getString("nom_etu"),resultSet.getString("pre_etu"), Arrays.asList(resultSet.getString("info_etu").split(";")),resultSet.getBoolean("lie_etu"));
         }  catch (SQLException e){
             try {
                 con.rollback();
@@ -75,13 +76,13 @@ public class DEtudiantManager implements Manager<DEtudiant> {
     @Override
     public List<DEtudiant> readall() {
         List <DEtudiant> resultats=new ArrayList<DEtudiant>();
-        String sql="SELECT num_etu,nom_etu,prenom_etu,infos_etu,lie_etu FROM etudiant ";
+        String sql="SELECT `etu_id`, `nom_etu`, `pre_etu`, `info_etu`, `lie_etu` FROM `etudiants`";
         try {
             statement=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
             resultSet=statement.executeQuery(sql);
             con.commit();
             while (resultSet.next()){
-                resultats.add(new DEtudiant(resultSet.getString("nom_etu"),resultSet.getString("prenom_etu"),Arrays.asList(resultSet.getString("infos_etu").split(";")),resultSet.getBoolean("lie_etu")));
+                resultats.add(new DEtudiant(resultSet.getString("nom_etu"),resultSet.getString("pre_etu"), Arrays.asList(resultSet.getString("info_etu").split(";")),resultSet.getBoolean("lie_etu")));
             }
         }
         catch (SQLException e) {
@@ -100,18 +101,19 @@ public class DEtudiantManager implements Manager<DEtudiant> {
         PreparedStatement preparedStatement=null;
 
         try {
-            String sql="UPDATE etudiant SET nom_etu=?,prenom_etu=?,infos_etu=?,lie_etu=? WHERE num_etu=?";
+            String sql="UPDATE `etudiants` SET `nom_etu`=?,`pre_etu`=?,`info_etu`=?,`lie_etu`=? WHERE `etu_id`=?";
             preparedStatement=con.prepareStatement(sql);
             int i=1;
             preparedStatement.setString(1,table.getNom());
             preparedStatement.setString(2, table.getPrenom());
             StringBuilder sb = new StringBuilder();
             for (int j=0;j<table.getInfos().size();j+=1) sb.append(table.getInfos().get(j) + ";");
-            pstm.setString(3, sb.toString());
-            pstm.setBoolean(4,table.getLie());
-            n=pstm.executeUpdate();
+            preparedStatement.setString(3, sb.toString());
+            preparedStatement.setBoolean(4,table.getLie());
+            preparedStatement.setInt(5,table.getDb_id());
+            n = preparedStatement.executeUpdate();
             con.commit();
-            if(1!=n) System.out.print("erreur update");
+            if (1 != n) Message.err.println("erreur update on DSalle id: " + table.getDb_id());
         }
         catch (Exception e) {
            Message.out.println(e.getMessage());
@@ -135,8 +137,13 @@ public class DEtudiantManager implements Manager<DEtudiant> {
         int n=-1;
         PreparedStatement preparedStatement=null;
         try{
-            String sql="delete from etudiant where num_etu=?";
-            preparedStatement=con.prepareStatement(sql);
+            String sql="DELETE FROM `etudiants` WHERE `etu_id`=?";
+            preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            n = preparedStatement.executeUpdate();
+            con.commit();
+            if (1 != n) Message.err.println("erreur delete salle id: " + id);
+
         }
         catch(SQLException e){
             Message.out.print(e.getMessage());

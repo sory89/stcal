@@ -1,7 +1,7 @@
 package com.stcal.don.manager;
 
 import com.stcal.control.Message;
-import com.stcal.don.DCandide;
+import com.stcal.don.DTuteur;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,19 +11,18 @@ import java.util.List;
 /**
  * Created by ismail on 21/03/14.
  */
-public class DCandideManager implements Manager<DCandide> {
+public class DTuteurManager implements Manager<DTuteur> {
+    private Connection con=null;
+    private Statement stmt=null;
+    private ResultSet rset=null;
+    private PreparedStatement pstm=null;
 
-    private Connection con;
-    private Statement stmt = null;
-    private PreparedStatement pstm = null;
-    private ResultSet rset = null;
-
-    public DCandideManager(Connection connection){
-        con=connection;
+    public DTuteurManager(Connection con) {
+        this.con=con;
     }
 
     @Override
-    public int create(DCandide nouveau) {
+    public int create(DTuteur nouveau) {
         int id = 0;
         ResultSet key;
         String sql = "INSERT INTO `Professeur`(`id_prof`, `nom_prof`, `pre_prof`, `info_prof`) VALUES (NULL,?,?,?)";
@@ -51,15 +50,15 @@ public class DCandideManager implements Manager<DCandide> {
     }
 
     @Override
-    public DCandide read(int id) {
+    public DTuteur read(int id) {
         String sql = "SELECT `id_prof`, `nom_prof`, `pre_prof`, `info_prof` FROM `Professeur` WHERE `id_prof`=?";
         try {
-            pstm = con.prepareStatement(sql);
+            pstm=con.prepareStatement(sql);
             pstm.setInt(1,id);
             rset = pstm.executeQuery();
             rset.next();
             con.commit();
-            DCandide ok = new DCandide(rset.getString("nom_prof"),rset.getString("pre_prof"), Arrays.asList(rset.getString("info_prof").split(";")));
+            DTuteur ok = new DTuteur(rset.getString("nom_prof"),rset.getString("pre_prof"), Arrays.asList(rset.getString("info_prof").split(";")));
             ok.setDb_id(rset.getInt("id_prof"));
             return ok;
         }
@@ -74,15 +73,15 @@ public class DCandideManager implements Manager<DCandide> {
     }
 
     @Override
-    public List<DCandide> readall() {
-        List<DCandide> resultats = new ArrayList<DCandide>();
-        String sql = "SELECT `id_prof`, `nom_prof`, `pre_prof`, `info_prof` FROM `Professeur` WHERE 1";
+    public List<DTuteur> readall() {
+        List<DTuteur> resultats = new ArrayList<DTuteur>();
+        String sql = "SELECT `id_prof`, `nom_prof`, `pre_prof`, `info_prof` FROM `Professeur` ";
         try {
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
             rset = stmt.executeQuery(sql);
             con.commit();
             while (rset.next()){
-                DCandide ok = new DCandide(rset.getString("nom_prof"),rset.getString("pre_prof"), Arrays.asList(rset.getString("info_prof").split(";")));
+                DTuteur ok = new DTuteur(rset.getString("nom_prof"),rset.getString("pre_prof"), Arrays.asList(rset.getString("info_prof").split(";")));
                 ok.setDb_id(rset.getInt("id_prof"));
                 resultats.add(ok);
             }
@@ -98,7 +97,7 @@ public class DCandideManager implements Manager<DCandide> {
     }
 
     @Override
-    public int update(DCandide table) {
+    public int update(DTuteur table) {
         int n = -1;
         PreparedStatement pstm = null;
         try {

@@ -57,9 +57,11 @@ public class DCreneau {
         ListSoutenance.remove(position);
     }
     public String toString(){
-
-
-        return  ""+this.date_debut.get(Calendar.HOUR_OF_DAY)+"H";
+        String str = date_debut.get(Calendar.HOUR_OF_DAY)+"H"+date_debut.get(Calendar.MINUTE)+"\n";
+        for(Soutenance sout : ListSoutenance){
+            str += sout.getCpl().toString()+"\n";
+        }
+        return  str;
 
     }
     public void addSBC(DCouple dc){

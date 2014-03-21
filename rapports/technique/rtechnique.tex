@@ -48,41 +48,41 @@
 
 \chapter{Installation}
 
-\section{Installation}
+	\section{Installation}
 
-\subsection{Prérequis}
+		\subsection{Prérequis}
 
-	Pour lancer l'application, il est obligatoire d'avoir à diposition un server MySQL. Ainsi au lancement le programme chargera ses information dans la base de donné. Mais si la base de donné n'existe pas celci sera cree avec le nom de stcal.
+			Pour lancer l'application, il est obligatoire d'avoir à diposition un server MySQL. Ainsi au lancement le programme chargera ses information dans la base de donné. Mais si la base de donné n'existe pas celci sera cree avec le nom de stcal.
 
-	Cette base de donnée permet ainsi à l'application de sauvegarder et recharger ses donné au lancement et à la fin de l'execution du programe.
+			Cette base de donnée permet ainsi à l'application de sauvegarder et recharger ses donné au lancement et à la fin de l'execution du programe.
 
-\paragraph*{note:}
-	Il est conseillé de creer un utilisateur specifique au programme qui aura tout les privilleges sur la base de donné stcal.
+			\paragraph*{note:}
+			Il est conseillé de creer un utilisateur specifique au programme qui aura tout les privilleges sur la base de donné stcal.
 
-\subsection{Obtenir l'application}
+		\subsection{Obtenir l'application}
 
-	L'integralité de l'application se trouve sur GitHub sur le repo stcal: \href{https://github.com/Ricain/stcal}{https://github.com/Ricain/stcal}
+			L'integralité de l'application se trouve sur GitHub sur le repo stcal: \href{https://github.com/Ricain/stcal}{https://github.com/Ricain/stcal}
 	
-	\paragraph[Binaire]{Executable}
-	Pour obtenir un exucutable de l'application, soit un fichier jar il suffit de le telecharger sur GitHub à l'url suivant: \href{https://raw.githubusercontent.com/Ricain/stcal/Main/stcal.jar}{https://raw.githubusercontent.com/Ricain/stcal/Main/stcal.jar}
+			\paragraph[Binaire]{Executable}
+			Pour obtenir un exucutable de l'application, soit un fichier jar il suffit de le telecharger sur GitHub à l'url suivant: \href{https://raw.githubusercontent.com/Ricain/stcal/Main/stcal.jar}{https://raw.githubusercontent.com/Ricain/stcal/Main/stcal.jar}
 
-	\paragraph[Code source]{Code source}
-	Pour obtenir le code source d'une maniere ``propre'' (sans le telecharger directent dans un fichier zip sur GitHub), il suffit de cloner le projet:
+			\paragraph[Code source]{Code source}
+			Pour obtenir le code source d'une maniere ``propre'' (sans le telecharger directent dans un fichier zip sur GitHub), il suffit de cloner le projet:
 
-	\code{\$ git clone https://github.com/Ricain/stcal}
+			\code{\$ git clone https://github.com/Ricain/stcal}
 
-	L'integralité du projet sera cloné dans un repertoire stcal sous le repertoire courant. Cela nécessite d'avoir git d'installé. Dans un enviroment linux, le gestionnaire de packet permet de l'installer. Sur un mac, il faut installer executer la commande suivante apres avoir installé Xcode:
+			L'integralité du projet sera cloné dans un repertoire stcal sous le repertoire courant. Cela nécessite d'avoir git d'installé. Dans un enviroment linux, le gestionnaire de packet permet de l'installer. Sur un mac, il faut installer executer la commande suivante apres avoir installé Xcode:
 
-	\code{\$ xcode-select --install}
+			\code{\$ xcode-select --install}
 
-	Une fois git installé il est possible de faire des ``commit'' et des ``pull request''.
+			Une fois git installé il est possible de faire des ``commit'' et des ``pull request''.
 
-	\paragraph[IDEA]{IDEA}
-	Il est cependant possible de cloner dirrectement le projet à partir d'\href{http://www.jetbrains.com/idea/}{IntelliJ IDEA}. Pour cela il suffit d'importer un projet à partir d'un VCS (Version Control System). L'IDE vous demandera le lien GitHub de l'application ennoncé plus haut.
+			\paragraph[IDEA]{IDEA}
+			Il est cependant possible de cloner dirrectement le projet à partir d'\href{http://www.jetbrains.com/idea/}{IntelliJ IDEA}. Pour cela il suffit d'importer un projet à partir d'un VCS (Version Control System). L'IDE vous demandera le lien GitHub de l'application ennoncé plus haut.
 
 \chapter{Structure}
 
-\section{MVC}
+	\section{MVC}
 
 	L'arboressance du projet a été penseé pour respecter au mieux le modele vue controleur. Sous le repertoire src on trouve trois autres repertoire:
 	\begin{description}
@@ -91,39 +91,54 @@
 		\item[don] abrevaiation de donné, contient l'eesemble des class concernnat les données de l'application (modele).
 	\end{description}
 
-\subsection{Modele}
+		\subsection{Modele}
 
-	\paragraph*{}
-	Le modele constitue les données de l'applications. L'essemble des classes prevue à cette effet sonst stocké sous le repertoire \textit{don}. On y trouve des classes comme:
-	\begin{itemize}
-		\item Etudiant
-		\item Soutenance
-		\item Prof
-		\item Agenda
-		\item etc
-	\end{itemize} 
+			\paragraph*{}
+			Le modele constitue les données de l'applications. L'essemble des classes prevue à cette effet sonst stocké sous le repertoire \textit{don}. On y trouve des classes comme:
+			\begin{itemize}
+				\item Etudiant
+				\item Soutenance
+				\item Prof
+				\item Agenda
+				\item etc
+			\end{itemize} 
 
-	\paragraph*{}
-	Sauvergarder les données de l'application permet non seulement de garder un historique des stages mais égualement de réouvrire l'application et de la retrouver tel qu'on l'a fermé. A cet effet on trouve un sous repertoire \textit{manager} qui contient un enssemble de classe permettant de faire le lien entre la base de donné et le modele de donné de l'application. Chanque manager \textbf{doit} implement l'interface manager afin de respecté le concepete de JBDD (enseigné en S4).
+			\paragraph*{}
+			Sauvergarder les données de l'application permet non seulement de garder un historique des stages mais égualement de réouvrire l'application et de la retrouver tel qu'on l'a fermé. A cet effet on trouve un sous repertoire \textit{manager} qui contient un enssemble de classe permettant de faire le lien entre la base de donné et le modele de donné de l'application. Chanque manager \textbf{doit} implement l'interface manager afin de respecté le concepete de JBDD (enseigné en S4).
 
-	\paragraph*{}
-	Le script qui permet d'installer la base de donné se trouve dans le re repertoir \textit{res} (ressource).
+		\paragraph*{}
+		Le script qui permet d'installer la base de donné se trouve dans le re repertoir \textit{res} (ressource).
 
-	\paragraph*{}
-	Les classe constituant le repertoir \textit{don} on était pensé sur un modele bien precis. On verra le MCD et l'UML dans la partie modelisation de ce rapport.
+			\paragraph*{}
+			Les classe constituant le repertoir \textit{don} on était pensé sur un modele bien precis. On verra le MCD et l'UML dans la partie modelisation de ce rapport.
 
-\subsection{Vue}
+		\subsection{Vue}
 
-	\paragraph*{}
-	La vue est constitué des classes sous le repertoire \textit{fen} elles permettent de dessiner les fenetre. La bibliotheque graphqiue utilisé ici est \textit{Swing}.
+			\paragraph*{}
+			La vue est constitué des classes sous le repertoire \textit{fen} elles permettent de dessiner les fenetre. La bibliotheque graphqiue utilisé ici est \textit{Swing}.
 
-	\paragraph*{}
-	La fenetre principale est dessiné par la class \textit{FInterface}. On lui ajoute des object de type \textit{FTab} afin de creer des onglets. Il est important de noter que aucune des class fenetres (class dans le repertoir \textit{fen}) n'herite d'un quelconque objet de la bibliotheque graphique, elles sont plustôt composé de ces objets.
+			\paragraph*{}
+			La fenetre principale est dessiné par la class \textit{FInterface}. On lui ajoute des object de type \textit{FTab} afin de creer des onglets. Il est important de noter que aucune des class fenetres (class dans le repertoir \textit{fen}) n'herite d'un quelconque objet de la bibliotheque graphique, elles sont plustôt composé de ces objets.
 
-	\paragraph*{}
-	La classe \textit{Main} a une methode \textit{mac}. Cette methode est importoante pour adapetre la partie graphique au systeme OS X.
+			\paragraph*{}
+			La classe \textit{Main} contient une methode \textit{mac}. Cette methode est importoante pour adapetre la partie graphique au systeme OS X.
 
-\subsection{Controleur}
+		\subsection{Controleur}
+
+			\paragraph*{}
+			Les classes concerant le controleur sont situé dans dans le repertoire \textit{control}. Ces class font le moteur de l'application et servent de lien entre la partie modele et la partie vue. La class \textit{Main} est une exception car elle fait partie du controler mais ne se trouve pas dans le meme repertoire que les autres class.
+
+			\paragraph*{}
+			Les class \textit{Datas}, \textit{DBTools}, \textit{DBSEtting} et \textit{ScriptRunner} permettent de gerer la partie donné de l'application. 
+			Les methodes \texttt{load()} et \texttt{save()} dans la class \textit{Datas} permettent respectivement de charger et sauvergarder le model dans la base de donnée. Ces deux methodes sont respectivement appellé aux debut et à la fin du programe.
+			La class \textit{DBTools} permet de faire des operation sur la base de donnée et \textit{DBSetting} contient les information de connection à la base de donné et permet d'obtenir un connection valide à celle ci.
+			\textit{ScriptRunner} est un classe provenant du projet \href{http://ibatis.apache.org/}{Ibatis} et permet d'executer des scripts SQL comme le script d'installation de la base de donné dans le repertoir \textit{res}. 
+
+	\section{Detail de class}
+
+		\subsection{Setting}
+
+			Les class herité de \textit{Setting} permettent de stocker des information, celci sont stocké dans le répertoir \texttt{~/.stcal} dans le répertoir pernonelle de l'utilisateur. Même sis l'application est lancé sur Windows.
 
 \chapter{Modelisation}
 

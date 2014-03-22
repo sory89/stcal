@@ -215,14 +215,14 @@ public class FCal extends FTab{
                 for (i = 0; i < recupDates.size(); i++)
                     titre[i] = "" + recupDates.get(i).get(Calendar.DAY_OF_MONTH) + "/" + (recupDates.get(i).get(Calendar.MONTH) + 1) + "/" + recupDates.get(i).get(Calendar.YEAR) + "";
 
-                //jt = new JTable(new CreneauTableModel(o,totalCreneaux,recupDates.size()));
-
+                jt = new JTable(new CreneauTableModel(o,totalCreneaux,recupDates));
+                /*
                 jt = new JTable(o, titre) {
                     public boolean isCellEditable(int row, int column) {
                         return false;
                     }
                 };
-
+                 */
                 jt.setCellSelectionEnabled(true);
                 jt.setRowSelectionAllowed(false);
 

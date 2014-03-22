@@ -137,6 +137,7 @@ public class OSplitCsv {
                 for (int j=0;j<etu.getElementAt(i).getInfos().size();j++){
                     ligne += etu.getElementAt(i).getInfos().get(j) + ";";
                 }
+
                 ind=ligne.length()-1;
                 ligne=ligne.substring(0,ind);
                 writer.println(ligne);

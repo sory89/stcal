@@ -39,13 +39,13 @@ public class DCoupleTransferHandler extends TransferHandler {
         if (!canImport(support)) {
             return false;
         }
-        Message.err.println("ouais ouais3");
+
         JTable.DropLocation dl = (JTable.DropLocation)support.getDropLocation();
         try {
 
 
             DCouple dc = (DCouple) support.getTransferable().getTransferData(DCFlavor);
-            Message.err.println("ouais ouais2");
+
             JTable table = (JTable) support.getComponent();
            jt=table;
             DCreneau dcc = ( DCreneau) table.getValueAt(dl.getRow(),dl.getColumn());
@@ -111,10 +111,12 @@ public class DCoupleTransferHandler extends TransferHandler {
 
     @Override
     protected Transferable createTransferable(JComponent c) {
-        Message.err.println(c.getClass());
+
+
+
         if (!(c instanceof JTree)) return null;
         final JTree list = (JTree) c;
-
+         if(!(((DefaultMutableTreeNode) list.getLastSelectedPathComponent()).isLeaf()))  return null;
         final DCouple person = (DCouple) ((DefaultMutableTreeNode)(list.getSelectionPath().getLastPathComponent())).getUserObject();
 
 
@@ -160,10 +162,10 @@ public class DCoupleTransferHandler extends TransferHandler {
         DataFlavor[] flavors = support.getDataFlavors();
 
         for (DataFlavor dataFlavor : flavors) {
-            if (dataFlavor.getRepresentationClass() == com.stcal.don.DCouple.class) return true;
+            if (dataFlavor.getRepresentationClass() != com.stcal.don.DCouple.class) return false;
 
         }
-        Message.err.println("non j'crois pas3");
+
         return true;
     }
 

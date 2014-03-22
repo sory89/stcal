@@ -45,12 +45,17 @@ public class FCal extends FTab{
     protected JLabel debutLabel = new JLabel("(2) Début journée");
     protected JLabel finLabel = new JLabel("(3) Fin journée");
     protected JLabel nbSoutenances = new JLabel("(5) Nombre soutenances par créneau");
+    protected JLabel labcandide = new JLabel("Selectionnez un candide");
+    protected JLabel labsalle = new JLabel("Selectionnez la salle");
     String[] tab =  {"7","8","9","10","11","12","13","14","15","16","17","18","19","20"} ;
     protected JComboBox debutJour = new JComboBox(tab);
     protected JComboBox finJour = new JComboBox();
+    protected JComboBox jcbsalles = new JComboBox();
+    protected JComboBox jcbcandide = new JComboBox();
     public DateChooserPanel chooserDebut= new DateChooserPanel();
     protected JTable jt=null;
     protected JButton supprimers = new JButton("Supprimer ce stage");
+
     public static DynamicTreeDemo newContentPane;
     protected JFormattedTextField creneau = null;
     protected JFormattedTextField soutenance = null;
@@ -59,7 +64,6 @@ public class FCal extends FTab{
     protected  parserPeriod PP = null;
     protected DCoupleTransferHandler kikoo = new DCoupleTransferHandler();
     protected DefaultTableModel salles = null;
-    protected JDialog jdi=null;
     protected JButton okPlageJour = new JButton("Générer le planning");
 
 
@@ -257,7 +261,7 @@ public class FCal extends FTab{
                 c.fill = GridBagConstraints.BOTH;
 
                 c.gridx = recupDates.size() + 1;
-                c.gridy = totalCreneaux/2;
+                c.gridy = (totalCreneaux/2)+1;
 
                 c.gridwidth = 1;
                 c.gridheight = 1;
@@ -265,6 +269,7 @@ public class FCal extends FTab{
                 c.weighty = 1;
                 c.ipadx = 200;
                 pan().add(supprimers,c);
+
 
 
                 refresh();

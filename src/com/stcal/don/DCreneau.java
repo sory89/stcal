@@ -120,4 +120,28 @@ public class DCreneau {
 
 
     }
+    public Soutenance getSout(DCouple dfc){
+            int i;
+        for(i=0;i<ListSoutenance.size();i++){
+
+            if(ListSoutenance.get(i).getCpl()==dfc)
+                return ListSoutenance.get(i);
+        }
+
+
+       return null;
+    }
+    public Soutenance getSoutp(DProf dfc){
+        int i;
+        for(i=0;i<ListSoutenance.size();i++){
+
+            if(ListSoutenance.get(i).getCdd()==dfc)
+                return ListSoutenance.get(i);
+            else if(ListSoutenance.get(i).getCpl().getTut()==dfc)
+                return ListSoutenance.get(i);
+        }
+
+
+        return null;
+    }
 }

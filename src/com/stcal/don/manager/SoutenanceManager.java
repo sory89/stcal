@@ -3,6 +3,7 @@ package com.stcal.don.manager;
 import com.stcal.control.Message;
 import com.stcal.don.DCandide;
 import com.stcal.don.DCouple;
+import com.stcal.don.DProf;
 import com.stcal.don.Soutenance;
 
 import java.sql.*;
@@ -59,7 +60,7 @@ public class SoutenanceManager implements Manager<Soutenance> {
             rset.next();
             con.commit();
             Manager cat = new SoutenanceManager(con);
-            return new Soutenance(rset.getInt("id_soutenance"),(DCouple)rset.getObject("couple"),(DCandide)rset.getObject("candide"),rset.getInt("salle"));
+            return new Soutenance(rset.getInt("id_soutenance"),(DCouple)rset.getObject("couple"),(DProf)rset.getObject("candide"),rset.getInt("salle"));
         }
         catch (SQLException e){
             try {
@@ -79,7 +80,7 @@ public class SoutenanceManager implements Manager<Soutenance> {
             rset = stmt.executeQuery(sql);
             con.commit();
             while (rset.next()){
-                resultats.add(new Soutenance(rset.getInt("id_soutenance"),(DCouple) rset.getObject("couple"), (DCandide) rset.getObject("candide"),rset.getInt("salle")));
+                resultats.add(new Soutenance(rset.getInt("id_soutenance"),(DCouple) rset.getObject("couple"), (DProf) rset.getObject("candide"),rset.getInt("salle")));
             }
         }
         catch (SQLException e){

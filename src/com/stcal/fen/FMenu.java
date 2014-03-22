@@ -11,6 +11,7 @@ import com.stcal.don.Type;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -30,7 +31,13 @@ public class FMenu {
                 FLier.opt6.doClick();
             }
         });
-
+        final JFrame jfics = new JFrame();
+        JLabel laboptions = new JLabel("Selectionez une option");
+        String[] tab =  {"Salles","Profs","Pdf"} ;
+        JComboBox jcboptions = new JComboBox(tab);
+        JLabel  laboptions2 = new JLabel();
+        JComboBox jcboptions2 = new JComboBox();
+        JButton okexp = new JButton("Exporter");
         menuaction.add(lier);
 
         JMenu menuOther = new JMenu("?");
@@ -77,6 +84,23 @@ public class FMenu {
         menufile.addSeparator();
         JMenuItem exportIcs = new JMenuItem("Exporter au format ICS");
         exportIcs.setToolTipText("Exporter le calendrier au format ICS.");
+
+        jfics.setLayout(new GridLayout(5,0));
+        jfics.add(laboptions);
+        jfics.add(jcboptions);
+        jfics.add(laboptions2);
+        jfics.add(jcboptions2);
+        jfics.add(okexp);
+        jfics.setVisible(false);
+        jfics.setSize(new Dimension(500,500));
+
+        exportIcs.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              jfics.setVisible(true);
+            }
+        });
+
         menufile.add(exportIcs);
         menufile.addSeparator();
         JMenuItem quit = new JMenuItem("Quitter");

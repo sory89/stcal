@@ -3,16 +3,16 @@ package com.stcal.don;
 public class Soutenance
 {
     private DCouple cpl;
-    private DCandide cdd;
+    private DProf cdd;
     private int salle;
     private int id;
-    public Soutenance(DCouple couple, DCandide candide)
+    public Soutenance(DCouple couple, DProf candide)
     {
         this.cpl = couple;
         this.cdd = candide;
         this.salle = 204;
     }
-    public Soutenance(int id,DCouple couple, DCandide candide,int salle)
+    public Soutenance(int id,DCouple couple, DProf candide,int salle)
     {
         this.id=id;
         this.cpl = couple;
@@ -38,12 +38,12 @@ public class Soutenance
         this.cpl = cpl;
     }
 
-    public DCandide getCdd()
+    public DProf getCdd()
     {
         return cdd;
     }
 
-    public void setCdd(DCandide cdd)
+    public void setCdd(DProf cdd)
     {
         this.cdd = cdd;
     }

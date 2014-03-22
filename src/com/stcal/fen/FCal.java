@@ -12,7 +12,7 @@ import datechooser.beans.DateChooserPanel;
 import datechooser.events.SelectionChangedEvent;
 import datechooser.events.SelectionChangedListener;
 import datechooser.model.multiple.Period;
-import sun.awt.VerticalBagLayout;
+
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -22,7 +22,6 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeSelectionModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public class FCal extends FTab{
     protected JComboBox debutJour = new JComboBox(tab);
     protected JComboBox finJour = new JComboBox();
     protected JComboBox jcbsalles = new JComboBox();
-    protected JComboBox jcbcandide = new JComboBox();
+    protected JComboBox<DPersonne> jcbcandide = new JComboBox();
     public DateChooserPanel chooserDebut= new DateChooserPanel();
     protected JTable jt=null;
     protected JButton supprimers = new JButton("Supprimer ce stage");
@@ -313,7 +312,51 @@ public class FCal extends FTab{
 
                     }
                 });
+                okcand.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if(jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn())!=null){
+                            if(fs.getSelectedItem()!=null) {
+                                DCouple dfc= (DCouple) jls.getSelectedValue() ;
+                                DCreneau dc = (DCreneau) jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn());
 
+                                dc.getSout(dfc).setCdd((DProf)jcbcandide.getSelectedItem());
+                              System.out.println("candide ok");
+                            }
+                        }
+                        jt.clearSelection();
+                    }
+                });
+                 jls.addListSelectionListener(new ListSelectionListener() {
+                     @Override
+                     public void valueChanged(ListSelectionEvent e) {
+                         jcbcandide.removeAllItems();
+                                              if(jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn())!=null){
+                                                  if(fs.getSelectedItem()!=null) {
+                                                      DCouple dfc= (DCouple) jls.getSelectedValue() ;
+                                                      DCreneau dc = (DCreneau) jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn());
+                                                      int i;
+                                                      for(i=0;i<Datas.prof.size();i++){
+                                                          if(dc.isProfIn(Datas.prof.getElementAt(i))){
+
+                                                              jcbcandide.addItem(Datas.prof.getElementAt(i));
+                                                              if(dc.getSout(dfc).getCdd()==Datas.prof.getElementAt(i)){
+
+                                                                  jcbcandide.setSelectedIndex(i);
+                                                              }
+
+                                                          }
+
+
+
+                                                      }
+
+
+
+                                                  }
+                                             }
+                     }
+                 });
                 jt.addMouseListener(new MouseListener() {
                     @Override
                     public void mouseClicked(MouseEvent e) {

@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -19,6 +18,7 @@ public class OSplitCsv {
     public static DListe splitcsv(File file, String type) throws Exception {
         String ligne,errf="Les erreurs suivantes ont été detectées dans le fichier CSV : \n",warf="";
         char cp=' ';
+        String test[] = new String[1];
         int nlab=1,nlig=1,nligb=0,nligv=0;
         boolean er=false,wr=false;
         DListe cont;
@@ -47,9 +47,7 @@ public class OSplitCsv {
             }
             if(!er) {
                 Message.out.println(nlab);
-                String split[] = ligne.split(SEPs);
-                ArrayList <String> test = new ArrayList<String>(Arrays.asList(split));
-                //cont.setLabels(test);
+                test = ligne.split(SEPs);
                } else { }
 
         }
@@ -100,9 +98,9 @@ public class OSplitCsv {
                 ArrayList<String> essai = new ArrayList<String>();
 
 
-            for (int i=2;i<split.length;i++){
+            for (int i=0;i<split.length;i++){
 
-                essai.add(split[i]);
+                essai.add(test[i]+" : "+split[i]);
             }
                 perso.setInfos(essai);
                 cont.addElement(perso);
@@ -112,7 +110,6 @@ public class OSplitCsv {
             nlig+=1;
         }
 
-        JOptionPane msg;
         if (nligb!=0) {
             errf=errf + "\n- Il y a "+nligb+"/"+nlig+" lignes ne correspondant pas à la ligne de libellés";
         }

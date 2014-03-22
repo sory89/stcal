@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class FTab {
 
-    private JPanel tabpan = new JPanel();
+    private  JPanel tabpan = new JPanel();
     private String nom = "";
 
     /**

@@ -3,6 +3,7 @@ package com.stcal.don;
 import com.stcal.control.Message;
 import com.stcal.control.exceptions.MaxSoutenanceException;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -56,10 +57,23 @@ public class DCreneau {
         int position = ListSoutenance.indexOf(sout);
         ListSoutenance.remove(position);
     }
+
+    public ArrayList<Soutenance> getListSoutenance() {
+        return ListSoutenance;
+    }
+
+    public void setListSoutenance(ArrayList<Soutenance> listSoutenance) {
+        ListSoutenance = listSoutenance;
+    }
+
     public String toString(){
-
-
-        return  ""+this.date_debut.get(Calendar.HOUR_OF_DAY)+"H";
+        Calendar dateDepart = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm" );
+        String str = sdf.format(date_debut.getTime())+"\n";
+        /*for(Soutenance sout : ListSoutenance){
+            str += sout.getCpl().toString()+"\n";
+        }*/
+        return  str;
 
     }
     public void addSBC(DCouple dc){
@@ -105,5 +119,29 @@ public class DCreneau {
 
 
 
+    }
+    public Soutenance getSout(DCouple dfc){
+            int i;
+        for(i=0;i<ListSoutenance.size();i++){
+
+            if(ListSoutenance.get(i).getCpl()==dfc)
+                return ListSoutenance.get(i);
+        }
+
+
+       return null;
+    }
+    public Soutenance getSoutp(DProf dfc){
+        int i;
+        for(i=0;i<ListSoutenance.size();i++){
+
+            if(ListSoutenance.get(i).getCdd()==dfc)
+                return ListSoutenance.get(i);
+            else if(ListSoutenance.get(i).getCpl().getTut()==dfc)
+                return ListSoutenance.get(i);
+        }
+
+
+        return null;
     }
 }

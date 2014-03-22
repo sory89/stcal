@@ -37,6 +37,7 @@ public class DynamicTreeDemo extends JPanel implements ActionListener {
         removeButton.setEnabled(false);
         removeButton.setActionCommand(REMOVE_COMMAND);
         removeButton.addActionListener(this);
+        removeButton.setOpaque(true);
 
         treePanel.getTree().addTreeSelectionListener(new TreeSelectionListener() {
             @Override
@@ -90,7 +91,6 @@ public class DynamicTreeDemo extends JPanel implements ActionListener {
         System.out.println("Nombre de profs : "+ltut.size());
         for(int i = 0; i < ltut.size(); i++){
             DefaultMutableTreeNode tuteur = new DefaultMutableTreeNode(ltut.get(i));
-            //Et une branche en plus ! Une !
             for(int j=0; j<Datas.stages.size(); j++){
                 if(Datas.stages.getElementAt(j).getTut().getNom()==ltut.get(i).getNom() && Datas.stages.getElementAt(j).getTut().getPrenom()==ltut.get(i).getPrenom()){
                     tuteur.add(new DefaultMutableTreeNode(Datas.stages.getElementAt(j)));
@@ -105,6 +105,7 @@ public class DynamicTreeDemo extends JPanel implements ActionListener {
         String command = e.getActionCommand();
         if (REMOVE_COMMAND.equals(command)) {
             treePanel.removeDCoupleFromJtree(Datas.stages);
+            FCal.newContentPane.populateTree(FCal.newContentPane.getTreePanel());
             treePanel.expandAll();
         }
     }

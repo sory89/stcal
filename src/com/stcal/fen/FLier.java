@@ -15,11 +15,12 @@ import java.util.ArrayList;
 
 public class FLier extends FTab {
     protected JLabel info = new JLabel("<html>Sélectionner un étudiant ou un enseignant pour afficher ses informations.</html>");
-    protected JLabel courant = new JLabel("courant");
+    protected JLabel courant = new JLabel("Aucune personne sélectionnée");
     protected JPanel option= new JPanel();
     protected JList Fetu;
     protected JList Fprof;
 
+    public static JButton opt6 = new JButton("Valider");
 
     public FLier(){
         super("Lier");
@@ -45,7 +46,7 @@ public class FLier extends FTab {
         JPanel centre = new JPanel();
         centre.setOpaque(false);
         centre.setLayout(new GridLayout(3, 0));
-        courant.setBorder(BorderFactory.createTitledBorder("Courant"));
+        courant.setBorder(BorderFactory.createTitledBorder("Personne courante"));
         centre.add(courant);
         option.setOpaque(false);
         option.setLayout(new GridLayout(2, 0, 20, 20));
@@ -68,12 +69,14 @@ public class FLier extends FTab {
         }});
         option.add(opt2);
         centre.add(option);
+
         info.setBorder(BorderFactory.createTitledBorder("Informations"));
 
-        // TODO scroll vertical non autorisé mais trouver solution pour afficher le texte correctement
+
         JScrollPane scrollPane = new JScrollPane(info);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         centre.add(scrollPane);
+
         pan().add(centre);
 
 
@@ -119,6 +122,8 @@ public class FLier extends FTab {
         Datas.stages.addElement(new DCouple((DEtudiant)Fetu.getSelectedValue(), (DProf) Fprof.getSelectedValue()));
         Datas.etu.remove(Fetu.getSelectedIndex());
         FStage.newContentPane.populateTree(FStage.newContentPane.getTreePanel());
+        if(FCal.newContentPane != null){
+        FCal.newContentPane.populateTree(FCal.newContentPane.getTreePanel());  }
         System.out.println("Création du stage "+Datas.stages.getSize());
         courant.setText("<html>Stage créé.</html>");
         refresh();
@@ -151,7 +156,7 @@ public class FLier extends FTab {
             option.add(opt2);
         }
         if (!Datas.etu.isEmpty() && !Datas.prof.isEmpty()){
-            final JButton opt6 = new JButton("Valider");
+
             opt6.setEnabled(false);
             opt6.setToolTipText("Confirmer le stage courant");
             opt6.addActionListener(new ActionListener() {

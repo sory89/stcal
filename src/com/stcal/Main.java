@@ -14,9 +14,10 @@ import java.util.ArrayList;
 public class Main {
 
     private static FChooser finder;
-    private static FLier lier;
     private static FStage stage;
     private static FTab cal;
+
+    public static FLier lier;
 
     public static final FInterface fen;
     public static final Settings calsettings;

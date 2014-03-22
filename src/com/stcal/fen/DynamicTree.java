@@ -166,7 +166,37 @@ class DynamicTree extends JPanel {
         }
     }
 
-    JTree getTree() {
+    public void DraggedDCoupleFromJtree(DefaultListModel<DCouple> listCpl)
+    {
+        if(((DefaultMutableTreeNode) tree.getLastSelectedPathComponent()).isLeaf()){
+            DCouple cpl = (DCouple)((DefaultMutableTreeNode)tree.getLastSelectedPathComponent()).getUserObject();
+            System.out.println("Suppression du stage en cours ...");
+            if(listCpl.contains(cpl)){
+                listCpl.removeElement(cpl);
+                System.out.println("Stage supprimé.");
+
+                if(((MutableTreeNode) tree.getLastSelectedPathComponent()).getParent().getChildCount()==1){
+                    treeModel.removeNodeFromParent((MutableTreeNode)((MutableTreeNode) tree.getLastSelectedPathComponent()).getParent());
+                }
+                else{
+                    treeModel.removeNodeFromParent((MutableTreeNode)tree.getLastSelectedPathComponent());
+
+                }
+                treeModel.reload();
+                tree.setSelectionRow(0);
+
+            }
+            else{
+                System.out.println("Suppression annulée : Stage non contenu dans les données.");
+            }
+        }
+        else{
+            System.out.println("Impossible de supprimer.");
+        }
+    }
+
+
+    public JTree getTree() {
         return tree;
     }
 }

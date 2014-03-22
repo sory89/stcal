@@ -27,7 +27,7 @@ public class FInterface {
         tabs.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                Message.status("Onglet");
+                Message.status("Changement d'onglet");
             }
         });
         fen.add(tabs);

@@ -57,13 +57,22 @@ public class DCreneau {
         int position = ListSoutenance.indexOf(sout);
         ListSoutenance.remove(position);
     }
+
+    public ArrayList<Soutenance> getListSoutenance() {
+        return ListSoutenance;
+    }
+
+    public void setListSoutenance(ArrayList<Soutenance> listSoutenance) {
+        ListSoutenance = listSoutenance;
+    }
+
     public String toString(){
         Calendar dateDepart = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm" );
         String str = sdf.format(date_debut.getTime())+"\n";
-        for(Soutenance sout : ListSoutenance){
+        /*for(Soutenance sout : ListSoutenance){
             str += sout.getCpl().toString()+"\n";
-        }
+        }*/
         return  str;
 
     }

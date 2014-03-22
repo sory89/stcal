@@ -224,6 +224,8 @@ public class FCal extends FTab{
                     }
                 };
                  */
+                //jt.setDefaultRenderer(DCreneau.class, new CreneauCellRenderer());
+
                 jt.setCellSelectionEnabled(true);
                 jt.setRowSelectionAllowed(false);
 

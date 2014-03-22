@@ -1,7 +1,10 @@
 package com.stcal.control;
 
 
-import net.fortuna.ical4j.*;
+import com.stcal.don.DCreneau;
+import com.stcal.don.DProf;
+import com.stcal.fen.FCal;
+
 import net.fortuna.ical4j.model.Calendar;
 
 /**
@@ -36,7 +39,44 @@ public class Outics {
     }
 
 
+     public void export(){
 
+        switch ( this.option){
+            case 1:
+                this.exportprof((DProf)this.donne);
+
+                break;
+            case 2:
+                break;
+            case 20:
+                this.exportpdf();
+                break;
+            default:
+                break;
+
+
+        }}
+
+      public void exportpdf(){
+
+
+            DCreneau obj[][] = FCal.o ;
+
+
+
+
+
+
+
+     }
+    public void exportprof(DProf prof){
+
+        DCreneau obj[][] = FCal.o ;
+
+
+
+
+    }
 
 
 

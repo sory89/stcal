@@ -75,15 +75,6 @@ public class FMenu {
         });
         menufile.add(openprof);
         menufile.addSeparator();
-        JMenuItem export = new JMenuItem("Exporter...");
-        export.setToolTipText("Exporter les liaisons déjà faites dans un fichier CSV.");
-        export.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Main.exporter();
-            }
-        });
-        menufile.add(export);
         JMenuItem exportIcs = new JMenuItem("Exporter au format ICS");
         exportIcs.setToolTipText("Exporter le calendrier au format ICS.");
         menufile.add(exportIcs);

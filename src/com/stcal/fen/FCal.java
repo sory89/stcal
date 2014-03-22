@@ -48,7 +48,7 @@ public class FCal extends FTab{
     protected JComboBox finJour = new JComboBox();
     public DateChooserPanel chooserDebut= new DateChooserPanel();
     protected JTable jt=null;
-    protected JButton supprimers = new JButton("Supprimer ce stage");
+    protected JButton supprimers = new JButton("Supprimer cette soutenance");
     protected JFormattedTextField creneau = null;
     protected JFormattedTextField soutenance = null;
     protected Iterator<Period> datechoisis=null;

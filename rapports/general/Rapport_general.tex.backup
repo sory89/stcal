@@ -286,7 +286,24 @@
 		  L'interface de cet onglet est scindé horizontalement en deux zones.
 		  La zone du haut est uniquement vouée à la première information à définir.
 		  Il s'agit de la date de la soutenance.
+		  Un calendrier occupe donc l'espace supérieur de l'interface.
+		  Chaque case du calendrier est cliquable, l'utilisateur choisit donc le jour qu'il souhaite par ce moyen.
+		  Il peut bien sûr régler le mois et l'année grâce à des champs situés juste au dessus du calendrier.
+		  Par défaut, la date choisie est la date courante.
 		  
+		\paragraph{}
+		  La zone inférieure de cet onglet du progiciel concerne tous les autres paramètres à déterminer.
+		  Une fois la date choisie, l'usager doit choisir les heures de début et de fin de la journée.
+		  Deux champs sont alors mis à sa disposition sous forme de listes déroulantes contenant toutes les heures entières de 7h à 20h.
+		  Après avoir fixé la date de début de journée, la deuxième liste déroulante ne possède évidemment plus que les heures postérieures à la date de début.
+		  
+		\paragraph{}
+		  La prochaine étape consiste à établir la durée d'une soutenance.
+		  Enfin, le responsable de stages doit saisir le nombre de soutenances maximal qu'il est possible d'organiser à un même horaire.
+		  Tous les champs étant remplis, le planning peut alors être généré.
+		  
+		\paragraph{}
+		  Lorsque la fonction de génération du calendrier est enclenchée, une redirection est effectuée vers une nouvelle page
 		  
 		
 	      

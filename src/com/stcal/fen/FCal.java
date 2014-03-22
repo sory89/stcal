@@ -115,13 +115,14 @@ public class FCal extends FTab{
 
                 int dj = Integer.parseInt(debutJour.getSelectedItem().toString());
                 int fj = Integer.parseInt(finJour.getSelectedItem().toString());
+                int dureeCreneau = Integer.parseInt(creneau.getText());
                 int k;
                 int i;
                 for (k = 0; k < recupDates.size(); k++) {
                     for (i = 0; i < totalCreneaux; i++) {
                         o[i][k] = new DCreneau();
-                        o[i][k].setDate_debut(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + i, 0));
-                        o[i][k].setDate_fin(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + i + 1, 0));
+                        o[i][k].setDate_debut(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + (int)Math.round(((i*dureeCreneau)/60)-0.5), i*dureeCreneau%60));
+                        o[i][k].setDate_fin(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + (int)Math.round((((i+1)*dureeCreneau)/60)-0.5), (1+i)*dureeCreneau%60));
                         o[i][k].setMax_sout(Integer.parseInt(soutenance.getText()));
                         Main.colors[i][k]="white";
                     }
@@ -214,12 +215,14 @@ public class FCal extends FTab{
                 for (i = 0; i < recupDates.size(); i++)
                     titre[i] = "" + recupDates.get(i).get(Calendar.DAY_OF_MONTH) + "/" + (recupDates.get(i).get(Calendar.MONTH) + 1) + "/" + recupDates.get(i).get(Calendar.YEAR) + "";
 
+                //jt = new JTable(new CreneauTableModel(o,totalCreneaux,recupDates.size()));
 
                 jt = new JTable(o, titre) {
                     public boolean isCellEditable(int row, int column) {
                         return false;
                     }
                 };
+
                 jt.setCellSelectionEnabled(true);
                 jt.setRowSelectionAllowed(false);
 

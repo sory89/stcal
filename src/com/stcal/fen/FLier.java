@@ -20,6 +20,7 @@ public class FLier extends FTab {
     protected JList Fetu;
     protected JList Fprof;
 
+    public static JButton opt6 = new JButton("Valider");
 
     public FLier(){
         super("Lier");
@@ -69,7 +70,15 @@ public class FLier extends FTab {
         option.add(opt2);
         centre.add(option);
 
-        centre.add(info);
+        info.setBorder(BorderFactory.createTitledBorder("Informations"));
+
+
+
+        //TODO scroll vertical non autorisé mais trouver solution pour afficher le texte correctement
+
+        JScrollPane scrollPane = new JScrollPane(info);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        centre.add(scrollPane);
 
         pan().add(centre);
 
@@ -148,7 +157,7 @@ public class FLier extends FTab {
             option.add(opt2);
         }
         if (!Datas.etu.isEmpty() && !Datas.prof.isEmpty()){
-            final JButton opt6 = new JButton("Valider");
+
             opt6.setEnabled(false);
             opt6.setToolTipText("Confirmer le stage courant");
             opt6.addActionListener(new ActionListener() {

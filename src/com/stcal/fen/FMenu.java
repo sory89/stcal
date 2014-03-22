@@ -24,28 +24,18 @@ public class FMenu {
         JMenuItem lier = new JMenuItem("Lier");
         lier.setToolTipText("Lier un étudiant à un enseignant.");
         //TODO faire marcher le if
-        //if (!Datas.etu.isEmpty() && !Datas.prof.isEmpty()){
+
             lier.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e) {
-
-                        System.out.println("OKKKKKKKKKKKKK");
-                        Main.lier.askStage();
-                        Main.lier.Fetu.clearSelection();
-                        Main.lier.Fprof.clearSelection();
-
-                    }
-
-
+                public void actionPerformed(ActionEvent actionEvent)
+                {
+                    FLier.opt6.doClick();
+                }
             });
-        //}
-        /*else
-        {
-            System.out.println("BUUUUUUUUUUGGGGG");
-            Message mess = new Message();
-            mess.poperror("Erreur : un étudiant et un enseignant doivent être sélectionnés.");
 
-        }*/
+
+
+
         /*lier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

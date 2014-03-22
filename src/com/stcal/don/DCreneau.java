@@ -59,7 +59,7 @@ public class DCreneau {
     }
     public String toString(){
         Calendar dateDepart = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm" );
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm" );
         String str = sdf.format(date_debut.getTime())+"\n";
         for(Soutenance sout : ListSoutenance){
             str += sout.getCpl().toString()+"\n";

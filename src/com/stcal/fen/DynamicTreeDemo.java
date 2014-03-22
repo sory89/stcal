@@ -37,6 +37,7 @@ public class DynamicTreeDemo extends JPanel implements ActionListener {
         removeButton.setEnabled(false);
         removeButton.setActionCommand(REMOVE_COMMAND);
         removeButton.addActionListener(this);
+        removeButton.setOpaque(true);
 
         treePanel.getTree().addTreeSelectionListener(new TreeSelectionListener() {
             @Override

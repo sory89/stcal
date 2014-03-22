@@ -99,22 +99,22 @@ public class FCal extends FTab{
                 recupDates = (ArrayList<Calendar>) PP.getDates();
 
                 //Calcul du nombre de creneau dans une journée
-                final int totalCreneaux = ((Integer.parseInt(finJour.getSelectedItem().toString()) - Integer.parseInt(debutJour.getSelectedItem().toString())) * 60) / Integer.parseInt(creneau.getText());
+                final int totalCreneauxJour = ((Integer.parseInt(finJour.getSelectedItem().toString()) - Integer.parseInt(debutJour.getSelectedItem().toString())) * 60) / Integer.parseInt(creneau.getText());
 
                 pan().removeAll();
                 pan().setLayout(new GridBagLayout());
 
                 GridBagConstraints c = new GridBagConstraints();
 
-                DCreneau o[][] = new DCreneau[totalCreneaux][recupDates.size()];
-                Main.colors=new String[totalCreneaux][recupDates.size()];
+                DCreneau o[][] = new DCreneau[totalCreneauxJour][recupDates.size()];
+                Main.colors=new String[totalCreneauxJour][recupDates.size()];
 
                 int dj = Integer.parseInt(debutJour.getSelectedItem().toString());
                 int fj = Integer.parseInt(finJour.getSelectedItem().toString());
                 int k;
                 int i;
                 for (k = 0; k < recupDates.size(); k++) {
-                    for (i = 0; i < totalCreneaux; i++) {
+                    for (i = 0; i < totalCreneauxJour; i++) {
                         o[i][k] = new DCreneau();
                         o[i][k].setDate_debut(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + i, 0));
                         o[i][k].setDate_fin(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + i + 1, 0));
@@ -127,7 +127,7 @@ public class FCal extends FTab{
                 pan().addComponentListener(new ComponentListener() {
                     @Override
                     public void componentResized(ComponentEvent e) {
-                        jt.setRowHeight((pan().getHeight() - 20) / totalCreneaux);
+                        jt.setRowHeight((pan().getHeight() - 20) / totalCreneauxJour);
                     }
                     @Override
                     public void componentMoved(ComponentEvent e) {
@@ -163,7 +163,7 @@ public class FCal extends FTab{
                         ca.gridx = 0;
                         ca.gridy = 0;
                         ca.gridwidth = 1;
-                        ca.gridheight = totalCreneaux;
+                        ca.gridheight = totalCreneauxJour;
                         ca.weightx = 0;
                         ca.weighty = 1;
                         ca.ipadx = 200;
@@ -220,7 +220,7 @@ public class FCal extends FTab{
                 jt.setRowSelectionAllowed(false);
 
                 jt.setEnabled(true);
-                jt.setRowHeight((pan().getHeight() - 20) / totalCreneaux);
+                jt.setRowHeight((pan().getHeight() - 20) / totalCreneauxJour);
                 jt.setDropMode(DropMode.ON);
                 jt.setDragEnabled(true);
                 jt.setTransferHandler(kikoo);
@@ -231,12 +231,12 @@ public class FCal extends FTab{
                 cc.gridy = 0;
 
                 cc.gridwidth = recupDates.size();
-                cc.gridheight = totalCreneaux + 1;
+                cc.gridheight = totalCreneauxJour + 1;
                 cc.weightx = 1;
                 cc.weighty = 1;
 
                 pan().add(new JScrollPane(jt), cc);
-                jt.setDefaultRenderer(Object.class,new CustomRenderer());
+                jt.setDefaultRenderer(Object.class, new CustomRenderer());
                 final DefaultComboBoxModel fs = new DefaultComboBoxModel();
                 final JList jls = new JList(fs);
                 c = new GridBagConstraints();
@@ -248,7 +248,7 @@ public class FCal extends FTab{
                 c.gridy = 0;
 
                 c.gridwidth = 1;
-                c.gridheight = totalCreneaux / 2;
+                c.gridheight = totalCreneauxJour / 2;
                 c.weightx = 0;
                 c.weighty = 1;
                 c.ipadx = 200;
@@ -257,7 +257,7 @@ public class FCal extends FTab{
                 c.fill = GridBagConstraints.BOTH;
 
                 c.gridx = recupDates.size() + 1;
-                c.gridy = totalCreneaux/2;
+                c.gridy = totalCreneauxJour/2;
 
                 c.gridwidth = 1;
                 c.gridheight = 1;

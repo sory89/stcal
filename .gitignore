@@ -12,3 +12,19 @@ out/
 *.gign.*
 
 Dev.java
+
+*.aux
+
+*.fdb_latexmk
+
+*.fls
+
+*.log
+
+*.out
+
+*.gz
+
+*.toc
+
+*.dvi

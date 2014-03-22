@@ -229,6 +229,7 @@
 	      \paragraph{}
 		La partie de gauche affiche une liste de professeurs importée depuis un fichier CSV, et de la même manière, la partie de droite montre une liste d'étudiants provenant d'un deuxième fichier au format CSV.
 		Les personnes, étudiants et enseignants, contenues dans ces listes ne sont alors caractérisées que par leur nom et leur prénom.
+		Il faut bien noter que l'import est obligatoire puisque l'application ne possède aucune fonctionnalité d'établissement de listes.
 	      
 	      \paragraph{}
 		La partie centrale contient les appels aux fonctions nécessaires à l'import des fichiers d'étudiants d'une part, et à l'import des fichiers d'enseignants d'autre part.
@@ -279,6 +280,9 @@
 		  
 	      \paragraph{L'onglet Calendrier}
 		\paragraph{}
+		  \textit{Dans cette partie, il importe de savoir que du point de vue de la hiérarchie des classes gérant le calendrier, on considère qu'une journée est divisée en créneaux, qui correspondent aux horaires de passage, contenant eux-mêmes des soutenances, qui sont caractérisées par un couple étudiant/professeur et une salle	.} 
+		  
+		\paragraph{}  
 		  La création d'un calendrier nécessite plusieurs étapes préliminaires.
 		  En effet, l'usager doit passer par le renseignement de cinq paramètres avant de pouvoir générer un planning de soutenances.
 		  
@@ -304,25 +308,44 @@
 		  
 		\paragraph{}
 		  Lorsque la fonction de génération du calendrier est enclenchée, une redirection est effectuée vers une nouvelle page.
+		  Cette dernière présente une zone dans laquelle sont affichés les noms des étudiants faisant partie d'un stage, une deuxième affichant le planning de la journée choisie précédemment, et une troisième énumérant les étudiants passant leur soutenance à un horaire préalablement sélectionné.
+		  
+		\paragraph{}
+		  La première section montre uniquement les étudiants étant rattachés à un responsable de stage, composant ainsi un stage.
+		  Les professeurs sont absents dans cette rubrique. De plus, les stagiaires sont affichés sous forme de simple liste, et non pas d'arborescence.
+		  
+		\paragraph{}
+		  La partie centrale affiche tous les horaires de la journée sélectionnée pour les soutenances.
+		  La date est écrite en haut de ce planning.
+		  Les horaires de passage dépendent logiquement de la durée d'une soutenance.
+		  Les soutenances sont créées simplement par déplacement d'un étudiant sur un créneau.
+		  Dès qu'un étudiant est sélectionné, les créneaux changent de couleur : les créneaux de couleur verte sont disponibles pour la soutenance de cet étudiant.
+		  A l'inverse, si un créneau est devient rouge, il demeure inaccessible pour ce stage.
+		  Les modalités d'indisponibilité d'un créneau sont celles spécifiées dans la deuxième partie du cahier des charges.
+		  En cas de tentative de création d'une soutenance à une plage horaire bloquée, un message expliquant la nature du problème apparaît.
+		  
+		\paragraph{}
+		  A la création d'une soutenance, le nom de l'étudiant s'inscrit dans le créneau, à côté de l'heure à laquelle débute celui-ci.
+		  Lorsqu'une plage est sélectionnée, l'étudiant apparaît également dans la troisième partie de la page située dans le tiers le plus à droite, qui révèle sous forme de liste tous les étudiants passant leur examen oral à cet horaire.
+		  
+		\paragraph{}
+		  Un bouton de suppression d'une soutenance est présent en bas de l'écran.
+		  La fonction liée à ce bouton permet d'effacer une soutenance sans effacer le stage.
+		  C'est pourquoi l'étudiant en question disparaît du créneau et de la liste de droite mais reste visible dans la liste de gauche et dans l'onglet ''Stage``, qui demeure ainsi l'unique onglet dans lequel supprimer un stage est possible.
 		  
 		  
-		
-	      
-  \chapter{Étape 2 : la création des stages}
-    \paragraph{}
-      Afin de créer les stages, il est d'abord nécessaire d'établir la liste des étudiants de l'année courante ainsi que la liste des professeurs de l'établissement.
-      L'application ne possédera aucune fonctionnalité d'établissement de listes.
-      En revanche, elle sera munie  
-    
-    
-    
-    \section{Une section}
-  \chapter{Chap 2}
-    \section{Une section}
-\part{Difficultés rencontrées}
-  \chapter{Difficultés techniques}
-  \chapter{Répartition des tâches}
+\part{Gestion du projet}
   \chapter{Organisation}
+    \section{Démarche du projet}
+      MVC
+    \section{Répartition des tâches}
+      tableau
+  \chapter{Difficultés rencontrées}
+    \section{Difficultés techniques}
+      Voir notes de chacun
+    \section{Répartition organisationnelles}
+      Github
+    
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \part{Conclusion}

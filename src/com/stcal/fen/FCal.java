@@ -62,7 +62,7 @@ public class FCal extends FTab{
 
 
     /* Test d'activation du bouton de validation du formulaire
-       Il suffit de changer le if pour que les tests sur les composants du formulaire soient mis à jours
+       Il suffit de changer le if pour que les tests sur les composants du formulaire soient mis à jour
     */
     protected boolean condition(){
         if(!(finJour.getSelectedIndex()==-1) && !(debutJour.getSelectedIndex()==-1) && !(soutenance.getText().isEmpty()) && soutenance.getText().matches("\\d{1,10}")

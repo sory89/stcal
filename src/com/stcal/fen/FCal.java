@@ -39,6 +39,7 @@ public class FCal extends FTab{
     protected JPanel pancreneau = new JPanel();
     protected JPanel validPanel = new JPanel();
     protected JPanel panSoutenance = new JPanel();
+    protected JPanel formsalles = new JPanel();
 
     protected JLabel infoChooser = new JLabel("Choisissez les jours de soutenance");
     protected JLabel creneauLabel = new JLabel("(4) Durée soutenance (en min)");
@@ -55,7 +56,7 @@ public class FCal extends FTab{
     public DateChooserPanel chooserDebut= new DateChooserPanel();
     protected JTable jt=null;
     protected JButton supprimers = new JButton("Supprimer ce stage");
-
+    protected JButton okcand = new JButton("Valider");
     public static DynamicTreeDemo newContentPane;
     protected JFormattedTextField creneau = null;
     protected JFormattedTextField soutenance = null;
@@ -255,7 +256,7 @@ public class FCal extends FTab{
                 c.gridy = 0;
 
                 c.gridwidth = 1;
-                c.gridheight = totalCreneaux / 2;
+                c.gridheight = totalCreneaux /2;
                 c.weightx = 0;
                 c.weighty = 1;
                 c.ipadx = 200;
@@ -264,14 +265,22 @@ public class FCal extends FTab{
                 c.fill = GridBagConstraints.BOTH;
 
                 c.gridx = recupDates.size() + 1;
-                c.gridy = (totalCreneaux/2)+1;
+                c.gridy = (totalCreneaux/2);
 
                 c.gridwidth = 1;
                 c.gridheight = 1;
                 c.weightx = 0;
                 c.weighty = 1;
                 c.ipadx = 200;
-                pan().add(supprimers,c);
+                pan().add(formsalles,c);
+                formsalles.setLayout(new GridLayout(6,0));
+                 formsalles.add(supprimers);
+                formsalles.add(labsalle);
+                formsalles.add(jcbsalles);
+                formsalles.add(labcandide);
+                formsalles.add(jcbcandide);
+                formsalles.add(okcand);
+
 
 
 

@@ -200,6 +200,7 @@
 	    La barre de menu est composée elle-même de plusieurs sous menus.
 	  \paragraph{}
 	    Le premier sous menu est intitulé ``Fichier``. Il offre la possibilité d'importer une liste d'étudiants et une liste de professeurs depuis un fichier au format CSV.
+	    En cas de problème avec le fichier à importer, l'application le signale bien évidemment à l'utilisateur par le biais d'une popup d'erreur et annule l'import.
 	    Il présente également une fonction d'export, notamment pour le calendrier généré. Cette fonction exporte le planning des soutenances au format ICS, qui permet la compatibilité avec les calendriers Google notamment.
 	    La dernière option de ce menu sert à fermer l'application.
 	  \paragraph{}
@@ -277,7 +278,16 @@
 		  Cette moitié de l'onglet ''Stage`` expose également une phrase d'indication de la démarche à suivre pour connaître les données approfondies d'une personne, destinée au client lors de sa première venue sur cet onglet.
 		  
 	      \paragraph{L'onglet Calendrier}
-		
+		\paragraph{}
+		  La création d'un calendrier nécessite plusieurs étapes préliminaires.
+		  En effet, l'usager doit passer par le renseignement de cinq paramètres avant de pouvoir générer un planning de soutenances.
+		  
+		\paragraph{}
+		  L'interface de cet onglet est scindé horizontalement en deux zones.
+		  La zone du haut est uniquement vouée à la première information à définir.
+		  Il s'agit de la date de la soutenance.
+		  
+		  
 		
 	      
   \chapter{Étape 2 : la création des stages}

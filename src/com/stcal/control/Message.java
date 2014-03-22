@@ -30,7 +30,7 @@ public class Message {
         err.println("ERROR:   " + msg);
         Main.fen.setStatus("erreur: " + msg);
         JOptionPane pop = new JOptionPane();
-        pop.showMessageDialog(null, msg, "Error", JOptionPane.ERROR_MESSAGE);
+        pop.showMessageDialog(null, msg, "Erreur", JOptionPane.ERROR_MESSAGE);
     }
 
     public static void popwarning(Exception e){

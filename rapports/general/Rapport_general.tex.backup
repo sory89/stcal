@@ -274,7 +274,11 @@
 		  En effet, on peut remarquer la présence d'un cadre appelé ''Informations``, qui contient lui-même deux fenêtres.
 		  La première est vouée à détailler les informations de l'étudiant courant. 
 		  Quant à la seconde, elle renseigne l'utilisateur sur les données se rapportant au professeur en charge du stage de l'étudiant courant. 
-		  Cette moitié de l'onglet ''Stage`` expose également une phrase d'indication de la démarche à suivre pour connaître les données approfondies d'une personne, destinée au client lors de sa première venue sur cet onglet. 
+		  Cette moitié de l'onglet ''Stage`` expose également une phrase d'indication de la démarche à suivre pour connaître les données approfondies d'une personne, destinée au client lors de sa première venue sur cet onglet.
+		  
+	      \paragraph{L'onglet Calendrier}
+		
+		
 	      
   \chapter{Étape 2 : la création des stages}
     \paragraph{}

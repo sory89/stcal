@@ -2,10 +2,15 @@ package com.stcal.fen;
 
 import com.stcal.Main;
 import com.stcal.control.DBTools;
+import com.stcal.control.Datas;
 import com.stcal.control.Message;
+import com.stcal.don.DCouple;
+import com.stcal.don.DEtudiant;
+import com.stcal.don.DProf;
 import com.stcal.don.Type;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -18,6 +23,29 @@ public class FMenu {
         JMenu menuaction = new JMenu("Actions");
         JMenuItem lier = new JMenuItem("Lier");
         lier.setToolTipText("Lier un étudiant à un enseignant.");
+        //TODO faire marcher le if
+        //if (!Datas.etu.isEmpty() && !Datas.prof.isEmpty()){
+            lier.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+
+                        System.out.println("OKKKKKKKKKKKKK");
+                        Main.lier.askStage();
+                        Main.lier.Fetu.clearSelection();
+                        Main.lier.Fprof.clearSelection();
+
+                    }
+
+
+            });
+        //}
+        /*else
+        {
+            System.out.println("BUUUUUUUUUUGGGGG");
+            Message mess = new Message();
+            mess.poperror("Erreur : un étudiant et un enseignant doivent être sélectionnés.");
+
+        }*/
         /*lier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -68,7 +68,7 @@ public class FStage extends FTab {
         ongletInfos.setBorder(BorderFactory.createTitledBorder("Informations"));
 
         // event
-        right.add(new JScrollPane(ongletInfos));
+        right.add(new JScrollPane(ongletInfos));    
         right.add(info);
         pan().add(right);
     }

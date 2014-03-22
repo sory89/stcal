@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.2.19)  22 MAR 2014 04:27
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.2.19)  22 MAR 2014 07:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -314,18 +314,13 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [1]
-(./Rapport_general.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 14.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 14.
- [2
-
-])
+(./Rapport_general.toc)
 \tf@toc=\write3
 \openout3 = `Rapport_general.toc'.
 
- [3] [4
+ [2
+
+] [3
 
 ]
 Overfull \hbox (11.4451pt too wide) in paragraph at lines 40--42
@@ -333,7 +328,7 @@ Overfull \hbox (11.4451pt too wide) in paragraph at lines 40--42
 e meilleure compr^^Sehension
  []
 
-[5] [6
+[4] [5
 
 ]
 Overfull \hbox (10.61156pt too wide) in paragraph at lines 53--56
@@ -341,11 +336,11 @@ Overfull \hbox (10.61156pt too wide) in paragraph at lines 53--56
 e ^^Setablissement, et s^urement
  []
 
-[7] [8
+[6] [7
 
 ]
 Chapitre 1.
-[9
+[8
 
 ]
 Chapitre 2.
@@ -362,7 +357,7 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 117.
- [10
+ [9
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 129--132
@@ -390,7 +385,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 160--167
 
  []
 
-[11] [12] [13
+[10] [11] [12
 
 ]
 Overfull \hbox (6.7784pt too wide) in paragraph at lines 183--187
@@ -398,19 +393,48 @@ Overfull \hbox (6.7784pt too wide) in paragraph at lines 183--187
 -ment nom-breux, par cons^^Sequent
  []
 
-[14]
+[13]
 Chapitre 1.
-[15
+[14
 
-] [16] [17] [18]
+] [15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 337--340
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--340
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--340
+
+ []
+
+[17]
 Chapitre 2.
-[19
+[18
 
-]
+] [19
+
+] [20]
 Chapitre 3.
-[20
 
-] [21
+Underfull \hbox (badness 10000) in paragraph at lines 379--383
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 379--383
+
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 384.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 384.
+[21
 
 ]
 Chapitre 4.
@@ -420,32 +444,28 @@ Chapitre 4.
 Chapitre 5.
 [23
 
-]
-Chapitre 6.
-[24
+] [24] [25
 
-] [25
-
-] (./Rapport_general.aux) ) 
+] [26] (./Rapport_general.aux) ) 
 Here is how much of TeX's memory you used:
- 1496 strings out of 495002
- 18761 string characters out of 6180262
+ 1495 strings out of 495002
+ 18753 string characters out of 6180262
  80990 words of memory out of 5000000
- 4739 multiletter control sequences out of 15000+600000
+ 4738 multiletter control sequences out of 15000+600000
  9453 words of font info for 33 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 23i,10n,43p,468b,265s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Rapport_general.pdf (26 pages, 125100 bytes).
+ 23i,10n,43p,387b,207s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Rapport_general.pdf (27 pages, 128877 bytes).
 PDF statistics:
- 116 PDF objects out of 1000 (max. 8388607)
- 80 compressed objects within 1 object stream
+ 119 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

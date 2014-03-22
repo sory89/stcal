@@ -182,11 +182,11 @@
 	\paragraph{}
 	  Les futurs utilisateurs du produit seront relativement nombreux, par conséquent les systèmes d'exploitation peuvent varier, avec notamment Windows, connu et employé couramment par une grande communauté de personnes, Linux, qui est très utilisé dans le cadre de nos études, et Mac OS, qui devient de plus en plus répandu.
 	  C'est pourquoi toute l'application sera programmée en Java, ce qui permettra l'usage du progiciel sous n'importe quelle plate-forme et favorisera une programmation orientée objet.
-	  Tout au long de cette partie, les outils auxquels nous avons fait appel et qui se seront mentionnés se trouveront donc être des fonctions et des objets instanciés en Java.
+	  Tout au long de cette partie, les outils auxquels nous avons fait appel et qui seront mentionnés se trouveront donc être des fonctions et des objets instanciés en Java.
 	  Quant à l'interface graphique, elle sera implémentée à partir la bibliothèque graphique Java Swing.
   
   
-  \chapter{Étape 1 : l'interface graphique}
+  \chapter{Interface}	%SCREENSHOTS !!
 	\paragraph{}
 	  L'interface de l'application contient une barre de menu donnant accès aux multiples possibilités offertes par l'application.
 	  Le corps de l'interface affiche quant à lui trois onglets principaux dédiés aux différentes fonctionnalités du progiciel. 
@@ -196,6 +196,7 @@
 	% Fichier -> Export de calendrier opérationnel ??
 	% Fichier -> Différence export / export au format ICS ??
 	% ? -> Raccourcis : opérationnels ??
+	% Calendrier -> interfaces définitives ??
 	  \paragraph{}
 	    La barre de menu est composée elle-même de plusieurs sous menus.
 	  \paragraph{}
@@ -332,16 +333,139 @@
 		  Un bouton de suppression d'une soutenance est présent en bas de l'écran.
 		  La fonction liée à ce bouton permet d'effacer une soutenance sans effacer le stage.
 		  C'est pourquoi l'étudiant en question disparaît du créneau et de la liste de droite mais reste visible dans la liste de gauche et dans l'onglet ''Stage``, qui demeure ainsi l'unique onglet dans lequel supprimer un stage est possible.
+		 
+		 ~\\
+		 ~\\
+		 ~\\
+		\paragraph{}
+		  Comme nous avons pu le remarquer, la réalisation demeure assez complète.
+		  De plus, l'interface est hiérarchisée et aérée, ce qui fait de l'application un outil très simple d'utilisation, et ce même pour les personnes mal à l'aise avec l'informatique.
 		  
-		  
+  \chapter{Données}
+      \paragraph{}
+	Après cette partie finalement essentiellement orientée vers l'apparence de l'application, nous allons poursuivre en expliquant le mode de fonctionnement de notre code et faire le point sur les outils utilisés en opposant les fonctions déjà existantes à celles créées par nos soins.
+		   
+    \section{Mode de fonctionnement}
+      \paragraph{}
+	Poursuivant l'idée de travailler un code clair, bien ordonné et facilement accessible, nous avons opté pour une hiérarchie de nos classes basée sur la forme Modèle-Vue-Contrôleur.
+	Ainsi, il nous est enfantin d'isoler les parties à conserver ou modifier en déterminant simplement si les parties fonctionnelles, ou les problèmes, viennent des données, de leur traitement ou de leur affichage.
+      
+      \paragraph{}
+	Les classes Java ne seront pas détaillées dans ce rapport car leur description sera l'objet d'un rapport technique.
+	Voici tout de même le modèle avec lequel nous avons travaillé dur pour obtenir le résultat que nous connaissons :
+	
+	
+	
+	%%%%%%%%%%%%%% SCREENSHOT REPRÉSENTATION UML %%%%%%%%%%%%%%%%
+	
+	
+	
+      \paragraph{}
+	Ce projet a été le fruit résultant de l'union de nos créations et d'outils déjà existants. 
+	En effet, l'application été destinée à une utilisation pour un domaine bien précis, et n'ayant jamais connu de prototype par le passé, toutes les classes et méthodes de nos codes sources ont été entièrement réalisées durant cette année par notre groupe.
+	Tous les programmes spécifiques aux stages, c'est-à-dire la majorité, relèvent donc de notre accomplissement.
+	Mais une partie du projet a néanmoins été réalisée à partir de méthodes existantes. 
+	Il s'agit notamment de la partie graphique, pour laquelle la bibliothèque Swing a été contributive par le biais de widgets et de layouts tels que \textit{JPanel}, \textit{JScrollPane} ou encore \textit{ActionListener}.
+	
+	
+		
 \part{Gestion du projet}
-  \chapter{Organisation}
-    \section{Répartition des tâches}
+      \paragraph{}
+	  La réalisation de notre progiciel est au final plutôt aboutie, mais comme dans tout projet, chacun des membres de notre groupe a connu des diffcultés, qui se sont présentées sous différentes formes.
+	  Voyons ensemble, quelles ont été ces dernières à travers la répartition des tâches, la gestion du temps et les difficultés liées au travail en lui-même.
+	
+  \chapter{Répartition des tâches}
+    \paragraph{}
+      La répartition des différents tâches a été effectuée comme indiquée ci-après.
+      Nous avons fait en sorte que chacun travaille sur toutes les parties du projet, ce qui nous a permis à la fois d'approfondir et de diversifier nos connaissances.
+      ~\\
+      ~\\
+      \begin{center}
+	\begin{tabular}{|l|l|}
+	  \hline
+	  Membres du groupe & Tâches attribuées \\
+	  \hline
+	    Florian Barrois & ... \\
+	    & ... \\
+	  \hline
+	    Nicolas Devillers & ... \\
+	    & ...\\
+	    \hline
+	    Valentin Jeanroy & ... \\
+	    & ...\\
+	    \hline
+	    Mehdi Loisel & ... \\
+	    & ...\\
+	    \hline
+	    Jean Mercadier & ... \\
+	    & ...\\
+	    \hline
+	    Ismail Taleb & ... \\
+	    & ...\\
+	    \hline
+	    Willeme Verdeaux & ... \\
+	    & ...\\
+	  \hline
+	\end{tabular}
+	
+	Tableau de répartition des tâches
+      \end{center}
+      
+      
+  \chapter{Gestion du temps}
+    Le temps a été un facteur-clé concernant l'avancement du projet à son rendu final.
+    En effet, si le projet a initialement connu une bonne motivation, notre groupe a tout de même fait l'objet d'une phase de relâchement, avant de devoir finir en trombe afin de respecter les délais imposés.
+    Ayant décidé à l'origine du projet de nous réunir toutes les deux semaines afin de faire le point sur les tâches terminées, celles en cours de réalisation, et celles à commencer, la cohésion s'est quelque peu désagrégée, si bien que certaines séances n'ont vu se présenter qu'un tiers des membres du groupe.
+    Même si le travail a pu être produit en dehors de l'IUT, le suivi du projet a été perturbé par un manque certain de communication, les absents bloquant ainsi les autres membres du groupe.
+    Il est difficile d'établir les réelles dates auxquelles le projet a connu des tournants.
+    Nous avons donc établi ci-dessous des agendas approximatifs correspondant aux prévisions et au réel déroulement des différentes étapes du projet.
+    
+    
+    \begin{tabular}{|l|l|}
+      \hline
+	Dates de prévisions & Avancement du projet
+      \hline
+	... & ...
+      \hline
+    \end{tabular}
+
+    
+
+    
+    
   \chapter{Difficultés rencontrées}
     \section{Difficultés techniques}
-    \section{Répartition des tâches}
+      \paragraph{}
+	Les difficultés techniques ont été diverses et variées mais nous allons aborder les plus importantes et les plus conséquentes pour le déroulement du projet.
+      
+      \paragraph{}
+	Tout d'abord, nous avons eu besoin d'utiliser des méthodes comme JDateChooser pour réaliser le calendrier. Cependant, nous avons mis un certain temps à trouver l'API correspondant.
+	De plus, cette méthode ne renvoyait pas le bon type de données, ce qui nous a conduit à une adaptation forcée à la manipulation des GregorianCalendar.
+	Pour continuer sur le calendrier, nous avons dû personnaliser la technique du Drag and Drop pour qu'elle corresponde à nos attentes dans l'application.
+	
+      \paragraph{}
+	Des problèmes sont également survenus à propos de la synchronisation de certaines données entre les différents onglets, notammant concernant les arborescences.
+
+      \paragraph{}
+	...
+      
+      
+      
+    \section{Difficultés organisationnelles}
+      \paragraph{}
+	Notre groupe a également éprouvé des diffcultés au niveau de l'organisation du projet. 
+	En effet, l'absence de certains membres aux réunions a affecté la dynamique du groupe et du coup la vitesse d'avancement du projet.
+	En plus de cela, certaines consignes peut-être ambiguës ont fait que plusieurs personnes se sont occupées des mêmes tâches durant certaines périodes, entraînant une nouvelle pénalité aussi bien au niveau de l'apprentissage que de la connaissance du code et du gaspillage d'un temps qui nous aurait été précieux.
+	
+      \paragraph{}
+	Mais la plus grosse difficulté a très certainement été l'utilisation d'un nouvel outil : Github.
+	Ce site web consacré au partage, ou au stockage de codes sources, part d'une très belle idée, mais demeure malgré tout compliqué à prendre en main.
+	C'est pourquoi il a fallu un temps d'apprentissage et d'adaptation à tous les membres du groupe pour savoir se servir de cet outil informatique, temps plus ou moins long en fonction des personnes.
+	De plus, des données ont été perdues, éparpillées, ou au contraire présentes à plusieurs emplacements dans les dossiers Github, sans parler des impossibilités de reprendre les dernières modifications ou de publier les siennes en raison de problèmes logiciels, notamment IntelliJ Idea, ou encore de connexion à Internet.
+	Nous avons également connu la situation des conflits Github, c'est-à-dire une incapacité à mettre à jour le projet à cause de fichiers modifiés simultanéments aux mêmes endroits par deux personnes différentes.
+	Enfin, le système des branches Github a peut-être été trop exploité, puisqu'il nous est arrivé d'avoir trois versions du projet différentes correspondant à trois branches distinctes. La version la plus avancée a subi au fur et à mesure du projet des changements de branche, entraînant de nouvelles incompréhensions et pertes de temps.
     
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    
 
 \part{Conclusion}
 \end{document}          

@@ -3,6 +3,7 @@ package com.stcal.control;
 import com.stcal.don.DCouple;
 import com.stcal.don.DListe;
 import com.stcal.don.DPersonne;
+import com.stcal.fen.DynamicTreeDemo;
 
 import javax.swing.*;
 
@@ -16,11 +17,12 @@ public class Datas {
     public static final DefaultListModel<DCouple> stages;
     public static final DefaultListModel<DPersonne> etu;
     public static final DefaultListModel<DPersonne> prof;
-
+    public static final DynamicTreeDemo newContentPane;
     static {
         stages = new DefaultListModel<DCouple>();
         etu    = new DefaultListModel<DPersonne>();
         prof   = new DefaultListModel<DPersonne>();
+        newContentPane = new DynamicTreeDemo();
     }
 
     /**

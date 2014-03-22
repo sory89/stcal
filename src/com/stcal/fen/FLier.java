@@ -122,6 +122,8 @@ public class FLier extends FTab {
         Datas.stages.addElement(new DCouple((DEtudiant)Fetu.getSelectedValue(), (DProf) Fprof.getSelectedValue()));
         Datas.etu.remove(Fetu.getSelectedIndex());
         FStage.newContentPane.populateTree(FStage.newContentPane.getTreePanel());
+        if(FCal.newContentPane != null){
+        FCal.newContentPane.populateTree(FCal.newContentPane.getTreePanel());  }
         System.out.println("Création du stage "+Datas.stages.getSize());
         courant.setText("<html>Stage créé.</html>");
         refresh();

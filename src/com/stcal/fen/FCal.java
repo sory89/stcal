@@ -7,9 +7,7 @@ import com.stcal.control.Message;
 import com.stcal.control.exceptions.NoSuchSettingException;
 import com.stcal.control.exceptions.NothingToSaveException;
 import com.stcal.control.parserPeriod;
-import com.stcal.don.DCouple;
-import com.stcal.don.DCreneau;
-import com.stcal.don.Soutenance;
+import com.stcal.don.*;
 import datechooser.beans.DateChooserPanel;
 import datechooser.events.SelectionChangedEvent;
 import datechooser.events.SelectionChangedListener;
@@ -20,7 +18,11 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeSelectionModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -42,13 +44,14 @@ public class FCal extends FTab{
     protected JLabel creneauLabel = new JLabel("(4) Durée soutenance (en min)");
     protected JLabel debutLabel = new JLabel("(2) Début journée");
     protected JLabel finLabel = new JLabel("(3) Fin journée");
-    protected JLabel nbSoutenances = new JLabel("(5) Nombre de soutenances par créneau");
+    protected JLabel nbSoutenances = new JLabel("(5) Nombre soutenances par créneau");
     String[] tab =  {"7","8","9","10","11","12","13","14","15","16","17","18","19","20"} ;
     protected JComboBox debutJour = new JComboBox(tab);
     protected JComboBox finJour = new JComboBox();
     public DateChooserPanel chooserDebut= new DateChooserPanel();
     protected JTable jt=null;
-    protected JButton supprimers = new JButton("Supprimer cette soutenance");
+    protected JButton supprimers = new JButton("Supprimer ce stage");
+    public static DynamicTreeDemo newContentPane;
     protected JFormattedTextField creneau = null;
     protected JFormattedTextField soutenance = null;
     protected Iterator<Period> datechoisis=null;
@@ -60,10 +63,16 @@ public class FCal extends FTab{
     protected JButton okPlageJour = new JButton("Générer le planning");
 
 
+    public void refreshTree(){
+        newContentPane.populateTree(newContentPane.getTreePanel());
+
+
+    }
 
     /* Test d'activation du bouton de validation du formulaire
-       Il suffit de changer le if pour que les tests sur les composants du formulaire soient mis à jour
+       Il suffit de changer le if pour que les tests sur les composants du formulaire soient mis à jours
     */
+
     protected boolean condition(){
         if(!(finJour.getSelectedIndex()==-1) && !(debutJour.getSelectedIndex()==-1) && !(soutenance.getText().isEmpty()) && soutenance.getText().matches("\\d{1,10}")
                 && !chooserDebut.getSelectedPeriodSet().isEmpty() && creneau.getText().matches("\\d{1,10}") && !(creneau.getText().isEmpty()))
@@ -94,31 +103,21 @@ public class FCal extends FTab{
 
                 pan().removeAll();
                 pan().setLayout(new GridBagLayout());
+
                 GridBagConstraints c = new GridBagConstraints();
-
-                c.fill = GridBagConstraints.BOTH;
-                c.gridx = 0;
-                c.gridy = 0;
-                c.gridwidth = 1;
-                c.gridheight = totalCreneaux;
-                c.weightx = 0;
-                c.weighty = 1;
-                c.ipadx = 200;
-
 
                 DCreneau o[][] = new DCreneau[totalCreneaux][recupDates.size()];
                 Main.colors=new String[totalCreneaux][recupDates.size()];
 
                 int dj = Integer.parseInt(debutJour.getSelectedItem().toString());
                 int fj = Integer.parseInt(finJour.getSelectedItem().toString());
-                int dureeCreneau = Integer.parseInt(creneau.getText());
                 int k;
                 int i;
                 for (k = 0; k < recupDates.size(); k++) {
                     for (i = 0; i < totalCreneaux; i++) {
                         o[i][k] = new DCreneau();
-                        o[i][k].setDate_debut(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + (int)Math.round(((i*dureeCreneau)/60)-0.5), i*dureeCreneau%60));
-                        o[i][k].setDate_fin(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + (int)Math.round((((i+1)*dureeCreneau)/60)-0.5), (i+1)*dureeCreneau%60, 0));
+                        o[i][k].setDate_debut(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + i, 0));
+                        o[i][k].setDate_fin(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + i + 1, 0));
                         o[i][k].setMax_sout(Integer.parseInt(soutenance.getText()));
                         Main.colors[i][k]="white";
                     }
@@ -144,8 +143,9 @@ public class FCal extends FTab{
                     }
                 });
                 String titre[] = new String[recupDates.size()];
-                final DefaultComboBoxModel fet = new DefaultComboBoxModel();
-                final JList Fetu = new JList(fet);
+
+
+            /*    final JList Fetu = new JList(fet);
                 pan().add(new JScrollPane(Fetu), c);
                 int j;
                 for (j = 0; j < Datas.stages.size(); j++) {
@@ -155,6 +155,57 @@ public class FCal extends FTab{
                 Fetu.setDragEnabled(true);
                 Fetu.setTransferHandler(kikoo);
 
+*/             javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                    public void run() {
+                        GridBagConstraints ca = new GridBagConstraints();
+
+                        ca.fill = GridBagConstraints.BOTH;
+                        ca.gridx = 0;
+                        ca.gridy = 0;
+                        ca.gridwidth = 1;
+                        ca.gridheight = totalCreneaux;
+                        ca.weightx = 0;
+                        ca.weighty = 1;
+                        ca.ipadx = 200;
+                newContentPane = new DynamicTreeDemo();
+                pan().add(newContentPane, ca);
+                newContentPane.getTree().setDragEnabled(true);
+
+
+                newContentPane.getTree().setTransferHandler(kikoo);
+                        newContentPane.getTree().addTreeSelectionListener(new TreeSelectionListener() {
+                            @Override
+                            public void valueChanged(TreeSelectionEvent e) {
+                                int y;
+                                int i;
+                                if(!newContentPane.getTree().isSelectionEmpty()) {
+                                    if(((DefaultMutableTreeNode)(newContentPane.getTreePanel().tree).getLastSelectedPathComponent()).getUserObject().getClass()==DCouple.class){
+                                DCouple person = (DCouple) ((DefaultMutableTreeNode) (newContentPane.getTreePanel().tree).getLastSelectedPathComponent()).getUserObject();
+                                if (person != null) {
+                                    for (y = 0; y < jt.getRowCount(); y++) {
+                                        for (i = 0; i < jt.getColumnCount(); i++) {
+                                            DCreneau dte = (DCreneau) jt.getValueAt(y, i);
+                                            if (dte.isProfIn(person.getTut()) && dte.toStringtest().size() < dte.getMax_sout())
+                                                Main.colors[y][i] = "green";
+                                            else
+                                                Main.colors[y][i] = "red";
+                                        }
+
+                                }
+                                jt.setDefaultRenderer(Object.class, new CustomRenderer());
+
+                                jt.revalidate();
+                                jt.repaint();
+
+                                refresh(); }
+
+
+                            }   }  }
+                        });
+                        newContentPane.removeButton.setVisible(false);
+
+                    }
+                });
 
                 for (i = 0; i < recupDates.size(); i++)
                     titre[i] = "" + recupDates.get(i).get(Calendar.DAY_OF_MONTH) + "/" + (recupDates.get(i).get(Calendar.MONTH) + 1) + "/" + recupDates.get(i).get(Calendar.YEAR) + "";
@@ -189,29 +240,8 @@ public class FCal extends FTab{
                 final DefaultComboBoxModel fs = new DefaultComboBoxModel();
                 final JList jls = new JList(fs);
                 c = new GridBagConstraints();
-                Fetu.addListSelectionListener(new ListSelectionListener() {
-                    @Override
-                    public void valueChanged(ListSelectionEvent e) {
-                        int y;
-                        int i;
-                        DCouple person = (DCouple) Fetu.getSelectedValue() ;
-                        if(person!=null){
-                            for (y=0;y<jt.getRowCount();y++){
-                                for(i=0;i<jt.getColumnCount();i++)  {
-                                    DCreneau dte = (DCreneau) jt.getValueAt(y,i);
-                                    if(dte.isProfIn(person.getTut()) && dte.toStringtest().size()<dte.getMax_sout() )
-                                        Main.colors[y][i]="green";
-                                    else
-                                        Main.colors[y][i]="red";
-                                }
-                            }
-                        }
-                        jt.setDefaultRenderer(Object.class,new CustomRenderer());
-                        jt.revalidate();
-                        jt.repaint();
-                        refresh();
-                    }
-                });
+
+
                 c.fill = GridBagConstraints.BOTH;
 
                 c.gridx = recupDates.size() + 1;
@@ -244,6 +274,10 @@ public class FCal extends FTab{
                         if(fs.getSelectedItem()!=null){
                             DCouple dfc= (DCouple) jls.getSelectedValue() ;
                             Datas.stages.addElement(dfc);
+
+
+                            FStage.newContentPane.populateTree(FStage.newContentPane.getTreePanel());
+                            newContentPane.populateTree(newContentPane.getTreePanel());
                             DCreneau dc = (DCreneau) jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn());
                             dc.removedcp(dfc);
 
@@ -257,6 +291,7 @@ public class FCal extends FTab{
 
 
                         }
+
                     }
                 });
 
@@ -268,15 +303,7 @@ public class FCal extends FTab{
 
                     @Override
                     public void mousePressed(MouseEvent e) {
-                        int j;
-                        fet.removeAllElements();
-                        for(j=0;j<Datas.stages.size();j++){
-
-                            fet.addElement(Datas.stages.get(j));
-                            Message.out.println(j);
-                        }
-                        jt.setDefaultRenderer(Object.class,new CustomRenderer());
-                        refresh();                }
+                                  }
 
                     @Override
                     public void mouseReleased(MouseEvent e) {
@@ -287,36 +314,18 @@ public class FCal extends FTab{
                         for (m = 0; m < ars.size(); m++)
                             fs.addElement(ars.get(m).getCpl());
 
-                        int j;
-                        fet.removeAllElements();
-                        for(j=0;j<Datas.stages.size();j++){
-                            fet.addElement(Datas.stages.get(j));
-                        }
+
 
                         refresh();
                     }
 
                     @Override
                     public void mouseEntered(MouseEvent e) {
-                        int j;
-                        fet.removeAllElements();
-                        for(j=0;j<Datas.stages.size();j++){
-
-                            fet.addElement(Datas.stages.get(j));
-                            Message.out.println(j);
-                        }
-                        refresh();                    }
+                                    }
 
                     @Override
                     public void mouseExited(MouseEvent e) {
-                        int j;
-                        fet.removeAllElements();
-                        for(j=0;j<Datas.stages.size();j++){
-
-                            fet.addElement(Datas.stages.get(j));
-                            Message.out.println(j);
-                        }
-                        refresh();                    }
+                                        }
                 });
                 try {
                     Main.calsettings.set("cal", recupDates.toString());

@@ -104,6 +104,7 @@ public class DynamicTreeDemo extends JPanel implements ActionListener {
         String command = e.getActionCommand();
         if (REMOVE_COMMAND.equals(command)) {
             treePanel.removeDCoupleFromJtree(Datas.stages);
+            FCal.newContentPane.populateTree(FCal.newContentPane.getTreePanel());
             treePanel.expandAll();
         }
     }

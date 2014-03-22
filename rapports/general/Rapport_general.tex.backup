@@ -2,16 +2,20 @@
 \usepackage[utf8]{inputenc}
 \usepackage[frenchb]{babel}
 \usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{tikz}
 
 
 \pagestyle{fancy}
 \renewcommand\headrulewidth{0pt}
 \renewcommand\footrulewidth{1pt}
 \fancyfoot[L]{Projet STCal}
-\fancyfoot[R]{IUT de Belfort}
+\fancyfoot[R]{IUT}
 \lhead{}
 \rhead{}
 \date{}
+
+
 
 \renewcommand{\chaptername}{}
 
@@ -20,8 +24,24 @@
 
 
 \begin{document}
+ \begin{titlepage}%ta page de titre
+%les deux logos en haut
 
-\maketitle
+%le reste du titre en plus
+\begin{center}
+\Huge
+Projet STCal\\
+\Large
+Rapport général\\
+FB\\
+~\\~\\~\\~\\~\\~\\~\\~\\
+\includegraphics{iutbm.jpeg}
+\hfill
+\end{center}
+\end{titlepage}
+%la suite du rapport
+
+
 \strut
 \renewcommand{\contentsname}{Sommaire}
 \tableofcontents
@@ -39,7 +59,7 @@
   \paragraph{}
     Nous détaillerons ainsi dans ce rapport toute notre réflexion pour répondre à cette problématique, expliquerons nos choix, et parlerons des avantages et des éventuels inconvénients liés à ces derniers.  
     Des illustrations seront également placées tout au long du rapport dans le but d'apporter une meilleure compréhension et une représentation concrète du travail réalisé.
-
+    
   \paragraph{}
     Nous allons donc étudier les différents aspects du projet, en commançant par une brève présentation du sujet. 
     Puis nous nous tournerons vers le cahier des charges, qui comprendra les fonctionnalités du produit ainsi que les contraintes à respecter.
@@ -147,23 +167,23 @@
 
       \subsection{Contraintes}
 	\paragraph{}
-	La contrainte principale de cette étape consiste à éviter la présence de doublons dans la base données. 
-	Le progiciel devra donc afficher un message d'erreur si les données telles que le nom et le prénom d'une personne, étudiant ou enseignant, entrées dans l'application sont déjà présentes dans la base de données. 
+	  La contrainte principale de cette étape consiste à éviter la présence de doublons dans la base données. 
+	  Le progiciel devra donc afficher un message d'erreur si les données telles que le nom et le prénom d'une personne, étudiant ou enseignant, entrées dans l'application sont déjà présentes dans la base de données. 
       
     \section{Quatrième étape}
       \subsection{Développement}
 	\paragraph{}
-      L’application contiendra un système de sauvegarde : lors de l’ouverture de l’application par l’utilisateur, le système effectuera une restauration de session qui permettra l’affichage de la dernière page affichée avant la fermeture de l’application lors la session de travail précédente.
+	  L’application contiendra un système de sauvegarde : lors de l’ouverture de l’application par l’utilisateur, le système effectuera une restauration de session qui permettra l’affichage de la dernière page affichée avant la fermeture de l’application lors la session de travail précédente.
 
       \subsection{Contraintes}
 	\paragraph{}
-      Lors de la première utilisation du progiciel, l'utilisateur devra entrer les paramètres correspondant à la base de données qui stockera les informations, à savoir le nom du serveur, le port utilisé, le nom d'utilisateur et le mot de passe.
-      Une fois les champs renseignés, ces paramètres seront également mémorisés et la restauration de session devra passer par un accès cette base de données pour afficher les informations précédemment enregistrées.
-      Le programme sera donc contraint de rechercher l'existence d'un fichier de configuration dans l'ordinateur afin de savoir si l'application est utilisée ou non pour la première fois.
-      Si c'est le cas, une fenêtre contenant les différents paramètres à renseigner mentionnés précédemment apparaît, et les valeurs entrées sont mémorisées dans un nouveau fichier de configuration.
-      ~\\
-      ~\\
-      ~\\
+	  Lors de la première utilisation du progiciel, l'utilisateur devra entrer les paramètres correspondant à la base de données qui stockera les informations, à savoir le nom du serveur, le port utilisé, le nom d'utilisateur et le mot de passe.
+	  Une fois les champs renseignés, ces paramètres seront également mémorisés et la restauration de session devra passer par un accès cette base de données pour afficher les informations précédemment enregistrées.
+	  Le programme sera donc contraint de rechercher l'existence d'un fichier de configuration dans l'ordinateur afin de savoir si l'application est utilisée ou non pour la première fois.
+	  Si c'est le cas, une fenêtre contenant les différents paramètres à renseigner mentionnés précédemment apparaît, et les valeurs entrées sont mémorisées dans un nouveau fichier de configuration.
+	  ~\\
+	  ~\\
+	  ~\\
 	\paragraph{}
 	  Ces étapes consistuent ainsi le fil conducteur du projet. 
 	  Il faut également noter l'existence d'une autre étape effectuée en parallèle : la réalisation de l'interface graphique.
@@ -191,7 +211,7 @@
 	  L'interface de l'application contient une barre de menu donnant accès aux multiples possibilités offertes par l'application.
 	  Le corps de l'interface affiche quant à lui trois onglets principaux dédiés aux différentes fonctionnalités du progiciel. 
 	  
-	\paragraph{Le menu}
+	\section{Le menu}
 	% Actions -> lier : opérationnel ??
 	% Fichier -> Export de calendrier opérationnel ??
 	% Fichier -> Différence export / export au format ICS ??
@@ -215,132 +235,131 @@
 	  \paragraph{}
 	    La quatrième et dernière rubrique propose un champ ''Aide``, qui affiche le manuel d'utilisateur, ainsi qu'un champ qui redirige l'usager vers une brève présentation du projet STCal. 
       
-	  \paragraph{Les onglets}
+        \section{Les onglets}
 	  %Lier -> zone Informations opérationnelle ?
 	  
+	  \paragraph{}
+	    Trois onglets sont accessibles à l'utilisateur.
 	  
+	  \paragraph{L'onglet Lier}
 	    \paragraph{}
-	      Trois onglets sont accessibles à l'utilisateur.
-	  
-	    \paragraph{L'onglet Lier}
-	      \paragraph{}
-		La première page est destinée à afficher les acteurs principaux, à savoir les étudiants et les enseignants. 
-		En effet, on peut diviser cette page intitulée ''Lier`` en trois parties.
-		
-	      \paragraph{}
-		La partie de gauche affiche une liste de professeurs importée depuis un fichier CSV, et de la même manière, la partie de droite montre une liste d'étudiants provenant d'un deuxième fichier au format CSV.
-		Les personnes, étudiants et enseignants, contenues dans ces listes ne sont alors caractérisées que par leur nom et leur prénom.
-		Il faut bien noter que l'import est obligatoire puisque l'application ne possède aucune fonctionnalité d'établissement de listes.
+	      La première page est destinée à afficher les acteurs principaux, à savoir les étudiants et les enseignants. 
+	      En effet, on peut diviser cette page intitulée ''Lier`` en trois parties.
 	      
+	    \paragraph{}
+	      La partie de gauche affiche une liste de professeurs importée depuis un fichier CSV, et de la même manière, la partie de droite montre une liste d'étudiants provenant d'un deuxième fichier au format CSV.
+	      Les personnes, étudiants et enseignants, contenues dans ces listes ne sont alors caractérisées que par leur nom et leur prénom.
+	      Il faut bien noter que l'import est obligatoire puisque l'application ne possède aucune fonctionnalité d'établissement de listes.
+	    
+	    \paragraph{}
+	      La partie centrale contient les appels aux fonctions nécessaires à l'import des fichiers d'étudiants d'une part, et à l'import des fichiers d'enseignants d'autre part.
+	      Ces fonctions demeurent accessibles grâce à des boutons portant le libellé correspondant.
+	      Ces boutons ne sont disponibles qu'une fois chacun : après l'import d'un fichier d'étudiants, respectivement d'enseignants, le bouton consacré à cette tâche n'est plus présent.
+	      Toutefois, il reste possible de réaliser de nouveaux imports à partir de la barre de menu située en haut de l'interface de l'application.
+	      Les personnes précédemment affichées dans la liste des objets du type de l'import immédiatement effectué sont alors remplacées par les valeurs du nouveau fichier.  
+	      
+	    \paragraph{}      
+	      La zone centrale présente également une portion révélant le statut et les nom et prénom de la dernière personne sélectionnée.
+	      Une fois un étudiant et un professeur sélectionnés, un bouton de validation apparaît.
+	      Après avoir enclenché ce bouton, les identifiants de la dernière personne sélectionnée disparaissent pour laisser place à la phrase de confirmation ''Stage créé``.
+	      En effet, on considérera comme stages les couples étudiant/enseignant effectués.
+	      Un stage est alors formé et consultable dans l'onglet ''Stages``. 
+	      L'étudiant concerné est alors effacé de la liste, en revanche, le professeur conserve sa disponibilité pour s'occuper des stages d'autres étudiants.
+	      Aucun étudiant n'étant alors sélectionné, le bouton de validation reste inaccessible jusqu'à ce qu'un enseignant et un nouvel étudiant soient sélectionnés.
+	      
+	  \paragraph{L'onglet Stage}
 	      \paragraph{}
-		La partie centrale contient les appels aux fonctions nécessaires à l'import des fichiers d'étudiants d'une part, et à l'import des fichiers d'enseignants d'autre part.
-		Ces fonctions demeurent accessibles grâce à des boutons portant le libellé correspondant.
-		Ces boutons ne sont disponibles qu'une fois chacun : après l'import d'un fichier d'étudiants, respectivement d'enseignants, le bouton consacré à cette tâche n'est plus présent.
-		Toutefois, il reste possible de réaliser de nouveaux imports à partir de la barre de menu située en haut de l'interface de l'application.
-		Les personnes précédemment affichées dans la liste des objets du type de l'import immédiatement effectué sont alors remplacées par les valeurs du nouveau fichier.  
+		L'onglet ''Stage`` contient également deux sections.
 		
-	      \paragraph{}      
-		La zone centrale présente également une portion révélant le statut et les nom et prénom de la dernière personne sélectionnée.
-		Une fois un étudiant et un professeur sélectionnés, un bouton de validation apparaît.
-		Après avoir enclenché ce bouton, les identifiants de la dernière personne sélectionnée disparaissent pour laisser place à la phrase de confirmation ''Stage créé``.
-		En effet, on considérera comme stages les couples étudiant/enseignant effectués.
-		Un stage est alors formé et consultable dans l'onglet ''Stages``. 
-		L'étudiant concerné est alors effacé de la liste, en revanche, le professeur conserve sa disponibilité pour s'occuper des stages d'autres étudiants.
-		Aucun étudiant n'étant alors sélectionné, le bouton de validation reste inaccessible jusqu'à ce qu'un enseignant et un nouvel étudiant soient sélectionnés.
+	      \paragraph{}
+		La partie gauche est consacrée à l'affichage des différents stages créés dans l'onglet précédent.
+		Cette affichage est présenté sous forme d'arborescence.
+		Le dossier racine a pour titre ''Listes des stages``.
+		Il contient alors plusieurs sous-dossiers correspondant aux professeurs liés à au moins un étudiant.
+		Ces sous-dossiers possèdent des fichiers représentant les étudiants liés à l'enseignant en question.
 		
-	    \paragraph{L'onglet Stage}
-		\paragraph{}
-		  L'onglet ''Stage`` contient également deux sections.
-		  
-		\paragraph{}
-		  La partie gauche est consacrée à l'affichage des différents stages créés dans l'onglet précédent.
-		  Cette affichage est présenté sous forme d'arborescence.
-		  Le dossier racine a pour titre ''Listes des stages``.
-		  Il contient alors plusieurs sous-dossiers correspondant aux professeurs liés à au moins un étudiant.
-		  Ces sous-dossiers possèdent des fichiers représentant les étudiants liés à l'enseignant en question.
-		  
-		\paragraph{}
-		  Dans cette moitié gauche se trouve également un bouton permettant la suppression d'un stage.
-		  Ce bouton est accessible uniquement dans le cas où un étudiant est sélectionné.
-		  Les dossiers-professeurs ainsi que le dossier racine ne peuvent être supprimés.
-		  La dossier racine est donc toujours présent dans cette section.
-		  Un dossier, représentant un professeur ne disparaît que lorsqu'il ne contient aucun étudiant.
-		  Ainsi, en cas de suppression du dernier stagiaire rattaché à un enseignant, le dossier symbolisant ce dernier disparaît en même temps que le fichier-étudiant.
-		  De cette manière, un dossier n'est jamais vide.
-		  
-		\paragraph{}
-		  Lorsqu'un étudiant est supprimé de cette arborescence, le stage est effacé.
-		  L'étudiant réapparaît alors dans la liste de tous les étudiants située dans l'onglet ''Lier`` et redevient disponible pour une affectation à un professeur.
-		  
-		\paragraph{}
-		  La moitié droite de cette fenêtre renseigne avec plus de détails sur les personnes présentes dans l'arborescence représentant les stages.
-		  En effet, on peut remarquer la présence d'un cadre appelé ''Informations``, qui contient lui-même deux fenêtres.
-		  La première est vouée à détailler les informations de l'étudiant courant. 
-		  Quant à la seconde, elle renseigne l'utilisateur sur les données se rapportant au professeur en charge du stage de l'étudiant courant. 
-		  Cette moitié de l'onglet ''Stage`` expose également une phrase d'indication de la démarche à suivre pour connaître les données approfondies d'une personne, destinée au client lors de sa première venue sur cet onglet.
-		  
-	      \paragraph{L'onglet Calendrier}
-		\paragraph{}
-		  \textit{Dans cette partie, il importe de savoir que du point de vue de la hiérarchie des classes gérant le calendrier, on considère qu'une journée est divisée en créneaux, qui correspondent aux horaires de passage, contenant eux-mêmes des soutenances, qui sont caractérisées par un couple étudiant/professeur et une salle	.} 
-		  
-		\paragraph{}  
-		  La création d'un calendrier nécessite plusieurs étapes préliminaires.
-		  En effet, l'usager doit passer par le renseignement de cinq paramètres avant de pouvoir générer un planning de soutenances.
-		  
-		\paragraph{}
-		  L'interface de cet onglet est scindé horizontalement en deux zones.
-		  La zone du haut est uniquement vouée à la première information à définir.
-		  Il s'agit de la date de la soutenance.
-		  Un calendrier occupe donc l'espace supérieur de l'interface.
-		  Chaque case du calendrier est cliquable, l'utilisateur choisit donc le jour qu'il souhaite par ce moyen.
-		  Il peut bien sûr régler le mois et l'année grâce à des champs situés juste au dessus du calendrier.
-		  Par défaut, la date choisie est la date courante.
-		  
-		\paragraph{}
-		  La zone inférieure de cet onglet du progiciel concerne tous les autres paramètres à déterminer.
-		  Une fois la date choisie, l'usager doit choisir les heures de début et de fin de la journée.
-		  Deux champs sont alors mis à sa disposition sous forme de listes déroulantes contenant toutes les heures entières de 7h à 20h.
-		  Après avoir fixé la date de début de journée, la deuxième liste déroulante ne possède évidemment plus que les heures postérieures à la date de début.
-		  
-		\paragraph{}
-		  La prochaine étape consiste à établir la durée d'une soutenance.
-		  Enfin, le responsable de stages doit saisir le nombre de soutenances maximal qu'il est possible d'organiser à un même horaire.
-		  Tous les champs étant remplis, le planning peut alors être généré.
-		  
-		\paragraph{}
-		  Lorsque la fonction de génération du calendrier est enclenchée, une redirection est effectuée vers une nouvelle page.
-		  Cette dernière présente une zone dans laquelle sont affichés les noms des étudiants faisant partie d'un stage, une deuxième affichant le planning de la journée choisie précédemment, et une troisième énumérant les étudiants passant leur soutenance à un horaire préalablement sélectionné.
-		  
-		\paragraph{}
-		  La première section montre uniquement les étudiants étant rattachés à un responsable de stage, composant ainsi un stage.
-		  Les professeurs sont absents dans cette rubrique. De plus, les stagiaires sont affichés sous forme de simple liste, et non pas d'arborescence.
-		  
-		\paragraph{}
-		  La partie centrale affiche tous les horaires de la journée sélectionnée pour les soutenances.
-		  La date est écrite en haut de ce planning.
-		  Les horaires de passage dépendent logiquement de la durée d'une soutenance.
-		  Les soutenances sont créées simplement par déplacement d'un étudiant sur un créneau.
-		  Dès qu'un étudiant est sélectionné, les créneaux changent de couleur : les créneaux de couleur verte sont disponibles pour la soutenance de cet étudiant.
-		  A l'inverse, si un créneau est devient rouge, il demeure inaccessible pour ce stage.
-		  Les modalités d'indisponibilité d'un créneau sont celles spécifiées dans la deuxième partie du cahier des charges.
-		  En cas de tentative de création d'une soutenance à une plage horaire bloquée, un message expliquant la nature du problème apparaît.
-		  
-		\paragraph{}
-		  A la création d'une soutenance, le nom de l'étudiant s'inscrit dans le créneau, à côté de l'heure à laquelle débute celui-ci.
-		  Lorsqu'une plage est sélectionnée, l'étudiant apparaît également dans la troisième partie de la page située dans le tiers le plus à droite, qui révèle sous forme de liste tous les étudiants passant leur examen oral à cet horaire.
-		  
-		\paragraph{}
-		  Un bouton de suppression d'une soutenance est présent en bas de l'écran.
-		  La fonction liée à ce bouton permet d'effacer une soutenance sans effacer le stage.
-		  C'est pourquoi l'étudiant en question disparaît du créneau et de la liste de droite mais reste visible dans la liste de gauche et dans l'onglet ''Stage``, qui demeure ainsi l'unique onglet dans lequel supprimer un stage est possible.
-		 
-		 ~\\
-		 ~\\
-		 ~\\
-		\paragraph{}
-		  Comme nous avons pu le remarquer, la réalisation demeure assez complète.
-		  De plus, l'interface est hiérarchisée et aérée, ce qui fait de l'application un outil très simple d'utilisation, et ce même pour les personnes mal à l'aise avec l'informatique.
-		  
+	      \paragraph{}
+		Dans cette moitié gauche se trouve également un bouton permettant la suppression d'un stage.
+		Ce bouton est accessible uniquement dans le cas où un étudiant est sélectionné.
+		Les dossiers-professeurs ainsi que le dossier racine ne peuvent être supprimés.
+		La dossier racine est donc toujours présent dans cette section.
+		Un dossier, représentant un professeur ne disparaît que lorsqu'il ne contient aucun étudiant.
+		Ainsi, en cas de suppression du dernier stagiaire rattaché à un enseignant, le dossier symbolisant ce dernier disparaît en même temps que le fichier-étudiant.
+		De cette manière, un dossier n'est jamais vide.
+		
+	      \paragraph{}
+		Lorsqu'un étudiant est supprimé de cette arborescence, le stage est effacé.
+		L'étudiant réapparaît alors dans la liste de tous les étudiants située dans l'onglet ''Lier`` et redevient disponible pour une affectation à un professeur.
+		
+	      \paragraph{}
+		La moitié droite de cette fenêtre renseigne avec plus de détails sur les personnes présentes dans l'arborescence représentant les stages.
+		En effet, on peut remarquer la présence d'un cadre appelé ''Informations``, qui contient lui-même deux fenêtres.
+		La première est vouée à détailler les informations de l'étudiant courant. 
+		Quant à la seconde, elle renseigne l'utilisateur sur les données se rapportant au professeur en charge du stage de l'étudiant courant. 
+		Cette moitié de l'onglet ''Stage`` expose également une phrase d'indication de la démarche à suivre pour connaître les données approfondies d'une personne, destinée au client lors de sa première venue sur cet onglet.
+		
+	    \paragraph{L'onglet Calendrier}
+	      \paragraph{}
+		\textit{Dans cette partie, il importe de savoir que du point de vue de la hiérarchie des classes gérant le calendrier, on considère qu'une journée est divisée en créneaux, qui correspondent aux horaires de passage, contenant eux-mêmes des soutenances, qui sont caractérisées par un couple étudiant/professeur et une salle	.} 
+		
+	      \paragraph{}  
+		La création d'un calendrier nécessite plusieurs étapes préliminaires.
+		En effet, l'usager doit passer par le renseignement de cinq paramètres avant de pouvoir générer un planning de soutenances.
+		
+	      \paragraph{}
+		L'interface de cet onglet est scindé horizontalement en deux zones.
+		La zone du haut est uniquement vouée à la première information à définir.
+		Il s'agit de la date de la soutenance.
+		Un calendrier occupe donc l'espace supérieur de l'interface.
+		Chaque case du calendrier est cliquable, l'utilisateur choisit donc le jour qu'il souhaite par ce moyen.
+		Il peut bien sûr régler le mois et l'année grâce à des champs situés juste au dessus du calendrier.
+		Par défaut, la date choisie est la date courante.
+		
+	      \paragraph{}
+		La zone inférieure de cet onglet du progiciel concerne tous les autres paramètres à déterminer.
+		Une fois la date choisie, l'usager doit choisir les heures de début et de fin de la journée.
+		Deux champs sont alors mis à sa disposition sous forme de listes déroulantes contenant toutes les heures entières de 7h à 20h.
+		Après avoir fixé la date de début de journée, la deuxième liste déroulante ne possède évidemment plus que les heures postérieures à la date de début.
+		
+	      \paragraph{}
+		La prochaine étape consiste à établir la durée d'une soutenance.
+		Enfin, le responsable de stages doit saisir le nombre de soutenances maximal qu'il est possible d'organiser à un même horaire.
+		Tous les champs étant remplis, le planning peut alors être généré.
+		
+	      \paragraph{}
+		Lorsque la fonction de génération du calendrier est enclenchée, une redirection est effectuée vers une nouvelle page.
+		Cette dernière présente une zone dans laquelle sont affichés les noms des étudiants faisant partie d'un stage, une deuxième affichant le planning de la journée choisie précédemment, et une troisième énumérant les étudiants passant leur soutenance à un horaire préalablement sélectionné.
+		
+	      \paragraph{}
+		La première section montre uniquement les étudiants étant rattachés à un responsable de stage, composant ainsi un stage.
+		Les professeurs sont absents dans cette rubrique. De plus, les stagiaires sont affichés sous forme de simple liste, et non pas d'arborescence.
+		
+	      \paragraph{}
+		La partie centrale affiche tous les horaires de la journée sélectionnée pour les soutenances.
+		La date est écrite en haut de ce planning.
+		Les horaires de passage dépendent logiquement de la durée d'une soutenance.
+		Les soutenances sont créées simplement par déplacement d'un étudiant sur un créneau.
+		Dès qu'un étudiant est sélectionné, les créneaux changent de couleur : les créneaux de couleur verte sont disponibles pour la soutenance de cet étudiant.
+		A l'inverse, si un créneau est devient rouge, il demeure inaccessible pour ce stage.
+		Les modalités d'indisponibilité d'un créneau sont celles spécifiées dans la deuxième partie du cahier des charges.
+		En cas de tentative de création d'une soutenance à une plage horaire bloquée, un message expliquant la nature du problème apparaît.
+		
+	      \paragraph{}
+		A la création d'une soutenance, le nom de l'étudiant s'inscrit dans le créneau, à côté de l'heure à laquelle débute celui-ci.
+		Lorsqu'une plage est sélectionnée, l'étudiant apparaît également dans la troisième partie de la page située dans le tiers le plus à droite, qui révèle sous forme de liste tous les étudiants passant leur examen oral à cet horaire.
+		
+	      \paragraph{}
+		Un bouton de suppression d'une soutenance est présent en bas de l'écran.
+		La fonction liée à ce bouton permet d'effacer une soutenance sans effacer le stage.
+		C'est pourquoi l'étudiant en question disparaît du créneau et de la liste de droite mais reste visible dans la liste de gauche et dans l'onglet ''Stage``, qui demeure ainsi l'unique onglet dans lequel supprimer un stage est possible.
+		
+		~\\
+		~\\
+		~\\
+	      \paragraph{}
+		Comme nous avons pu le remarquer, la réalisation demeure assez complète.
+		De plus, l'interface est hiérarchisée et aérée, ce qui fait de l'application un outil très simple d'utilisation, et ce même pour les personnes mal à l'aise avec l'informatique.
+		
   \chapter{Données}
       \paragraph{}
 	Après cette partie finalement essentiellement orientée vers l'apparence de l'application, nous allons poursuivre en expliquant le mode de fonctionnement de notre code et faire le point sur les outils utilisés en opposant les fonctions déjà existantes à celles créées par nos soins.
@@ -360,6 +379,7 @@
 	
 	
 	
+    \section{Outils}
       \paragraph{}
 	Ce projet a été le fruit résultant de l'union de nos créations et d'outils déjà existants. 
 	En effet, l'application été destinée à une utilisation pour un domaine bien précis, et n'ayant jamais connu de prototype par le passé, toutes les classes et méthodes de nos codes sources ont été entièrement réalisées durant cette année par notre groupe.
@@ -423,9 +443,9 @@
     
     \begin{tabular}{|l|l|}
       \hline
-	Dates de prévisions & Avancement du projet
+	Dates de prévisions & Avancement du projet\\
       \hline
-	... & ...
+	... & ...\\
       \hline
     \end{tabular}
 
@@ -468,4 +488,23 @@
     
 
 \part{Conclusion}
+  \paragraph{}
+    Finalement, ce projet a été plutôt bénéfique pour chacun d'entre nous, car il a permis de vivre l'expérience de réaliser un produit pour un client, avec les contraintes de cahier des charges et du temps que cela implique.
+    De plus, notre capacité à travailler en groupe a indéniablement été développée au contact de personnes avec qui nous n'avions pas toujours l'habitude de travailler.
+    Et même si certaines difficultés se sont fortement faites sentir, le bilan reste positif pour ce dernier projet réalisé dans le cadre de nos études en IUT d'informatique.
+    
+    \paragraph{}
+      Concernant le produit en lui-même, il reste des choses imcomplètes, inachevées et qui mériteraient d'être reprises, mais l'essentiel est présent.
+      L'application est opérationnelle. Les fonctionnalités principales du cahier des charges ont été développées avec succès à travers plus de quarante classes programmées en Java.
+      Le challenge est réussi puisque l'application présentes des options spécifiques tout en restant intuitive et esthétiquement correcte.
+      Et même si des portions sont manquantes, les tâches fonctionnelles ont été bien faites et représente justement la quantité de travail réalisée après cette période d'une année de développement.
+      
+    \paragraph{}
+      Dans l'optique d'un usage pédagogique, cette application peut finalement être continuée dans le cadre d'un nouveau projet par les étudiants des prochaines années.
+      Un dossier de tests des méthodes écrites a notamment été commencé mais n'a pas abouti et peut ainsi lier des matières enseignées en cours, ici le test fonctionnel, à une utilisation sur une application concrète.
+      
+      
+    \paragraph{}
+      Enfin, cette expérience nous a montré l'ampleur d'un projet entier et nous a ainsi préparé aux éventuelles situations similaires que nous retrouverons lors de travaux en entreprises, qui seront certainements intéressées pour recruter des personnes ayant déjà eu à gérer un projet, de sa conception à sa livraison, dans leurs rangs.
+    
 \end{document}          

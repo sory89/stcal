@@ -73,9 +73,6 @@ public class FLier extends FTab {
         info.setBorder(BorderFactory.createTitledBorder("Informations"));
 
 
-
-        //TODO scroll vertical non autorisé mais trouver solution pour afficher le texte correctement
-
         JScrollPane scrollPane = new JScrollPane(info);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         centre.add(scrollPane);

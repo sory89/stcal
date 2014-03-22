@@ -23,25 +23,14 @@ public class FMenu {
         JMenu menuaction = new JMenu("Actions");
         JMenuItem lier = new JMenuItem("Lier");
         lier.setToolTipText("Lier un étudiant à un enseignant.");
-        //TODO faire marcher le if
-
-            lier.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent)
-                {
-                    FLier.opt6.doClick();
-                }
-            });
-
-
-
-
-        /*lier.addActionListener(new ActionListener() {
+        lier.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                Main.lier(, , , , , );
+            public void actionPerformed(ActionEvent actionEvent)
+            {
+                FLier.opt6.doClick();
             }
-        });*/
+        });
+
         menuaction.add(lier);
 
         JMenu menuOther = new JMenu("?");

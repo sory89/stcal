@@ -3,7 +3,8 @@
 \usepackage[frenchb]{babel}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
-\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{array}
 
 
 \pagestyle{fancy}
@@ -24,24 +25,35 @@
 
 
 \begin{document}
- \begin{titlepage}%ta page de titre
-%les deux logos en haut
+ \begin{titlepage}
 
-%le reste du titre en plus
 \begin{center}
+~\\~\\~\\~\\~\\
 \Huge
 Projet STCal\\
-\Large
+\LARGE
 Rapport général\\
-~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\
-\author{Florian Barrois}
-~\\~\\~\\~\\~\\~\\~\\~\\~\\
-\includegraphics{iutbm.jpeg}
-\hfill
+~\\~\\~\\~\\~\\~\\
+\begin{multicols}{3}
+\large
+Florian Barrois\\Mehdi Loisel\\
+\columnbreak 
+Nicolas Devillers\\Jean Mercadier\\Willeme Verdeaux\\
+\columnbreak
+Valentin Jeanroy\\Ismail Taleb
+\end{multicols}
 \end{center}
-\end{titlepage}
-%la suite du rapport
 
+
+\begin{center}
+~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\
+ \includegraphics{iutbm.jpeg}
+ ~\\~\\~\\~\\~\\
+\large
+Année 2013-2014
+\end{center}
+
+\end{titlepage}
 
 \strut
 \renewcommand{\contentsname}{Sommaire}
@@ -213,7 +225,6 @@ Rapport général\\
 	  Le corps de l'interface affiche quant à lui trois onglets principaux dédiés aux différentes fonctionnalités du progiciel. 
 	  
 	\section{Le menu}
-	% Actions -> lier : opérationnel ??
 	% Fichier -> Export de calendrier opérationnel ??
 	% Fichier -> Différence export / export au format ICS ??
 	% ? -> Raccourcis : opérationnels ??
@@ -237,7 +248,6 @@ Rapport général\\
 	    La quatrième et dernière rubrique propose un champ ''Aide``, qui affiche le manuel d'utilisateur, ainsi qu'un champ qui redirige l'usager vers une brève présentation du projet STCal. 
       
         \section{Les onglets}
-	  %Lier -> zone Informations opérationnelle ?
 	  
 	  \paragraph{}
 	    Trois onglets sont accessibles à l'utilisateur.
@@ -261,6 +271,7 @@ Rapport général\\
 	      
 	    \paragraph{}      
 	      La zone centrale présente également une portion révélant le statut et les nom et prénom de la dernière personne sélectionnée.
+	      Un autre cadre situé en bas de la fenêtre affiche toutes les informations complémentaires connues au sujet de la personne sélectionnée : le numéro de téléphone, ou l'adresse par exemple.
 	      Une fois un étudiant et un professeur sélectionnés, un bouton de validation apparaît.
 	      Après avoir enclenché ce bouton, les identifiants de la dernière personne sélectionnée disparaissent pour laisser place à la phrase de confirmation ''Stage créé``.
 	      En effet, on considérera comme stages les couples étudiant/enseignant effectués.
@@ -372,11 +383,9 @@ Rapport général\\
       
       \paragraph{}
 	Les classes Java ne seront pas détaillées dans ce rapport car leur description sera l'objet d'un rapport technique.
-	Voici tout de même le modèle avec lequel nous avons travaillé dur pour obtenir le résultat que nous connaissons :
-	
-	
-	
-	%%%%%%%%%%%%%% SCREENSHOT REPRÉSENTATION UML %%%%%%%%%%%%%%%%
+	A titre d'indication rapide notons simplement que les classes essentielles sont celles permettant d'instancier un étudiant, un professeur et un couple réunissant ces deux propriétés.
+	La quasi totalité des autres classes concernant le modèle et le contrôleur sont donc issues de ces dernières et possèdent généralement des relations d'héritage avec celles-ci, ce qui permet le traitement des données dans toute l'application.
+	Le même principe d'héritage est appliqué aux classes de gestion du calendrier, un créneau étant composé de soutenances, elles-mêmes réunissant un stage et un enseignant candide.
 	
 	
 	
@@ -391,6 +400,7 @@ Rapport général\\
 	
 		
 \part{Gestion du projet}
+\setcounter{chapter}{0}
       \paragraph{}
 	  La réalisation de notre progiciel est au final plutôt aboutie, mais comme dans tout projet, chacun des membres de notre groupe a connu des diffcultés, qui se sont présentées sous différentes formes.
 	  Voyons ensemble, quelles ont été ces dernières à travers la répartition des tâches, la gestion du temps et les difficultés liées au travail en lui-même.
@@ -402,34 +412,52 @@ Rapport général\\
       ~\\
       ~\\
       \begin{center}
+	\textbf{Tableau de répartition des tâches}
+	~\\~\\
 	\begin{tabular}{|l|l|}
 	  \hline
-	  Membres du groupe & Tâches attribuées \\
+	  \textbf{Membres du groupe} & \textbf{Tâches attribuées} \\
 	  \hline
-	    Florian Barrois & ... \\
-	    & ... \\
+	    Florian Barrois 
+	    & Réalisation des classes de base du modèle (Étudiant, Professeur, Couple...); \\
+	    & Conception du modèle; \\
+	    & Mise en fonctionnement de certaines fonctionnalités de la barre de menu;\\
+	    & Optimisation de l'interface;\\
+	    & Rédaction du rapport général et du manuel d'utilisateur.\\
 	  \hline
-	    Nicolas Devillers & ... \\
-	    & ...\\
+	    Nicolas Devillers 
+	    & Gestion des classes permettant l'import de fichiers CSV; \\
 	    \hline
-	    Valentin Jeanroy & ... \\
-	    & ...\\
+	    Valentin Jeanroy 
+	    & Conception du modèle; \\
+	    & Travail réalisé sur l'interface;\\
+	    & Mise en place du fonctionnement et de l'interface du calendrier;\\
+	    & Création des fonctionnalités de tri et gestion des listes.\\
 	    \hline
-	    Mehdi Loisel & ... \\
-	    & ...\\
+	    Mehdi Loisel 
+	    & Mise en place du fonctionnement et de l'interface du calendrier; \\
+	    & Gestion de l'export de calendrier au format ICS;\\
+	    & Travail réalisé sur l'interface;\\
+	    & Optimisation de l'interface.\\
 	    \hline
-	    Jean Mercadier & ... \\
-	    & ...\\
+	    Jean Mercadier
+	    & Création de l'interface; \\
+	    (chef de projet)& Travail réalisé sur l'interface et les retours en console;\\
+	    & Mise en fonctionnement de certaines rubriques de la barre de menu;\\
+	    & Rédaction de la plupart des fichiers et du programme principal;\\
+	    & Implémentation de la base de données;\\
+	    & Création des fichiers d'importation;\\
+	    & Rédaction du rapport technique.\\
 	    \hline
-	    Ismail Taleb & ... \\
-	    & ...\\
+	    Ismail Taleb 
+	    & Mise en place de la fonctionnalité de ''Drag and Drop``; \\
+	    & Contribution à l'élaboration du calendrier.\\
+	    & Gestion des listes.\\
 	    \hline
-	    Willeme Verdeaux & ... \\
-	    & ...\\
+	    Willeme Verdeaux & Travail réalisé sur l'interface. \\
 	  \hline
 	\end{tabular}
-	
-	Tableau de répartition des tâches
+
       \end{center}
       
       

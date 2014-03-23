@@ -23,7 +23,7 @@
 \renewcommand{\chaptername}{}
 
 \title{\Huge{Projet STCal}\\ {\Large Rapport général}}
-\author{Florian Barrois \and Nicolas Devillers \and Valentin Jeanroy \and Mehdi Loisel \and Jean Mercadier \and Ismail Taleb \and Willeme Verdeaux}
+\author{Florian Barrois \and Nicolas Devilers \and Valentin Jeanroy \and Mehdi Loisel \and Jean Mercadier \and Ismail Taleb \and Willeme Verdeaux}
 
 
 \begin{document}
@@ -40,7 +40,7 @@ Rapport général\\
 \large
 Florian Barrois\\Mehdi Loisel\\
 \columnbreak 
-Nicolas Devillers\\Jean Mercadier\\Willeme Verdeaux\\
+Nicolas Devilers\\Jean Mercadier\\Willeme Verdeaux\\
 \columnbreak
 Valentin Jeanroy\\Ismail Taleb
 \end{multicols}
@@ -272,7 +272,7 @@ Année 2013-2014
 	  
 	    \begin{figure}[!h]
 	  
-	    \hbox to12cm{\hss\includegraphics[width=16cm]{Lier.png}\hss}
+	    \hbox to12cm{\hss\includegraphics[width=18cm]{Lier.png}\hss}
 	    \caption{Onglet Lier après imports}
 	    \end{figure}
 
@@ -298,8 +298,11 @@ Année 2013-2014
 	      
 	    \paragraph{}      
 	      La zone centrale présente également une portion révélant le statut et les nom et prénom de la dernière personne sélectionnée.
-	      Un autre cadre situé en bas de la fenêtre affiche toutes les informations complémentaires connues au sujet de la personne sélectionnée : le numéro de téléphone, ou l'adresse par exemple.
+	      Un autre cadre situé en bas de la fenêtre affiche aussi toutes les informations complémentaires connues au sujet de la personne sélectionnée, comme le numéro de téléphone, ou l'adresse par exemple.
+	      Au-dessus ce ce cadre se trouve un champ permettant la saisie d'un diminutif pour professeur sélectionné.
+	      Ce champ est en revanche inaccessible à la saisie de diminutif d'un étudiant.      
 	      Une fois un étudiant et un professeur sélectionnés, un bouton de validation apparaît.
+	      Ce bouton peut être actionné seulement si un étudiant et un professeur auquel a été attribué un diminutif sont sélectionnés.
 	    
 	    \paragraph{}
 	      Après avoir enclenché ce bouton, les identifiants de la dernière personne sélectionnée disparaissent pour laisser place à la phrase de confirmation ''Stage créé``.
@@ -312,7 +315,7 @@ Année 2013-2014
 	  \paragraph{L'onglet Stage}
 	  ~\\~\\
 	      \begin{figure}[H]
-		\hbox to12cm{\hss\includegraphics[width=16cm]{Stage.png}\hss}
+		\hbox to12cm{\hss\includegraphics[width=18cm]{Stage.png}\hss}
 		\caption{Onglet Stage}
 	      \end{figure}
 	  
@@ -355,7 +358,7 @@ Année 2013-2014
 		\textit{Dans cette partie, il importe de savoir que du point de vue de la hiérarchie des classes gérant le calendrier, on considère qu'une journée est divisée en créneaux, qui correspondent aux horaires de passage, contenant eux-mêmes des soutenances, qui sont caractérisées par un couple étudiant/professeur et une salle	.} 
 		
 		\begin{figure}[!h]
-		\hbox to12cm{\hss\includegraphics[width=16cm]{Calendrier.png}\hss}
+		\hbox to12cm{\hss\includegraphics[width=18cm]{Calendrier.png}\hss}
 		\caption{Onglet de paramètrage du calendrier}
 		\end{figure}
 		
@@ -385,7 +388,7 @@ Année 2013-2014
 		~\\~\\
 		
 		\begin{figure}[!h]
-		\hbox to12cm{\hss\includegraphics[width=16cm]{Calendrier2.png}\hss}
+		\hbox to12cm{\hss\includegraphics[width=18cm]{Calendrier2.png}\hss}
 		\caption{Onglet Calendrier}
 		\end{figure}
 		
@@ -479,12 +482,12 @@ Année 2013-2014
 	      & Optimisation de l'interface;\\
 	      & Rédaction du rapport général et du manuel d'utilisateur.\\
 	    \hline
-	      Nicolas Devillers 
+	      Nicolas Devilers 
 	      & Gestion des classes permettant l'import de fichiers CSV;\\
 	      & Optimisation de l'interface.\\
 	      \hline
 	      Valentin Jeanroy 
-	      & Conception du modèle; \\
+	      & Conception du modèle et implémentation de celui-ci sur toutes les classes; \\
 	      & Travail réalisé sur l'interface;\\
 	      & Mise en place du fonctionnement et de l'interface du calendrier;\\
 	      & Création des fonctionnalités de tri;\\
@@ -534,7 +537,7 @@ Année 2013-2014
 	\hbox to12cm{\hss
 	\begin{tabular}{|l|l|}
 	    \hline
-	      \textbf{Périodes} &  \textbf{Avancement du projet}\\
+	      \textbf{Période} &  \textbf{Avancement du projet}\\
 	    \hline
 	      Fin mai 2013 & Début du projet.\\
 	    \hline
@@ -568,7 +571,7 @@ Année 2013-2014
 	\hbox to12cm{\hss
 	\begin{tabular}{|l|l|}
 	  \hline
-	    \textbf{Périodes} &  \textbf{Avancement du projet}\\
+	    \textbf{Période} &  \textbf{Avancement du projet}\\
 	  \hline
 	    Fin mai 2013 & Début du projet.\\
 	  \hline
@@ -655,7 +658,7 @@ Année 2013-2014
       
     \paragraph{}
       Dans l'optique d'un usage pédagogique, cette application peut finalement être continuée dans le cadre d'un nouveau projet par les étudiants des prochaines années.
-      Un dossier de tests des méthodes écrites a notamment été commencé mais n'a pas abouti et peut ainsi lier des matières enseignées en cours, ici le test fonctionnel, à une utilisation sur une application concrète.
+      Un dossier de tests des méthodes écrites a notamment été commencé mais n'a pas abouti et peut ainsi lier des matières enseignées en cours, le test fonctionnel en l'occurence, à une utilisation sur une application concrète.
       
       
     \paragraph{}

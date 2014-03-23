@@ -76,8 +76,8 @@ public class FMenu {
         });
         menufile.add(openprof);
         menufile.addSeparator();
-        JMenuItem exportIcs = new JMenuItem("Exporter au format ICS");
-        exportIcs.setToolTipText("Exporter le calendrier au format ICS.");
+        JMenuItem exportIcs = new JMenuItem("Exporter au format ICS ou PDF");
+        exportIcs.setToolTipText("Exporter le calendrier au format ICS ou PDF.");
 
 
         exportIcs.addActionListener(new ActionListener() {

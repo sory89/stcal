@@ -54,7 +54,7 @@ public class FCal extends FTab{
     protected JComboBox<DPersonne> jcbcandide = new JComboBox();
     public DateChooserPanel chooserDebut= new DateChooserPanel();
     protected JTable jt=null;
-    protected JButton supprimers = new JButton("Supprimer ce stage");
+    protected JButton supprimers = new JButton("Supprimer cette soutenance");
     protected JButton okcand = new JButton("Valider");
     public static DynamicTreeDemo newContentPane;
     protected JFormattedTextField creneau = null;

@@ -16,7 +16,7 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class FLier extends FTab {
-    protected JLabel info = new JLabel("<html>Sélectionner un étudiant ou un enseignant pour afficher ses informations.</html>");
+    protected JLabel info = new JLabel("<html>Sélectionnez un étudiant ou un enseignant pour afficher ses informations.</html>");
     protected JLabel courant = new JLabel("Aucune personne sélectionnée");
     protected JPanel option= new JPanel();
     protected JList Fetu;

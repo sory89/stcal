@@ -5,13 +5,15 @@
 \usepackage{graphicx}
 \usepackage{multicol}
 \usepackage{array}
+\usepackage{float}
+\usepackage{chngcntr}
 
 
 \pagestyle{fancy}
 \renewcommand\headrulewidth{0pt}
 \renewcommand\footrulewidth{1pt}
 \fancyfoot[L]{Projet STCal}
-\fancyfoot[R]{IUT}
+\fancyfoot[R]{IUT Informatique de Belfort}
 \lhead{}
 \rhead{}
 \date{}
@@ -60,6 +62,9 @@ Année 2013-2014
 \tableofcontents
 
 \part{Introduction}
+  \paragraph{}
+    Le projet que nous nous apprêtons à vous présenter est celui réalisé par notre groupe de sept étudiants suivant des cours en informatique à l'Institut Universitaire de Belfort.
+    
   \paragraph{}
     Dans le cadre de notre projet tutoré, nous avons dû réfléchir à un secteur d'activité nécessitant des outils informatiques relativement simples mais essentiels. 
     Ainsi, au vu du besoin éprouvé par nos enseignants de travailler avec des outils plus simples, nous avons choisi de réaliser un progiciel à utilité pédagogique.
@@ -111,12 +116,14 @@ Année 2013-2014
       \item La création d'une base de données. 
       \item L'existence d'un système de sauvegarde.
     \end{enumerate}
-  
+  ~\\~\\
+    \paragraph{}
+      En plus de ces quatre fonctions principales, d'autres seront créées dans le but de faciliter le travail de l'utilisateur. 
   
 
   \chapter{Développement et contraintes}
 
-    Le développement s'effectuera en quatre étapes, qui contiendront différentes tâches. Ces étapes et tâches seront ordonnées de manière à ce que le côté fonctionnel de l'application soit prioritaire :
+    Le développement s'effectuera en quatre étapes, qui contiendront les différentes tâches. Ces étapes et tâches seront ordonnées de manière à ce que le côté fonctionnel de l'application soit prioritaire :
 
     \section{Première étape}
 
@@ -144,7 +151,10 @@ Année 2013-2014
 	
 	\paragraph{}
 	L’application comportera une fonction de création d’emploi du temps vide et une seconde permettant le remplissage de celui-ci avec les soutenances de chacun des étudiants.
+	\newline
+	\newline
 	Les plages horaires réservées contiendront les informations suivantes :
+	\newline
 	\renewcommand\labelitemi{\textbullet}
 	\begin{itemize}
 	  \item Le nom de l’enseignant tuteur;
@@ -183,6 +193,8 @@ Année 2013-2014
 	  La contrainte principale de cette étape consiste à éviter la présence de doublons dans la base données. 
 	  Le progiciel devra donc afficher un message d'erreur si les données telles que le nom et le prénom d'une personne, étudiant ou enseignant, entrées dans l'application sont déjà présentes dans la base de données. 
       
+      ~\\~\\~\\~\\
+      
     \section{Quatrième étape}
       \subsection{Développement}
 	\paragraph{}
@@ -197,6 +209,8 @@ Année 2013-2014
 	  ~\\
 	  ~\\
 	  ~\\
+	  ~\\
+	  ~\\
 	\paragraph{}
 	  Ces étapes consistuent ainsi le fil conducteur du projet. 
 	  Il faut également noter l'existence d'une autre étape effectuée en parallèle : la réalisation de l'interface graphique.
@@ -205,6 +219,7 @@ Année 2013-2014
 	
 \part{Réalisation}
   \setcounter{chapter}{0}
+  \counterwithout{figure}{chapter}
   
 	\paragraph{}
 	  Nous avons abordé la problématique et les étapes du sujet.
@@ -219,17 +234,16 @@ Année 2013-2014
 	  Quant à l'interface graphique, elle sera implémentée à partir la bibliothèque graphique Java Swing.
   
   
-  \chapter{Interface}	%SCREENSHOTS !!
+  \chapter{Interface}
 	\paragraph{}
 	  L'interface de l'application contient une barre de menu donnant accès aux multiples possibilités offertes par l'application.
 	  Le corps de l'interface affiche quant à lui trois onglets principaux dédiés aux différentes fonctionnalités du progiciel. 
 	  
 	\section{Le menu}
-	% Actions -> lier : opérationnel ??
+	
+	
 	% Fichier -> Export de calendrier opérationnel ??
-	% Fichier -> Différence export / export au format ICS ??
 	% ? -> Raccourcis : opérationnels ??
-	% Calendrier -> interfaces définitives ??
 	  \paragraph{}
 	    La barre de menu est composée elle-même de plusieurs sous menus.
 	  \paragraph{}
@@ -254,6 +268,16 @@ Année 2013-2014
 	    Trois onglets sont accessibles à l'utilisateur.
 	  
 	  \paragraph{L'onglet Lier}
+	  ~\\~\\
+	  
+	    \begin{figure}[!h]
+	  
+	    \hbox to12cm{\hss\includegraphics[width=16cm]{Lier.png}\hss}
+	    \caption{Onglet Lier après imports}
+	    \end{figure}
+
+	  
+	  
 	    \paragraph{}
 	      La première page est destinée à afficher les acteurs principaux, à savoir les étudiants et les enseignants. 
 	      En effet, on peut diviser cette page intitulée ''Lier`` en trois parties.
@@ -266,6 +290,8 @@ Année 2013-2014
 	    \paragraph{}
 	      La partie centrale contient les appels aux fonctions nécessaires à l'import des fichiers d'étudiants d'une part, et à l'import des fichiers d'enseignants d'autre part.
 	      Ces fonctions demeurent accessibles grâce à des boutons portant le libellé correspondant.
+	     
+	    \paragraph{}  
 	      Ces boutons ne sont disponibles qu'une fois chacun : après l'import d'un fichier d'étudiants, respectivement d'enseignants, le bouton consacré à cette tâche n'est plus présent.
 	      Toutefois, il reste possible de réaliser de nouveaux imports à partir de la barre de menu située en haut de l'interface de l'application.
 	      Les personnes précédemment affichées dans la liste des objets du type de l'import immédiatement effectué sont alors remplacées par les valeurs du nouveau fichier.  
@@ -274,15 +300,27 @@ Année 2013-2014
 	      La zone centrale présente également une portion révélant le statut et les nom et prénom de la dernière personne sélectionnée.
 	      Un autre cadre situé en bas de la fenêtre affiche toutes les informations complémentaires connues au sujet de la personne sélectionnée : le numéro de téléphone, ou l'adresse par exemple.
 	      Une fois un étudiant et un professeur sélectionnés, un bouton de validation apparaît.
+	    
+	    \paragraph{}
 	      Après avoir enclenché ce bouton, les identifiants de la dernière personne sélectionnée disparaissent pour laisser place à la phrase de confirmation ''Stage créé``.
 	      En effet, on considérera comme stages les couples étudiant/enseignant effectués.
 	      Un stage est alors formé et consultable dans l'onglet ''Stages``. 
 	      L'étudiant concerné est alors effacé de la liste, en revanche, le professeur conserve sa disponibilité pour s'occuper des stages d'autres étudiants.
 	      Aucun étudiant n'étant alors sélectionné, le bouton de validation reste inaccessible jusqu'à ce qu'un enseignant et un nouvel étudiant soient sélectionnés.
 	      
+	      \newpage
 	  \paragraph{L'onglet Stage}
+	  ~\\~\\
+	      \begin{figure}[H]
+		\hbox to12cm{\hss\includegraphics[width=16cm]{Stage.png}\hss}
+		\caption{Onglet Stage}
+	      \end{figure}
+	  
+	 
 	      \paragraph{}
 		L'onglet ''Stage`` contient également deux sections.
+		
+		
 		
 	      \paragraph{}
 		La partie gauche est consacrée à l'affichage des différents stages créés dans l'onglet précédent.
@@ -311,9 +349,15 @@ Année 2013-2014
 		Quant à la seconde, elle renseigne l'utilisateur sur les données se rapportant au professeur en charge du stage de l'étudiant courant. 
 		Cette moitié de l'onglet ''Stage`` expose également une phrase d'indication de la démarche à suivre pour connaître les données approfondies d'une personne, destinée au client lors de sa première venue sur cet onglet.
 		
+		\newpage
 	    \paragraph{L'onglet Calendrier}
 	      \paragraph{}
 		\textit{Dans cette partie, il importe de savoir que du point de vue de la hiérarchie des classes gérant le calendrier, on considère qu'une journée est divisée en créneaux, qui correspondent aux horaires de passage, contenant eux-mêmes des soutenances, qui sont caractérisées par un couple étudiant/professeur et une salle	.} 
+		
+		\begin{figure}[!h]
+		\hbox to12cm{\hss\includegraphics[width=16cm]{Calendrier.png}\hss}
+		\caption{Onglet de paramètrage du calendrier}
+		\end{figure}
 		
 	      \paragraph{}  
 		La création d'un calendrier nécessite plusieurs étapes préliminaires.
@@ -338,6 +382,12 @@ Année 2013-2014
 		La prochaine étape consiste à établir la durée d'une soutenance.
 		Enfin, le responsable de stages doit saisir le nombre de soutenances maximal qu'il est possible d'organiser à un même horaire.
 		Tous les champs étant remplis, le planning peut alors être généré.
+		~\\~\\
+		
+		\begin{figure}[!h]
+		\hbox to12cm{\hss\includegraphics[width=16cm]{Calendrier2.png}\hss}
+		\caption{Onglet Calendrier}
+		\end{figure}
 		
 	      \paragraph{}
 		Lorsque la fonction de génération du calendrier est enclenchée, une redirection est effectuée vers une nouvelle page.
@@ -345,7 +395,7 @@ Année 2013-2014
 		
 	      \paragraph{}
 		La première section montre uniquement les étudiants étant rattachés à un responsable de stage, composant ainsi un stage.
-		Les professeurs sont absents dans cette rubrique. De plus, les stagiaires sont affichés sous forme de simple liste, et non pas d'arborescence.
+		On retrouve alors l'arborescence présente dans l'onglet précédent.
 		
 	      \paragraph{}
 		La partie centrale affiche tous les horaires de la journée sélectionnée pour les soutenances.
@@ -360,12 +410,15 @@ Année 2013-2014
 	      \paragraph{}
 		A la création d'une soutenance, le nom de l'étudiant s'inscrit dans le créneau, à côté de l'heure à laquelle débute celui-ci.
 		Lorsqu'une plage est sélectionnée, l'étudiant apparaît également dans la troisième partie de la page située dans le tiers le plus à droite, qui révèle sous forme de liste tous les étudiants passant leur examen oral à cet horaire.
+		Le troisième tiers de la page propose également les fonctionnalités permettant d'ajouter un enseignant candide et une salle à une soutenance, ceci par le biais de deux listes déroulantes listant respectivement les enseignants et les salles disponibles à cet horaire.	
 		
 	      \paragraph{}
-		Un bouton de suppression d'une soutenance est présent en bas de l'écran.
+		Un bouton de suppression d'une soutenance est présent en bas dessous de la listes des soutenances pour un créneau.
 		La fonction liée à ce bouton permet d'effacer une soutenance sans effacer le stage.
 		C'est pourquoi l'étudiant en question disparaît du créneau et de la liste de droite mais reste visible dans la liste de gauche et dans l'onglet ''Stage``, qui demeure ainsi l'unique onglet dans lequel supprimer un stage est possible.
 		
+		~\\
+		~\\
 		~\\
 		~\\
 		~\\
@@ -402,64 +455,70 @@ Année 2013-2014
 		
 \part{Gestion du projet}
 \setcounter{chapter}{0}
+\counterwithout{figure}{chapter}
       \paragraph{}
-	  La réalisation de notre progiciel est au final plutôt aboutie, mais comme dans tout projet, chacun des membres de notre groupe a connu des diffcultés, qui se sont présentées sous différentes formes.
+	  La réalisation de notre progiciel est au final plutôt aboutie, mais comme dans tout projet, chacun des membres de notre groupe a connu des difficultés, qui se sont présentées sous différentes formes.
+	  ~\\~\\
 	  Voyons ensemble, quelles ont été ces dernières à travers la répartition des tâches, la gestion du temps et les difficultés liées au travail en lui-même.
 	
   \chapter{Répartition des tâches}
     \paragraph{}
       La répartition des différents tâches a été effectuée comme indiquée ci-après.
       Nous avons fait en sorte que chacun travaille sur toutes les parties du projet, ce qui nous a permis à la fois d'approfondir et de diversifier nos connaissances.
-      ~\\
-      ~\\
-      \begin{center}
-	\textbf{Tableau de répartition des tâches}
-	~\\~\\
-	\begin{tabular}{|l|l|}
-	  \hline
-	  \textbf{Membres du groupe} & \textbf{Tâches attribuées} \\
-	  \hline
-	    Florian Barrois 
-	    & Réalisation des classes de base du modèle (Étudiant, Professeur, Couple...); \\
-	    & Conception du modèle; \\
-	    & Mise en fonctionnement de certaines fonctionnalités de la barre de menu;\\
-	    & Optimisation de l'interface;\\
-	    & Rédaction du rapport général et du manuel d'utilisateur.\\
-	  \hline
-	    Nicolas Devillers 
-	    & Gestion des classes permettant l'import de fichiers CSV; \\
-	    \hline
-	    Valentin Jeanroy 
-	    & Conception du modèle; \\
-	    & Travail réalisé sur l'interface;\\
-	    & Mise en place du fonctionnement et de l'interface du calendrier;\\
-	    & Création des fonctionnalités de tri et gestion des listes.\\
-	    \hline
-	    Mehdi Loisel 
-	    & Mise en place du fonctionnement et de l'interface du calendrier; \\
-	    & Gestion de l'export de calendrier au format ICS;\\
-	    & Travail réalisé sur l'interface;\\
-	    & Optimisation de l'interface.\\
-	    \hline
-	    Jean Mercadier
-	    & Création de l'interface; \\
-	    (chef de projet)& Travail réalisé sur l'interface et les retours en console;\\
-	    & Mise en fonctionnement de certaines rubriques de la barre de menu;\\
-	    & Rédaction de la plupart des fichiers et du programme principal;\\
-	    & Implémentation de la base de données;\\
-	    & Création des fichiers d'importation;\\
-	    & Rédaction du rapport technique.\\
-	    \hline
-	    Ismail Taleb 
-	    & Mise en place de la fonctionnalité de ''Drag and Drop``; \\
-	    & Contribution à l'élaboration du calendrier.\\
-	    & Gestion des listes.\\
-	    \hline
-	    Willeme Verdeaux & Travail réalisé sur l'interface. \\
-	  \hline
-	\end{tabular}
 
-      \end{center}
+      \begin{figure}[H]
+	\hbox to12cm{\hss
+	  \begin{tabular}{|l|l|}
+	    \hline
+	    \textbf{Membres du groupe} & \textbf{Tâches effectuées} \\
+	    \hline
+	      Florian Barrois 
+	      & Réalisation des classes de base du modèle (Étudiant, Professeur, Couple...); \\
+	      & Conception du modèle; \\
+	      & Mise en fonctionnement de certaines fonctionnalités de la barre de menu;\\
+	      & Optimisation de l'interface;\\
+	      & Rédaction du rapport général et du manuel d'utilisateur.\\
+	    \hline
+	      Nicolas Devillers 
+	      & Gestion des classes permettant l'import de fichiers CSV;\\
+	      & Optimisation de l'interface.\\
+	      \hline
+	      Valentin Jeanroy 
+	      & Conception du modèle; \\
+	      & Travail réalisé sur l'interface;\\
+	      & Mise en place du fonctionnement et de l'interface du calendrier;\\
+	      & Création des fonctionnalités de tri;\\
+	      & Gestion des listes et arborescences.\\
+	      \hline
+	      Mehdi Loisel 
+	      & Mise en place du fonctionnement et de l'interface du calendrier; \\
+	      & Gestion de l'export de calendrier au format ICS;\\
+	      & Travail réalisé sur l'interface;\\
+	      & Optimisation de l'interface;\\
+	      & Gestion d'ajout de l'enseignant candide et de la salle.\\
+	      \hline
+	      Jean Mercadier
+	      & Création de l'interface; \\
+	      (chef de projet)& Travail réalisé sur l'interface et les retours en console;\\
+	      & Mise en fonctionnement de certaines rubriques de la barre de menu;\\
+	      & Rédaction de la plupart des fichiers et du programme principal;\\
+	      & Implémentation de la base de données;\\
+	      & Création des fichiers d'importation;\\
+	      & Rédaction du rapport technique.\\
+	      \hline
+	      Ismail Taleb 
+	      & Mise en place de la fonctionnalité de ''Drag and Drop``; \\
+	      & Contribution à l'élaboration du calendrier.\\
+	      & Gestion des listes.\\
+	      \hline
+	      Willeme Verdeaux 
+	      & Travail réalisé sur l'interface; \\
+	      & Gestion des classes permettant l'import de fichiers CSV.\\
+	    \hline
+	  \end{tabular}
+	  \hss}
+	  \caption{Tableau de répartition des tâches}
+      \end{figure}
       
       
   \chapter{Gestion du temps}
@@ -470,15 +529,75 @@ Année 2013-2014
     Il est difficile d'établir les réelles dates auxquelles le projet a connu des tournants.
     Nous avons donc établi ci-dessous des agendas approximatifs correspondant aux prévisions et au réel déroulement des différentes étapes du projet.
     
+    ~\\~\\
+    \begin{figure}[H]
+	\hbox to12cm{\hss
+	\begin{tabular}{|l|l|}
+	    \hline
+	      \textbf{Périodes} &  \textbf{Avancement du projet}\\
+	    \hline
+	      Fin mai 2013 & Début du projet.\\
+	    \hline
+	      Juin 2013 & Établissement d'un premier jet du cahier des charges.\\
+	    \hline
+	      Octobre 2013 & Établissement du cahier des charges définitif;\\
+			  & Classes du modèle implémentées;\\
+			  & Création de stages possible.\\
+	    \hline
+	      Mi-décembre 2013 & Première version graphique du projet.\\
+	    \hline
+	      Fin janvier 2014 & Première version du calendrier.\\
+	    \hline	
+	      Mi-février 2014 & Calendrier opérationnel.\\
+	    \hline
+	      Février-mars 2014 & Finition du projet;\\
+				& Rédaction des rapports;\\
+				& Préparation de la soutenance.\\
+	    \hline
+	      Fin mars 2014 & Fin du projet.\\
+	    \hline
+	\end{tabular}  
+      \hss}
+      \caption{Planning prévisionnel}
+    \end{figure}
+      
+     
+      
     
-    \begin{tabular}{|l|l|}
-      \hline
-	Dates de prévisions & Avancement du projet\\
-      \hline
-	... & ...\\
-      \hline
-    \end{tabular}
+    \begin{figure}[H]
+	\hbox to12cm{\hss
+	\begin{tabular}{|l|l|}
+	  \hline
+	    \textbf{Périodes} &  \textbf{Avancement du projet}\\
+	  \hline
+	    Fin mai 2013 & Début du projet.\\
+	  \hline
+	    Octobre 2013 & Établissement d'un premier jet du cahier des charges;\\
+			  & Établissement du cahier des charges définitif;\\
+			  & Classes du modèle implémentées;\\
+			  & Création de stages possible.\\
+	  \hline
+	    Mi-décembre 2013 & Première version graphique du projet.\\
+	  \hline
+	    Fin janvier 2014 & Première version du calendrier.\\
+	  \hline
+	    Mi-mars 2014 & Calendrier opérationnel;\\
+			  & Début de la rédaction des rapports;\\
+	  \hline
+	    Fin mars 2014 & Finition du projet;\\
+			  & Finition des rapports;\\
+			  & Préparation de la soutenance.\\
+			  & Fin du projet.\\
+	  \hline
+	\end{tabular}
+      \hss}
+      \caption{Planning respecté}
+    \end{figure}
+    
 
+
+
+    
     
 
     
@@ -489,15 +608,16 @@ Année 2013-2014
 	Les difficultés techniques ont été diverses et variées mais nous allons aborder les plus importantes et les plus conséquentes pour le déroulement du projet.
       
       \paragraph{}
-	Tout d'abord, nous avons eu besoin d'utiliser des méthodes comme JDateChooser pour réaliser le calendrier. Cependant, nous avons mis un certain temps à trouver l'API correspondant.
+	Tout d'abord, nous avons eu besoin d'utiliser des méthodes comme JDateChooser pour réaliser le calendrier. Cependant, nous avons mis un certain temps à trouver l'API correspondante.
 	De plus, cette méthode ne renvoyait pas le bon type de données, ce qui nous a conduit à une adaptation forcée à la manipulation des GregorianCalendar.
 	Pour continuer sur le calendrier, nous avons dû personnaliser la technique du Drag and Drop pour qu'elle corresponde à nos attentes dans l'application.
 	
       \paragraph{}
-	Des problèmes sont également survenus à propos de la synchronisation de certaines données entre les différents onglets, notammant concernant les arborescences.
+	Des problèmes sont également survenus à propos de la synchronisation de certaines données entre les différents onglets, notamment concernant les arborescences.
 
       \paragraph{}
-	...
+	Nous avons aussi été contraints de créer un nouveau type de liste spécifique à notre application, ce qui a causé des soucis de compatibilité.
+	Enfin, l'inclusion de la base de données à l'application n'a pas été facile, mais finalement, tous les obstacles rencontrés ont pu être franchis grâce à la persévérance et à l'entraide animant le groupe.
       
       
       
@@ -511,8 +631,12 @@ Année 2013-2014
 	Mais la plus grosse difficulté a très certainement été l'utilisation d'un nouvel outil : Github.
 	Ce site web consacré au partage, ou au stockage de codes sources, part d'une très belle idée, mais demeure malgré tout compliqué à prendre en main.
 	C'est pourquoi il a fallu un temps d'apprentissage et d'adaptation à tous les membres du groupe pour savoir se servir de cet outil informatique, temps plus ou moins long en fonction des personnes.
+
+      \paragraph{}
 	De plus, des données ont été perdues, éparpillées, ou au contraire présentes à plusieurs emplacements dans les dossiers Github, sans parler des impossibilités de reprendre les dernières modifications ou de publier les siennes en raison de problèmes logiciels, notamment IntelliJ Idea, ou encore de connexion à Internet.
 	Nous avons également connu la situation des conflits Github, c'est-à-dire une incapacité à mettre à jour le projet à cause de fichiers modifiés simultanéments aux mêmes endroits par deux personnes différentes.
+
+      \paragraph{}
 	Enfin, le système des branches Github a peut-être été trop exploité, puisqu'il nous est arrivé d'avoir trois versions du projet différentes correspondant à trois branches distinctes. La version la plus avancée a subi au fur et à mesure du projet des changements de branche, entraînant de nouvelles incompréhensions et pertes de temps.
     
     

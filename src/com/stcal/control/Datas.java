@@ -1,6 +1,7 @@
 package com.stcal.control;
 
 import com.stcal.don.DCouple;
+import com.stcal.don.DCreneau;
 import com.stcal.don.DListe;
 import com.stcal.don.DPersonne;
 import com.stcal.fen.DynamicTreeDemo;
@@ -26,6 +27,8 @@ public class Datas {
         prof   = new DefaultListModel<DPersonne>();
 
     }
+
+    public static DCreneau[][] o ;
 
     /**
      * Charge la base de donne et les place dans les objet de la classe

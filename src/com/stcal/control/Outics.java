@@ -1,6 +1,5 @@
 package com.stcal.control;
 
-import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -8,12 +7,10 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.stcal.don.DCreneau;
 import com.stcal.don.DProf;
 import com.stcal.don.Soutenance;
-import com.stcal.fen.FCal;
 
 
 import net.fortuna.ical4j.data.CalendarOutputter;
 import net.fortuna.ical4j.model.Calendar;
-import net.fortuna.ical4j.model.Date;
 import net.fortuna.ical4j.model.DateTime;
 import net.fortuna.ical4j.model.ValidationException;
 import net.fortuna.ical4j.model.component.VEvent;
@@ -88,7 +85,7 @@ public class Outics {
         calendar.getProperties().add(Version.VERSION_2_0);
         calendar.getProperties().add(CalScale.GREGORIAN);
         System.out.println("generation ics");
-        DCreneau obj[][] = FCal.o ;
+        DCreneau obj[][] = Datas.o ;
         for(int i = 0;i<obj.length;i++){
             for(int k=0;k<obj[i].length;k++){
                 if(!obj[i][k].getListSoutenance().isEmpty()){
@@ -133,7 +130,7 @@ public class Outics {
     public void exportpdf(){
 
 
-            DCreneau obj[][] = FCal.o ;
+            DCreneau obj[][] = Datas.o ;
 
 
           com.itextpdf.text.Document document = new com.itextpdf.text.Document();
@@ -197,7 +194,7 @@ public class Outics {
         calendar.getProperties().add(Version.VERSION_2_0);
         calendar.getProperties().add(CalScale.GREGORIAN);
          System.out.println("generation ics");
-        DCreneau obj[][] = FCal.o ;
+        DCreneau obj[][] = Datas.o ;
 
         for(int i = 0;i<obj.length;i++){
             for(int k=0;k<obj[i].length;k++){
@@ -250,7 +247,7 @@ public class Outics {
         calendar.getProperties().add(Version.VERSION_2_0);
         calendar.getProperties().add(CalScale.GREGORIAN);
         System.out.println("generation ics");
-        DCreneau obj[][] = FCal.o ;
+        DCreneau obj[][] = Datas.o ;
 
         for(int i = 0;i<obj.length;i++){
             for(int k=0;k<obj[i].length;k++){

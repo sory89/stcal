@@ -65,7 +65,6 @@ public class FCal extends FTab{
     protected DCoupleTransferHandler kikoo = new DCoupleTransferHandler();
     protected DefaultTableModel salles = null;
     protected JButton okPlageJour = new JButton("Générer le planning");
-    public static DCreneau o[][] ;
 
     public void refreshTree(){
         newContentPane.populateTree(newContentPane.getTreePanel());
@@ -124,7 +123,7 @@ public class FCal extends FTab{
 
                 GridBagConstraints c = new GridBagConstraints();
 
-                o = new DCreneau[totalCreneaux][recupDates.size()];
+                Datas.o = new DCreneau[totalCreneaux][recupDates.size()];
                 Main.colors=new String[totalCreneaux][recupDates.size()];
 
                 int dj = Integer.parseInt(debutJour.getSelectedItem().toString());
@@ -134,10 +133,10 @@ public class FCal extends FTab{
                 int i;
                 for (k = 0; k < recupDates.size(); k++) {
                     for (i = 0; i < totalCreneaux; i++) {
-                        o[i][k] = new DCreneau();
-                        o[i][k].setDate_debut(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + (int)Math.round(((i*dureeCreneau)/60)-0.5), i*dureeCreneau%60));
-                        o[i][k].setDate_fin(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + (int)Math.round((((i+1)*dureeCreneau)/60)-0.5), (1+i)*dureeCreneau%60));
-                        o[i][k].setMax_sout(Integer.parseInt(soutenance.getText()));
+                        Datas.o[i][k] = new DCreneau();
+                        Datas.o[i][k].setDate_debut(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + (int)Math.round(((i*dureeCreneau)/60)-0.5), i*dureeCreneau%60));
+                        Datas.o[i][k].setDate_fin(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + (int)Math.round((((i+1)*dureeCreneau)/60)-0.5), (1+i)*dureeCreneau%60));
+                        Datas.o[i][k].setMax_sout(Integer.parseInt(soutenance.getText()));
                         Main.colors[i][k]="white";
                     }
                 }
@@ -242,7 +241,7 @@ public class FCal extends FTab{
                 for (i = 0; i < recupDates.size(); i++)
                     titre[i] = "" + recupDates.get(i).get(Calendar.DAY_OF_MONTH) + "/" + (recupDates.get(i).get(Calendar.MONTH) + 1) + "/" + recupDates.get(i).get(Calendar.YEAR) + "";
 
-                jt = new JTable(new CreneauTableModel(o,totalCreneaux,recupDates));
+                jt = new JTable(new CreneauTableModel(Datas.o,totalCreneaux,recupDates));
                 /*
                 jt = new JTable(o, titre) {
                     public boolean isCellEditable(int row, int column) {

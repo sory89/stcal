@@ -6,6 +6,8 @@ import com.stcal.don.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
@@ -242,22 +244,23 @@ public class FLier extends FTab {
 
                 }
             });
+
             Diminutif.addKeyListener(new KeyListener() {
 
 
                 @Override
                 public void keyTyped(KeyEvent e) {
-                    opt6.setEnabled(!Fetu.isSelectionEmpty());
+                    opt6.setEnabled(Diminutif.getText()!=null && Diminutif.getText().length()>0 && !Fprof.isSelectionEmpty());
                 }
 
                 @Override
                 public void keyPressed(KeyEvent e) {
-                    opt6.setEnabled(!Fetu.isSelectionEmpty());
+                    opt6.setEnabled(Diminutif.getText()!=null && Diminutif.getText().length()>0 && !Fprof.isSelectionEmpty());
                 }
 
                 @Override
                 public void keyReleased(KeyEvent e) {
-                    opt6.setEnabled(!Fetu.isSelectionEmpty());
+                    opt6.setEnabled(Diminutif.getText()!=null && Diminutif.getText().length()>0 && !Fprof.isSelectionEmpty());
                 }
             });
 

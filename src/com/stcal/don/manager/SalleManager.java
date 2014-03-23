@@ -50,7 +50,7 @@ public class SalleManager implements Manager<String> {
 
     @Override
     public String read(int id) {
-        String sql = "SELECT `id_salle`, `libelle_salle` FROM `Salle` WHERE `id_salle`=?";
+        String sql = "SELECT `id_salle`, `libelle_salle` FROM `Salle` WHERE `id_salle`=? ";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setInt(1,id);

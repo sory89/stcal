@@ -341,9 +341,9 @@ public class FCal extends FTab{
                 });
                 okcand.addActionListener(new ActionListener() {
                     @Override
-                    public void actionPerformed(ActionEvent e) {
+                    public void actionPerformed(ActionEvent e) { if(fs.getSelectedItem()!=null) {
                         if(jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn())!=null){
-                            if(fs.getSelectedItem()!=null) {
+
                                 DCouple dfc= (DCouple) jls.getSelectedValue() ;
                                 DCreneau dc = (DCreneau) jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn());
 

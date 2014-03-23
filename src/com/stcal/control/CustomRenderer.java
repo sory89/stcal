@@ -51,14 +51,13 @@ public class CustomRenderer extends DefaultTableCellRenderer
                     if(column==i && row==y)
                         panel.setBackground(Color.green);
                 }else{
-                    if(hasFocus==true){
-                        System.out.println("c'est focus");
-                        panel.setBackground(new Color(82,166,250));
-                        timePanel.setBackground(new Color(98,127,157));
-                    }
 
                     if(column==i && row==y)
                         panel.setBackground(Color.white);
+                    if(hasFocus){
+                        panel.setBackground(new Color(82,166,250));
+                        timePanel.setBackground(new Color(98,127,157));
+                    }
                 }
             }
         }

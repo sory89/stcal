@@ -5,6 +5,7 @@ import com.stcal.don.DCreneau;
 import com.stcal.don.Soutenance;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 
@@ -22,12 +23,20 @@ public class CustomRenderer extends DefaultTableCellRenderer
         Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
         DCreneau creneau = (DCreneau)value;
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
-        panel.add(new JLabel(creneau.toString() ));
+        JPanel panel = new JPanel(new BorderLayout());
+        JPanel timePanel = new JPanel();
+        JPanel soutPanel = new JPanel();
+        timePanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+        //timePanel.setOpaque(false);
+        timePanel.add(new JLabel(creneau.toString()));
+        soutPanel.setOpaque(false);
+        soutPanel.setLayout(new BoxLayout(soutPanel,BoxLayout.Y_AXIS));
         for(Soutenance sout : creneau.getListSoutenance()){
-            panel.add(new JLabel(sout.getCpl().toString()));
+            soutPanel.add(new JLabel(sout.getCpl().toString()));
         }
+
+        panel.add(timePanel, BorderLayout.NORTH );
+        panel.add(soutPanel, BorderLayout.CENTER);
 
         for (int y=0;y<table.getRowCount();y++){
             for(int i=0;i<table.getColumnCount();i++)  {
@@ -44,7 +53,8 @@ public class CustomRenderer extends DefaultTableCellRenderer
                 }else{
                     if(hasFocus==true){
                         System.out.println("c'est focus");
-                        panel.setBackground(Color.orange);
+                        panel.setBackground(new Color(82,166,250));
+                        timePanel.setBackground(new Color(98,127,157));
                     }
 
                     if(column==i && row==y)

@@ -1,6 +1,5 @@
 package com.stcal.control;
 
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -22,10 +21,9 @@ import net.fortuna.ical4j.model.property.*;
 import net.fortuna.ical4j.util.UidGenerator;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.*;
 import java.text.SimpleDateFormat;
-
+import java.net.SocketException;
 /**
  * Created with IntelliJ IDEA.
  * User: Mehdi
@@ -52,12 +50,13 @@ public class Outics {
     }
 
 
-    public Outics(){
+    public Outics(int op){
 
-        this.option = 20;
+        this.option = op;
         this.donne= null;
 
     }
+
 
 
      public void export() throws IOException, ValidationException {
@@ -67,10 +66,14 @@ public class Outics {
                 this.exportprof((DProf)this.donne);
 
                 break;
-            case 2:
+            case 0:
+                this.exportsalle((String)this.donne);
                 break;
             case 20:
                 this.exportpdf();
+                break;
+            case 21:
+                this.exportics();
                 break;
             default:
                 break;
@@ -78,14 +81,62 @@ public class Outics {
 
         }}
 
-      public void exportpdf(){
+    private void exportics() throws SocketException {
+
+        Calendar calendar = new Calendar();
+        calendar.getProperties().add(new ProdId("-//Ben Fortuna//iCal4j 1.0//EN"));
+        calendar.getProperties().add(Version.VERSION_2_0);
+        calendar.getProperties().add(CalScale.GREGORIAN);
+        System.out.println("generation ics");
+        DCreneau obj[][] = FCal.o ;
+        for(int i = 0;i<obj.length;i++){
+            for(int k=0;k<obj[i].length;k++){
+                if(!obj[i][k].getListSoutenance().isEmpty()){
+                    for(Soutenance sout : obj[i][k].getListSoutenance()){
 
 
-          DCreneau obj[][] = FCal.o;
+                    DCreneau cren = obj[i][k];
+                    DateTime startt = new DateTime(cren.getDate_debut().getTime());
+                    DateTime finn = new DateTime(cren.getDate_fin().getTime());
+                    VEvent event = new VEvent(startt,finn,sout.getCpl().getEtu().toString());
+                    if(sout.getCdd()!=null)
+                        event.getProperties().add(new Description("Tuteur : "+sout.getCpl().getTut().toString()+" Candide : "+sout.getCdd().toString()));
+                    else
+                        event.getProperties().add(new Description("Tuteur : "+sout.getCpl().getTut().toString()+" Candide : non défini"));
+                    event.getProperties().add(new Location(sout.getSalle()));
+                    UidGenerator ug = new UidGenerator("uidGen");
+                    Uid uid = ug.generateUid();
+
+                    event.getProperties().add(uid);
+                    calendar.getComponents().add(event);  }
+                }
+            }
+        }
+
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        int retrival = chooser.showSaveDialog(null);
+        if (retrival == JFileChooser.APPROVE_OPTION) {
+            try {
+                FileWriter fw = new FileWriter(chooser.getSelectedFile()+".ics");
+                CalendarOutputter outputter = new CalendarOutputter();
+                outputter.output(calendar,fw);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
 
 
-          Document document = new Document();
+    }
 
+
+    public void exportpdf(){
+
+
+            DCreneau obj[][] = FCal.o ;
+
+
+          com.itextpdf.text.Document document = new com.itextpdf.text.Document();
           try {
 
               JFileChooser chooser = new JFileChooser();
@@ -117,7 +168,10 @@ public class Outics {
                                   table.addCell(new PdfPCell(new Paragraph(str1)));
                                   table.addCell(new PdfPCell(new Paragraph(sout.getCpl().getEtu().toString())));
                                   table.addCell(new PdfPCell(new Paragraph(sout.getCpl().getTut().toString())));
+                                  if(sout.getCdd()!=null)
                                   table.addCell(new PdfPCell(new Paragraph(sout.getCdd().toString())));
+                                  else
+                                  table.addCell(new PdfPCell(new Paragraph("non défini")));
                                   table.addCell(new PdfPCell(new Paragraph(sout.getSalle())));
                               }
                           }
@@ -187,6 +241,59 @@ public class Outics {
 
 
      }
+    public void exportsalle(String salle) throws SocketException {
+
+
+
+        Calendar calendar = new Calendar();
+        calendar.getProperties().add(new ProdId("-//Ben Fortuna//iCal4j 1.0//EN"));
+        calendar.getProperties().add(Version.VERSION_2_0);
+        calendar.getProperties().add(CalScale.GREGORIAN);
+        System.out.println("generation ics");
+        DCreneau obj[][] = FCal.o ;
+
+        for(int i = 0;i<obj.length;i++){
+            for(int k=0;k<obj[i].length;k++){
+
+                if(obj[i][k].getSouts(salle)!=null){
+                    System.out.println(obj[i][k].getSouts(salle)+"oui oui");
+                    Soutenance sout = obj[i][k].getSouts(salle);
+                    DCreneau cren = obj[i][k];
+                    DateTime startt = new DateTime(cren.getDate_debut().getTime());
+                    DateTime finn = new DateTime(cren.getDate_fin().getTime());
+                    VEvent event = new VEvent(startt,finn,sout.getCpl().getEtu().toString());
+                    if(sout.getCdd()!=null)
+                        event.getProperties().add(new Description("Tuteur : "+sout.getCpl().getTut().toString()+" Candide : "+sout.getCdd().toString()));
+                    else
+                        event.getProperties().add(new Description("Tuteur : "+sout.getCpl().getTut().toString()+" Candide : non défini"));
+                    event.getProperties().add(new Location(sout.getSalle()));
+                    UidGenerator ug = new UidGenerator("uidGen");
+                    Uid uid = ug.generateUid();
+
+                    event.getProperties().add(uid);
+                    calendar.getComponents().add(event);
+                }
+            }
+        }
+
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        int retrival = chooser.showSaveDialog(null);
+        if (retrival == JFileChooser.APPROVE_OPTION) {
+            try {
+                FileWriter fw = new FileWriter(chooser.getSelectedFile()+".ics");
+                CalendarOutputter outputter = new CalendarOutputter();
+                outputter.output(calendar,fw);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+
+
+
+
+
+    }
 
 
 

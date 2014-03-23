@@ -160,4 +160,16 @@ public class DCreneau {
 
         return null;
     }
+    public Soutenance getSouts(String salle){
+        int i;
+        for(i=0;i<ListSoutenance.size();i++){
+
+            if(ListSoutenance.get(i).getSalle()==salle)
+                return ListSoutenance.get(i);
+
+        }
+
+
+        return null;
+    }
 }

@@ -36,7 +36,7 @@ public class FExportIcs {
 
      jfics = new JPanel();
         laboptions = new JLabel("Selectionez une option");
-        String[] tab =  {"Salles","Profs","Pdf"} ;
+        String[] tab =  {"Salles","Profs","Total"} ;
          jcboptions = new JComboBox(tab);
          laboptions2 = new JLabel();
        jcboptions2 = new JComboBox();
@@ -93,7 +93,7 @@ public class FExportIcs {
                     case 1:
                         Outics test = new Outics(1,jcboptions2.getSelectedItem());
                         try {
-                            System.out.println("start export ics");
+                            System.out.println("start export");
                             test.export();
 
                         } catch (IOException e1) {
@@ -102,8 +102,11 @@ public class FExportIcs {
                             e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                         }
                      break;
-                    case 20:
-                        Outics test1 = new Outics();
+                    case 2:
+                        switch (jcboptions2.getSelectedIndex())  {
+
+                            case 0 :
+                        Outics test1 = new Outics(20);
                         try {
                             System.out.println("start export pdf");
                             test1.export();
@@ -113,6 +116,35 @@ public class FExportIcs {
                         } catch (ValidationException e1) {
                             e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                         }
+                        break;
+                            case 1:
+                                Outics test2 = new Outics(21);
+                                try {
+                                    System.out.println("start export ics");
+                                    test2.export();
+
+                                } catch (IOException e1) {
+                                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                                } catch (ValidationException e1) {
+                                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                                }
+
+                                break;
+                        }
+                        break;
+                    case 0:
+                        Outics testa = new Outics(0,jcboptions2.getSelectedItem());
+                        try {
+                            System.out.println("start export");
+                            testa.export();
+
+                        } catch (IOException e1) {
+                            e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                        } catch (ValidationException e1) {
+                            e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                        }
+
+                        break;
                     default:
                         break;
 

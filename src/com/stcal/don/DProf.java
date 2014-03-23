@@ -37,7 +37,9 @@ public class DProf extends DPersonne {
     }
 
     public String toString(){
-        return super.toString()+" ("+diminutif+")";
+        if(diminutif.equals(""))
+            return super.toString();
+        return super.toString()+" ["+diminutif+"]";
     }
 
 }

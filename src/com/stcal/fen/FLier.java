@@ -247,17 +247,17 @@ public class FLier extends FTab {
 
                 @Override
                 public void keyTyped(KeyEvent e) {
-                    opt6.setEnabled(!Fetu.isSelectionEmpty());
+                    opt6.setEnabled(Diminutif.getText()!=null && Diminutif.getText().length()>0 &&!Fetu.isSelectionEmpty());
                 }
 
                 @Override
                 public void keyPressed(KeyEvent e) {
-                    opt6.setEnabled(!Fetu.isSelectionEmpty());
+                    opt6.setEnabled(Diminutif.getText()!=null && Diminutif.getText().length()>0 &&!Fetu.isSelectionEmpty());
                 }
 
                 @Override
                 public void keyReleased(KeyEvent e) {
-                    opt6.setEnabled(!Fetu.isSelectionEmpty());
+                    opt6.setEnabled(Diminutif.getText()!=null && Diminutif.getText().length()>0 &&!Fetu.isSelectionEmpty());
                 }
             });
 

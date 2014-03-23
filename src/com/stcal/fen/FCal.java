@@ -39,7 +39,7 @@ public class FCal extends FTab{
     protected JPanel validPanel = new JPanel();
     protected JPanel panSoutenance = new JPanel();
     protected JPanel formsalles = new JPanel();
-
+    protected JLabel info = new JLabel("<html>Sélectionnez un stage pour afficher ses informations.</html>");
     protected JLabel infoChooser = new JLabel("Choisissez les jours de soutenance");
     protected JLabel creneauLabel = new JLabel("(4) Durée soutenance (en min)");
     protected JLabel debutLabel = new JLabel("(2) Début journée");
@@ -83,6 +83,16 @@ public class FCal extends FTab{
             return true ;
         return false;
     }
+    public String setInfo(ArrayList<String> details){
+        String newInfo = "<html>";
+        info.setText("");
+        for (int i=0;i<details.size();i++){
+            newInfo += details.get(i) + "<br />";
+        }
+        newInfo += "</html>";
+        refresh();
+        return newInfo;
+    }
 
     public FCal() {
         super("Calendrier");
@@ -91,6 +101,10 @@ public class FCal extends FTab{
         dateChooserPanel.setOpaque(false);
         infoChooser.setOpaque(false);
         okPlageJour.setEnabled(false);
+
+
+
+
 
         /* Listener du bouton de validation de formulaire */
         okPlageJour.addActionListener(new ActionListener() {
@@ -168,13 +182,26 @@ public class FCal extends FTab{
                         ca.gridx = 0;
                         ca.gridy = 0;
                         ca.gridwidth = 1;
-                        ca.gridheight = totalCreneaux;
+                        ca.gridheight =totalCreneaux-2;
                         ca.weightx = 0;
                         ca.weighty = 1;
                         ca.ipadx = 100;
                 newContentPane = new DynamicTreeDemo();
                 pan().add(newContentPane, ca);
                 newContentPane.getTree().setDragEnabled(true);
+                info.setBorder(BorderFactory.createTitledBorder("Informations"));
+                        ca.fill = GridBagConstraints.BOTH;
+                        ca.gridx = 0;
+                        ca.gridy = totalCreneaux-2;
+                        ca.gridwidth = 1;
+                        ca.gridheight =2;
+                        ca.weightx = 0;
+                        ca.weighty = 1;
+                        ca.ipadx = 100;
+
+               JScrollPane scrollPane = new JScrollPane(info);
+               scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+                        pan().add(scrollPane, ca);
 
 
                 newContentPane.getTree().setTransferHandler(kikoo);
@@ -324,10 +351,11 @@ public class FCal extends FTab{
                                 dc.getSout(dfc).setSalle((String)jcbsalles.getSelectedItem());
                               System.out.println("candide ok");
 
-                                jls.clearSelection();
+
                                 fs.removeAllElements();
                                 jcbcandide.removeAllItems();
                                 jcbsalles.removeAllItems();
+                                info.setText("<html>Sélectionnez un stage pour afficher ses informations.</html>");
                                 refresh();
                             }
                         }
@@ -362,7 +390,7 @@ public class FCal extends FTab{
                                                               jcbsalles.addItem(Datas.salles.getElementAt(k));
                                                       }
 
-
+                                                      info.setText(setInfo(dc.getSout(dfc).getinfos()));
 
                                                   }
                                              }

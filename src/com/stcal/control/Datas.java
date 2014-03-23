@@ -24,7 +24,7 @@ public class Datas {
         stages = new DefaultListModel<DCouple>();
         etu    = new DefaultListModel<DPersonne>();
         prof   = new DefaultListModel<DPersonne>();
-       ;
+
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.stcal.don;
 
+import java.util.ArrayList;
+
 public class Soutenance
 {
     private DCouple cpl;
@@ -63,5 +65,20 @@ public class Soutenance
 
     public void setId(int id){
         this.id=id;
+    }
+    public ArrayList<String> getinfos(){
+
+        ArrayList<String> arr = new ArrayList<String>();
+
+        arr.add("Tuteur :"+this.getCpl().getTut().toString());
+        if(this.getCdd()!=null)
+            arr.add("Candide : "+this.getCdd().toString());
+        else
+            arr.add("Candide : non défini");
+        arr.add("Salle :"+this.getSalle());
+
+
+
+        return arr;
     }
 }

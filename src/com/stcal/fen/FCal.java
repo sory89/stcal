@@ -171,7 +171,7 @@ public class FCal extends FTab{
                         ca.gridheight = totalCreneaux;
                         ca.weightx = 0;
                         ca.weighty = 1;
-                        ca.ipadx = 200;
+                        ca.ipadx = 100;
                 newContentPane = new DynamicTreeDemo();
                 pan().add(newContentPane, ca);
                 newContentPane.getTree().setDragEnabled(true);
@@ -260,7 +260,7 @@ public class FCal extends FTab{
                 c.gridheight = totalCreneaux /2;
                 c.weightx = 0;
                 c.weighty = 1;
-                c.ipadx = 200;
+                c.ipadx = 100;
                 pan().add(new JScrollPane(jls), c);
 
                 c.fill = GridBagConstraints.BOTH;
@@ -272,7 +272,7 @@ public class FCal extends FTab{
                 c.gridheight = 1;
                 c.weightx = 0;
                 c.weighty = 1;
-                c.ipadx = 200;
+                c.ipadx = 100;
                 pan().add(formsalles,c);
                 formsalles.setLayout(new GridLayout(6,0));
                  formsalles.add(supprimers);

@@ -20,7 +20,6 @@ public class CustomRenderer extends DefaultTableCellRenderer
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
     {
         Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-        //return c;
         DCreneau creneau = (DCreneau)value;
 
         JPanel panel = new JPanel();
@@ -29,7 +28,7 @@ public class CustomRenderer extends DefaultTableCellRenderer
         for(Soutenance sout : creneau.getListSoutenance()){
             panel.add(new JLabel(sout.getCpl().toString()));
         }
-        //Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
         for (int y=0;y<table.getRowCount();y++){
             for(int i=0;i<table.getColumnCount();i++)  {
 
@@ -43,20 +42,16 @@ public class CustomRenderer extends DefaultTableCellRenderer
                     if(column==i && row==y)
                         panel.setBackground(Color.green);
                 }else{
-
+                    if(hasFocus==true){
+                        System.out.println("c'est focus");
+                        panel.setBackground(Color.orange);
+                    }
 
                     if(column==i && row==y)
                         panel.setBackground(Color.white);
                 }
             }
         }
-
-        /*
-        if (isSelected) {
-            panel.setBackground(table.getSelectionBackground());
-        }else{
-            panel.setBackground(Color.white);
-        }    */
         return panel;
     }
 }

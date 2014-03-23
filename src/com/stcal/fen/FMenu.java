@@ -49,7 +49,7 @@ public class FMenu {
         aPropos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Message.popnotice("Le logiciel STCal a été créé par des étudiants dans le cadre du projet tutoré de l'IUT de Belfort. \n" +
+                Message.popnotice("Le logiciel STCal a été créé par des étudiants dans le cadre du projet tuteuré de l'IUT de Belfort. \n" +
                         "Sa conception et sa réalisation ont été entièrement réalisées par Florian BARROIS, Nicolas DEVILLERS, \nValentin JEANROY, Mehdi LOISEL Jean MERCADIER, Ismail TALEB et Willeme VERDEAUX.\n\n " +
                         "Il est destiné à faciliter la gestion des stages d'étudiants en proposant des fonctionnalités pour les stages propres à l'application \n ainsi qu'un outil de création de calendrier permettant la mise en place des soutenances orales des étudiants." +
                         "\n\n Les sources du projet sont disponibles à l'adresse URL suivante : https://github.com/Ricain/stcal" ,"A propos");
@@ -140,7 +140,17 @@ public class FMenu {
             }
         });
         menupref.add(dbr);
-
+        menupref.addSeparator();
+        JMenuItem itemSalle = new JMenuItem("Salles");
+        itemSalle.setToolTipText("Éditer la liste des salles");
+        itemSalle.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FSalles fSalles = new FSalles();
+                fSalles.pop();
+            }
+        });
+        menupref.add(itemSalle);
 
 
         menubar.add(menufile);

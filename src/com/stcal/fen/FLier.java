@@ -35,6 +35,7 @@ public class FLier extends FTab {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 askInfo(Fprof, Type.TUTEUR);
+                Diminutif.setText("");
                 Diminutif.setEnabled(true);
                 afficherDiminutif();
             }
@@ -85,7 +86,7 @@ public class FLier extends FTab {
         A.setLayout(new BorderLayout());
         JPanel C = new JPanel();
         JLabel B = new JLabel("Diminutif :");
-        Diminutif = new JTextField();
+        Diminutif = new JTextField("Disabled");
         Diminutif.addKeyListener(new KeyListener() {
 
 
@@ -220,6 +221,8 @@ public class FLier extends FTab {
                     Fetu.clearSelection();
                     Fprof.clearSelection();
                     info.setText("");
+                    Diminutif.setEnabled(false);
+                    Diminutif.setText("Disabled");
                 }
             });
             option.add(opt6);

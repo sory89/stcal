@@ -1,6 +1,11 @@
 package com.stcal.control;
 
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.stcal.don.DCreneau;
 import com.stcal.don.DProf;
 import com.stcal.don.Soutenance;
@@ -19,6 +24,7 @@ import net.fortuna.ical4j.util.UidGenerator;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+import java.text.SimpleDateFormat;
 
 /**
  * Created with IntelliJ IDEA.
@@ -75,8 +81,55 @@ public class Outics {
       public void exportpdf(){
 
 
-            DCreneau obj[][] = FCal.o ;
+          DCreneau obj[][] = FCal.o;
 
+
+          Document document = new Document();
+
+          try {
+
+              JFileChooser chooser = new JFileChooser();
+              chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+
+              int retrival = chooser.showSaveDialog(null);
+              if (retrival == JFileChooser.APPROVE_OPTION) {
+                  OutputStream file = new FileOutputStream(new File(chooser.getSelectedFile()+".pdf"));
+                  PdfWriter.getInstance(document, file);
+
+                  document.open();
+                  PdfPTable table = new PdfPTable(6); // 6 colones.
+                  table.addCell(new PdfPCell(new Paragraph("Date")));
+                  table.addCell(new PdfPCell(new Paragraph("Heure")));
+                  table.addCell(new PdfPCell(new Paragraph("Étudiant")));
+                  table.addCell(new PdfPCell(new Paragraph("Tuteur")));
+                  table.addCell(new PdfPCell(new Paragraph("Candide")));
+                  table.addCell(new PdfPCell(new Paragraph("Salle")));
+                  for(int i = 0;i<obj.length;i++){
+                      for(int k=0;k<obj[i].length;k++){
+                          if(!obj[i][k].getListSoutenance().isEmpty()){
+                              for(Soutenance sout : obj[i][k].getListSoutenance()){
+                                  SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy" );
+                                  String str = sdf.format(obj[i][k].getDate_debut().getTime());
+                                  sdf = new SimpleDateFormat("hh:mm" );
+                                  String str1 = sdf.format(obj[i][k].getDate_debut().getTime());
+
+                                  table.addCell(new PdfPCell(new Paragraph(str)));
+                                  table.addCell(new PdfPCell(new Paragraph(str1)));
+                                  table.addCell(new PdfPCell(new Paragraph(sout.getCpl().getEtu().toString())));
+                                  table.addCell(new PdfPCell(new Paragraph(sout.getCpl().getTut().toString())));
+                                  table.addCell(new PdfPCell(new Paragraph(sout.getCdd().toString())));
+                                  table.addCell(new PdfPCell(new Paragraph(sout.getSalle())));
+                              }
+                          }
+                      }
+                  }
+                  document.add(table);
+                  document.close();
+                  file.close();
+              }
+          } catch(Exception err){
+              err.printStackTrace();
+          }
 
 
 

@@ -64,6 +64,8 @@ CREATE TABLE IF NOT EXISTS `Professeur` (
   `nom_prof` text NOT NULL,
   `pre_prof` text NOT NULL,
   `info_prof` text NOT NULL,
+  `dimi_prof` text NOT NULL
+
   PRIMARY KEY (`id_prof`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

@@ -28,11 +28,12 @@ public class DProfManager implements Manager<DProf> {
     public int create(DProf nouveau) {
         int id = 0;
         ResultSet key;
-        String sql = "INSERT INTO `Professeur`(`id_prof`, `nom_prof`, `pre_prof`, `info_prof`) VALUES (NULL,?,?,?)";
+        String sql = "INSERT INTO `Professeur`(`id_prof`, `nom_prof`, `pre_prof`, `info_prof`, `dimi_prof`) VALUES (NULL,?,?,?,?)";
         try {
             pstm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pstm.setString(1, nouveau.getNom());
             pstm.setString(2, nouveau.getPrenom());
+            pstm.setString(4,nouveau.getDiminutif());
             StringBuilder sb = new StringBuilder();
             for (int i=0;i<nouveau.getInfos().size();i+=1) sb.append(nouveau.getInfos().get(i) + ";");
             pstm.setString(3, sb.toString());
@@ -54,7 +55,7 @@ public class DProfManager implements Manager<DProf> {
 
     @Override
     public DProf read(int id) {
-        String sql = "SELECT `id_prof`, `nom_prof`, `pre_prof`, `info_prof` FROM `Professeur` WHERE `id_prof`=?";
+        String sql = "SELECT `id_prof`, `nom_prof`, `pre_prof`, `info_prof` , `dimi_prof` FROM `Professeur` WHERE `id_prof`=?";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setInt(1,id);
@@ -65,7 +66,7 @@ public class DProfManager implements Manager<DProf> {
             for (String str : Arrays.asList(rset.getString("info_prof").split(";"))){
                 listInfos.add(str);
             }
-            DProf ok = new DProf(rset.getString("nom_prof"),rset.getString("pre_prof"), listInfos );
+            DProf ok = new DProf(rset.getString("nom_prof"),rset.getString("pre_prof"),rset.getString("dimi_prof"), listInfos );
             ok.setDb_id(rset.getInt("id_prof"));
             return ok;
         }
@@ -82,7 +83,7 @@ public class DProfManager implements Manager<DProf> {
     @Override
     public List<DProf> readall() {
         List<DProf> resultats = new ArrayList<DProf>();
-        String sql = "SELECT `id_prof`, `nom_prof`, `pre_prof`, `info_prof` FROM `Professeur` WHERE 1";
+        String sql = "SELECT `id_prof`, `nom_prof`, `pre_prof`, `info_prof` , `dimi_prof` FROM `Professeur` WHERE 1";
         try {
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
             rset = stmt.executeQuery(sql);
@@ -92,7 +93,7 @@ public class DProfManager implements Manager<DProf> {
                 for (String str : Arrays.asList(rset.getString("info_prof").split(";"))){
                     listInfos.add(str);
                 }
-                DProf ok = new DProf(rset.getString("nom_prof"),rset.getString("pre_prof"), listInfos);
+                DProf ok = new DProf(rset.getString("nom_prof"),rset.getString("pre_prof"),rset.getString("dimi_prof"), listInfos);
                 ok.setDb_id(rset.getInt("id_prof"));
                 resultats.add(ok);
             }
@@ -112,14 +113,15 @@ public class DProfManager implements Manager<DProf> {
         int n = -1;
         PreparedStatement pstm = null;
         try {
-            String sql = "UPDATE `Professeur` SET `nom_prof`=?,`pre_prof`=?,`info_prof`=? WHERE `id_prof`=?";
+            String sql = "UPDATE `Professeur` SET `nom_prof`=?,`pre_prof`=?,`info_prof`=?,`dimi_prof`=? WHERE `id_prof`=?";
             pstm = con.prepareStatement(sql);
             pstm.setString(1,table.getNom());
             pstm.setString(2,table.getPrenom());
             StringBuilder sb = new StringBuilder();
             for (int i=0;i<table.getInfos().size();i+=1) sb.append(table.getInfos().get(i) + ";");
             pstm.setString(3, sb.toString());
-            pstm.setInt(4, table.getDb_id());
+            pstm.setString(4, table.getDiminutif());
+            pstm.setInt(5, table.getDb_id());
             n = pstm.executeUpdate();
             con.commit();
             if (1 != n) Message.err.println("erreur update on DProfManager id: " + table.getDb_id());

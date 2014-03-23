@@ -33,7 +33,7 @@ public class SoutenanceManager implements Manager<Soutenance> {
             pstm=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             pstm.setString(1,nouveau.getCpl().toString());
             pstm.setString(2,nouveau.getCdd().toString());
-            pstm.setInt(3,nouveau.getSalle());
+            pstm.setString(3,nouveau.getSalle());
             pstm.executeUpdate();
             key=pstm.getGeneratedKeys();
             if(key!=null && key.next()) id=key.getInt(1);
@@ -60,7 +60,7 @@ public class SoutenanceManager implements Manager<Soutenance> {
             rset.next();
             con.commit();
             Manager cat = new SoutenanceManager(con);
-            return new Soutenance(rset.getInt("id_soutenance"),(DCouple)rset.getObject("couple"),(DProf)rset.getObject("candide"),rset.getInt("salle"));
+            return new Soutenance(rset.getInt("id_soutenance"),(DCouple)rset.getObject("couple"),(DProf)rset.getObject("candide"),rset.getString("salle"));
         }
         catch (SQLException e){
             try {
@@ -80,7 +80,7 @@ public class SoutenanceManager implements Manager<Soutenance> {
             rset = stmt.executeQuery(sql);
             con.commit();
             while (rset.next()){
-                resultats.add(new Soutenance(rset.getInt("id_soutenance"),(DCouple) rset.getObject("couple"), (DProf) rset.getObject("candide"),rset.getInt("salle")));
+                resultats.add(new Soutenance(rset.getInt("id_soutenance"),(DCouple) rset.getObject("couple"), (DProf) rset.getObject("candide"),rset.getString("salle")));
             }
         }
         catch (SQLException e){
@@ -103,7 +103,7 @@ public class SoutenanceManager implements Manager<Soutenance> {
             int i = 1;
             pstm.setString(1,table.getCpl().toString());
             pstm.setString(2, table.getCdd().toString());
-            pstm.setInt(3,table.getSalle());
+            pstm.setString(3,table.getSalle());
             pstm.setInt(4,table.getId());
             n = pstm.executeUpdate();
             con.commit();

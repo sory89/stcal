@@ -12,6 +12,7 @@ import datechooser.beans.DateChooserPanel;
 import datechooser.events.SelectionChangedEvent;
 import datechooser.events.SelectionChangedListener;
 import datechooser.model.multiple.Period;
+import net.fortuna.ical4j.model.DateTime;
 
 
 import javax.swing.*;
@@ -131,6 +132,7 @@ public class FCal extends FTab{
                 int dureeCreneau = Integer.parseInt(creneau.getText());
                 int k;
                 int i;
+                if(Datas.o[0][0]==null){
                 for (k = 0; k < recupDates.size(); k++) {
                     for (i = 0; i < totalCreneaux; i++) {
                         Datas.o[i][k] = new DCreneau();
@@ -140,7 +142,7 @@ public class FCal extends FTab{
                         Main.colors[i][k]="white";
                     }
                 }
-
+                }
 
                 pan().addComponentListener(new ComponentListener() {
                     @Override
@@ -340,7 +342,10 @@ public class FCal extends FTab{
                 });
                 okcand.addActionListener(new ActionListener() {
                     @Override
-                    public void actionPerformed(ActionEvent e) { if(fs.getSelectedItem()!=null) {
+                    public void actionPerformed(ActionEvent e) {
+
+
+                        if(fs.getSelectedItem()!=null) {
                         if(jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn())!=null){
 
                                 DCouple dfc= (DCouple) jls.getSelectedValue() ;

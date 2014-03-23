@@ -4,12 +4,14 @@
 \contentsline {paragraph}{}{5}
 \contentsline {paragraph}{}{5}
 \contentsline {paragraph}{}{5}
+\contentsline {paragraph}{}{5}
 \contentsline {part}{II\hspace {1em}Pr\IeC {\'e}sentation du sujet}{6}
 \contentsline {paragraph}{}{7}
 \contentsline {paragraph}{}{7}
 \contentsline {paragraph}{}{7}
 \contentsline {part}{III\hspace {1em}Cahier des charges}{8}
 \contentsline {chapter}{\numberline {1}Fonctionnalit\IeC {\'e}s}{9}
+\contentsline {paragraph}{}{9}
 \contentsline {chapter}{\numberline {2}D\IeC {\'e}veloppement et contraintes}{10}
 \contentsline {section}{\numberline {2.1}Premi\IeC {\`e}re \IeC {\'e}tape}{10}
 \contentsline {subsection}{\numberline {2.1.1}D\IeC {\'e}veloppement}{10}
@@ -28,9 +30,9 @@
 \contentsline {paragraph}{}{11}
 \contentsline {subsection}{\numberline {2.3.2}Contraintes}{11}
 \contentsline {paragraph}{}{11}
-\contentsline {section}{\numberline {2.4}Quatri\IeC {\`e}me \IeC {\'e}tape}{11}
-\contentsline {subsection}{\numberline {2.4.1}D\IeC {\'e}veloppement}{11}
-\contentsline {paragraph}{}{11}
+\contentsline {section}{\numberline {2.4}Quatri\IeC {\`e}me \IeC {\'e}tape}{12}
+\contentsline {subsection}{\numberline {2.4.1}D\IeC {\'e}veloppement}{12}
+\contentsline {paragraph}{}{12}
 \contentsline {subsection}{\numberline {2.4.2}Contraintes}{12}
 \contentsline {paragraph}{}{12}
 \contentsline {paragraph}{}{12}
@@ -51,48 +53,52 @@
 \contentsline {paragraph}{}{16}
 \contentsline {paragraph}{}{16}
 \contentsline {paragraph}{}{16}
-\contentsline {paragraph}{}{16}
-\contentsline {paragraph}{L'onglet Stage}{16}
-\contentsline {paragraph}{}{16}
-\contentsline {paragraph}{}{16}
 \contentsline {paragraph}{}{17}
 \contentsline {paragraph}{}{17}
 \contentsline {paragraph}{}{17}
-\contentsline {paragraph}{L'onglet Calendrier}{17}
-\contentsline {paragraph}{}{17}
-\contentsline {paragraph}{}{17}
-\contentsline {paragraph}{}{17}
-\contentsline {paragraph}{}{18}
-\contentsline {paragraph}{}{18}
-\contentsline {paragraph}{}{18}
+\contentsline {paragraph}{L'onglet Stage}{18}
 \contentsline {paragraph}{}{18}
 \contentsline {paragraph}{}{18}
 \contentsline {paragraph}{}{18}
 \contentsline {paragraph}{}{18}
 \contentsline {paragraph}{}{19}
-\contentsline {chapter}{\numberline {2}Donn\IeC {\'e}es}{20}
-\contentsline {paragraph}{}{20}
-\contentsline {section}{\numberline {2.1}Mode de fonctionnement}{20}
+\contentsline {paragraph}{L'onglet Calendrier}{20}
 \contentsline {paragraph}{}{20}
 \contentsline {paragraph}{}{20}
-\contentsline {section}{\numberline {2.2}Outils}{20}
 \contentsline {paragraph}{}{20}
-\contentsline {part}{V\hspace {1em}Gestion du projet}{22}
+\contentsline {paragraph}{}{20}
+\contentsline {paragraph}{}{21}
+\contentsline {paragraph}{}{21}
+\contentsline {paragraph}{}{21}
+\contentsline {paragraph}{}{21}
+\contentsline {paragraph}{}{22}
+\contentsline {paragraph}{}{22}
+\contentsline {paragraph}{}{22}
+\contentsline {chapter}{\numberline {2}Donn\IeC {\'e}es}{23}
 \contentsline {paragraph}{}{23}
-\contentsline {chapter}{\numberline {1}R\IeC {\'e}partition des t\IeC {\^a}ches}{24}
-\contentsline {paragraph}{}{24}
-\contentsline {chapter}{\numberline {2}Gestion du temps}{25}
-\contentsline {chapter}{\numberline {3}Difficult\IeC {\'e}s rencontr\IeC {\'e}es}{26}
-\contentsline {section}{\numberline {3.1}Difficult\IeC {\'e}s techniques}{26}
+\contentsline {section}{\numberline {2.1}Mode de fonctionnement}{23}
+\contentsline {paragraph}{}{23}
+\contentsline {paragraph}{}{23}
+\contentsline {section}{\numberline {2.2}Outils}{23}
+\contentsline {paragraph}{}{23}
+\contentsline {part}{V\hspace {1em}Gestion du projet}{25}
 \contentsline {paragraph}{}{26}
-\contentsline {paragraph}{}{26}
-\contentsline {paragraph}{}{26}
-\contentsline {paragraph}{}{26}
-\contentsline {section}{\numberline {3.2}Difficult\IeC {\'e}s organisationnelles}{26}
-\contentsline {paragraph}{}{26}
-\contentsline {paragraph}{}{26}
-\contentsline {part}{VI\hspace {1em}Conclusion}{28}
-\contentsline {paragraph}{}{29}
-\contentsline {paragraph}{}{29}
-\contentsline {paragraph}{}{29}
-\contentsline {paragraph}{}{29}
+\contentsline {chapter}{\numberline {1}R\IeC {\'e}partition des t\IeC {\^a}ches}{27}
+\contentsline {paragraph}{}{27}
+\contentsline {chapter}{\numberline {2}Gestion du temps}{29}
+\contentsline {chapter}{\numberline {3}Difficult\IeC {\'e}s rencontr\IeC {\'e}es}{31}
+\contentsline {section}{\numberline {3.1}Difficult\IeC {\'e}s techniques}{31}
+\contentsline {paragraph}{}{31}
+\contentsline {paragraph}{}{31}
+\contentsline {paragraph}{}{31}
+\contentsline {paragraph}{}{31}
+\contentsline {section}{\numberline {3.2}Difficult\IeC {\'e}s organisationnelles}{31}
+\contentsline {paragraph}{}{31}
+\contentsline {paragraph}{}{32}
+\contentsline {paragraph}{}{32}
+\contentsline {paragraph}{}{32}
+\contentsline {part}{VI\hspace {1em}Conclusion}{33}
+\contentsline {paragraph}{}{34}
+\contentsline {paragraph}{}{34}
+\contentsline {paragraph}{}{34}
+\contentsline {paragraph}{}{34}

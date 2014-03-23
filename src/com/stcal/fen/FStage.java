@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class FStage extends FTab {
 
     protected JList Fstage;
-    protected JLabel info = new JLabel("<html>Sélectionner un stage pour afficher ses informations.</html>");
+    protected JLabel info = new JLabel("<html>Sélectionnez un stage pour afficher ses informations.</html>");
     protected JPanel option = new JPanel();
     protected JLabel infosEtu;
     protected JLabel infosTut;

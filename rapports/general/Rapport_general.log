@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.2.19)  22 MAR 2014 22:01
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.2.19)  23 MAR 2014 13:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -365,43 +365,54 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \extratabsurround=\skip57
 \backup@length=\skip58
 )
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count102
+\float@exts=\toks18
+\float@box=\box52
+\@float@everytoks=\toks19
+\@floatcapt=\box53
+)
+(/usr/share/texlive/texmf-dist/tex/latex/chngcntr/chngcntr.sty
+Package: chngcntr 2009/09/02 v1.0a change counter resetting
+)
 (./Rapport_general.aux)
 \openout1 = `Rapport_general.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Info: Redefining \degres on input line 27.
-LaTeX Info: Redefining \dots on input line 27.
-LaTeX Info: Redefining \up on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Info: Redefining \degres on input line 29.
+LaTeX Info: Redefining \dots on input line 29.
+LaTeX Info: Redefining \up on input line 29.
 
 
 Package frenchb.ldf Warning: OT1 encoding should not be used for French. 
 (frenchb.ldf)                Add \usepackage[T1]{fontenc} to the preamble
-(frenchb.ldf)                of your document, on input line 27.
+(frenchb.ldf)                of your document, on input line 29.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count102
+\scratchcounter=\count103
 \scratchdimen=\dimen118
-\scratchbox=\box52
-\nofMPsegments=\count103
-\nofMParguments=\count104
-\everyMPshowfont=\toks18
-\MPscratchCnt=\count105
+\scratchbox=\box54
+\nofMPsegments=\count104
+\nofMParguments=\count105
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count106
 \MPscratchDim=\dimen119
-\MPnumerator=\count106
-\makeMPintoPDFobject=\count107
-\everyMPtoPDFconversion=\toks19
+\MPnumerator=\count107
+\makeMPintoPDFobject=\count108
+\everyMPtoPDFconversion=\toks21
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -453,16 +464,16 @@ e
 <iutbm.jpeg, id=1, 153.57375pt x 46.67438pt>
 File: iutbm.jpeg Graphic file (type jpg)
  <use iutbm.jpeg>
-Package pdftex.def Info: iutbm.jpeg used on input line 50.
+Package pdftex.def Info: iutbm.jpeg used on input line 52.
 (pdftex.def)             Requested size: 153.57336pt x 46.67424pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./iutbm.jpeg>] [1] (./Rapp
 ort_general.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 14.
+(Font)              <7> on input line 16.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 14.
+(Font)              <5> on input line 16.
 [2
 
 ])
@@ -472,7 +483,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [3] [4
 
 ]
-Overfull \hbox (11.4451pt too wide) in paragraph at lines 73--75
+Overfull \hbox (11.4451pt too wide) in paragraph at lines 78--80
 \OT1/cmr/m/n/10 plac^^Sees tout au long du rap-port dans le but d'ap-por-ter un
 e meilleure compr^^Sehension
  []
@@ -480,7 +491,7 @@ e meilleure compr^^Sehension
 [5] [6
 
 ]
-Overfull \hbox (10.61156pt too wide) in paragraph at lines 86--89
+Overfull \hbox (10.61156pt too wide) in paragraph at lines 91--94
  [] \OT1/cmr/m/n/10 De-puis de nom-breuses ann^^Sees, les pro-fes-seurs de notr
 e ^^Setablissement, et s^urement
  []
@@ -489,55 +500,112 @@ e ^^Setablissement, et s^urement
 
 ]
 Chapitre 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
+
+ []
+
 [9
 
 ]
 Chapitre 2.
 
-Overfull \hbox (7.88942pt too wide) in paragraph at lines 125--129
+Overfull \hbox (7.13939pt too wide) in paragraph at lines 126--127
+[]\OT1/cmr/m/n/10 Le d^^Seveloppement s'ef-fec-tuera en quatre ^^Setapes, qui c
+ontien-dront les diff^^Serentes
+ []
+
+
+Overfull \hbox (7.88942pt too wide) in paragraph at lines 132--136
 \OT1/cmr/m/n/10 Le pro-duit per-met-tra ainsi l'im-port de fi-chiers conte-nant
  les donn^^Sees. Ces derni^^Reres
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 150.
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 150.
- [10
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 162--165
+Underfull \hbox (badness 10000) in paragraph at lines 153--159
 
  []
 
 
-Overfull \hbox (24.22275pt too wide) in paragraph at lines 168--169
+Underfull \hbox (badness 10000) in paragraph at lines 153--159
+
+ []
+
+[10
+
+]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 160.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 160.
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--175
+
+ []
+
+
+Overfull \hbox (24.22275pt too wide) in paragraph at lines 178--179
 []\OT1/cmr/m/n/10 en cas de cr^^Seation d'une sou-te-nance ayant lieu dans une 
 salle d^^Sej^^Ra r^^Sequisitionn^^See
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--200
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--200
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--200
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
 
  []
 
-[11] [12] [13
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 205--214
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--214
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--214
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--214
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--214
+
+ []
+
+[12] [13
 
 ]
-Overfull \hbox (6.7784pt too wide) in paragraph at lines 216--220
+Overfull \hbox (6.7784pt too wide) in paragraph at lines 231--235
  [] \OT1/cmr/m/n/10 Les fu-turs uti-li-sa-teurs du pro-duit se-ront re-la-ti-ve
 -ment nom-breux, par cons^^Sequent
  []
@@ -546,76 +614,145 @@ Overfull \hbox (6.7784pt too wide) in paragraph at lines 216--220
 Chapitre 1.
 [15
 
-] [16] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 369--372
+]
+Underfull \hbox (badness 10000) in paragraph at lines 271--272
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 369--372
+Underfull \hbox (badness 10000) in paragraph at lines 271--272
+
+ []
+
+<Lier.png, id=60, 1371.1225pt x 743.77875pt>
+File: Lier.png Graphic file (type png)
+ <use Lier.png>
+Package pdftex.def Info: Lier.png used on input line 275.
+(pdftex.def)             Requested size: 455.24408pt x 246.94583pt.
+ [16 <./Lier.png>]
+Overfull \hbox (0.58392pt too wide) in paragraph at lines 305--310
+\OT1/cmr/m/n/10 fectu^^Ses. Un stage est alors form^^Se et consul-table dans l'
+on-glet ''S-tages``. L'^^Setudiant
+ []
+
+[17] <Stage.png, id=70, 1371.1225pt x 743.77875pt>
+File: Stage.png Graphic file (type png)
+ <use Stage.png>
+Package pdftex.def Info: Stage.png used on input line 315.
+(pdftex.def)             Requested size: 455.24408pt x 246.94583pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 313--317
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 369--372
+Underfull \hbox (badness 10000) in paragraph at lines 313--317
 
  []
 
-[18] [19]
+[18 <./Stage.png>] [19] <Calendrier.png, id=79, 1371.1225pt x 743.77875pt>
+File: Calendrier.png Graphic file (type png)
+
+<use Calendrier.png>
+Package pdftex.def Info: Calendrier.png used on input line 358.
+(pdftex.def)             Requested size: 455.24408pt x 246.94583pt.
+ [20 <./Calendrier.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 382--386
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 382--386
+
+ []
+
+<Calendrier2.png, id=85, 1371.1225pt x 743.77875pt>
+File: Calendrier2.png Graphic file (type png)
+ <use Calendrier2.png>
+Package pdftex.def Info: Calendrier2.png used on input line 388.
+(pdftex.def)             Requested size: 455.24408pt x 246.94583pt.
+
+[21 <./Calendrier2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 420--425
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 420--425
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 420--425
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 420--425
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 420--425
+
+ []
+
+[22]
 Chapitre 2.
-[20
+[23
 
-] [21] [22
+] [24] [25
 
-] [23]
+]
+Underfull \hbox (badness 10000) in paragraph at lines 460--463
+
+ []
+
+[26]
 Chapitre 1.
+[27
 
-Underfull \hbox (badness 10000) in paragraph at lines 411--415
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 411--415
-
- []
-
-
-Overfull \hbox (113.9376pt too wide) in paragraph at lines 418--461
- [][] 
- []
-
-[24
-
-]
+] [28]
 Chapitre 2.
-[25
 
-]
+Underfull \hbox (badness 10000) in paragraph at lines 532--562
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 532--562
+
+ []
+
+[29
+
+] [30]
 Chapitre 3.
-[26
+[31
 
-] [27] [28
+] [32] [33
 
-] [29] (./Rapport_general.aux) ) 
+] [34] (./Rapport_general.aux) ) 
 Here is how much of TeX's memory you used:
- 2842 strings out of 495002
- 38798 string characters out of 6180262
- 107611 words of memory out of 5000000
- 6025 multiletter control sequences out of 15000+600000
- 7015 words of font info for 25 fonts, out of 8000000 for 9000
+ 2939 strings out of 495002
+ 40220 string characters out of 6180262
+ 109413 words of memory out of 5000000
+ 6108 multiletter control sequences out of 15000+600000
+ 7316 words of font info for 26 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  37i,10n,43p,387b,293s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Rapport_general.pdf (30 pages, 143664 bytes).
+cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Rapport_general.pdf (35 pages, 302401 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 88 compressed objects within 1 object stream
+ 159 PDF objects out of 1000 (max. 8388607)
+ 103 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -4,15 +4,15 @@ public class Soutenance
 {
     private DCouple cpl;
     private DProf cdd;
-    private int salle;
+    private String salle;
     private int id;
     public Soutenance(DCouple couple, DProf candide)
     {
         this.cpl = couple;
         this.cdd = candide;
-        this.salle = 204;
+        this.salle = null;
     }
-    public Soutenance(int id,DCouple couple, DProf candide,int salle)
+    public Soutenance(int id,DCouple couple, DProf candide,String salle)
     {
         this.id=id;
         this.cpl = couple;
@@ -24,7 +24,7 @@ public class Soutenance
     {
         this.cpl = couple;
         this.cdd = null;
-        this.salle = 204;
+        this.salle = null;
 
     }
 
@@ -48,7 +48,7 @@ public class Soutenance
         this.cdd = cdd;
     }
 
-    public int getSalle()
+    public String getSalle()
     {
         return salle;
     }
@@ -56,7 +56,7 @@ public class Soutenance
         return id;
     }
 
-    public void setSalle(int salle)
+    public void setSalle(String salle)
     {
         this.salle = salle;
     }

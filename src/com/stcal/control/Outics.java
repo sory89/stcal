@@ -3,10 +3,21 @@ package com.stcal.control;
 
 import com.stcal.don.DCreneau;
 import com.stcal.don.DProf;
+import com.stcal.don.Soutenance;
 import com.stcal.fen.FCal;
 
 
+import net.fortuna.ical4j.data.CalendarOutputter;
 import net.fortuna.ical4j.model.Calendar;
+import net.fortuna.ical4j.model.Date;
+import net.fortuna.ical4j.model.DateTime;
+import net.fortuna.ical4j.model.ValidationException;
+import net.fortuna.ical4j.model.component.VEvent;
+import net.fortuna.ical4j.model.property.*;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,7 +29,9 @@ import net.fortuna.ical4j.model.Calendar;
 public class Outics {
     private int option;
     private Object donne;
-    private Calendar calendar = new Calendar();
+
+
+
 
     public Outics(int opt,Object don){
 
@@ -40,7 +53,7 @@ public class Outics {
     }
 
 
-     public void export(){
+     public void export() throws IOException, ValidationException {
 
         switch ( this.option){
             case 1:
@@ -70,14 +83,38 @@ public class Outics {
 
 
      }
-    public void exportprof(DProf prof){
-
+    public void exportprof(DProf prof) throws IOException, ValidationException {
+        Calendar calendar = new Calendar();
+        calendar.getProperties().add(new ProdId("-//Ben Fortuna//iCal4j 1.0//EN"));
+        calendar.getProperties().add(Version.VERSION_2_0);
+        calendar.getProperties().add(CalScale.GREGORIAN);
+         System.out.println("generation ics");
         DCreneau obj[][] = FCal.o ;
 
+        for(int i = 0;i<obj.length;i++){
+            for(int k=0;k<obj[i].length;i++){
+
+                if(obj[i][k].getSoutp(prof)!=null){
+
+                    Soutenance sout = obj[i][k].getSoutp(prof);
+                    DCreneau cren = obj[i][k];
+                    DateTime startt = new DateTime(cren.getDate_debut().getTime());
+                    DateTime finn = new DateTime(cren.getDate_fin().getTime());
+                    VEvent event = new VEvent(startt,finn,sout.getCpl().getEtu().toString());
+                    event.getProperties().add(new Description("Tuteur : "+sout.getCpl().getTut().toString()+" Candide : "+sout.getCdd().toString()));
+                    event.getProperties().add(new Location(sout.getSalle()));
+
+                    calendar.getComponents().add(event);
+                }
+            }
+        }
+        FileOutputStream fout = new FileOutputStream(prof.getNom()+".ics");
+        CalendarOutputter outputter = new CalendarOutputter();
+        outputter.output(calendar,fout);
 
 
 
-    }
+     }
 
 
 

@@ -18,13 +18,13 @@ public class Datas {
     public static final DefaultListModel<DCouple> stages;
     public static final DefaultListModel<DPersonne> etu;
     public static final DefaultListModel<DPersonne> prof;
-    public static final DynamicTreeDemo newContentPane;
+
     static {
         salles = new DefaultListModel<String>();
         stages = new DefaultListModel<DCouple>();
         etu    = new DefaultListModel<DPersonne>();
         prof   = new DefaultListModel<DPersonne>();
-        newContentPane = new DynamicTreeDemo();
+       ;
     }
 
     /**

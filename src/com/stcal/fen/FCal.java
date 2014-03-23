@@ -321,11 +321,13 @@ public class FCal extends FTab{
                                 DCreneau dc = (DCreneau) jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn());
 
                                 dc.getSout(dfc).setCdd((DProf)jcbcandide.getSelectedItem());
+                                dc.getSout(dfc).setSalle((String)jcbsalles.getSelectedItem());
                               System.out.println("candide ok");
 
                                 jls.clearSelection();
                                 fs.removeAllElements();
                                 jcbcandide.removeAllItems();
+                                jcbsalles.removeAllItems();
                                 refresh();
                             }
                         }
@@ -336,6 +338,7 @@ public class FCal extends FTab{
                      @Override
                      public void valueChanged(ListSelectionEvent e) {
                          jcbcandide.removeAllItems();
+                         jcbsalles.removeAllItems();
                                               if(jt.getValueAt(jt.getSelectedRow(), jt.getSelectedColumn())!=null){
                                                   if(fs.getSelectedItem()!=null) {
                                                       DCouple dfc= (DCouple) jls.getSelectedValue() ;
@@ -351,6 +354,12 @@ public class FCal extends FTab{
 
 
 
+
+                                                      }
+                                                      for(int k=0;k<Datas.salles.size();k++){
+
+                                                          if(dc.isSalleIn(Datas.salles.getElementAt(k)))
+                                                              jcbsalles.addItem(Datas.salles.getElementAt(k));
                                                       }
 
 

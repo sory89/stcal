@@ -93,8 +93,9 @@ public class FExportIcs {
                     case 1:
                         Outics test = new Outics(1,jcboptions2.getSelectedItem());
                         try {
-                            test.export();
                             System.out.println("start export");
+                            test.export();
+
                         } catch (IOException e1) {
                             e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                         } catch (ValidationException e1) {

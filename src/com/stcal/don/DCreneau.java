@@ -120,6 +120,22 @@ public class DCreneau {
 
 
     }
+    public boolean isSalleIn(String salle){
+
+        int i;
+        for(i=0;i<ListSoutenance.size();i++){
+
+            if(ListSoutenance.get(i).getSalle() == salle)
+                return false ;
+
+
+
+        }
+        return true;
+
+
+
+    }
     public Soutenance getSout(DCouple dfc){
             int i;
         for(i=0;i<ListSoutenance.size();i++){

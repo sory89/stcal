@@ -14,10 +14,11 @@ import net.fortuna.ical4j.model.DateTime;
 import net.fortuna.ical4j.model.ValidationException;
 import net.fortuna.ical4j.model.component.VEvent;
 import net.fortuna.ical4j.model.property.*;
+import net.fortuna.ical4j.util.UidGenerator;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -92,25 +93,43 @@ public class Outics {
         DCreneau obj[][] = FCal.o ;
 
         for(int i = 0;i<obj.length;i++){
-            for(int k=0;k<obj[i].length;i++){
+            for(int k=0;k<obj[i].length;k++){
 
                 if(obj[i][k].getSoutp(prof)!=null){
-
+                     System.out.println(obj[i][k].getSoutp(prof)+"oui oui");
                     Soutenance sout = obj[i][k].getSoutp(prof);
                     DCreneau cren = obj[i][k];
                     DateTime startt = new DateTime(cren.getDate_debut().getTime());
                     DateTime finn = new DateTime(cren.getDate_fin().getTime());
                     VEvent event = new VEvent(startt,finn,sout.getCpl().getEtu().toString());
+                    if(sout.getCdd()!=null)
                     event.getProperties().add(new Description("Tuteur : "+sout.getCpl().getTut().toString()+" Candide : "+sout.getCdd().toString()));
+                    else
+                        event.getProperties().add(new Description("Tuteur : "+sout.getCpl().getTut().toString()+" Candide : non défini"));
                     event.getProperties().add(new Location(sout.getSalle()));
+                    UidGenerator ug = new UidGenerator("uidGen");
+                    Uid uid = ug.generateUid();
 
+                    event.getProperties().add(uid);
                     calendar.getComponents().add(event);
                 }
             }
         }
-        FileOutputStream fout = new FileOutputStream(prof.getNom()+".ics");
-        CalendarOutputter outputter = new CalendarOutputter();
-        outputter.output(calendar,fout);
+
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        int retrival = chooser.showSaveDialog(null);
+        if (retrival == JFileChooser.APPROVE_OPTION) {
+            try {
+                FileWriter fw = new FileWriter(chooser.getSelectedFile()+".ics");
+                CalendarOutputter outputter = new CalendarOutputter();
+                outputter.output(calendar,fw);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+
+
 
 
 

@@ -65,7 +65,7 @@ public class FCal extends FTab{
     protected DCoupleTransferHandler kikoo = new DCoupleTransferHandler();
     protected DefaultTableModel salles = null;
     protected JButton okPlageJour = new JButton("Générer le planning");
-
+    public static DCreneau o[][] ;
 
     public void refreshTree(){
         newContentPane.populateTree(newContentPane.getTreePanel());
@@ -110,7 +110,7 @@ public class FCal extends FTab{
 
                 GridBagConstraints c = new GridBagConstraints();
 
-                DCreneau o[][] = new DCreneau[totalCreneaux][recupDates.size()];
+                o = new DCreneau[totalCreneaux][recupDates.size()];
                 Main.colors=new String[totalCreneaux][recupDates.size()];
 
                 int dj = Integer.parseInt(debutJour.getSelectedItem().toString());
@@ -322,9 +322,14 @@ public class FCal extends FTab{
 
                                 dc.getSout(dfc).setCdd((DProf)jcbcandide.getSelectedItem());
                               System.out.println("candide ok");
+
+                                jls.clearSelection();
+                                fs.removeAllElements();
+                                jcbcandide.removeAllItems();
+                                refresh();
                             }
                         }
-                        jt.clearSelection();
+
                     }
                 });
                  jls.addListSelectionListener(new ListSelectionListener() {
@@ -340,10 +345,7 @@ public class FCal extends FTab{
                                                           if(dc.isProfIn(Datas.prof.getElementAt(i))){
 
                                                               jcbcandide.addItem(Datas.prof.getElementAt(i));
-                                                              if(dc.getSout(dfc).getCdd()==Datas.prof.getElementAt(i)){
 
-                                                                  jcbcandide.setSelectedIndex(i);
-                                                              }
 
                                                           }
 

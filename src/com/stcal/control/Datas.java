@@ -18,13 +18,14 @@ public class Datas {
     public static DefaultListModel<DCouple> stages;
     public static DefaultListModel<DPersonne> etu;
     public static DefaultListModel<DPersonne> prof;
+    public static char Csv;
 
     static {
         salles = new DefaultListModel<String>();
         stages = new DefaultListModel<DCouple>();
         etu    = new DefaultListModel<DPersonne>();
         prof   = new DefaultListModel<DPersonne>();
-
+        Csv    = ';';
     }
 
     public static DCreneau[][] o;

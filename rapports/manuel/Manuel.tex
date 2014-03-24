@@ -1,0 +1,157 @@
+\documentclass[a4paper,10pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage[frenchb]{babel}
+\usepackage{fancyhdr}
+\usepackage{float}
+
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{0pt}
+\renewcommand\footrulewidth{1pt}
+\fancyfoot[L]{Projet STCal}
+\fancyfoot[R]{IUT Informatique de Belfort}
+\lhead{}
+\rhead{}
+\date{}
+
+
+\renewcommand{\thesection}{\arabic{part}.\arabic{section}}
+
+\title{\Huge{Projet STCal}\\ {\Large Rapport général}}
+\author{Florian Barrois \and Nicolas Devillers \and Valentin Jeanroy \and Mehdi Loisel \and Jean Mercadier \and Ismail Taleb \and Willeme Verdeaux}
+
+\begin{document}
+ \begin{titlepage}
+
+    \begin{center}
+      ~\\~\\~\\~\\~\\
+      \Huge
+      Locigiel STCal\\
+      \LARGE
+      Manuel d'utilisation\\
+      ~\\~\\~\\~\\~\\~\\
+      \begin{multicols}{3}
+	\large
+	Florian Barrois\\Mehdi Loisel\\
+	\columnbreak 
+	Nicolas Devillers\\Jean Mercadier\\Willeme Verdeaux\\
+	\columnbreak
+	Valentin Jeanroy\\Ismail Taleb
+      \end{multicols}
+    \end{center}
+
+
+    \begin{center}
+    ~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\~\\
+    \includegraphics{../general/iutbm.jpeg}
+    ~\\~\\~\\~\\~\\
+    \large
+    Année 2013-2014
+    \end{center}
+
+    \end{titlepage}
+
+
+\strut
+\renewcommand{\contentsname}{Sommaire}
+\tableofcontents
+
+\part{Introduction}
+
+\part{Les pré-requis}
+\part{La gestion des stages}
+    \section{Créer un stage} 
+      
+      \subsection{Importer les données}
+      
+	Afin de pouvoir créer des stages, il est nécessaire d'établir au préalable les listes d'informations sur les étudiants et les enseignants.
+	Ces listes doivent être importées depuis deux fichiers au format ICS.
+	
+	\paragraph{}
+	\textit{Remarques :
+	\renewcommand\labelitemi{\textbullet}
+	  \begin{itemize}
+	    \item Si vous n'avez aucun fichier possédant cet extension, il est très simple d'en créer en utilisant par exemple un logiciel de tableur.
+		  La première ligne devra contenir l'intitulé des champs remplis (ex : Nom étudiant; Prénom étudiant; Lieu de stage;), et dans les autres lignes se trouveront les données.
+		  Pour enregistrer ce fichier au format ICS, cliquer sur ``Fichier - Enregistrer sous...'', entrez le nom de votre fichier, puis cliquez sur ``Tous les formats'' et choisissez ``Fichier CSV''.
+	    \item En cas de problème d'import, vérifiez que le nombre d'informations sur chaque personne correspond bien au nombre de champs entrés dans la première ligne. 
+		  Supprimez éventuellement les lignes vides (contenant seulement des caractères séparateurs).
+	  \end{itemize}}
+
+	\paragraph{}
+	  Il y a deux manières procéder à l'import de ces fichiers : 
+	  ~\\
+	  \renewcommand\labelitemi{\textbullet}
+	  \begin{itemize}
+	    \item Utiliser les boutons présents dans l'onglet Lier.
+	    \item Effectuer les imports depuis le menu ``Fichier''.
+	  \end{itemize}
+
+	     
+	\paragraph{}
+	  Prenons la première méthode.
+	  Cliquez sur ``Importer étudiants''.
+	  Une fenêtre apparaît et vous pouvez alors choisir le fichier CSV à importer.
+	  Une fois l'import effectué, la liste des étudiants est présente dans la zone de droite.
+	  Répétez ces opérations en cliquant sur ``Importer enseignants''.
+	  Vos deux listes sont maintenant affichées et les boutons d'import ne sont plus présents.
+	  Il reste toutefois possible d'incorporer d'autres fichiers à l'application depuis le menu ``Fichier''.
+	  A la place de ces boutons apparaît alors un troisième intitulé ``Valider'' et qui demeure pour l'instant inaccessible.
+	
+	\paragraph{}
+	\textit{Remarques : 
+	  \begin{itemize}
+	    \item Il est possible d'importer plusieurs fichiers d'étudiants, ou d'enseignants. La liste de ce type de personne contiendra alors les informations de tous les fichiers importés.
+	    \item Vous pouvez sélectionner une personne, étudiant ou enseignant, et connaître toutes les informations qui la concernent depuis le cadre situé dans la zone centrale.
+	  \end{itemize}}
+	~\\~\\~\\
+	
+      \subsection{Créer un stage}
+ 
+	\paragraph{}
+	  Après avoir importé les fichiers, vous possédez les données requises pour créer un stage.
+	  Il reste juste un champ à remplir : celui du diminutif du professeur. 
+	  Il est situé juste au-dessus de la zone contenant les informations détaillées de la personne sélectionnée.
+	  Ce champ concerne uniquement les responsables de stages, les étudiants ne se verront pas attribuer de diminutif.
+	  Sélectionnez un enseignant et octroyez-lui un diminutif.
+	  
+	
+	\paragraph{}
+	  Après avoir sélectionné un étudiant et un enseignant auquel a été donné un diminutif, le bouton de validation devient disponible.
+	  Actionnez-le et un stage sera créé.
+	  L'étudiant disparaît alors de la liste de droite.
+	  En revanche, le professeur est toujours présent dans la liste de gauche, et vous pouvez ainsi affecter un autre étudiant à cette personne.
+	  
+	\paragraph{}
+	  \textit{Remarque : Un couple étudiant/professeur est considéré comme ``stage''. Dans ce manuel, toute mention de ``stage'' fera donc référence à ces couples.}
+	  
+    \section{Consulter la liste des stages}
+    \section{Supprimer un stage}
+\part{La gestion du calendrier}
+    \section{Le paramètrage du calendrier}
+    \section{Créer une soutenance}
+      \subsection{Créer une soutenance dans le calendrier}
+      \subsection{Compléter les informations relatives à la soutenance}
+    \section{Consulter les soutenances existantes}
+    \section{Supprimer une soutenance}
+    \section{Exporter le calendrier}
+      \subsection{Exporter au format PDF}
+      \subsection{Exporter au format ICS}
+\part{Le paramètrage de la base de données}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

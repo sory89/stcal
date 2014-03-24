@@ -73,7 +73,7 @@ public class Message {
      */
     public static void status(String text){
         Stcal.fen.setStatus(text);
-        out.println("STATUS:  " + text);
+        out.println("STATUT:  " + text);
     }
 
     private static String retourligne(String original){

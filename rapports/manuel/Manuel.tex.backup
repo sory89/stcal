@@ -176,7 +176,7 @@
       \subsection{Créer une soutenance dans le calendrier}
 	\paragraph{}
 	  L'interface de gestion du calendrier est caractérisée par cinq zones.
-	  Dans cette partie, seulement quatre de ces zones vont nous intéresser.
+	  Dans cette partie, seulement deux de ces zones vont nous intéresser.
 	  Pour commencer, la première zone affichant l'arborescence des stages nous permet de choisir le stage dont on veut établir la soutenance.
 	  Pour placer la soutenance d'un stage dans le calendrier, sélectionnez l'étudiant dans l'arborescence et, tout en gardant le clic gauche enfoncé, amenez l'étudiant dans le créneau souhaité.
 	  L'étudiant disparaît alors de la liste des stages et l'on peut voir son nom et son prénom dans le créneau contenant la soutenance.
@@ -188,13 +188,47 @@
 	  L'accessibilité dépend donc de l'étudiant choisi, et notamment de son tuteur de stage.
 	
 	\paragraph{}
-	  Ainsi, si vous essayez de créer une soutenance à un horaire indisponible, 
+	  Ainsi, si vous essayez de créer une soutenance à un horaire indisponible, aucun changement ne sera effectué.
+	  Cependant vous pouvez repérer très facilement les horaires bloqués.
+	  En effet, lorsque vous sélectionnez un étudiant, vous pouvez observer que les cases du calendrier se colorent, soit en rouge lorsque le créneau est indisponible, soit en vert quand le créneau est libre d'occuper cette la soutenance de ce stage.
 	  
+	\paragraph{}
+	  \textit{Remarque : Si vous lancez cette application depuis un terminal informatique, vous bénéficiez des messages d'information de l'application. Par exemple, si vous tentez de créer une soutenance à un horaire incompatible avec le stage choisi, le terminal votre terminal affichera les raisons du refus de création de la soutenance.}
+	
 	  
 	  
 	
       \subsection{Compléter les informations relatives à la soutenance}
+	\paragraph{}
+	  Votre créneau contient maintenant un couple étudiant/professeur, définissant une soutenance.
+	  Nous allons maintenant compléter les informations relatives à cette soutenance.
+	 
+	\paragraph{}
+	  En premier lieu, ouvrez le menu ``Préférences - Salles''. 
+	  Une petite fenêtre apparaît, révélant la liste des salles implémentées dans le logiciel, qui est pour l'instant vide.
+	  Utilisez le champ présent pour créer une nouvelle salle.
+	  Indiquez le nom ou le numéro de la salle et ajoutez-la à la liste.
+	  
+	\paragraph{}  
+	  \textit{Remarque : Au passage, remarquez que c'est à cet endroit que s'effectue la configuration des salles, avec la possiblité de les consulter, d'en créer et d'en supprimer.}
+	  
+	\paragraph{}
+	  Une fois votre liste de salle remplie, fermez la fenêtre et portez votre attention sur le coin inférieur droit de l'application.
+	  Pour attribuer une salle et un enseignant candide à une soutenance, cliquez d'abord sur le créneau de la soutenance, dans le cadre de droite cliquez ensuite sur la soutenance concernée parmi les soutenances de ce créneau.
+	  Vous n'avez maintenant plus qu'à choisir la salle et le professeur candide parmi les choix proposés dans les listes déroulantes.
+	  N'oubliez pas de valider votre choix.
+	  
+	
+	
     \section{Consulter les soutenances existantes}
+      \paragraph{}
+	Pour consulter les soutenances programmées, cliquez simplement sur une plage horaire du calendrier.
+	La liste de toutes les soutenances orales prévues à cet horaire s'affiche alors à droite du calendrier.
+	Cliquez ensuite sur une de ces soutenances pour afficher les données complémentaires concernant la soutenance.
+	Ces données sont indiquées dans le coin inférieur gauche du logiciel, sous l'arborescence des stages.
+	Vous pouvez alors consulter le nom du tuteur de stage de l'étudiant, l'enseignant candide présent à la présentation orale, ainsi que le nom, ou numéro, de la salle où cette dernière aura lieu.
+      
+      
     \section{Supprimer une soutenance}
     \section{Exporter le calendrier}
       \subsection{Exporter au format PDF}

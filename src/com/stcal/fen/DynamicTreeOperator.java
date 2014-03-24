@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class DynamicTreeDemo extends JPanel implements ActionListener {
+public class DynamicTreeOperator extends JPanel implements ActionListener {
     private static String REMOVE_COMMAND = "remove";
 
 
@@ -26,7 +26,7 @@ public class DynamicTreeDemo extends JPanel implements ActionListener {
     }
 
     public JButton removeButton;
-    public DynamicTreeDemo() {
+    public DynamicTreeOperator() {
         super(new BorderLayout());
 
         treePanel = new DynamicTree();

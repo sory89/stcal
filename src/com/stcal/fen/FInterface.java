@@ -1,6 +1,6 @@
 package com.stcal.fen;
 
-import com.stcal.Main;
+import com.stcal.Stcal;
 import com.stcal.control.Message;
 
 import javax.swing.*;
@@ -17,7 +17,7 @@ public class FInterface {
     public FInterface(int x,int y){
         ImageIcon img = new ImageIcon("res/stcal-icon.png");
         fen.setIconImage(img.getImage());
-        Main.mac(fen);
+        Stcal.mac(fen);
         fen.setSize(x, y);
         fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fen.setLocationRelativeTo(null);

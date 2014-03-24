@@ -1,6 +1,6 @@
 package com.stcal.fen;
 
-import com.stcal.Main;
+import com.stcal.Stcal;
 import com.stcal.control.CustomRenderer;
 import com.stcal.control.Datas;
 import com.stcal.control.Message;
@@ -55,7 +55,7 @@ public class FCal extends FTab{
     protected JTable jt=null;
     protected JButton supprimers = new JButton("Supprimer cette soutenance");
     protected JButton okcand = new JButton("Valider");
-    public static DynamicTreeDemo newContentPane;
+    public static DynamicTreeOperator newContentPane;
     protected JFormattedTextField creneau = null;
     protected JFormattedTextField soutenance = null;
     protected Iterator<Period> datechoisis=null;
@@ -123,7 +123,7 @@ public class FCal extends FTab{
                 GridBagConstraints c = new GridBagConstraints();
 
                 Datas.o = new DCreneau[totalCreneaux][recupDates.size()];
-                Main.colors=new String[totalCreneaux][recupDates.size()];
+                Stcal.colors=new String[totalCreneaux][recupDates.size()];
 
                 int dj = Integer.parseInt(debutJour.getSelectedItem().toString());
                 int fj = Integer.parseInt(finJour.getSelectedItem().toString());
@@ -137,7 +137,7 @@ public class FCal extends FTab{
                         Datas.o[i][k].setDate_debut(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + (int)Math.round(((i*dureeCreneau)/60)-0.5), i*dureeCreneau%60));
                         Datas.o[i][k].setDate_fin(new GregorianCalendar(recupDates.get(k).get(Calendar.YEAR), recupDates.get(k).get(Calendar.MONTH), recupDates.get(k).get(Calendar.DAY_OF_MONTH), dj + (int)Math.round((((i+1)*dureeCreneau)/60)-0.5), (1+i)*dureeCreneau%60));
                         Datas.o[i][k].setMax_sout(Integer.parseInt(soutenance.getText()));
-                        Main.colors[i][k]="white";
+                        Stcal.colors[i][k]="white";
                     }
                 }
                 }
@@ -185,7 +185,7 @@ public class FCal extends FTab{
                         ca.weightx = 0;
                         ca.weighty = 1;
                         ca.ipadx = 100;
-                newContentPane = new DynamicTreeDemo();
+                newContentPane = new DynamicTreeOperator();
                 pan().add(newContentPane, ca);
                 newContentPane.getTree().setDragEnabled(true);
                 info.setBorder(BorderFactory.createTitledBorder("Informations"));
@@ -217,9 +217,9 @@ public class FCal extends FTab{
                                         for (i = 0; i < jt.getColumnCount(); i++) {
                                             DCreneau dte = (DCreneau) jt.getValueAt(y, i);
                                             if (dte.isProfIn(person.getTut()) && dte.toStringtest().size() < dte.getMax_sout())
-                                                Main.colors[y][i] = "green";
+                                                Stcal.colors[y][i] = "green";
                                             else
-                                                Main.colors[y][i] = "red";
+                                                Stcal.colors[y][i] = "red";
                                         }
 
                                 }
@@ -431,18 +431,18 @@ public class FCal extends FTab{
                                         }
                 });
                 try {
-                    Main.calsettings.set("cal", recupDates.toString());
-                    Main.calsettings.set("dursoutenance", creneau.getText());
-                    Main.calsettings.set("nbsoutenance", soutenance.getText());
-                    Main.calsettings.set("debutj", debutJour.getSelectedItem().toString());
-                    Main.calsettings.set("finj", finJour.getSelectedItem().toString());
+                    Stcal.calsettings.set("cal", recupDates.toString());
+                    Stcal.calsettings.set("dursoutenance", creneau.getText());
+                    Stcal.calsettings.set("nbsoutenance", soutenance.getText());
+                    Stcal.calsettings.set("debutj", debutJour.getSelectedItem().toString());
+                    Stcal.calsettings.set("finj", finJour.getSelectedItem().toString());
 
 
                 } catch (NoSuchSettingException e1) {
                     Message.err.println(e1.getMessage());
                 }
                 try {
-                    Main.calsettings.save();
+                    Stcal.calsettings.save();
                 } catch (NothingToSaveException e1) {
                     Message.err.println(e1.getMessage());
                 }

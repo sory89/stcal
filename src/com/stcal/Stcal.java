@@ -11,7 +11,7 @@ import java.awt.*;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
-public class Main {
+public class Stcal {
 
     private static FChooser finder;
     private static FStage stage;
@@ -53,7 +53,7 @@ public class Main {
         if (finder.status()==FChooser.CHOSEN){
             try {
                 OSplitCsv.exportcsv(finder.path(), Datas.etu);
-                Message.out.println("Main : exporter");
+                Message.out.println("Stcal : exporter");
             }
             catch (Exception x){
                 Message.err.println("Erreur écriture fichier");
@@ -97,7 +97,7 @@ public class Main {
 
     /**
      * Lance la procedure d'ouverture de fichier
-     * @param type type du contenu du fichier Main.TUTEUR/Main.ETUDIANT
+     * @param type type du contenu du fichier Stcal.TUTEUR/Stcal.ETUDIANT
      */
     public static void openFile(Type type){
         DListe nouveau;
@@ -119,7 +119,7 @@ public class Main {
                     Message.status(nouveau.getSize() + " enseignants ajoutés de" + finder.path());
                 }
                 else {
-                    System.err.println("Main: openFile: type not defined");
+                    System.err.println("Stcal: openFile: type not defined");
                     return;
                 }
             }

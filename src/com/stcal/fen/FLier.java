@@ -1,6 +1,6 @@
 package com.stcal.fen;
 
-import com.stcal.Main;
+import com.stcal.Stcal;
 import com.stcal.control.Datas;
 import com.stcal.don.*;
 
@@ -62,7 +62,7 @@ public class FLier extends FTab {
         opt1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.openFile(Type.ETUDIANT);
+                Stcal.openFile(Type.ETUDIANT);
             }
         });
         option.add(opt1);
@@ -71,7 +71,7 @@ public class FLier extends FTab {
         opt2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.openFile(Type.TUTEUR);
+                Stcal.openFile(Type.TUTEUR);
         }});
         option.add(opt2);
         centre.add(option);
@@ -192,7 +192,7 @@ public class FLier extends FTab {
             opt1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Main.openFile(Type.ETUDIANT);
+                    Stcal.openFile(Type.ETUDIANT);
                 }
             });
             option.add(opt1);
@@ -204,7 +204,7 @@ public class FLier extends FTab {
             opt2.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Main.openFile(Type.TUTEUR);
+                    Stcal.openFile(Type.TUTEUR);
                     refresh();
                 }
             });

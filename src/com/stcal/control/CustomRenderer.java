@@ -1,6 +1,6 @@
 package com.stcal.control;
 
-import com.stcal.Main;
+import com.stcal.Stcal;
 import com.stcal.don.DCreneau;
 import com.stcal.don.Soutenance;
 
@@ -41,12 +41,12 @@ public class CustomRenderer extends DefaultTableCellRenderer
         for (int y=0;y<table.getRowCount();y++){
             for(int i=0;i<table.getColumnCount();i++)  {
 
-                if(Main.colors[y][i]=="red"){
+                if(Stcal.colors[y][i]=="red"){
                     if(column==i && row==y)
                         panel.setBackground(Color.red);
 
 
-                }else if(Main.colors[y][i]=="green"){
+                }else if(Stcal.colors[y][i]=="green"){
 
                     if(column==i && row==y)
                         panel.setBackground(Color.green);

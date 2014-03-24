@@ -19,7 +19,7 @@ public class FStage extends FTab {
     protected JPanel option = new JPanel();
     protected JLabel infosEtu;
     protected JLabel infosTut;
-    public static DynamicTreeDemo newContentPane;
+    public static DynamicTreeOperator newContentPane;
     /**
      * Initialisation de l'onglet
      */
@@ -43,7 +43,7 @@ public class FStage extends FTab {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 // Create and set up the content pane.
-                newContentPane = new DynamicTreeDemo();
+                newContentPane = new DynamicTreeOperator();
                 PanelCpl.add(newContentPane, BorderLayout.CENTER);
                 newContentPane.getTree().addTreeSelectionListener(new TreeSelectionListener() {
                     @Override

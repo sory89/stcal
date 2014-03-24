@@ -2,18 +2,13 @@ package com.stcal.fen;
 
 import com.stcal.Main;
 import com.stcal.control.DBTools;
-import com.stcal.control.Datas;
 import com.stcal.control.Message;
-import com.stcal.don.DCouple;
-import com.stcal.don.DEtudiant;
-import com.stcal.don.DProf;
 import com.stcal.don.Type;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class FMenu {
@@ -107,7 +102,7 @@ public class FMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DBTools.dbsettings.popup().pop();
-                DBTools.askdbsetting(DBTools.dbsettings);
+                DBTools.askdbsetting();
             }
         });
         menupref.add(db);
@@ -126,6 +121,21 @@ public class FMenu {
             }
         });
         menupref.add(dbr);
+        JMenuItem dbe = new JMenuItem("Réinitialiser la base de donnée");
+        dbe.setToolTipText("Vide et recrée la base de donnée");
+        dbe.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    if (Message.popquestion("Etes vous sur de vouloir réinitialiser la base de donnée?\nToutes les données seront perdu.")) DBTools.resetDatabase();
+                } catch (SQLException e1) {
+                    Message.poperror(e1);
+                } catch (IOException e1) {
+                    Message.poperror(e1);
+                }
+            }
+        });
+        menupref.add(dbe);
         menupref.addSeparator();
         JMenuItem itemSalle = new JMenuItem("Salles");
         itemSalle.setToolTipText("Éditer la liste des salles");

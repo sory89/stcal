@@ -2,7 +2,6 @@ package com.stcal.don;
 
 import com.stcal.control.Message;
 import com.stcal.control.exceptions.MaxSoutenanceException;
-import net.fortuna.ical4j.model.DateTime;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

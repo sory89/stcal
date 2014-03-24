@@ -1,7 +1,8 @@
 package com.stcal.control;
 
-import com.stcal.don.*;
-import com.stcal.don.manager.DProfManager;
+import com.stcal.don.DCouple;
+import com.stcal.don.DCreneau;
+import com.stcal.don.DPersonne;
 import com.stcal.don.manager.DSalleManager;
 
 import javax.swing.*;

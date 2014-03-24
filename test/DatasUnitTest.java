@@ -12,9 +12,7 @@ public class DatasUnitTest {
 
     @Test
     public void test() throws Exception {
-        DBsettings set = new DBsettings();
-        set.set("DBPassword","nothing");
-        Assert.assertFalse(DBTools.isset(set));
+        Assert.assertFalse(DBTools.isset());
     }
 
 }

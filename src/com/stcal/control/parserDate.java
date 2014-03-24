@@ -3,7 +3,6 @@ package com.stcal.control;
 
 import net.fortuna.ical4j.model.DateTime;
 
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 

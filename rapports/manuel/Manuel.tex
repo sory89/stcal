@@ -1,5 +1,6 @@
-\documentclass[a4paper,10pt]{book}
+\documentclass[a4paper,10pt]{report}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{multicol}
 \usepackage[frenchb]{babel}
@@ -91,6 +92,17 @@
     Entrez les paramètres d'accès à votre base de données, c'est-à-dire votre nom d'utilisateur, votre mot de passe, l'adresse du serveur utilisé et le numéro de port.
     Validez les informations.
     
+  
+   \begin{figure}[!h]
+     \begin{center}
+	  \hbox to13cm{\hss\includegraphics[width=7cm]{../general/parametres_bdd.png}\hss}
+	  \caption{Paramètrage de la base de données}
+     \end{center}
+   \end{figure}
+  
+
+  
+    
   \paragraph{}
       \textit{Remarque : Ces données peuvent être changées à tout moment depuis ``Préférences - Base de données''.}
   
@@ -99,14 +111,25 @@
     En plus des changements des paramètres de connexion à la base de données, cet onglet permet de relancer la connexion à la base.
     Il existe aussi une autre fonctionnalité servant à réinitialiser totalement la base de données.
     Activer cette dernière option efface la base de données, et en crée une nouvelle, vide.
+    Avant de tout effacer, le logiciel vous demande tout de même une confirmation.
   
 \part{La gestion des stages}
     \section{Créer un stage} 
       
       \subsection{Importer les données}
       
+      \paragraph{}
+	Nous voici sur la page d'accueil.
+	~\\~\\
+	\begin{figure}[!h]
+		\hbox to12cm{\hss\includegraphics[width=14cm]{../general/accueil.png}\hss}
+		\caption{Page d'accueil}
+	\end{figure}
+	
+	
+      \paragraph{}
 	Afin de pouvoir créer des stages, il est nécessaire d'établir au préalable les listes d'informations sur les étudiants et les enseignants.
-	Ces listes doivent être importées depuis deux fichiers au format ICS.
+	Ces listes doivent être importées depuis deux fichiers au format CSV.
 	
 	\paragraph{}
 	\textit{Remarques :
@@ -114,7 +137,7 @@
 	  \begin{itemize}
 	    \item Si vous n'avez aucun fichier possédant cet extension, il est très simple d'en créer en utilisant par exemple un logiciel de tableur.
 		  La première ligne devra contenir l'intitulé des champs remplis (ex : Nom étudiant; Prénom étudiant; Lieu de stage;), et dans les autres lignes se trouveront les données.
-		  Pour enregistrer ce fichier au format ICS, cliquer sur ``Fichier - Enregistrer sous...'', entrez le nom de votre fichier, puis cliquez sur ``Tous les formats'' et choisissez ``Fichier CSV''.
+		  Pour enregistrer ce fichier au format CSV, cliquer sur ``Fichier - Enregistrer sous...'', entrez le nom de votre fichier, puis cliquez sur ``Tous les formats'' et choisissez ``Fichier CSV''.
 	    \item En cas de problème d'import, vérifiez que le nombre d'informations sur chaque personne correspond bien au nombre de champs entrés dans la première ligne. 
 		  Supprimez éventuellement les lignes vides (contenant seulement des caractères séparateurs). Si le problème persiste, ouvrez le fichier dans un éditeur de texte et vérifiez que les caractères séparants les champs sont des points-virgules. Si ce n'est pas cas, effectuez la correction.
 	  \end{itemize}}
@@ -133,11 +156,24 @@
 	  Prenons la première méthode.
 	  Dans l'onglet ``Lier'', cliquez sur ``Importer étudiants''.
 	  Une fenêtre apparaît et vous pouvez alors choisir le fichier CSV à importer.
+	  ~\\~\\
+	\begin{figure}[!h]
+	      \hbox to11cm{\hss\includegraphics[width=7cm]{../general/import.png}\hss}
+	      \caption{Import de fichier CSV}
+	\end{figure}
+	  
+	  
+	\paragraph{}
 	  Une fois l'import effectué, la liste des étudiants est présente dans la zone de droite.
 	  Répétez ces opérations en cliquant sur ``Importer enseignants''.
 	  Vos deux listes sont maintenant affichées et les boutons d'import ne sont plus présents.
 	  Il reste toutefois possible d'incorporer d'autres fichiers à l'application depuis le menu ``Fichier''.
 	  A la place de ces boutons apparaît alors un troisième intitulé ``Valider'' et qui demeure pour l'instant inaccessible.
+	~\\~\\~\\~\\~\\~\\~\\~\\~\\
+	\begin{figure}[!h]
+	      \hbox to12cm{\hss\includegraphics[width=14cm]{../general/valider_gris.png}\hss}
+	      \caption{Accueil après imports}
+	\end{figure}
 	
 	\paragraph{}
 	\textit{Remarques : 
@@ -145,10 +181,9 @@
 	    \item Il est possible d'importer plusieurs fichiers d'étudiants, ou d'enseignants. La liste de ce type de personne contiendra alors les informations de tous les fichiers importés.
 	    \item Vous pouvez sélectionner une personne, étudiant ou enseignant, et connaître toutes les informations qui la concernent depuis le cadre situé dans la zone centrale.
 	  \end{itemize}}
-	~\\~\\~\\
+	~\\
 	
       \subsection{Créer un stage}
- 
 	\paragraph{}
 	  Après avoir importé les fichiers, vous possédez les données requises pour créer un stage.
 	  Il reste juste un champ à remplir : celui du diminutif du professeur. 
@@ -157,6 +192,11 @@
 	  Sélectionnez un enseignant et octroyez-lui un diminutif.
 	  
 	
+	\begin{figure}[H]
+	  \hbox to12cm{\hss\includegraphics[width=14cm]{../general/validation.png}\hss}
+	  \caption{Validation}
+	\end{figure}
+	~\\
 	\paragraph{}
 	  Après avoir sélectionné un étudiant et un enseignant auquel a été donné un diminutif, le bouton de validation devient disponible.
 	  Actionnez-le et un stage sera créé.

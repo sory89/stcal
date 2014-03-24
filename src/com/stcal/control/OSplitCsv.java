@@ -11,16 +11,19 @@ import java.util.Scanner;
 
 public class OSplitCsv {
 
-    public static final String SEPs = ";";
-    public static final char SEP = ';';
+    //public static final String SEPs = ";";
+    //public static final char SEP = ';';
 
 
     public static DListe splitcsv(File file, String type) throws Exception {
-        String ligne,errf="Les erreurs suivantes ont été detectées dans le fichier CSV : \n",warf="";
+        char SEP = Datas.Csv;
+        String SEPs = ""+SEP+"";
+        String ligne,errs="Le séparateur du fichier CSV semble être différent de la configuration actuelle. (Changer dans préférences)";
+        String errf="Les erreurs suivantes ont été detectées dans le fichier CSV : \n",warf="";
         char cp=' ';
         String test[] = new String[1];
         int nlab=1,nlig=1,nligb=0,nligv=0;
-        boolean er=false,wr=false;
+        boolean er=false,wr=false,sr=false;
         DListe cont;
         cont = new DListe();
         Scanner sc = new Scanner(file);
@@ -29,6 +32,9 @@ public class OSplitCsv {
             ligne=sc.nextLine();
             int tligne=ligne.length();
             for(int i=0;i<tligne;i++){
+                if(ligne.charAt(i)==';' && SEP==',' || ligne.charAt(i)==',' && SEP==';') {
+                    sr=true;
+                }
                 if(ligne.charAt(i)==SEP){
                     if(i==0) {
                         errf=errf+"\n- La ligne des libellés commence par un \";\"";
@@ -46,10 +52,14 @@ public class OSplitCsv {
                 }
             }
             if(!er) {
-                Message.out.println(nlab);
                 test = ligne.split(SEPs);
                } else { }
 
+            if (sr) {
+                Message.poperror(errs);
+                sc.close();
+                return cont;
+            }
         }
 
 
@@ -116,7 +126,7 @@ public class OSplitCsv {
         if (er) {
             Message.poperror(errf);
             sc.close();
-            return null;
+            return cont;
         }
         if (wr) {
             Message.popwarning(warf);

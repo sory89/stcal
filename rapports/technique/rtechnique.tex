@@ -51,6 +51,8 @@
 
 \chapter*{Introduction}
 
+A travers ce manuel nous allons expliqué comment a été pensé l'application avec des détails techniques pour facilité la reprise du travaille avenir sur ce projet.
+
 \chapter{Installation}
 
 	\section{Installation}
@@ -66,7 +68,7 @@
 
 		\subsection{Obtenir l'application}
 
-			Intégralitéé de l'application se trouve sur GitHub sur le repo stcal: \href{https://github.com/Ricain/stcal}{https://github.com/Ricain/stcal}
+			Intégralité de l'application se trouve sur GitHub sur le repo stcal: \href{https://github.com/Ricain/stcal}{https://github.com/Ricain/stcal}
 	
 			\paragraph[Binaire]{Exécutable}
 			Pour obtenir un exécutable de l'application, soit un fichier jar il suffit de le télécharger sur GitHub à l'url suivant: \href{https://raw.githubusercontent.com/Ricain/stcal/Main/stcal.jar}{https://raw.githubusercontent.com/Ricain/stcal/Main/stcal.jar}
@@ -209,7 +211,7 @@
 			Les méthodes \texttt{load()} et \texttt{save()} dans la classe \textit{Datas} permettent respectivement de charger et sauvegarder le modèle dans la base de donnée. Ces deux méthodes sont respectivement appellé aux début et à la fin du programme.
 			La classe \textit{DBTools} permet de faire des opération sur la base de donnée et \textit{DBSetting} contient les information de connexion à la base de donné et permet d'obtenir un connexion valide à celle ci.
 
-	\section{Detail de class}
+	\section{Detail de classe}
 
 		\subsection{Setting}
 
@@ -250,6 +252,10 @@
 			\paragraph*{}
 			Dans cette classe on récupéré également la sortie standard  et la sortie standard d’erreur. Cela permet si besoin de rediriger tout ce qu’écrit l'application dans des fichiers comme des logs.
 
+	\section{Test}
+
+		 A part une classe symbolique, il n'y a pas de test sur l’ensemble du projet. Il est donc très facile d'avoir des pertes de fonctionnalité.
+
 \chapter{Modélisation}
 
 	\section{UML}
@@ -279,6 +285,10 @@
 
 	\section{Base de donnée}
 
+		La base de donné est a été conçue à partir du shema UML du modèle montré précédemment. Elle concerne que les données en non la vue ou le contrôleur.
+
 \chapter*{Conclusion}
+
+En espérant avoir été assez claire sur la modélisation de l'application et sur les grande ligne. Nous éspereons que l'application sera repris par un future groupe de projet tuteuré.
 
 \end{document}

@@ -35,9 +35,9 @@ public class FExportIcs {
 
      jfics = new JPanel();
         laboptions = new JLabel("Selectionez une option");
-        String[] tab =  {"Salles","Profs","Total"} ;
+        String[] tab =  {"Salles","Professeurs","Total"} ;
          jcboptions = new JComboBox(tab);
-         laboptions2 = new JLabel();
+         laboptions2 = new JLabel("Format");
        jcboptions2 = new JComboBox();
         okexp = new JButton("Exporter");
 
@@ -156,7 +156,7 @@ public class FExportIcs {
 
         JOptionPane pop = new JOptionPane();
         Message.out.println("Ouverture export ics ");
-        pop.showMessageDialog(null, jfics, "Export ics", JOptionPane.PLAIN_MESSAGE);
+        pop.showMessageDialog(null, jfics, "Export", JOptionPane.PLAIN_MESSAGE);
 
 
 

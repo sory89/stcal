@@ -230,8 +230,36 @@
       
       
     \section{Supprimer une soutenance}
+      \paragraph{}
+	La suppression d'une soutenance se fait grâce au bouton présent sous la liste des soutenances pour un horaire donné.
+	Sélectionnez une soutenance dans cet emplacement et cliquez sur ``Supprimer cette soutenance''.
+	La soutenance disparaît alors de la liste et du calendrier, tandis que le stage revient dans l'arborescence du tiers gauche de la page.
+	Les éléments relatifs à cette ancienne soutenance sont quant à eux effacés.
+	Ainsi, si vous recréez la une soutenance identique à celle effacée, les paramètres concernant la salle et l'enseignant candide ne posséderont plus les valeurs précédentes mais seront vides.
+	
+      \paragraph{}
+	\textit{Attention : La suppression d'une soutenance et la suppression d'un stage sont deux choses différentes. Supprimer une soutenance enlève seulement la soutenance du planning. Le stage reste en état tant qu'il n'est pas supprimé depuis l'onglet ``Stage''.}
+      
+      
     \section{Exporter le calendrier}
       \subsection{Exporter au format PDF}
+      
+	\paragraph{}
+	  Pour exporter un calendrier, allez dans ``Fichier - Exporter au format ICS ou PDF''.
+	  Les données peuvent être triées en fonction de la salle ou du professeur.
+	  Elles peuvent aussi être affichées sans tri spécial grâce au champ ``Total'' de la liste déroulante.
+	  
+	\paragraph{}
+	  Si vous souhaitez exporter votre travail dans un fichier PDF, sélectionnez ``Total'', puis ``PDF'.
+	  Cliquez ensuite sur ''Exporter``, choisissez l'emplacement de votre nouveau fichier PDF, nommez-le.
+	  Une fois ces consignes exécutées, enregistrez et fermez la fenêtre.
+	
+	\paragraph{}
+	  Votre travail est maintenant écrit dans un fichier PDF que vous pouvez consulter directement dans la mémoire de votre ordinateur.
+
+	\paragraph{}
+	  \textit{Remarque : Lorsque vous cliquez sur ''Exporter``, la fenêtre de navigation dans les fichiers peut mettre quelques secondes à s'ouvrir.}
+	
       \subsection{Exporter au format ICS}
 \part{Le paramètrage de la base de données}
 

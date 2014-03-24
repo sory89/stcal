@@ -241,15 +241,12 @@ Année 2013-2014
 	  
 	\section{Le menu}
 	
-	
-	% Fichier -> Export de calendrier opérationnel ??
-	% ? -> Raccourcis : opérationnels ??
 	  \paragraph{}
 	    La barre de menu est composée elle-même de plusieurs sous menus.
 	  \paragraph{}
 	    Le premier sous menu est intitulé ``Fichier``. Il offre la possibilité d'importer une liste d'étudiants et une liste de professeurs depuis un fichier au format CSV.
 	    En cas de problème avec le fichier à importer, l'application le signale bien évidemment à l'utilisateur par le biais d'une popup d'erreur et annule l'import.
-	    Il présente également une fonction d'export, notamment pour le calendrier généré. Cette fonction exporte le planning des soutenances au format ICS, qui permet la compatibilité avec les calendriers Google notamment.
+	    Il présente également une fonction d'export, notamment pour le calendrier généré. Cette fonction exporte le planning des soutenances au format PDF, ou encore ICS, qui permet la compatibilité avec les calendriers Google notamment.
 	    La dernière option de ce menu sert à fermer l'application.
 	  \paragraph{}
 	    Le deuxième sous menu a pour libellé ''Actions``, et propose de lier un étudiant à un enseignant. 
@@ -259,9 +256,13 @@ Année 2013-2014
 	    Il est dédié au côté Base de Données du programme.
 	    Un de ses onglets possède le libellé ''Base de données`` et ouvre une fenêtre permettant à l'utilisateur de mettre à jour les paramètres de la base de données énumérés dans la quatrième étape du cahier des charges. 
 	    Un autre onglet donne l'opportunité de réinitialiser la connexion à la base de données correspondant aux paramètres en vigueur.
+	    Un dernier lien permet de modifier la liste des salles de présentation des soutenances. 
+	    L'utilisateur peut notamment ajouter de nouvelles salles dans la liste et en supprimer.
 	  \paragraph{}
-	    La quatrième et dernière rubrique propose un champ ''Aide``, qui affiche le manuel d'utilisateur, ainsi qu'un champ qui redirige l'usager vers une brève présentation du projet STCal. 
-      
+	    La quatrième et dernière rubrique propose un champ ''Aide``, qui affiche le manuel d'utilisateur.
+	    Elle présente également un champ qui redirige l'usager vers une brève présentation du projet STCal. 
+
+	    
         \section{Les onglets}
 	  
 	  \paragraph{}
@@ -298,8 +299,11 @@ Année 2013-2014
 	      
 	    \paragraph{}      
 	      La zone centrale présente également une portion révélant le statut et les nom et prénom de la dernière personne sélectionnée.
-	      Un autre cadre situé en bas de la fenêtre affiche toutes les informations complémentaires connues au sujet de la personne sélectionnée : le numéro de téléphone, ou l'adresse par exemple.
+	      Un autre cadre situé en bas de la fenêtre affiche aussi toutes les informations complémentaires connues au sujet de la personne sélectionnée, comme le numéro de téléphone, ou l'adresse par exemple.
+	      Au-dessus ce ce cadre se trouve un champ permettant la saisie d'un diminutif pour professeur sélectionné.
+	      Ce champ est en revanche inaccessible à la saisie de diminutif d'un étudiant.      
 	      Une fois un étudiant et un professeur sélectionnés, un bouton de validation apparaît.
+	      Ce bouton peut être actionné seulement si un étudiant et un professeur auquel a été attribué un diminutif sont sélectionnés.
 	    
 	    \paragraph{}
 	      Après avoir enclenché ce bouton, les identifiants de la dernière personne sélectionnée disparaissent pour laisser place à la phrase de confirmation ''Stage créé``.
@@ -410,7 +414,9 @@ Année 2013-2014
 	      \paragraph{}
 		A la création d'une soutenance, le nom de l'étudiant s'inscrit dans le créneau, à côté de l'heure à laquelle débute celui-ci.
 		Lorsqu'une plage est sélectionnée, l'étudiant apparaît également dans la troisième partie de la page située dans le tiers le plus à droite, qui révèle sous forme de liste tous les étudiants passant leur examen oral à cet horaire.
-		Le troisième tiers de la page propose également les fonctionnalités permettant d'ajouter un enseignant candide et une salle à une soutenance, ceci par le biais de deux listes déroulantes listant respectivement les enseignants et les salles disponibles à cet horaire.	
+		En cliquant sur un des éléments de cette liste , toutes les informations relatives à la soutenance de cet étudiant, à savoir le tuteur, l'enseignant candide et la salle de la soutenance, apparaissent dans le coin inférieur gauche de l'écran.
+		Le troisième tiers de la page propose également les fonctionnalités permettant d'ajouter un enseignant candide et une salle à une soutenance, ceci par le biais de deux listes déroulantes listant respectivement les enseignants et les salles disponibles à cet horaire.
+		Les salles seront à créer au préalable depuis l'onglet ''Préférences`` de la barre de menu.
 		
 	      \paragraph{}
 		Un bouton de suppression d'une soutenance est présent en bas dessous de la listes des soutenances pour un créneau.
@@ -487,7 +493,7 @@ Année 2013-2014
 	      & Conception du modèle et implémentation de celui-ci sur toutes les classes; \\
 	      & Travail réalisé sur l'interface;\\
 	      & Mise en place du fonctionnement et de l'interface du calendrier;\\
-	      & Création des fonctionnalités de tri;\\
+	      & Travail réalisé sur l'export de fichiers;\\
 	      & Gestion des listes et arborescences.\\
 	      \hline
 	      Mehdi Loisel 
@@ -495,7 +501,8 @@ Année 2013-2014
 	      & Gestion de l'export de calendrier au format ICS;\\
 	      & Travail réalisé sur l'interface;\\
 	      & Optimisation de l'interface;\\
-	      & Gestion d'ajout de l'enseignant candide et de la salle.\\
+	      & Gestion d'ajout de l'enseignant candide et de la salle;\\
+	      & Travail réalisé sur l'export de fichiers.\\
 	      \hline
 	      Jean Mercadier
 	      & Création de l'interface; \\
@@ -508,7 +515,7 @@ Année 2013-2014
 	      \hline
 	      Ismail Taleb 
 	      & Mise en place de la fonctionnalité de ''Drag and Drop``; \\
-	      & Contribution à l'élaboration du calendrier.\\
+	      & Contribution à l'élaboration du calendrier;\\
 	      & Gestion des listes.\\
 	      \hline
 	      Willeme Verdeaux 

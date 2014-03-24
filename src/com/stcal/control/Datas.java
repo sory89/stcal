@@ -41,7 +41,7 @@ public class Datas {
             DSalleManager salleManager = new DSalleManager(DBTools.dbsettings.getConnection());
             salles = ListTools.list_to_default_salle(salleManager.readall());
         } catch (SQLException e) {
-            Message.poperror("Impossible de charger la base de donnée.\n" + e.getMessage());
+            Message.poperror("Impossible de charger la base de données.\n" + e.getMessage());
         }
     }
 

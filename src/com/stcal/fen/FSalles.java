@@ -40,16 +40,16 @@ public class FSalles {
     public void pop(){
 
         delete.setEnabled(false);
-        delete.setToolTipText("Selectionner une salle dans la liste pour la supprimer");
+        delete.setToolTipText("Selectionnez une salle dans la liste pour la supprimer");
         add.setEnabled(false);
-        add.setToolTipText("Compléter le champs \"nouvelle salle\" pour ajouter une salle dans la liste");
+        add.setToolTipText("Complétez le champ \"nouvelle salle\" pour ajouter une salle dans la liste");
 
         add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(Datas.salles.contains(salleField.getText())){
                     JOptionPane errPane = new JOptionPane();
-                    errPane.showMessageDialog(null, "Impossible d'ajouter cette salle, elle existe déjà !", "Erreur dans l'ajout de la salle", JOptionPane.ERROR_MESSAGE);
+                    errPane.showMessageDialog(null, "Impossible d'ajouter cette salle car elle existe déjà.", "Erreur dans l'ajout de la salle", JOptionPane.ERROR_MESSAGE);
                 }
                 else {
                 Datas.salles.addElement(salleField.getText());

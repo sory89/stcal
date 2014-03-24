@@ -86,7 +86,7 @@ public class FLier extends FTab {
         A.setLayout(new BorderLayout());
         JPanel C = new JPanel();
         JLabel B = new JLabel("Diminutif :");
-        Diminutif = new JTextField("Disabled");
+        Diminutif = new JTextField("Désactivé");
         Diminutif.addKeyListener(new KeyListener() {
 
 

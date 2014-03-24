@@ -10,7 +10,7 @@
 \pagestyle{fancy}
 \renewcommand\headrulewidth{0pt}
 \renewcommand\footrulewidth{1pt}
-\fancyfoot[L]{\partmark}
+\fancyfoot[L]{\leftmark{\thepart}}
 \fancyfoot[R]{IUT Informatique de Belfort}
 \lhead{}
 \rhead{}
@@ -22,7 +22,7 @@
 \renewcommand{\thesection}{\arabic{part}.\arabic{section}}
 
 \title{\Huge{Projet STCal}\\ {\Large Rapport général}}
-\author{Florian Barrois \and Nicolas Devillers \and Valentin Jeanroy \and Mehdi Loisel \and Jean Mercadier \and Ismail Taleb \and Willeme Verdeaux}
+\author{Florian Barrois \and Nicolas Devilers \and Valentin Jeanroy \and Mehdi Loisel \and Jean Mercadier \and Ismail Taleb \and Willeme Verdeaux}
 
 \begin{document}
  \begin{titlepage}
@@ -148,6 +148,7 @@
     
     
 \part{La gestion du calendrier}
+  \setcounter{section}{0}
     \section{Le paramètrage du calendrier}
       \paragraph{}
 	Le paramètrage du calendrier se fait en cinq étapes.
@@ -164,10 +165,34 @@
       
       \paragraph{}
 	Vous pouvez à présent générer le calendrier en cliquant sur le bouton.
+	Une nouvelle interface apparaît et va vous permettre de créer les soutenances des stages.
       
       
     \section{Créer une soutenance}
+    
+	\paragraph{}
+	  \textit{Remarque : L'interface de la deuxième page de l'onglet ``Calendrier'' peut être perturbée lorsque l'application est réduite. Pour optimiser l'affichage, utilisez le logiciel en mode ``grand écran''.}
+    
       \subsection{Créer une soutenance dans le calendrier}
+	\paragraph{}
+	  L'interface de gestion du calendrier est caractérisée par cinq zones.
+	  Dans cette partie, seulement quatre de ces zones vont nous intéresser.
+	  Pour commencer, la première zone affichant l'arborescence des stages nous permet de choisir le stage dont on veut établir la soutenance.
+	  Pour placer la soutenance d'un stage dans le calendrier, sélectionnez l'étudiant dans l'arborescence et, tout en gardant le clic gauche enfoncé, amenez l'étudiant dans le créneau souhaité.
+	  L'étudiant disparaît alors de la liste des stages et l'on peut voir son nom et son prénom dans le créneau contenant la soutenance.
+	  
+	\paragraph{}
+	  Néanmoins, pour pouvoir créer une soutenance à partir d'un stage, certaines conditions doivent être respectées.
+	  Des créneaux peuvent être inaccessibles, notamment si la salle de soutenance (détaillé ci-après), ou l'un des enseignants assitant à la soutenance, est déjà prévu(e) à cet horaire.
+	  C'est aussi le cas lorsque le nombre de soutenance maximal pour un créneau a été atteint.
+	  L'accessibilité dépend donc de l'étudiant choisi, et notamment de son tuteur de stage.
+	
+	\paragraph{}
+	  Ainsi, si vous essayez de créer une soutenance à un horaire indisponible, 
+	  
+	  
+	  
+	
       \subsection{Compléter les informations relatives à la soutenance}
     \section{Consulter les soutenances existantes}
     \section{Supprimer une soutenance}

@@ -1,6 +1,6 @@
 package com.stcal.fen;
 
-import com.stcal.Main;
+import com.stcal.Stcal;
 import com.stcal.control.DBTools;
 import com.stcal.control.Message;
 import com.stcal.don.Type;
@@ -54,7 +54,7 @@ public class FMenu {
         openetu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.openFile(Type.ETUDIANT);
+                Stcal.openFile(Type.ETUDIANT);
 
             }
         });
@@ -64,7 +64,7 @@ public class FMenu {
         openprof.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.openFile(Type.TUTEUR);
+                Stcal.openFile(Type.TUTEUR);
             }
         });
         menufile.add(openprof);
@@ -127,7 +127,7 @@ public class FMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if (Message.popquestion("Etes vous sur de vouloir réinitialiser la base de donnée?\nToutes les données seront perdu.")) DBTools.resetDatabase();
+                    if (Message.popquestion("Etes vous sur de vouloir réinitialiser la base de donnée? Toutes les données seront perdu.")) DBTools.resetDatabase();
                 } catch (SQLException e1) {
                     Message.poperror(e1);
                 } catch (IOException e1) {

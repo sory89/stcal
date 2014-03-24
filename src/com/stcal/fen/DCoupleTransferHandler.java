@@ -1,6 +1,6 @@
 package com.stcal.fen;
 
-import com.stcal.Main;
+import com.stcal.Stcal;
 import com.stcal.control.Datas;
 import com.stcal.control.Message;
 import com.stcal.don.DCouple;
@@ -92,7 +92,7 @@ public class DCoupleTransferHandler extends TransferHandler {
             for (y=0;y<jt.getRowCount();y++){
                 for(i=0;i<jt.getColumnCount();i++)  {
 
-                    Main.colors[y][i]="white";
+                    Stcal.colors[y][i]="white";
                 }     }
             jt.revalidate();
             jt.repaint();

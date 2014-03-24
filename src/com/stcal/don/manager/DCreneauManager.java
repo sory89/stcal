@@ -66,9 +66,10 @@ public class DCreneauManager implements Manager<DCreneau> {
             calendar.setTime((Date)resultSet.getObject("date-debut"));
             Calendar calendar1=Calendar.getInstance();
             calendar1.setTime((Date) resultSet.getObject("date-fin"));
-            DCreneau ok = new DCreneau(resultSet.getInt("max_soutenance"),calendar,calendar1);
-            ok.setId(resultSet.getInt("id_creneau"));
-            return ok;
+            // TODO faire ca
+            //DCreneau ok = new DCreneau(resultSet.getInt("max_soutenance"),calendar,calendar1);
+            //ok.setId(resultSet.getInt("id_creneau"));
+            return new DCreneau();
         }
         catch (SQLException e){
             try {
@@ -93,9 +94,10 @@ public class DCreneauManager implements Manager<DCreneau> {
                 calendar.setTime((Date)resultSet.getObject("date-debut"));
                 Calendar calendar1=Calendar.getInstance();
                 calendar1.setTime((Date) resultSet.getObject("date-fin"));
-                DCreneau ok = new DCreneau(resultSet.getInt("max_soutenance"),calendar,calendar1);
-                ok.setId(resultSet.getInt("id_creneau"));
-                resultats.add(ok);
+                // TODO corriger ca
+                //DCreneau ok = new DCreneau(resultSet.getInt("max_soutenance"),calendar,calendar1);
+                //ok.setId(resultSet.getInt("id_creneau"));
+                //resultats.add(ok);
             }
         }
         catch (SQLException e){

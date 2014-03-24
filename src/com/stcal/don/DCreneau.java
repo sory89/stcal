@@ -9,10 +9,12 @@ import java.util.Calendar;
 
 
 public class DCreneau {
+
     private ArrayList<Soutenance> ListSoutenance = new ArrayList();
     private static int max_sout;
     private Calendar date_debut;
     private Calendar date_fin;
+    private Integer id;
 
     public Calendar getDate_debut()
     {
@@ -34,7 +36,13 @@ public class DCreneau {
         this.date_fin = date_fin;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public int getMax_sout()
     {
@@ -79,7 +87,7 @@ public class DCreneau {
     public void addSBC(DCouple dc){
 
         ListSoutenance.add(new Soutenance(dc,null));
-        Message.out.println(dc+" ajouter à "+this.date_debut);
+        Message.out.println(dc + " ajouter à " + this.date_debut);
 
 
     }

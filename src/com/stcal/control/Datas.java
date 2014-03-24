@@ -34,8 +34,8 @@ public class Datas {
      */
     public static void load(){
         try {
-            DProfManager profManager = new DProfManager(DBTools.dbsettings.getConnection());
-            prof = ListTools.list_to_default_prof(profManager.readall());
+            //DProfManager profManager = new DProfManager(DBTools.dbsettings.getConnection());
+            //prof = ListTools.list_to_default_prof(profManager.readall());
             DSalleManager salleManager = new DSalleManager(DBTools.dbsettings.getConnection());
             salles = ListTools.list_to_default_salle(salleManager.readall());
         } catch (SQLException e) {

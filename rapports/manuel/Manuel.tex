@@ -10,7 +10,7 @@
 \pagestyle{fancy}
 \renewcommand\headrulewidth{0pt}
 \renewcommand\footrulewidth{1pt}
-\fancyfoot[L]{\thepart}
+\fancyfoot[L]{\leftmark{\thepart}}
 \fancyfoot[R]{IUT Informatique de Belfort}
 \lhead{}
 \rhead{}
@@ -22,7 +22,7 @@
 \renewcommand{\thesection}{\arabic{part}.\arabic{section}}
 
 \title{\Huge{Projet STCal}\\ {\Large Rapport général}}
-\author{Florian Barrois \and Nicolas Devillers \and Valentin Jeanroy \and Mehdi Loisel \and Jean Mercadier \and Ismail Taleb \and Willeme Verdeaux}
+\author{Florian Barrois \and Nicolas Devilers \and Valentin Jeanroy \and Mehdi Loisel \and Jean Mercadier \and Ismail Taleb \and Willeme Verdeaux}
 
 \begin{document}
  \begin{titlepage}
@@ -148,7 +148,24 @@
     
     
 \part{La gestion du calendrier}
+  \setcounter{section}{0}
     \section{Le paramètrage du calendrier}
+      \paragraph{}
+	Le paramètrage du calendrier se fait en cinq étapes.
+	
+      \paragraph{}
+	Choisissez d'abord les jours pendant lesquels auront lieu les soutenances sur le calendrier en haut de la page.
+	Pour sélectionner plusieurs jours, maintenant la touche Ctrl.
+      
+      \paragraph{}
+	Entrez ensuite l'heure de début et l'heure de fin des journées validées.
+	Puis tapez la durée, en minutes, des soutenances.
+	Enfin, un créneau peut contenir plusieurs soutenances ayant lieu simultanément dans différentes salles.
+	Écrivez donc le nombre maximum de soutenances pouvant se dérouler à une même tranche horaire.
+      
+      \paragraph{}
+	Vous pouvez à présent générer le calendrier en cliquant sur le bouton.
+      
       
     \section{Créer une soutenance}
       \subsection{Créer une soutenance dans le calendrier}

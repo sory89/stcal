@@ -1,6 +1,6 @@
 package com.stcal.control;
 
-import com.stcal.Main;
+import com.stcal.Stcal;
 
 import javax.swing.*;
 import java.io.PrintStream;
@@ -28,7 +28,7 @@ public class Message {
 
     public static void poperror(String msg){
         err.println("ERROR:   " + msg);
-        Main.fen.setStatus("erreur: " + msg);
+        Stcal.fen.setStatus("erreur: " + msg);
         JOptionPane pop = new JOptionPane();
         pop.showMessageDialog(null, retourligne(msg), "Erreur", JOptionPane.ERROR_MESSAGE);
     }
@@ -39,7 +39,7 @@ public class Message {
 
     public static void popwarning(String msg){
         err.println("WARNING: " + msg);
-        Main.fen.setStatus("warning: " + msg);
+        Stcal.fen.setStatus("warning: " + msg);
         JOptionPane pop = new JOptionPane();
         pop.showMessageDialog(null, retourligne(msg), "Warning", JOptionPane.WARNING_MESSAGE);
     }
@@ -54,7 +54,7 @@ public class Message {
 
     public static void popnotice(String msg,String title){
         out.println("NOTICE:  " + msg);
-        Main.fen.setStatus("notice: " + msg);
+        Stcal.fen.setStatus("notice: " + msg);
         JOptionPane pop = new JOptionPane();
         pop.showMessageDialog(null, retourligne(msg), title, JOptionPane.INFORMATION_MESSAGE);
     }
@@ -72,7 +72,7 @@ public class Message {
      * @param text message a afficher
      */
     public static void status(String text){
-        Main.fen.setStatus(text);
+        Stcal.fen.setStatus(text);
         out.println("STATUS:  " + text);
     }
 

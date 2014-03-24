@@ -121,13 +121,13 @@ public class FMenu {
             }
         });
         menupref.add(dbr);
-        JMenuItem dbe = new JMenuItem("Réinitialiser la base de donnée");
-        dbe.setToolTipText("Vide et recrée la base de donnée");
+        JMenuItem dbe = new JMenuItem("Réinitialiser la base de données");
+        dbe.setToolTipText("Vide et recrée la base de données");
         dbe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if (Message.popquestion("Etes vous sur de vouloir réinitialiser la base de donnée? Toutes les données seront perdu.")) DBTools.resetDatabase();
+                    if (Message.popquestion("Etes-vous sur de vouloir réinitialiser la base de données ? Toutes les données seront perdues.")) DBTools.resetDatabase();
                 } catch (SQLException e1) {
                     Message.poperror(e1);
                 } catch (IOException e1) {

@@ -2,9 +2,6 @@ package com.stcal.fen;
 
 import com.stcal.control.Datas;
 import com.stcal.control.Message;
-import com.stcal.control.Settings;
-import com.stcal.control.exceptions.NoSuchSettingException;
-import com.stcal.control.exceptions.NothingToSaveException;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -14,11 +11,6 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.

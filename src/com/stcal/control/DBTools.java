@@ -27,15 +27,15 @@ public class DBTools {
      * @return les parametre de connections;
      */
     public static void startup(){
-        askdbsetting(dbsettings);
-        Datas.load(dbsettings);
+        askdbsetting();
+        Datas.load();
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             public void run() {
-                Datas.save(dbsettings);
+                Datas.save();
             }
         }));
         try {
-            if (!isset(dbsettings)) resetDatabase(dbsettings);
+            if (!isset()) resetDatabase();
         } catch (SQLException e) {
             Message.poperror(e);
         } catch (IOException eio){
@@ -45,22 +45,20 @@ public class DBTools {
 
     /**
      * (re)cree la base de donnees
-     * @param param parametres de connection
      * @return zero si pas d'erreur
      */
-    public static void resetDatabase(DBsettings param) throws IOException, SQLException {
+    public static void resetDatabase() throws IOException, SQLException {
         Message.popnotice(" La base de données va être réinitialisée.");
-        ScriptRunner runner = new ScriptRunner(param.getConnection(),false,true);
+        ScriptRunner runner = new ScriptRunner(dbsettings.getConnection(),false,true);
         runner.runScript(new BufferedReader(new FileReader("res/stcal.sql")));
     }
 
     /**
      * verfie si la base de donne est cree
-     * @param param paramettres de connection
      * @return renvoie vraie si la base existe
      */
-    public static boolean isset(DBsettings param) throws SQLException {
-        Connection con = param.getConnection();
+    public static boolean isset() throws SQLException {
+        Connection con = dbsettings.getConnection();
         try {
             String sql = "use stcal;";
             PreparedStatement pstm = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -75,9 +73,8 @@ public class DBTools {
 
     /**
      * charge les parametres de la base de donne et les demandes à l'utilisateur si besoin
-     * @param dbsettings
      */
-    public static void askdbsetting(final DBsettings dbsettings){
+    public static void askdbsetting(){
         try {
             dbsettings.loadfile();
         } catch (FileNotFoundException e) {

@@ -30,7 +30,7 @@ public class Message {
         err.println("ERROR:   " + msg);
         Main.fen.setStatus("erreur: " + msg);
         JOptionPane pop = new JOptionPane();
-        pop.showMessageDialog(null, msg, "Erreur", JOptionPane.ERROR_MESSAGE);
+        pop.showMessageDialog(null, retourligne(msg), "Erreur", JOptionPane.ERROR_MESSAGE);
     }
 
     public static void popwarning(Exception e){
@@ -41,7 +41,7 @@ public class Message {
         err.println("WARNING: " + msg);
         Main.fen.setStatus("warning: " + msg);
         JOptionPane pop = new JOptionPane();
-        pop.showMessageDialog(null, msg, "Warning", JOptionPane.WARNING_MESSAGE);
+        pop.showMessageDialog(null, retourligne(msg), "Warning", JOptionPane.WARNING_MESSAGE);
     }
 
     public static void popnotice(Exception e){
@@ -56,12 +56,12 @@ public class Message {
         out.println("NOTICE:  " + msg);
         Main.fen.setStatus("notice: " + msg);
         JOptionPane pop = new JOptionPane();
-        pop.showMessageDialog(null, msg, title, JOptionPane.INFORMATION_MESSAGE);
+        pop.showMessageDialog(null, retourligne(msg), title, JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static boolean popquestion(String msg){
         JOptionPane pop = new JOptionPane();
-        boolean inter = (pop.showConfirmDialog(null,msg,"coucou",2) == 0);
+        boolean inter = (pop.showConfirmDialog(null,retourligne(msg),"coucou",2) == 0);
         out.println(msg + "\treponse: " + inter);
         status("ok");
         return inter;
@@ -74,5 +74,14 @@ public class Message {
     public static void status(String text){
         Main.fen.setStatus(text);
         out.println("STATUS:  " + text);
+    }
+
+    private static String retourligne(String original){
+        StringBuilder sb = new StringBuilder(original);
+        int i = 0;
+        while ((i = sb.indexOf(" ", i + 60)) != -1) {
+            sb.replace(i, i + 1, "\n");
+        }
+        return sb.toString();
     }
 }

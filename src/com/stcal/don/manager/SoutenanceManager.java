@@ -1,7 +1,6 @@
 package com.stcal.don.manager;
 
 import com.stcal.control.Message;
-import com.stcal.don.DCandide;
 import com.stcal.don.DCouple;
 import com.stcal.don.DProf;
 import com.stcal.don.Soutenance;

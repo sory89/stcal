@@ -12,8 +12,6 @@ import datechooser.beans.DateChooserPanel;
 import datechooser.events.SelectionChangedEvent;
 import datechooser.events.SelectionChangedListener;
 import datechooser.model.multiple.Period;
-import net.fortuna.ical4j.model.DateTime;
-
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

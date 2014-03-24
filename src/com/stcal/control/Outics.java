@@ -7,8 +7,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.stcal.don.DCreneau;
 import com.stcal.don.DProf;
 import com.stcal.don.Soutenance;
-
-
 import net.fortuna.ical4j.data.CalendarOutputter;
 import net.fortuna.ical4j.model.Calendar;
 import net.fortuna.ical4j.model.DateTime;
@@ -19,8 +17,8 @@ import net.fortuna.ical4j.util.UidGenerator;
 
 import javax.swing.*;
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.net.SocketException;
+import java.text.SimpleDateFormat;
 /**
  * Created with IntelliJ IDEA.
  * User: Mehdi

@@ -3,7 +3,6 @@ package com.stcal.fen;
 import com.stcal.control.Datas;
 import com.stcal.control.Message;
 import com.stcal.control.Outics;
-import com.stcal.don.DProf;
 import net.fortuna.ical4j.model.ValidationException;
 
 import javax.swing.*;

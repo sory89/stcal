@@ -2,11 +2,11 @@ package com.stcal.control;
 
 import com.stcal.don.DCouple;
 import com.stcal.don.DCreneau;
-import com.stcal.don.DListe;
 import com.stcal.don.DPersonne;
-import com.stcal.fen.DynamicTreeDemo;
+import com.stcal.don.manager.DSalleManager;
 
 import javax.swing.*;
+import java.sql.SQLException;
 
 /**
  * @author Jean
@@ -15,10 +15,10 @@ import javax.swing.*;
 
 public class Datas {
 
-    public static final DefaultListModel<String> salles;
-    public static final DefaultListModel<DCouple> stages;
-    public static final DefaultListModel<DPersonne> etu;
-    public static final DefaultListModel<DPersonne> prof;
+    public static DefaultListModel<String> salles;
+    public static DefaultListModel<DCouple> stages;
+    public static DefaultListModel<DPersonne> etu;
+    public static DefaultListModel<DPersonne> prof;
     public static char Csv;
 
     static {
@@ -29,20 +29,26 @@ public class Datas {
         Csv    = ';';
     }
 
-    public static DCreneau[][] o ;
+    public static DCreneau[][] o;
 
     /**
      * Charge la base de donne et les place dans les objet de la classe
-     * @param param paramettres de connection
      */
-    public static void load(DBsettings param){
+    public static void load(){
+        try {
+            //DProfManager profManager = new DProfManager(DBTools.dbsettings.getConnection());
+            //prof = ListTools.list_to_default_prof(profManager.readall());
+            DSalleManager salleManager = new DSalleManager(DBTools.dbsettings.getConnection());
+            salles = ListTools.list_to_default_salle(salleManager.readall());
+        } catch (SQLException e) {
+            Message.poperror("Impossible de charger la base de donnée.\n" + e.getMessage());
+        }
     }
 
     /**
      * Sauvegarde les objet de la classe dans la base de donne
-     * @param param paramettres de connection
      */
-    public static void save(DBsettings param){
+    public static void save(){
     }
 
 }

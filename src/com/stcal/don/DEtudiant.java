@@ -1,14 +1,14 @@
 package com.stcal.don;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 public class DEtudiant extends DPersonne {
     private boolean lie;
 
-    public DEtudiant(String nom, String prenom, ArrayList<String> infos, boolean lie) {
-        super(nom, prenom, infos);
+    public DEtudiant(String nom, String prenom, List<String> infos, boolean lie) {
+        super(nom, prenom,(ArrayList)infos);
         this.lie = lie;
     }
 

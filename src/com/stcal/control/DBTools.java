@@ -28,10 +28,10 @@ public class DBTools {
      */
     public static void startup(){
         askdbsetting(dbsettings);
-        Datas.load(dbsettings);
+        Datas.load();
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             public void run() {
-                Datas.save(dbsettings);
+                Datas.save();
             }
         }));
         try {

@@ -10,12 +10,14 @@
 \pagestyle{fancy}
 \renewcommand\headrulewidth{0pt}
 \renewcommand\footrulewidth{1pt}
-\fancyfoot[L]{Projet STCal}
+\fancyfoot[L]{\thepart}
 \fancyfoot[R]{IUT Informatique de Belfort}
 \lhead{}
 \rhead{}
 \date{}
-
+\makeatletter
+\let\ps@plain=\ps@fancy
+\makeatother
 
 \renewcommand{\thesection}{\arabic{part}.\arabic{section}}
 
@@ -77,7 +79,7 @@
 		  La première ligne devra contenir l'intitulé des champs remplis (ex : Nom étudiant; Prénom étudiant; Lieu de stage;), et dans les autres lignes se trouveront les données.
 		  Pour enregistrer ce fichier au format ICS, cliquer sur ``Fichier - Enregistrer sous...'', entrez le nom de votre fichier, puis cliquez sur ``Tous les formats'' et choisissez ``Fichier CSV''.
 	    \item En cas de problème d'import, vérifiez que le nombre d'informations sur chaque personne correspond bien au nombre de champs entrés dans la première ligne. 
-		  Supprimez éventuellement les lignes vides (contenant seulement des caractères séparateurs).
+		  Supprimez éventuellement les lignes vides (contenant seulement des caractères séparateurs). Si le problème persiste, ouvrez le fichier dans un éditeur de texte et vérifiez que les caractères séparants les champs sont des points-virgules. Si ce n'est pas cas, effectuez la correction.
 	  \end{itemize}}
 
 	\paragraph{}
@@ -92,7 +94,7 @@
 	     
 	\paragraph{}
 	  Prenons la première méthode.
-	  Cliquez sur ``Importer étudiants''.
+	  Dans l'onglet ``Lier'', cliquez sur ``Importer étudiants''.
 	  Une fenêtre apparaît et vous pouvez alors choisir le fichier CSV à importer.
 	  Une fois l'import effectué, la liste des étudiants est présente dans la zone de droite.
 	  Répétez ces opérations en cliquant sur ``Importer enseignants''.
@@ -121,6 +123,7 @@
 	\paragraph{}
 	  Après avoir sélectionné un étudiant et un enseignant auquel a été donné un diminutif, le bouton de validation devient disponible.
 	  Actionnez-le et un stage sera créé.
+	  Cette action est également possible dans ``Menu - Lier''.
 	  L'étudiant disparaît alors de la liste de droite.
 	  En revanche, le professeur est toujours présent dans la liste de gauche, et vous pouvez ainsi affecter un autre étudiant à cette personne.
 	  
@@ -128,9 +131,25 @@
 	  \textit{Remarque : Un couple étudiant/professeur est considéré comme ``stage''. Dans ce manuel, toute mention de ``stage'' fera donc référence à ces couples.}
 	  
     \section{Consulter la liste des stages}
+      \paragraph{}
+	Les stages créés sont consultables dans l'onglet ``Stage''.
+	A gauche de la fenêtre se trouve une arborescence dans laquelle sont classés par enseignant les étudiants. 
+	Un enseignant est ainsi représenté par un dossier, et les fichiers qu'un dossier contient correspondent aux étudiants dont le stage est suivi par cet enseignant.
+	En cliquant sur un étudiant, vous avez, comme dans l'onglet ``Lier'', consulter toutes les informations relatives à cet étudiant. 
+	En passant de l'onglet ``Étudiant'' à l'onglet ``Tuteur'' dans la petite zone d'affichage située sur la droite, vous pouvez également avoir accès aux informations de l'enseignant appairé à ce stagiaire.
+	
+	\paragraph{}
+	  \textit{Remarque : Si un professeur n'est associé à aucun étudiant, il n'est pas représenté dans l'arborescence.}
+      
     \section{Supprimer un stage}
+      \paragraph{}
+	Pour supprimer un stage, il suffit d'ouvrir l'onglet ``Stage'', de sélectionner un étudiant, et de cliquer sur le bouton ``Supprimer le stage''.
+	Lorsqu'un stage est supprimé, l'étudiant reparaît dans la liste des étudiants de l'onglet ``Lier''.
+    
+    
 \part{La gestion du calendrier}
     \section{Le paramètrage du calendrier}
+      
     \section{Créer une soutenance}
       \subsection{Créer une soutenance dans le calendrier}
       \subsection{Compléter les informations relatives à la soutenance}

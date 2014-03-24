@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt]{book}
+\documentclass[a4paper,10pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -95,7 +95,7 @@
   
    \begin{figure}[!h]
      \begin{center}
-	  \hbox to14cm{\hss\includegraphics[width=5cm]{../general/parametres_bdd.png}\hss}
+	  \hbox to13cm{\hss\includegraphics[width=7cm]{../general/parametres_bdd.png}\hss}
 	  \caption{Paramètrage de la base de données}
      \end{center}
    \end{figure}
@@ -118,6 +118,16 @@
       
       \subsection{Importer les données}
       
+      \paragraph{}
+	Nous voici sur la page d'accueil.
+	~\\~\\
+	\begin{figure}[!h]
+		\hbox to12cm{\hss\includegraphics[width=14cm]{../general/accueil.png}\hss}
+		\caption{Page d'accueil}
+	\end{figure}
+	
+	
+      \paragraph{}
 	Afin de pouvoir créer des stages, il est nécessaire d'établir au préalable les listes d'informations sur les étudiants et les enseignants.
 	Ces listes doivent être importées depuis deux fichiers au format CSV.
 	
@@ -146,6 +156,12 @@
 	  Prenons la première méthode.
 	  Dans l'onglet ``Lier'', cliquez sur ``Importer étudiants''.
 	  Une fenêtre apparaît et vous pouvez alors choisir le fichier CSV à importer.
+	  ~\\~\\
+	\begin{figure}[!h]
+	      \hbox to11cm{\hss\includegraphics[width=7cm]{../general/import.png}\hss}
+	      \caption{Import de fichier CSV}
+	\end{figure}
+	  
 	  
 	\paragraph{}
 	  Une fois l'import effectué, la liste des étudiants est présente dans la zone de droite.
@@ -153,6 +169,11 @@
 	  Vos deux listes sont maintenant affichées et les boutons d'import ne sont plus présents.
 	  Il reste toutefois possible d'incorporer d'autres fichiers à l'application depuis le menu ``Fichier''.
 	  A la place de ces boutons apparaît alors un troisième intitulé ``Valider'' et qui demeure pour l'instant inaccessible.
+	~\\~\\~\\~\\~\\~\\~\\~\\~\\
+	\begin{figure}[!h]
+	      \hbox to12cm{\hss\includegraphics[width=14cm]{../general/valider_gris.png}\hss}
+	      \caption{Accueil après imports}
+	\end{figure}
 	
 	\paragraph{}
 	\textit{Remarques : 
@@ -160,10 +181,9 @@
 	    \item Il est possible d'importer plusieurs fichiers d'étudiants, ou d'enseignants. La liste de ce type de personne contiendra alors les informations de tous les fichiers importés.
 	    \item Vous pouvez sélectionner une personne, étudiant ou enseignant, et connaître toutes les informations qui la concernent depuis le cadre situé dans la zone centrale.
 	  \end{itemize}}
-	~\\~\\~\\
+	~\\
 	
       \subsection{Créer un stage}
- 
 	\paragraph{}
 	  Après avoir importé les fichiers, vous possédez les données requises pour créer un stage.
 	  Il reste juste un champ à remplir : celui du diminutif du professeur. 
@@ -172,12 +192,23 @@
 	  Sélectionnez un enseignant et octroyez-lui un diminutif.
 	  
 	
+	\begin{figure}[H]
+	  \hbox to12cm{\hss\includegraphics[width=14cm]{../general/validation.png}\hss}
+	  \caption{Validation}
+	\end{figure}
+	~\\
 	\paragraph{}
 	  Après avoir sélectionné un étudiant et un enseignant auquel a été donné un diminutif, le bouton de validation devient disponible.
 	  Actionnez-le et un stage sera créé.
 	  Cette action est également possible dans ``Menu - Lier''.
 	  L'étudiant disparaît alors de la liste de droite.
 	  En revanche, le professeur est toujours présent dans la liste de gauche, et vous pouvez ainsi affecter un autre étudiant à cette personne.
+	  
+	\begin{figure}[H]
+	  \hbox to12cm{\hss\includegraphics[width=14cm]{../general/valide.png}\hss}
+	  \caption{Validation}
+	\end{figure}
+	~\\	  
 	  
 	\paragraph{}
 	  \textit{Remarque : Un couple étudiant/professeur est considéré comme ``stage''. Dans ce manuel, toute mention de ``stage'' fera donc référence à ces couples.}
@@ -205,15 +236,21 @@
       \paragraph{}
 	Le paramètrage du calendrier se fait en cinq étapes.
 	
+      \begin{figure}[H]
+	  \hbox to12cm{\hss\includegraphics[width=14cm]{../general/Calendrier.png}\hss}
+	  \caption{Paramètrage du calendrier}
+	\end{figure}
+	
+	
       \paragraph{}
-	Choisissez d'abord les jours pendant lesquels auront lieu les soutenances sur le calendrier en haut de la page.
+	Choisissez d'abord les jours pendant lesquels auront lieu les soutenances sur le calendrier en haut de la page \textit{(zone 1)}.
 	Pour sélectionner plusieurs jours, maintenant la touche Ctrl.
       
       \paragraph{}
-	Entrez ensuite l'heure de début et l'heure de fin des journées validées.
-	Puis tapez la durée, en minutes, des soutenances.
+	Entrez ensuite l'heure de début et l'heure de fin des journées validées\textit{(zones 2 et 3)}.
+	Puis tapez la durée, en minutes, des soutenances\textit{(zone 4)}.
 	Enfin, un créneau peut contenir plusieurs soutenances ayant lieu simultanément dans différentes salles.
-	Écrivez donc le nombre maximum de soutenances pouvant se dérouler à une même tranche horaire.
+	Écrivez donc le nombre maximum de soutenances pouvant se dérouler à une même tranche horaire\textit{(zone 5)}.
       
       \paragraph{}
 	Vous pouvez à présent générer le calendrier en cliquant sur le bouton.
@@ -228,10 +265,16 @@
       \subsection{Créer une soutenance dans le calendrier}
 	\paragraph{}
 	  L'interface de gestion du calendrier est caractérisée par cinq zones.
-	  Dans cette partie, seulement deux de ces zones vont nous intéresser.
-	  Pour commencer, la première zone affichant l'arborescence des stages nous permet de choisir le stage dont on veut établir la soutenance.
-	  Pour placer la soutenance d'un stage dans le calendrier, sélectionnez l'étudiant dans l'arborescence et, tout en gardant le clic gauche enfoncé, amenez l'étudiant dans le créneau souhaité.
-	  L'étudiant disparaît alors de la liste des stages et l'on peut voir son nom et son prénom dans le créneau contenant la soutenance.
+	  
+	  \begin{figure}[H]
+	    \hbox to12cm{\hss\includegraphics[width=14cm]{../general/Calendrier2.png}\hss}
+	    \caption{Calendrier}
+	  \end{figure}
+	  
+	  Dans cette partie, seulement deux de ces zones vont nous intéresser\textit{(les zones 1 et 3)}.
+	  Pour commencer, la première zone affichant l'arborescence des stages\textit{(zone 1)} nous permet de choisir le stage dont on veut établir la soutenance.
+	  Pour placer la soutenance d'un stage dans le calendrier, sélectionnez l'étudiant dans l'arborescence \textit{(zone 1)} et, tout en gardant le clic gauche enfoncé, amenez l'étudiant dans le créneau souhaité \textit{(zone 3)}.
+	  L'étudiant disparaît alors de la liste des stages \textit{(zone 1)} et l'on peut voir son nom et son prénom dans le créneau contenant la soutenance \textit{(zone 4)}.
 	  
 	\paragraph{}
 	  Néanmoins, pour pouvoir créer une soutenance à partir d'un stage, certaines conditions doivent être respectées.
@@ -242,7 +285,7 @@
 	\paragraph{}
 	  Ainsi, si vous essayez de créer une soutenance à un horaire indisponible, aucun changement ne sera effectué.
 	  Cependant vous pouvez repérer très facilement les horaires bloqués.
-	  En effet, lorsque vous sélectionnez un étudiant, vous pouvez observer que les cases du calendrier se colorent, soit en rouge lorsque le créneau est indisponible, soit en vert quand le créneau est libre d'occuper cette la soutenance de ce stage.
+	  En effet, lorsque vous sélectionnez un étudiant, vous pouvez observer que les cases du calendrier se colorent, soit en rouge lorsque le créneau est indisponible, soit en vert quand le créneau est libre d'occuper la soutenance de ce stage.
 	  
 	\paragraph{}
 	  \textit{Remarque : Si vous lancez cette application depuis un terminal informatique, vous bénéficiez des messages d'information de l'application. Par exemple, si vous tentez de créer une soutenance à un horaire incompatible avec le stage choisi, le terminal votre terminal affichera les raisons du refus de création de la soutenance.}
@@ -351,18 +394,15 @@
 	  Nous avons passé toutes les fonctionnalités en revue et anticipé tous les soucis potentiels que vous pourriez connaître.
 	  
 	\paragraph{}
-	  Ce manuel est également consultable depuis l'onglet ''? - Aide``.
+	  L'application possède un système de sauvegarde, permettant la restauration de la dernière session active avant la dernière fermeture du programme.
+	  Cependant, nous avons heurtés quelques difficultés, si bien que cette fonctionnalité peut ne pas être opérationnelle.
+	  Ce manuel est aussi consultable depuis l'onglet ''? - Aide``.
 	  Une brève présentation du projet est également disponible dans ''? - A propos de STCal``.
 	
 
 	\paragraph{}
 	  Voici la fin de ce manuel.
 	  Nous espérons que vous avez pris plaisir à le lire et que notre logiciel vous sera d'une grande aide pour vos projets à venir.
-
-
-
-
-
 
 
 

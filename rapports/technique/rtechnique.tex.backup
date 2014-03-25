@@ -259,15 +259,15 @@
 		\subsection{Datas et DBTools}
 
 			\paragraph*{}
-			\textit{Datas} est le lien entre la partie données et la partie contrôle. Elle contient donc des listes d’objets qui caractérisent la partie modèle. Ces listes sont statiques et publiques afin d’être utilisées par l’ensemble de la partie contrôle.
-			La méthode \texttt{load()} et la méthode \texttt{save()} sont appelées au début du programme afin de charger l'intégralité des données et de les stocker dans cette classe, et inversement à la fermeture du programme.
+			\textit{Datas} est le lien entre la partie donnée et la partie contrôle. Elle contient donc des listes d’objet qui caractérise la partie modèle. Ces listes sont statique et publique afin d’être utilisé par l’ensemble de la partie contrôle.
+			La méthode \texttt{load()} et la méthode \texttt{save()} sont appellé aux début du programme afin de charger intégralité des données et les stocker dans cette classe. Et l'inverse à la fermeture du programme.
 
 			\paragraph*{}
-			\textit{DBTools} et une classe qui effectue des opérations sur la base de données. Elle permet de (re)créer la base de données à partir du script SQL mais aussi de gérer les paramètres de connexion et donc la connexion.
+			\textit{DBTools} et une classe qui effectue des opérations sur la base de donné. Elle permet de (re)créer la base de donnée à partir du script SQL mais aussi de gérer les paramètres de connexion et donc la connexion.
 
 		\subsection{ScriptRunner}
 
-			\textit{ScriptRunner} est une classe provenant du projet \href{http://ibatis.apache.org/}{Ibatis} et permet d’exécuter des scripts SQL comme le script d'installation de la base de données dans le répertoire \textit{res}. Elle a été modifiée pour enlever les dépendances de son projet d'origine et être plus adaptée à ce projet.
+			\textit{ScriptRunner} est un classe provenant du projet \href{http://ibatis.apache.org/}{Ibatis} et permet d’exécuter des scripts SQL comme le script d'installation de la base de donné dans le répertoire \textit{res}. Elle a été modifié pour enlever les dépendances de son projet d'origine et être un peu adapté à ce projet.
 
 		\subsection{Message}
 
@@ -275,24 +275,28 @@
 			Cette classe gère les popups, la sortie standard, et la sortie d’erreur.
 
 			\paragraph*{}
-			Le principe des popups est conçu pour se rapprocher du javascript. En effet, afficher une popup consiste juste à appeler une méthode avec le message en paramètre. Pendant que le message est à l’écran, l'application s'arrête. De plus il est possible de passer une exception en paramètre afin d'afficher le message de cette dernière.
+			Le principe des popup est pensé pour se rapprocher du javascript. En effet, afficher une popup consiste juste à appeler une méthode avec le message en paramètre. Pendant que le message est à l’écran, l'application s'arrête. De plus il est possible de passer une exception en paramètre afin d'afficher le message de cette dernière.
 			Il y a quatre types de popup:
 			\begin{description}
-				\item[notice] est un message d'information.
-				\item[warning] affiche un avertissement.
-				\item[error] affiche un message d'erreur.
-				\item[question] affiche une question à l'utilisateur et celui-ci peut cliquer sur oui ou non.
+				\item[notice] est un message d'information
+				\item[warning] affiche un avertissement
+				\item[error] affiche un message d'erreur
+				\item[question] affiche une question à l'utilisateur et celui-ci peut cliquer oui ou non 
 			\end{description}
 
 			\paragraph*{}
-			Dans cette classe sont récupérées également la sortie standard  et la sortie standard d’erreur. Cela permet si besoin de rediriger tout ce qu’écrit l'application dans des fichiers comme des logs.
+			Dans cette classe sont récupérés également la sortie standard  et la sortie standard d’erreur. Cela permet si besoin de rediriger tout ce qu’écrit l'application dans des fichiers comme des logs.
+
+	\section{Test}
+
+		 A part une classe symbolique, il n'y a pas de test sur l’ensemble du projet. Il est donc très facile d'avoir des pertes de fonctionnalité.
 
 \chapter{Modélisation}
 
 	\section{UML}
 
 		\paragraph*{}
-		L'UML est divisé en trois parties, greffées sur le MVC. La partie contrôleur est majoritairement \textit{statique}, il n'est pas intéressant de voir sa représentation graphique. Dans les deux parties suivantes se trouvent les graphes UML du modèle et de la vue.
+		L'UML est divisé en trois parties, greffés sur le MVC. La partie contrôleur est majoritairement \textit{static} il n'est pas intéressant de voir ça représentation graphique. Dans les deux parties suivantes se trouve les graphes UML du modelé et de la vue.
 
 		\subsection{UML du modele}
 
@@ -302,7 +306,7 @@
 			\end{figure}
 
 			\paragraph*{}
-			Ce schéma montre bien l’enchaînement des objets. On commence par les personnes et on finit par les agendas. On remarque également que le paquet \textit{manager} crée la totalité des objets. Cela vient du fait que les classes de manager instancient ces objets à partir de la base de données.
+			Dans ce schéma voit bien l’enchaînement des objets. On commence par les personnes et on finit par les agendas. On remarque également que le paquet \textit{manager} crée la totalité objets. Cela vient du fait que les classes de manager instancient ces objets à partir de la base de données.
 
 		\subsection{UML de la vue}
 
@@ -312,15 +316,14 @@
 			\end{figure}
 
 			\paragraph*{}
-			Dans ce graphe, on remarque bien que la fenêtre principale (\textit{FInterface}) est composée d’onglets (\textit{FTab}). On remarque également la présence de trois objets hérités de \textit{FTab}, ces derniers constituent les trois onglets de l'application.
+			Dans ce graphe, on remarque bien que la fenêtre principale (\textit{FInterface}) es composé de d’onglets (\textit{FTab}). On remarque également trois objet hérité de \textit{FTab}, ces dernier constitue les trois onglets de l'application.
 
 	\section{Base de données}
 
-		La base de données est a été conçue à partir du schéma UML du modèle montré précédemment. Elle ne concerne que les données et non la vue ou le contrôleur.
+		La base de donné est a été conçue à partir du schéma UML du modèle montré précédemment. Elle concerne que les données en non la vue ou le contrôleur.
 
 \chapter*{Conclusion}
 
-Nous espérons que nos explications ont été assez claires sur la modélisation de l'application et le rôle de chaque classe. 
-Ce projet étant à la fois prometteur et inachevé, il serait intéressant que l'application soit reprise par un futur groupe de projet tuteuré.
+En espérant avoir été assez claire sur la modélisation de l'application et sur les grandes lignes. Nous espérons que l'application sera reprise par un future groupe de projet tuteuré.
 
 \end{document}

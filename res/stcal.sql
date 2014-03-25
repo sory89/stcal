@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `Couple` (
   `id_prof_tuteur` int(11) NOT NULL,
   `id_soutenance` int(11) NOT NULL,
   KEY `id_etu` (`id_etu`,`id_prof_candide`,`id_prof_tuteur`,`id_soutenance`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `Etudiants` (
   `info_etu` text NOT NULL,
   `lie_etu` tinyint(1) NOT NULL,
   PRIMARY KEY (`etu_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -59,15 +59,15 @@ CREATE TABLE IF NOT EXISTS `Etudiants` (
 -- Structure de la table `Professeur`
 --
 
-CREATE TABLE IF NOT EXISTS `Professeur` (
+CREATE TABLE IF NOT EXISTS `professeur` (
   `id_prof` int(11) NOT NULL AUTO_INCREMENT,
   `nom_prof` text NOT NULL,
   `pre_prof` text NOT NULL,
   `info_prof` text NOT NULL,
-  `dimi_prof` text NOT NULL
+  `dimi_prof` text NOT NULL,
 
   PRIMARY KEY (`id_prof`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `Salle` (
   `id_salle` int(11) NOT NULL AUTO_INCREMENT,
   `libelle_salle` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`id_salle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `Soutenance` (
   `id_crenau` int(11) NOT NULL,
   PRIMARY KEY (`id_sout`),
   KEY `id_salle` (`id_salle`,`id_crenau`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -109,4 +109,4 @@ CREATE TABLE IF NOT EXISTS `creneau` (
   `date-debut` date NOT NULL,
   `date-fin` date NOT NULL,
   PRIMARY KEY (`id_creneau`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

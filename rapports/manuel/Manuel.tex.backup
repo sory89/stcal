@@ -206,20 +206,37 @@
 	  
 	\begin{figure}[H]
 	  \hbox to12cm{\hss\includegraphics[width=14cm]{../general/valide.png}\hss}
-	  \caption{Validation}
+	  \caption{Interface ``Lier'' après validation d'un stage}
 	\end{figure}
 	~\\	  
 	  
 	\paragraph{}
 	  \textit{Remarque : Un couple étudiant/professeur est considéré comme ``stage''. Dans ce manuel, toute mention de ``stage'' fera donc référence à ces couples.}
-	  
+	  \newpage
     \section{Consulter la liste des stages}
       \paragraph{}
 	Les stages créés sont consultables dans l'onglet ``Stage''.
+	~\\
+	
+	\begin{figure}[H]
+	  \hbox to12cm{\hss\includegraphics[width=18cm]{../general/Stage.png}\hss}
+	  \caption{Affichage des données de l'étudiant dans l'onglet ``Stage''}
+	\end{figure}
+	~\\	
+	
+	
 	A gauche de la fenêtre se trouve une arborescence dans laquelle sont classés par enseignant les étudiants. 
 	Un enseignant est ainsi représenté par un dossier, et les fichiers qu'un dossier contient correspondent aux étudiants dont le stage est suivi par cet enseignant.
 	En cliquant sur un étudiant, vous avez, comme dans l'onglet ``Lier'', consulter toutes les informations relatives à cet étudiant. 
 	En passant de l'onglet ``Étudiant'' à l'onglet ``Tuteur'' dans la petite zone d'affichage située sur la droite, vous pouvez également avoir accès aux informations de l'enseignant appairé à ce stagiaire.
+	
+	\begin{figure}[H]
+	  \hbox to12cm{\hss\includegraphics[width=18cm]{../general/stage_vuetuteur.png}\hss}
+	  \caption{Affichage des données du tuteur de stage dans l'onglet ``Stage''}
+	\end{figure}
+	~\\	
+	
+	
 	
 	\paragraph{}
 	  \textit{Remarque : Si un professeur n'est associé à aucun étudiant, il n'est pas représenté dans l'arborescence.}
@@ -237,7 +254,7 @@
 	Le paramètrage du calendrier se fait en cinq étapes.
 	
       \begin{figure}[H]
-	  \hbox to12cm{\hss\includegraphics[width=14cm]{../general/Calendrier.png}\hss}
+	  \hbox to12cm{\hss\includegraphics[width=18cm]{../general/Calendrier.png}\hss}
 	  \caption{Paramètrage du calendrier}
 	\end{figure}
 	
@@ -267,7 +284,7 @@
 	  L'interface de gestion du calendrier est caractérisée par cinq zones.
 	  
 	  \begin{figure}[H]
-	    \hbox to12cm{\hss\includegraphics[width=14cm]{../general/Calendrier2.png}\hss}
+	    \hbox to12cm{\hss\includegraphics[width=18cm]{../general/Calendrier2.png}\hss}
 	    \caption{Calendrier}
 	  \end{figure}
 	  
@@ -290,8 +307,12 @@
 	\paragraph{}
 	  \textit{Remarque : Si vous lancez cette application depuis un terminal informatique, vous bénéficiez des messages d'information de l'application. Par exemple, si vous tentez de créer une soutenance à un horaire incompatible avec le stage choisi, le terminal votre terminal affichera les raisons du refus de création de la soutenance.}
 	
-	  
-	  
+	~\\
+	\begin{figure}[H]
+	  \hbox to12cm{\hss\includegraphics[width=18cm]{../general/console.png}\hss}
+	  \caption{Messages d'information sur la sortie standard et la sortie standard d'erreur }
+	\end{figure}
+	\newpage
 	
       \subsection{Compléter les informations relatives à la soutenance}
 	\paragraph{}
@@ -304,8 +325,13 @@
 	  Utilisez le champ présent pour créer une nouvelle salle.
 	  Indiquez le nom ou le numéro de la salle et ajoutez-la à la liste.
 	  
+	   \begin{figure}[H]
+	    \hbox to12cm{\hss\includegraphics[width=5cm]{../general/Salles.png}\hss}
+	    \caption{Liste des salles}
+	  \end{figure}
+	  
 	\paragraph{}  
-	  \textit{Remarque : Au passage, remarquez que c'est à cet endroit que s'effectue la configuration des salles, avec la possiblité de les consulter, d'en créer et d'en supprimer.}
+	  \textit{Remarque : Au passage, remarquez que c'est à cet endroit que s'effectue toute la configuration des salles, avec la possibilité de les consulter, d'en créer et d'en supprimer.}
 	  
 	\paragraph{}
 	  Une fois votre liste de salle remplie, fermez la fenêtre et portez votre attention sur le coin inférieur droit de l'application.
@@ -314,7 +340,7 @@
 	  N'oubliez pas de valider votre choix.
 	  
 	
-	~\\~\\
+	\newpage
     \section{Consulter les soutenances existantes}
       \paragraph{}
 	Pour consulter les soutenances programmées, cliquez simplement sur une plage horaire du calendrier.
@@ -322,8 +348,22 @@
 	Cliquez ensuite sur une de ces soutenances pour afficher les données complémentaires concernant la soutenance.
 	Ces données sont indiquées dans le coin inférieur gauche du logiciel, sous l'arborescence des stages.
 	Vous pouvez alors consulter le nom du tuteur de stage de l'étudiant, l'enseignant candide présent à la présentation orale, ainsi que le nom, ou numéro, de la salle où cette dernière aura lieu.
+	~\\
+	 \begin{figure}[H]
+	    \hbox to12cm{\hss\includegraphics[height=8cm,width=18cm]{../general/creneau.png}\hss}
+	    \caption{Sélection du créneau}
+	 \end{figure}
+      ~\\~\\~\\~\\~\\~\\~\\
+      \paragraph{}
+      Puis...
       
-      ~\\~\\
+	 \begin{figure}[H]
+	   \hbox to12cm{\hss\includegraphics[height=8cm,width=18cm]{../general/soutenance.png}\hss}
+	   \caption{Sélection de la soutenance}
+	 \end{figure}
+      
+      
+      \newpage
     \section{Supprimer une soutenance}
       \paragraph{}
 	La suppression d'une soutenance se fait grâce au bouton présent sous la liste des soutenances pour un horaire donné.
@@ -331,11 +371,17 @@
 	La soutenance disparaît alors de la liste et du calendrier, tandis que le stage revient dans l'arborescence du tiers gauche de la page.
 	Les éléments relatifs à cette ancienne soutenance sont quant à eux effacés.
 	Ainsi, si vous recréez la une soutenance identique à celle effacée, les paramètres concernant la salle et l'enseignant candide ne posséderont plus les valeurs précédentes mais seront vides.
+	~\\~\\
+	\begin{figure}[H]
+	   \hbox to12cm{\hss\includegraphics[height=8cm,width=18cm]{../general/suppression.png}\hss}
+	   \caption{Onglet ``Calendrier'' après suppression d'une soutenance}
+	 \end{figure}
+	
 	
       \paragraph{}
 	\textit{Attention : La suppression d'une soutenance et la suppression d'un stage sont deux choses différentes. Supprimer une soutenance enlève seulement la soutenance du planning. Le stage reste en état tant qu'il n'est pas supprimé depuis l'onglet ``Stage''.}
       
-      ~\\~\\
+     \newpage
     \section{Exporter le calendrier}
       \subsection{Exporter au format PDF}
       
@@ -361,7 +407,20 @@
 	  L'export au format ICS se fait de la même manière que l'export au format PDF.
 	  Exécutez les directives mentionnées dans la section précédente jusqu'à l'ouverture de la fenêtre d'export.
 	  Vous pouvez, pour ce format, choisir le tri que vous souhaitez pour vos données.
-	  Sélectionnez ensuite ''ICS`` dans la liste des formats et cliquez sur ''Exporter``.
+	  
+	  \begin{figure}[H]
+	   \hbox to12cm{\hss\includegraphics[width=7cm]{../general/export.png}\hss}
+	   \caption{Fenêtre d'export au format ICS}
+	 \end{figure}
+	  
+	  \paragraph{}
+	    Sélectionnez ensuite ''ICS`` dans la liste des formats et cliquez sur ''Exporter``.
+	  ~\\
+	  \begin{figure}[H]
+	   \hbox to12cm{\hss\includegraphics[width=14cm]{../general/navigateur.png}\hss}
+	   \caption{Enregistrement du fichier ICS}
+	 \end{figure}
+	  ~\\
 	  Choisissez votre répertoire de création de votre fichier dans votre ordinateur, enregistrez  et fermez la fenêtre.
 	  Votre calendrier est à présent sauvegardé dans le dossier destination que vous avez choisi.
 	  
@@ -377,14 +436,40 @@
 	  Ouvrez un navigateur Internet et recherchez Google Agenda, ou entrez directement l'adresse URL : \url{https://www.google.com/calendar?hl=fr}.
 	  ~\\~\\
 	  Une fois le calendrier Google ouvert, glissez votre souris sur la flèche à côté de ''Mes agendas``, dans la barre verticale à gauche de l'écran, cliquez et sélectionnez ''Créer un agenda``.
+	  
+	  \begin{figure}[H]
+	   \hbox to12cm{\hss\includegraphics[height=8cm,width=18cm]{../general/google.png}\hss}
+	   \caption{Import de l'agenda}
+	 \end{figure}
+	  
 	  Donnez un titre à votre nouveau planning, donnez éventuellement une description et cliquez sur ''Créer l'agenda``.
-	  ~\\~\\
+	  
+	  \begin{figure}[H]
+	   \hbox to12cm{\hss\includegraphics[width=18cm]{../general/parcourir.png}\hss}
+	   \caption{Onglet ``Calendrier'' après suppression d'une soutenance}
+	 \end{figure}
+	  
+	  
 	  Vous possédez maintenant un nouvel agenda spécifique à la gestion soutenances orales de stage des étudiants.
+	  
 	  A gauche, cliquez sur la flèche à côté de ''Autres agendas``, puis sur ''Importer l'agenda``.
+	  
+	   \begin{figure}[H]
+	   \hbox to12cm{\hss\includegraphics[height=8cm,width=18cm]{../general/import_agenda.png}\hss}
+	   \caption{Planning importé}
+	 \end{figure}
+	  
+	\paragraph{}
 	  Dans la nouvelle fenêtre, cliquez sur ''Parcourir`` et sélectionnez votre fichier ICS.
 	  Enfin, appuyez sur ''Importer``.
 	  
 	\paragraph{}
+	
+	  \begin{figure}[H]
+	   \hbox to12cm{\hss\includegraphics[height=8cm,width=18cm]{../general/sout.png}\hss}
+	   \caption{Sélection de la soutenance}
+	 \end{figure}
+	
 	  Votre calendrier est maintenant sur Google.
 	  Vous pouvez alors ajouter, consulter, modifier et supprimer à votre guise des soutenances depuis votre compte Google.
 	  

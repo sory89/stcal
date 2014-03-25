@@ -32,6 +32,12 @@ public class FMenu {
         JMenu menuOther = new JMenu("?");
         JMenuItem help = new JMenuItem("Aide");
         help.setToolTipText("Ouvrir le manuel.");
+        help.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Message.popnotice("Le manuel d'utilisation de STCal est disponible à l'adresse suivante : https://github.com/Ricain/stcal/blob/Main/rapports/manuel/Manuel.pdf");
+            }
+        });
         JMenuItem aPropos = new JMenuItem("À propos de STCal");
         aPropos.setToolTipText("Découvrir le projet STCal.");
         aPropos.addActionListener(new ActionListener() {

@@ -13,9 +13,6 @@
 
 \title{Rapport Technique}
 
-\pagestyle{fancy}
-\fancyhead[L]{coucou}
-
 \author{Florian Barrois \and Nicolas Devillers \and Valentin Jeanroy \and Mehdi Loisel \and Jean Mercadier \and Ismail Taleb \and Willeme Verdeaux}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -51,7 +48,7 @@
 
 \chapter*{Introduction}
 
-A travers ce manuel nous allons expliqué comment a été pensé l'application avec des détails techniques pour facilité la reprise du travaille avenir sur ce projet.
+Dans ce rapport, nous allons expliquer la partie technique du projet, en commençant par les prérequis au lancement du programme puis en détaillant la procédure d'installation. Ensuite, nous étudierons la structure du projet avec le modèle vue contrôleur et nous finiront par nous intéresser au à la modélisation avec l'UML.
 
 \chapter{Installation}
 
@@ -252,6 +249,14 @@ A travers ce manuel nous allons expliqué comment a été pensé l'application a
 			\paragraph*{}
 			Dans cette classe on récupéré également la sortie standard  et la sortie standard d’erreur. Cela permet si besoin de rediriger tout ce qu’écrit l'application dans des fichiers comme des logs.
 
+		\subsection{DynamicTree}
+
+			\paragraph*{}
+			Il s'agit d'un Jpanel dans lequel est placé un Jtree permettant d'envoyer la liste des stages et de l'afficher triée.
+			Ainsi on peut avoir une arborescence dans la partie fenêtre.
+
+		Pour plus d'information sur les classes, allez dans le répertoire \textit{doc} dans le quelle se trouve le résultat de \textit{javadoc}.
+
 	\section{Test}
 
 		 A part une classe symbolique, il n'y a pas de test sur l’ensemble du projet. Il est donc très facile d'avoir des pertes de fonctionnalité.
@@ -261,9 +266,9 @@ A travers ce manuel nous allons expliqué comment a été pensé l'application a
 	\section{UML}
 
 		\paragraph*{}
-		L'UML est divisé en trois partie, grephé sur le MVC. La partie contrôleur est majoritairement \textit{static} il n'est pas intéressant de voir ça représentation graphique. Dans les deux parties suivante se trouve les graphes UML du modelé et de la vue.
+		L'UML est divisé en trois partie, grephé sur le MVC. La partie contrôleur est majoritairement statique il n'est pas intéressant de voir ça représentation graphique. Dans les deux parties suivante se trouve les graphes UML du modelé et de la vue.
 
-		\subsection{UML du modele}
+		\subsection{UML du modèle}
 
 			\begin{figure}[h!]
 				\includegraphics[scale=.5]{uml_don.png}	
@@ -285,10 +290,10 @@ A travers ce manuel nous allons expliqué comment a été pensé l'application a
 
 	\section{Base de donnée}
 
-		La base de donné est a été conçue à partir du shema UML du modèle montré précédemment. Elle concerne que les données en non la vue ou le contrôleur.
+		La base de donné est a été conçue à partir du shéma UML du modèle montré précédemment. Elle concerne que les données en non la vue ou le contrôleur.
 
 \chapter*{Conclusion}
 
-En espérant avoir été assez claire sur la modélisation de l'application et sur les grande ligne. Nous éspereons que l'application sera repris par un future groupe de projet tuteuré.
+En espérant avoir été assez claire sur la modélisation de l'application et sur les grande ligne de sa structure. Nous espérons que l'application sera repris facilement par un future groupe de projet tuteuré.
 
 \end{document}

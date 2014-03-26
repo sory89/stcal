@@ -3,7 +3,9 @@ package com.stcal.control;
 import com.stcal.don.DCouple;
 import com.stcal.don.DCreneau;
 import com.stcal.don.DPersonne;
+import com.stcal.don.manager.DProfManager;
 import com.stcal.don.manager.DSalleManager;
+import com.stcal.fen.FLier;
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -36,10 +38,12 @@ public class Datas {
      */
     public static void load(){
         try {
-            //DProfManager profManager = new DProfManager(DBTools.dbsettings.getConnection());
-            //prof = ListTools.list_to_default_prof(profManager.readall());
+            DProfManager profManager = new DProfManager(DBTools.dbsettings.getConnection());
+            ListTools.list_to_default_prof(profManager.readall());
+
+            /*
             DSalleManager salleManager = new DSalleManager(DBTools.dbsettings.getConnection());
-            salles = ListTools.list_to_default_salle(salleManager.readall());
+            ListTools.list_to_default_salle(salleManager.readall()); */
         } catch (SQLException e) {
             Message.poperror("Impossible de charger la base de données.\n" + e.getMessage());
         }

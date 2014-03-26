@@ -1,5 +1,9 @@
 package com.stcal.control;
 
+import com.stcal.don.DPersonne;
+import com.stcal.fen.FLier;
+
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -34,6 +38,10 @@ public class DBTools {
             Message.poperror(e);
         }
         Datas.load();
+        System.out.println(Datas.prof);
+        //FLier.Fprof = new JList<DPersonne>(Datas.prof);
+
+
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             public void run() {
                 Datas.save();

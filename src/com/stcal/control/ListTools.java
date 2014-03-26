@@ -1,5 +1,6 @@
 package com.stcal.control;
 
+import com.stcal.don.DEtudiant;
 import com.stcal.don.DPersonne;
 import com.stcal.don.DProf;
 import com.stcal.don.DSalle;
@@ -42,4 +43,19 @@ public class ListTools {
         return inter;
     }
 
+    public static DefaultListModel<DPersonne> list_to_default_etu(List<DEtudiant> readall) {
+        DefaultListModel<DPersonne> inter = new DefaultListModel<DPersonne>();
+        for(DEtudiant truc : readall){
+            inter.addElement(truc);
+        }
+        return inter;
+    }
+
+    public static List<DEtudiant> default_to_list_etu(DefaultListModel<DPersonne> etu) {
+        List<DEtudiant> re = new ArrayList<DEtudiant>();
+        for (int i=0;i<etu.getSize();i+=1){
+            re.add((DEtudiant)etu.get(i));
+        }
+        return re;
+    }
 }

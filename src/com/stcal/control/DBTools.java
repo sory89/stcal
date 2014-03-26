@@ -29,23 +29,24 @@ public class DBTools {
     public static void startup(){
         askdbsetting();
         try {
-            isset();
-        } catch (SQLException e) {
-            Message.poperror(e);
-        }
-        Datas.load();
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            public void run() {
-                Datas.save();
-            }
-        }));
-        try {
             if (!isset()) resetDatabase();
+            isset();
         } catch (SQLException e) {
             Message.poperror(e);
         } catch (IOException eio){
             Message.poperror(eio);
         }
+        Datas.load();
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            public void run() {
+                Datas.save();
+                try {
+                    dbsettings.getConnection().close();
+                } catch (SQLException e) {
+                    Message.err.println(e.getMessage());
+                }
+            }
+        }));
     }
 
     /**

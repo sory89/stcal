@@ -1,8 +1,8 @@
 package com.stcal.control;
 
-import com.stcal.don.DCouple;
-import com.stcal.don.DCreneau;
-import com.stcal.don.DPersonne;
+import com.stcal.don.*;
+import com.stcal.don.manager.DEtudiantManager;
+import com.stcal.don.manager.DProfManager;
 import com.stcal.don.manager.DSalleManager;
 
 import javax.swing.*;
@@ -35,20 +35,41 @@ public class Datas {
      * Charge la base de donne et les place dans les objet de la classe
      */
     public static void load(){
+        System.out.println("coucou" + prof);
+        DProfManager profManager;
+        DEtudiantManager etuManager;
+        DSalleManager salleManager;
         try {
-            //DProfManager profManager = new DProfManager(DBTools.dbsettings.getConnection());
-            //prof = ListTools.list_to_default_prof(profManager.readall());
-            DSalleManager salleManager = new DSalleManager(DBTools.dbsettings.getConnection());
+            salleManager = new DSalleManager(DBTools.dbsettings.getConnection());
+            etuManager = new DEtudiantManager(DBTools.dbsettings.getConnection());
+            profManager = new DProfManager(DBTools.dbsettings.getConnection());
+            prof = ListTools.list_to_default_prof(profManager.readall());
+            etu = ListTools.list_to_default_etu(etuManager.readall());
             salles = ListTools.list_to_default_salle(salleManager.readall());
         } catch (SQLException e) {
-            Message.poperror("Impossible de charger la base de données.\n" + e.getMessage());
+            Message.poperror(e);
         }
+        System.out.println("coucou " + prof);
     }
 
     /**
      * Sauvegarde les objet de la classe dans la base de donne
      */
     public static void save(){
+        try {
+            DProfManager mprof = new DProfManager(DBTools.dbsettings.getConnection());
+            for(DProf tosave : ListTools.default_to_list_prof(prof)) {
+                if (tosave.getDb_id()!=-1) mprof.update(tosave);
+                if (tosave.getDb_id()==-1) mprof.create(tosave);
+            };
+            DEtudiantManager metu = new DEtudiantManager(DBTools.dbsettings.getConnection());
+            for(DEtudiant tosave : ListTools.default_to_list_etu(etu)){
+                if (tosave.getDb_id()!=-1) metu.update(tosave);
+                if (tosave.getDb_id()==-1) metu.create(tosave);
+            }
+        } catch (SQLException e) {
+            Message.poperror(e);
+        }
     }
 
 }

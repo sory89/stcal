@@ -4,6 +4,7 @@ import com.stcal.don.*;
 import com.stcal.don.manager.DEtudiantManager;
 import com.stcal.don.manager.DProfManager;
 import com.stcal.don.manager.DSalleManager;
+import com.stcal.fen.FLier;
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -43,7 +44,7 @@ public class Datas {
             salleManager = new DSalleManager(DBTools.dbsettings.getConnection());
             etuManager = new DEtudiantManager(DBTools.dbsettings.getConnection());
             profManager = new DProfManager(DBTools.dbsettings.getConnection());
-            prof = ListTools.list_to_default_prof(profManager.readall());
+            ListTools.list_to_default_prof(profManager.readall());
             etu = ListTools.list_to_default_etu(etuManager.readall());
             salles = ListTools.list_to_default_salle(salleManager.readall());
         } catch (SQLException e) {

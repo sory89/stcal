@@ -19,12 +19,10 @@ import java.util.List;
  */
 public class ListTools {
 
-    public static DefaultListModel<DPersonne> list_to_default_prof(List<DProf> list){
-        DefaultListModel<DPersonne> inter = new DefaultListModel<DPersonne>();
+    public static void list_to_default_prof(List<DProf> list){
         for(DProf truc : list){
-            inter.addElement(truc);
+            Datas.prof.addElement(truc);
         }
-        return inter;
     }
 
     public static List<DProf> default_to_list_prof(DefaultListModel<DPersonne> all){

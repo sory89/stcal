@@ -52,4 +52,12 @@ public class ListTools {
         }
         return re;
     }
+
+    public static List<DSalle> default_to_list_salle(DefaultListModel<String> salles) {
+        List<DSalle> inter = new ArrayList<DSalle>();
+        for (int i=0;i<salles.getSize();i++){
+            inter.add(new DSalle(-1,salles.get(i)));
+        }
+        return inter;
+    }
 }

@@ -3,7 +3,7 @@ package com.stcal.control;
 import com.stcal.don.*;
 import com.stcal.don.manager.DEtudiantManager;
 import com.stcal.don.manager.DProfManager;
-import com.stcal.don.manager.DSalleManager;
+import com.stcal.don.manager.SalleManager;
 import com.stcal.fen.FLier;
 
 import javax.swing.*;
@@ -38,9 +38,9 @@ public class Datas {
     public static void load(){
         DProfManager profManager;
         DEtudiantManager etuManager;
-        DSalleManager salleManager;
+        SalleManager salleManager;
         try {
-            salleManager = new DSalleManager(DBTools.dbsettings.getConnection());
+            salleManager = new SalleManager(DBTools.dbsettings.getConnection());
             etuManager = new DEtudiantManager(DBTools.dbsettings.getConnection());
             profManager = new DProfManager(DBTools.dbsettings.getConnection());
             ListTools.list_to_default_prof(profManager.readall());
@@ -49,6 +49,7 @@ public class Datas {
         } catch (SQLException e) {
             Message.poperror(e);
         }
+        System.out.println(salles);
     }
 
     /**
@@ -65,6 +66,12 @@ public class Datas {
             for(DEtudiant tosave : ListTools.default_to_list_etu(etu)){
                 if (tosave.getDb_id()!=-1) metu.update(tosave);
                 if (tosave.getDb_id()==-1) metu.create(tosave);
+            }
+            SalleManager msalle = new SalleManager(DBTools.dbsettings.getConnection());
+            for (DSalle inter : msalle.readall()) msalle.delete(inter.getId());
+            for(DSalle tosave : ListTools.default_to_list_salle(salles)){
+                if (tosave.getId()!=-1) msalle.update(tosave);
+                if (tosave.getId()==-1) msalle.create(tosave);
             }
         } catch (SQLException e) {
             Message.poperror(e);

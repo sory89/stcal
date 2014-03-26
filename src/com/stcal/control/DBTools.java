@@ -1,5 +1,6 @@
 package com.stcal.control;
 
+import com.stcal.Stcal;
 import com.stcal.don.DPersonne;
 import com.stcal.fen.FLier;
 
@@ -47,6 +48,8 @@ public class DBTools {
 
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             public void run() {
+                Message.status("Arret en cours: sauvgarde des données");
+                Stcal.fen.hide();
                 Datas.save();
                 try {
                     dbsettings.getConnection().close();
@@ -65,6 +68,7 @@ public class DBTools {
         Message.popnotice(" La base de données va être réinitialisée.");
         ScriptRunner runner = new ScriptRunner(dbsettings.getConnection(),false,true);
         runner.runScript(new BufferedReader(new FileReader("res/stcal.sql")));
+        Message.status("La base de données a été réinitialisée");
     }
 
     /**

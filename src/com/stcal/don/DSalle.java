@@ -7,10 +7,10 @@ package com.stcal.don;
 
 public class DSalle {
 
-    private Integer num;
+    private String num;
     private Integer id;
 
-    public DSalle(Integer id,Integer num) {
+    public DSalle(Integer id,String num) {
         this.num = num;
         this.id = id;
     }
@@ -23,16 +23,16 @@ public class DSalle {
         this.id = id;
     }
 
-    public Integer getNum() {
+    public String getNum() {
         return num;
     }
 
-    public void setNum(Integer num) {
+    public void setNum(String num) {
         this.num = num;
     }
 
     @Override
     public String toString() {
-        return num.toString();
+        return num;
     }
 }

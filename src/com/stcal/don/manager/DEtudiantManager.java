@@ -31,7 +31,7 @@ public class DEtudiantManager implements Manager<DEtudiant> {
     public int create(DEtudiant nouveau) {
         int id=0;
         ResultSet key;
-        String sql="INSERT INTO `etudiants`(`etu_id`, `nom_etu`, `pre_etu`, `info_etu`, `lie_etu`) VALUES (NULL,?,?,?,?)";
+        String sql="INSERT INTO `Etudiants`(`etu_id`, `nom_etu`, `pre_etu`, `info_etu`, `lie_etu`) VALUES (NULL,?,?,?,?)";
         try {
             pstm=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             pstm.setString(1,nouveau.getNom());
@@ -54,7 +54,7 @@ public class DEtudiantManager implements Manager<DEtudiant> {
     public DEtudiant read(int id) {
 
 
-        String sql="SELECT `etu_id`, `nom_etu`, `pre_etu`, `info_etu`, `lie_etu` FROM `etudiants` WHERE `etu_id`=?";
+        String sql="SELECT `etu_id`, `nom_etu`, `pre_etu`, `info_etu`, `lie_etu` FROM `Etudiants` WHERE `etu_id`=?";
         try {
             pstm=con.prepareStatement(sql);
             pstm.setInt(1, id);
@@ -76,7 +76,7 @@ public class DEtudiantManager implements Manager<DEtudiant> {
     @Override
     public List<DEtudiant> readall() {
         List <DEtudiant> resultats=new ArrayList<DEtudiant>();
-        String sql="SELECT `etu_id`, `nom_etu`, `pre_etu`, `info_etu`, `lie_etu` FROM `etudiants`";
+        String sql="SELECT `etu_id`, `nom_etu`, `pre_etu`, `info_etu`, `lie_etu` FROM `Etudiants`";
         try {
             statement=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
             resultSet=statement.executeQuery(sql);
@@ -101,7 +101,7 @@ public class DEtudiantManager implements Manager<DEtudiant> {
         PreparedStatement preparedStatement=null;
 
         try {
-            String sql="UPDATE `etudiants` SET `nom_etu`=?,`pre_etu`=?,`info_etu`=?,`lie_etu`=? WHERE `etu_id`=?";
+            String sql="UPDATE `Etudiants` SET `nom_etu`=?,`pre_etu`=?,`info_etu`=?,`lie_etu`=? WHERE `etu_id`=?";
             preparedStatement=con.prepareStatement(sql);
             int i=1;
             preparedStatement.setString(1,table.getNom());
@@ -137,7 +137,7 @@ public class DEtudiantManager implements Manager<DEtudiant> {
         int n=-1;
         PreparedStatement preparedStatement=null;
         try{
-            String sql="DELETE FROM `etudiants` WHERE `etu_id`=?";
+            String sql="DELETE FROM `Etudiants` WHERE `etu_id`=?";
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             n = preparedStatement.executeUpdate();

@@ -28,6 +28,11 @@ public class DBTools {
      */
     public static void startup(){
         askdbsetting();
+        try {
+            isset();
+        } catch (SQLException e) {
+            Message.poperror(e);
+        }
         Datas.load();
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             public void run() {

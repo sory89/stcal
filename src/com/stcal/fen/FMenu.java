@@ -155,6 +155,20 @@ public class FMenu {
         menupref.add(itemSalle);
 
 
+
+        JMenuItem sepCsv = new JMenuItem("Séparateur CSV");
+        sepCsv.setToolTipText("Changer de séparateur pour les fichiers CSV. ( Par défaut ';' )");
+        sepCsv.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FCsv fCsv = new FCsv();
+                fCsv.pop();
+            }
+        });
+        menupref.add(sepCsv);
+
+
+
         menubar.add(menufile);
         menubar.add(menuaction);
         menubar.add(menupref);

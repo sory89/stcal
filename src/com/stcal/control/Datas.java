@@ -36,7 +36,6 @@ public class Datas {
      * Charge la base de donne et les place dans les objet de la classe
      */
     public static void load(){
-        System.out.println("coucou" + prof);
         DProfManager profManager;
         DEtudiantManager etuManager;
         DSalleManager salleManager;
@@ -45,12 +44,11 @@ public class Datas {
             etuManager = new DEtudiantManager(DBTools.dbsettings.getConnection());
             profManager = new DProfManager(DBTools.dbsettings.getConnection());
             ListTools.list_to_default_prof(profManager.readall());
-            etu = ListTools.list_to_default_etu(etuManager.readall());
-            salles = ListTools.list_to_default_salle(salleManager.readall());
+            ListTools.list_to_default_etu(etu,etuManager.readall());
+            ListTools.list_to_default_salle(salles,salleManager.readall());
         } catch (SQLException e) {
             Message.poperror(e);
         }
-        System.out.println("coucou " + prof);
     }
 
     /**

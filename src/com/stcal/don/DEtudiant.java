@@ -8,7 +8,7 @@ public class DEtudiant extends DPersonne {
     private boolean lie;
 
     public DEtudiant(String nom, String prenom, List<String> infos, boolean lie) {
-        super(nom, prenom,(ArrayList)infos);
+        super(nom, prenom,new ArrayList<String>(infos));
         this.lie = lie;
     }
 

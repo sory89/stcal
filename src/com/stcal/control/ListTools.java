@@ -33,20 +33,16 @@ public class ListTools {
         return re;
     }
 
-    public static DefaultListModel<String> list_to_default_salle(List<DSalle> list){
-        DefaultListModel<String> inter = new DefaultListModel<String>();
+    public static void list_to_default_salle(DefaultListModel<String> inter,List<DSalle> list){
         for(DSalle truc : list){
             inter.addElement(truc.toString());
         }
-        return inter;
     }
 
-    public static DefaultListModel<DPersonne> list_to_default_etu(List<DEtudiant> readall) {
-        DefaultListModel<DPersonne> inter = new DefaultListModel<DPersonne>();
+    public static void list_to_default_etu(DefaultListModel<DPersonne> inter,List<DEtudiant> readall) {
         for(DEtudiant truc : readall){
             inter.addElement(truc);
         }
-        return inter;
     }
 
     public static List<DEtudiant> default_to_list_etu(DefaultListModel<DPersonne> etu) {

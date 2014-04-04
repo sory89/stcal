@@ -11,10 +11,6 @@ import java.util.Scanner;
 
 public class OSplitCsv {
 
-    //public static final String SEPs = ";";
-    //public static final char SEP = ';';
-
-
     public static DListe splitcsv(File file, String type) throws Exception {
         char SEP = Datas.Csv;
         String SEPs = ""+SEP+"";
@@ -115,7 +111,7 @@ public class OSplitCsv {
                 perso.setInfos(essai);
                 cont.addElement(perso);
 
-            } else {  }
+            }
 
             nlig+=1;
         }

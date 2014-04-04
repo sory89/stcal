@@ -130,7 +130,7 @@ public class ScriptRunner {
 				}
 				String trimmedLine = line.trim();
 				if (trimmedLine.startsWith("--")) {
-					println(trimmedLine);
+					// println(trimmedLine);
 				} else if (trimmedLine.length() < 1
 						|| trimmedLine.startsWith("//")) {
 					// Do nothing
@@ -210,6 +210,7 @@ public class ScriptRunner {
 			conn.rollback();
 			flush();
 		}
+        println("ScriptRunner SQL OK");
 	}
 
 	private String getDelimiter() {

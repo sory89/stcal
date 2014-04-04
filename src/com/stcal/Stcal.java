@@ -8,8 +8,11 @@ import com.stcal.fen.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Stcal {
 
@@ -38,6 +41,7 @@ public class Stcal {
      * @param args
      */
     public static void main(String[] args) {
+        Message.out.println("\n\n\n\n\n" + new Date().toString() + " Start up");
         DBTools.startup();
         fen.addTab(lier) ;
         fen.addTab(stage);
@@ -72,7 +76,7 @@ public class Stcal {
         }
         else {
             Message.status("Err: Type de la personne inconnu.");
-            System.err.println("Err: Type de la personne inconnu.");
+            Message.err.println("Err: Type de la personne inconnu.");
             return null;
         }
         /*
@@ -105,6 +109,7 @@ public class Stcal {
         finder.show();
         if (finder.status()==FChooser.CHOSEN){
             try {
+                // TODO fix bug here
                 nouveau = OSplitCsv.splitcsv(finder.file(), type.toString());
                 if (type.equals(Type.ETUDIANT)){
                     for (int i=0; i<nouveau.getSize();i++){
@@ -119,13 +124,13 @@ public class Stcal {
                     Message.status(nouveau.getSize() + " enseignants ajoutés de" + finder.path());
                 }
                 else {
-                    System.err.println("Stcal: openFile: type not defined");
+                    Message.err.println("Stcal: openFile: type not defined");
                     return;
                 }
             }
             catch (Exception ex){
                 Message.status("Err: Impossible d'ouvrir le fichier.");
-                System.err.println("Erreur ouverture fichier : " + ex.getMessage());
+                Message.err.println("Erreur ouverture fichier : " + ex.getMessage());
             }
         }
         else {

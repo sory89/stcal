@@ -42,7 +42,7 @@ public class DBTools {
             Message.poperror(eio);
         }
         Datas.load();
-        System.out.println(Datas.prof);
+        Message.out.println(Datas.prof);
         //FLier.Fprof = new JList<DPersonne>(Datas.prof);
 
 
@@ -67,6 +67,10 @@ public class DBTools {
     public static void resetDatabase() throws IOException, SQLException {
         Message.popnotice(" La base de données va être réinitialisée.");
         ScriptRunner runner = new ScriptRunner(dbsettings.getConnection(),false,true);
+        Datas.prof.clear();
+        Datas.salles.clear();
+        Datas.etu.clear();
+        Datas.stages.clear();
         runner.runScript(new BufferedReader(new FileReader("res/stcal.sql")));
         Message.status("La base de données a été réinitialisée");
     }

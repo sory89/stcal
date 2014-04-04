@@ -82,7 +82,7 @@ public class Outics {
         calendar.getProperties().add(new ProdId("-//Ben Fortuna//iCal4j 1.0//EN"));
         calendar.getProperties().add(Version.VERSION_2_0);
         calendar.getProperties().add(CalScale.GREGORIAN);
-        System.out.println("generation ics");
+        Message.out.println("generation ics");
         DCreneau obj[][] = Datas.o ;
         for(int i = 0;i<obj.length;i++){
             for(int k=0;k<obj[i].length;k++){
@@ -191,14 +191,14 @@ public class Outics {
         calendar.getProperties().add(new ProdId("-//Ben Fortuna//iCal4j 1.0//EN"));
         calendar.getProperties().add(Version.VERSION_2_0);
         calendar.getProperties().add(CalScale.GREGORIAN);
-         System.out.println("generation ics");
+         Message.out.println("generation ics");
         DCreneau obj[][] = Datas.o ;
 
         for(int i = 0;i<obj.length;i++){
             for(int k=0;k<obj[i].length;k++){
 
                 if(obj[i][k].getSoutp(prof)!=null){
-                     System.out.println(obj[i][k].getSoutp(prof)+"oui oui");
+                     Message.out.println(obj[i][k].getSoutp(prof)+"oui oui");
                     Soutenance sout = obj[i][k].getSoutp(prof);
                     DCreneau cren = obj[i][k];
                     DateTime startt = new DateTime(cren.getDate_debut().getTime());
@@ -244,14 +244,14 @@ public class Outics {
         calendar.getProperties().add(new ProdId("-//Ben Fortuna//iCal4j 1.0//EN"));
         calendar.getProperties().add(Version.VERSION_2_0);
         calendar.getProperties().add(CalScale.GREGORIAN);
-        System.out.println("generation ics");
+        Message.out.println("generation ics");
         DCreneau obj[][] = Datas.o ;
 
         for(int i = 0;i<obj.length;i++){
             for(int k=0;k<obj[i].length;k++){
 
                 if(obj[i][k].getSouts(salle)!=null){
-                    System.out.println(obj[i][k].getSouts(salle)+"oui oui");
+                    Message.out.println(obj[i][k].getSouts(salle)+"oui oui");
                     Soutenance sout = obj[i][k].getSouts(salle);
                     DCreneau cren = obj[i][k];
                     DateTime startt = new DateTime(cren.getDate_debut().getTime());

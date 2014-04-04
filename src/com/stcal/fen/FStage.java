@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import com.stcal.control.Datas;
+import com.stcal.control.Message;
 import com.stcal.don.DCouple;
 
 import javax.swing.*;
@@ -81,7 +82,7 @@ public class FStage extends FTab {
                 DCouple cpl = (DCouple)((DefaultMutableTreeNode)(newContentPane.getTreePanel().tree).getLastSelectedPathComponent()).getUserObject();
                 infosEtu.setText(setInfo(cpl.getEtu().getInfos()));
                 infosTut.setText(setInfo(cpl.getTut().getInfos()));
-                System.out.println("infos focus du jtree : "+cpl.getEtu().getNom());
+                Message.out.println("infos focus du jtree : "+cpl.getEtu().getNom());
             }
             else{
                 infosTut.setText("");
@@ -89,7 +90,7 @@ public class FStage extends FTab {
             }
         }
         catch (Exception ex){
-            System.err.println("err: FTab: event JList: " + ex.getMessage());
+            Message.err.println("err: FTab: event JList: " + ex.getMessage());
         }
         refresh();
     }

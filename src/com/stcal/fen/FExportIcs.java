@@ -92,7 +92,7 @@ public class FExportIcs {
                     case 1:
                         Outics test = new Outics(1,jcboptions2.getSelectedItem());
                         try {
-                            System.out.println("start export");
+                            Message.status("start export");
                             test.export();
 
                         } catch (IOException e1) {
@@ -107,7 +107,7 @@ public class FExportIcs {
                             case 0 :
                         Outics test1 = new Outics(20);
                         try {
-                            System.out.println("start export pdf");
+                            Message.status("start export pdf");
                             test1.export();
 
                         } catch (IOException e1) {
@@ -119,7 +119,7 @@ public class FExportIcs {
                             case 1:
                                 Outics test2 = new Outics(21);
                                 try {
-                                    System.out.println("start export ics");
+                                    Message.status("start export ics");
                                     test2.export();
 
                                 } catch (IOException e1) {
@@ -134,7 +134,7 @@ public class FExportIcs {
                     case 0:
                         Outics testa = new Outics(0,jcboptions2.getSelectedItem());
                         try {
-                            System.out.println("start export");
+                            Message.status("start export");
                             testa.export();
 
                         } catch (IOException e1) {
@@ -155,7 +155,7 @@ public class FExportIcs {
 
 
         JOptionPane pop = new JOptionPane();
-        Message.out.println("Ouverture export ics ");
+        Message.status("Ouverture export ics ");
         pop.showMessageDialog(null, jfics, "Export", JOptionPane.PLAIN_MESSAGE);
 
 

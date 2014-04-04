@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import com.stcal.control.Datas;
+import com.stcal.control.Message;
 import com.stcal.don.DCouple;
 
 import javax.swing.*;
@@ -115,8 +116,8 @@ class DynamicTree extends JPanel {
             int index = e.getChildIndices()[0];
             node = (DefaultMutableTreeNode) (node.getChildAt(index));
 
-            System.out.println("The user has finished editing the node.");
-            System.out.println("New value: " + node.getUserObject());
+            Message.out.println("The user has finished editing the node.");
+            Message.out.println("New value: " + node.getUserObject());
         }
 
         public void treeNodesInserted(TreeModelEvent e) {
@@ -143,10 +144,10 @@ class DynamicTree extends JPanel {
     {
         if(((DefaultMutableTreeNode) tree.getLastSelectedPathComponent()).isLeaf()){
             DCouple cpl = (DCouple)((DefaultMutableTreeNode)tree.getLastSelectedPathComponent()).getUserObject();
-            System.out.println("Suppression du stage en cours ...");
+            Message.status("Suppression du stage en cours ...");
             if(listCpl.contains(cpl)){
                 listCpl.removeElement(cpl);
-                System.out.println("Stage supprimé.");
+                Message.status("Stage supprimé.");
                 Datas.etu.addElement(cpl.getEtu());
                 if(((MutableTreeNode) tree.getLastSelectedPathComponent()).getParent().getChildCount()==1){
                     treeModel.removeNodeFromParent((MutableTreeNode)((MutableTreeNode) tree.getLastSelectedPathComponent()).getParent());
@@ -158,11 +159,11 @@ class DynamicTree extends JPanel {
                 tree.setSelectionRow(0);
             }
             else{
-                System.out.println("Suppression annulée : Stage non contenu dans les données.");
+                Message.status("Suppression annulée : Stage non contenu dans les données.");
             }
         }
         else{
-            System.out.println("Impossible de supprimer.");
+            Message.status("Impossible de supprimer.");
         }
     }
 
@@ -170,10 +171,10 @@ class DynamicTree extends JPanel {
     {
         if(((DefaultMutableTreeNode) tree.getLastSelectedPathComponent()).isLeaf()){
             DCouple cpl = (DCouple)((DefaultMutableTreeNode)tree.getLastSelectedPathComponent()).getUserObject();
-            System.out.println("Suppression du stage en cours ...");
+            Message.status("Suppression du stage en cours ...");
             if(listCpl.contains(cpl)){
                 listCpl.removeElement(cpl);
-                System.out.println("Stage supprimé.");
+                Message.status("Stage supprimé.");
 
                 if(((MutableTreeNode) tree.getLastSelectedPathComponent()).getParent().getChildCount()==1){
                     treeModel.removeNodeFromParent((MutableTreeNode)((MutableTreeNode) tree.getLastSelectedPathComponent()).getParent());
@@ -187,11 +188,11 @@ class DynamicTree extends JPanel {
 
             }
             else{
-                System.out.println("Suppression annulée : Stage non contenu dans les données.");
+                Message.status("Suppression annulée : Stage non contenu dans les données.");
             }
         }
         else{
-            System.out.println("Impossible de supprimer.");
+            Message.status("Impossible de supprimer.");
         }
     }
 

@@ -351,7 +351,7 @@ public class FCal extends FTab{
 
                                 dc.getSout(dfc).setCdd((DProf)jcbcandide.getSelectedItem());
                                 dc.getSout(dfc).setSalle((String)jcbsalles.getSelectedItem());
-                              System.out.println("candide ok");
+                                Message.status("candide ok");
 
 
                                 fs.removeAllElements();

@@ -73,7 +73,6 @@ public class Settings {
     public void save() throws NothingToSaveException {
         if (settings.size()<=0) throw new NothingToSaveException();
         File config = new File(filepath);
-        FileOutputStream stream;
         JSONObject jObject = new JSONObject();
         for(Map.Entry<String, String> entry : settings.entrySet()) {
             try {

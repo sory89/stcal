@@ -1,6 +1,7 @@
 package com.stcal.fen;
 
 import com.stcal.control.Datas;
+import com.stcal.control.Message;
 import com.stcal.don.DCouple;
 import com.stcal.don.DProf;
 
@@ -88,7 +89,7 @@ public class DynamicTreeOperator extends JPanel implements ActionListener {
         if(!Datas.stages.isEmpty())
             ltut= getEachTut(Datas.stages);
 
-        System.out.println("Nombre de profs : "+ltut.size());
+        Message.out.println("Nombre de profs : "+ltut.size());
         for(int i = 0; i < ltut.size(); i++){
             DefaultMutableTreeNode tuteur = new DefaultMutableTreeNode(ltut.get(i));
             for(int j=0; j<Datas.stages.size(); j++){

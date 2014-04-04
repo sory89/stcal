@@ -2,6 +2,7 @@ package com.stcal.fen;
 
 import com.stcal.Stcal;
 import com.stcal.control.Datas;
+import com.stcal.control.Message;
 import com.stcal.don.*;
 
 import javax.swing.*;
@@ -169,7 +170,7 @@ public class FLier extends FTab {
             resetCourant(pan);
         }
         catch (Exception ex){
-            System.err.println("err: FLier: event JList: " + ex.getMessage());
+            Message.err.println("err: FLier: event JList: " + ex.getMessage());
         }
     }
 
@@ -179,7 +180,7 @@ public class FLier extends FTab {
         FStage.newContentPane.populateTree(FStage.newContentPane.getTreePanel());
         if(FCal.newContentPane != null){
         FCal.newContentPane.populateTree(FCal.newContentPane.getTreePanel());  }
-        System.out.println("Création du stage "+Datas.stages.getSize());
+        Message.out.println("Création du stage "+Datas.stages.getSize());
         courant.setText("<html>Stage créé.</html>");
         refresh();
     }

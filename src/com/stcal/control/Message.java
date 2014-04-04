@@ -3,6 +3,9 @@ package com.stcal.control;
 import com.stcal.Stcal;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
 
 /**
@@ -16,10 +19,40 @@ public class Message {
 
     public static final PrintStream out;
     public static final PrintStream err;
+    public static final String logfile;
 
     static {
-        out = System.out;
-        err = System.err;
+
+        logfile = System.getProperty("user.home") + System.getProperty("file.separator") + ".stcal" + System.getProperty("file.separator") + "stcal.log";
+
+        PrintStream inter = customLOG();
+        out = inter;
+        err = inter;
+
+        // Decomenter ces lignes pour utiliser la sortie standar
+        // out = System.out;
+        // err = System.err;
+    }
+
+    private static PrintStream customLOG(){
+        File log = new File(logfile);
+        if (!log.exists()){
+            log.getParentFile().mkdir();
+            try {
+                log.createNewFile();
+            } catch (IOException e) {
+                System.err.println("Erreure à la creation du journal.");
+                return System.out;
+            }
+        }
+        PrintStream out;
+        try {
+            out = new PrintStream(log);
+        } catch (FileNotFoundException e) {
+            System.err.println("Erreure à l'ouverture du journal.");
+            return System.out;
+        }
+        return out;
     }
 
     public static void poperror(Exception e){
